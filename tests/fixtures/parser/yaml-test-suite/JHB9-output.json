@@ -1,0 +1,459 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLSequence",
+        "entries": [
+          {
+            "type": "YAMLPlain",
+            "strValue": "Mark McGwire",
+            "value": "Mark McGwire",
+            "anchor": null,
+            "tag": null,
+            "range": [
+              34,
+              46
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 2
+              },
+              "end": {
+                "line": 3,
+                "column": 14
+              }
+            }
+          },
+          {
+            "type": "YAMLPlain",
+            "strValue": "Sammy Sosa",
+            "value": "Sammy Sosa",
+            "anchor": null,
+            "tag": null,
+            "range": [
+              49,
+              59
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 2
+              },
+              "end": {
+                "line": 4,
+                "column": 12
+              }
+            }
+          },
+          {
+            "type": "YAMLPlain",
+            "strValue": "Ken Griffey",
+            "value": "Ken Griffey",
+            "anchor": null,
+            "tag": null,
+            "range": [
+              62,
+              73
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 2
+              },
+              "end": {
+                "line": 5,
+                "column": 13
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          32,
+          73
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 5,
+            "column": 13
+          }
+        }
+      },
+      "range": [
+        0,
+        90
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLSequence",
+        "entries": [
+          {
+            "type": "YAMLPlain",
+            "strValue": "Chicago Cubs",
+            "value": "Chicago Cubs",
+            "anchor": null,
+            "tag": null,
+            "range": [
+              96,
+              108
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 2
+              },
+              "end": {
+                "line": 9,
+                "column": 14
+              }
+            }
+          },
+          {
+            "type": "YAMLPlain",
+            "strValue": "St Louis Cardinals",
+            "value": "St Louis Cardinals",
+            "anchor": null,
+            "tag": null,
+            "range": [
+              111,
+              129
+            ],
+            "loc": {
+              "start": {
+                "line": 10,
+                "column": 2
+              },
+              "end": {
+                "line": 10,
+                "column": 20
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          94,
+          129
+        ],
+        "loc": {
+          "start": {
+            "line": 9,
+            "column": 0
+          },
+          "end": {
+            "line": 10,
+            "column": 20
+          }
+        }
+      },
+      "range": [
+        90,
+        130
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [
+    {
+      "type": "Block",
+      "value": " Ranking of 1998 home runs",
+      "range": [
+        0,
+        27
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": " Team ranking",
+      "range": [
+        75,
+        89
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 14
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Marker",
+      "value": "---",
+      "range": [
+        28,
+        31
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        32,
+        33
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "Mark McGwire",
+      "range": [
+        34,
+        46
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 2
+        },
+        "end": {
+          "line": 3,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        47,
+        48
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "Sammy Sosa",
+      "range": [
+        49,
+        59
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 2
+        },
+        "end": {
+          "line": 4,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        60,
+        61
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "Ken Griffey",
+      "range": [
+        62,
+        73
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 2
+        },
+        "end": {
+          "line": 5,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Marker",
+      "value": "---",
+      "range": [
+        90,
+        93
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        94,
+        95
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "Chicago Cubs",
+      "range": [
+        96,
+        108
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 2
+        },
+        "end": {
+          "line": 9,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        109,
+        110
+      ],
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "St Louis Cardinals",
+      "range": [
+        111,
+        129
+      ],
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 2
+        },
+        "end": {
+          "line": 10,
+          "column": 20
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    130
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 11,
+      "column": 0
+    }
+  }
+}

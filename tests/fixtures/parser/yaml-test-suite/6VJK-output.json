@@ -1,0 +1,99 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLBlockFolded",
+        "chomping": "clip",
+        "indent": null,
+        "value": "Sammy Sosa completed another fine season with great stats.\n\n  63 Home Runs\n  0.288 Batting Average\n\nWhat a year!\n",
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          120
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 9,
+            "column": 0
+          }
+        }
+      },
+      "range": [
+        0,
+        120
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Punctuator",
+      "value": ">",
+      "range": [
+        0,
+        1
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "BlockFolded",
+      "value": "Sammy Sosa completed another\n fine season with great stats.\n\n   63 Home Runs\n   0.288 Batting Average\n\n What a year!\n",
+      "range": [
+        3,
+        120
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 1
+        },
+        "end": {
+          "line": 9,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    120
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 9,
+      "column": 0
+    }
+  }
+}

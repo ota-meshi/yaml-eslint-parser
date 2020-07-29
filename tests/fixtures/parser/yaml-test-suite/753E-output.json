@@ -1,0 +1,135 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLBlockLiteral",
+        "chomping": "strip",
+        "indent": null,
+        "value": "ab",
+        "anchor": null,
+        "tag": null,
+        "range": [
+          4,
+          11
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 4
+          },
+          "end": {
+            "line": 3,
+            "column": 0
+          }
+        }
+      },
+      "range": [
+        0,
+        18
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 3
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Marker",
+      "value": "---",
+      "range": [
+        0,
+        3
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "|-",
+      "range": [
+        4,
+        6
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 4
+        },
+        "end": {
+          "line": 1,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "BlockLiteral",
+      "value": "ab\n",
+      "range": [
+        8,
+        11
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "Marker",
+      "value": "...",
+      "range": [
+        15,
+        18
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 3
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    19
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 6,
+      "column": 0
+    }
+  }
+}

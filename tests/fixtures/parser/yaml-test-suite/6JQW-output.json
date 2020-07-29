@@ -1,0 +1,136 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLBlockLiteral",
+        "chomping": "clip",
+        "indent": null,
+        "value": "\\//||\\/||\n// ||  ||__\n",
+        "anchor": null,
+        "tag": null,
+        "range": [
+          16,
+          44
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 4
+          },
+          "end": {
+            "line": 5,
+            "column": 0
+          }
+        }
+      },
+      "range": [
+        0,
+        44
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [
+    {
+      "type": "Block",
+      "value": " ASCII Art",
+      "range": [
+        0,
+        11
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 11
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Marker",
+      "value": "---",
+      "range": [
+        12,
+        15
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "|",
+      "range": [
+        16,
+        17
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 4
+        },
+        "end": {
+          "line": 2,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "BlockLiteral",
+      "value": "\\//||\\/||\n  // ||  ||__\n",
+      "range": [
+        20,
+        44
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 2
+        },
+        "end": {
+          "line": 5,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    44
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 5,
+      "column": 0
+    }
+  }
+}

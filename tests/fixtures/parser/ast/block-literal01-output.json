@@ -1,0 +1,194 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLMapping",
+        "pairs": [
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLPlain",
+              "strValue": "a",
+              "value": "a",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                0,
+                1
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 1
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLBlockLiteral",
+              "chomping": "clip",
+              "indent": null,
+              "value": "1\n2\n3\n",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                3,
+                17
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 3
+                },
+                "end": {
+                  "line": 5,
+                  "column": 0
+                }
+              }
+            },
+            "range": [
+              0,
+              17
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 5,
+                "column": 0
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          17
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 5,
+            "column": 0
+          }
+        }
+      },
+      "range": [
+        0,
+        17
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Identifier",
+      "value": "a",
+      "range": [
+        0,
+        1
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        1,
+        2
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 2
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "|",
+      "range": [
+        3,
+        4
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 3
+        },
+        "end": {
+          "line": 1,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "BlockLiteral",
+      "value": "1\n  2\n  3\n",
+      "range": [
+        7,
+        17
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 2
+        },
+        "end": {
+          "line": 5,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    17
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 5,
+      "column": 0
+    }
+  }
+}

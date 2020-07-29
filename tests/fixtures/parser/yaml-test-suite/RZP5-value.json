@@ -1,0 +1,11 @@
+{
+  "a": "double quotes",
+  "b": "plain value",
+  "c": "d",
+  "e": [
+    {
+      "x": "y"
+    }
+  ],
+  "block": "abcde\n"
+}

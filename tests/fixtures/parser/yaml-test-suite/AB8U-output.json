@@ -1,0 +1,119 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLSequence",
+        "entries": [
+          {
+            "type": "YAMLPlain",
+            "strValue": "single multiline - sequence entry",
+            "value": "single multiline - sequence entry",
+            "anchor": null,
+            "tag": null,
+            "range": [
+              2,
+              36
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 2
+              },
+              "end": {
+                "line": 2,
+                "column": 17
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          36
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 17
+          }
+        }
+      },
+      "range": [
+        0,
+        37
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        0,
+        1
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "single multiline\n - sequence entry",
+      "range": [
+        2,
+        36
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 2
+        },
+        "end": {
+          "line": 2,
+          "column": 17
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    37
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 3,
+      "column": 0
+    }
+  }
+}

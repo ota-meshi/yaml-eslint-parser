@@ -1,0 +1,326 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLMapping",
+        "pairs": [
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLPlain",
+              "strValue": "quoted",
+              "value": "quoted",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                18,
+                24
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 0
+                },
+                "end": {
+                  "line": 2,
+                  "column": 6
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLDoubleQuoted",
+              "strValue": "Quoted \t",
+              "value": "Quoted \t",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                26,
+                36
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 8
+                },
+                "end": {
+                  "line": 2,
+                  "column": 18
+                }
+              }
+            },
+            "range": [
+              18,
+              36
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 0
+              },
+              "end": {
+                "line": 2,
+                "column": 18
+              }
+            }
+          },
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLPlain",
+              "strValue": "block",
+              "value": "block",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                37,
+                42
+              ],
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 0
+                },
+                "end": {
+                  "line": 3,
+                  "column": 5
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLBlockLiteral",
+              "chomping": "clip",
+              "indent": null,
+              "value": "void main() {\n\tprintf(\"Hello, world!\\n\");\n}\n",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                44,
+                96
+              ],
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 7
+                },
+                "end": {
+                  "line": 7,
+                  "column": 0
+                }
+              }
+            },
+            "range": [
+              37,
+              96
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 7,
+                "column": 0
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          18,
+          96
+        ],
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 0
+          },
+          "end": {
+            "line": 7,
+            "column": 0
+          }
+        }
+      },
+      "range": [
+        0,
+        96
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [
+    {
+      "type": "Block",
+      "value": " Tabs and spaces",
+      "range": [
+        0,
+        17
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 17
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Identifier",
+      "value": "quoted",
+      "range": [
+        18,
+        24
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        24,
+        25
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 6
+        },
+        "end": {
+          "line": 2,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "String",
+      "value": "\"Quoted \t\"",
+      "range": [
+        26,
+        36
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 8
+        },
+        "end": {
+          "line": 2,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "block",
+      "range": [
+        37,
+        42
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        42,
+        43
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 5
+        },
+        "end": {
+          "line": 3,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "|",
+      "range": [
+        44,
+        45
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 7
+        },
+        "end": {
+          "line": 3,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "BlockLiteral",
+      "value": "void main() {\n  \tprintf(\"Hello, world!\\n\");\n  }\n",
+      "range": [
+        48,
+        96
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 2
+        },
+        "end": {
+          "line": 7,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    96
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 7,
+      "column": 0
+    }
+  }
+}

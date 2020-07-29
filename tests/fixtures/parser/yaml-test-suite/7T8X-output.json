@@ -1,0 +1,118 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLBlockFolded",
+        "chomping": "clip",
+        "indent": null,
+        "value": "\nfolded line\nnext line\n  * bullet\n\n  * list\n  * lines\n\nlast line\n",
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          77
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 15,
+            "column": 0
+          }
+        }
+      },
+      "range": [
+        0,
+        88
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 17,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [
+    {
+      "type": "Block",
+      "value": " Comment",
+      "range": [
+        78,
+        87
+      ],
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 0
+        },
+        "end": {
+          "line": 16,
+          "column": 9
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Punctuator",
+      "value": ">",
+      "range": [
+        0,
+        1
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "BlockFolded",
+      "value": "folded\n line\n\n next\n line\n   * bullet\n\n   * list\n   * lines\n\n last\n line\n",
+      "range": [
+        4,
+        77
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    88
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 17,
+      "column": 0
+    }
+  }
+}

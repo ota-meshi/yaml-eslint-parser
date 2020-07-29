@@ -1,0 +1,80 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLDoubleQuoted",
+        "strValue": "foo: bar\": baz",
+        "value": "foo: bar\": baz",
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          17
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 17
+          }
+        }
+      },
+      "range": [
+        0,
+        18
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "String",
+      "value": "\"foo: bar\\\": baz\"",
+      "range": [
+        0,
+        17
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 17
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    18
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 2,
+      "column": 0
+    }
+  }
+}

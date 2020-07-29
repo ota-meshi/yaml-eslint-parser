@@ -1,0 +1,371 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLDoubleQuoted",
+        "strValue": "bar",
+        "value": "bar",
+        "anchor": null,
+        "tag": {
+          "type": "YAMLTag",
+          "tag": "!foo",
+          "range": [
+            14,
+            18
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 4
+            }
+          }
+        },
+        "range": [
+          19,
+          24
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 5
+          },
+          "end": {
+            "line": 3,
+            "column": 10
+          }
+        }
+      },
+      "range": [
+        0,
+        28
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "YAMLDocument",
+      "directives": [
+        {
+          "type": "YAMLDirective",
+          "value": "%TAG ! tag:example.com,2000:app/",
+          "range": [
+            38,
+            70
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 32
+            }
+          }
+        }
+      ],
+      "content": {
+        "type": "YAMLDoubleQuoted",
+        "strValue": "bar",
+        "value": "bar",
+        "anchor": null,
+        "tag": {
+          "type": "YAMLTag",
+          "tag": "tag:example.com,2000:app/foo",
+          "range": [
+            75,
+            79
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 8,
+              "column": 4
+            }
+          }
+        },
+        "range": [
+          80,
+          85
+        ],
+        "loc": {
+          "start": {
+            "line": 8,
+            "column": 5
+          },
+          "end": {
+            "line": 8,
+            "column": 10
+          }
+        }
+      },
+      "range": [
+        29,
+        86
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [
+    {
+      "type": "Block",
+      "value": " Private",
+      "range": [
+        0,
+        9
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": " Global",
+      "range": [
+        29,
+        37
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 8
+        }
+      }
+    }
+  ],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Marker",
+      "value": "---",
+      "range": [
+        10,
+        13
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "!",
+      "range": [
+        14,
+        15
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "foo",
+      "range": [
+        15,
+        18
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "String",
+      "value": "\"bar\"",
+      "range": [
+        19,
+        24
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 5
+        },
+        "end": {
+          "line": 3,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "Marker",
+      "value": "...",
+      "range": [
+        25,
+        28
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Directive",
+      "value": "%TAG ! tag:example.com,2000:app/",
+      "range": [
+        38,
+        70
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "Marker",
+      "value": "---",
+      "range": [
+        71,
+        74
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "!",
+      "range": [
+        75,
+        76
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "foo",
+      "range": [
+        76,
+        79
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 1
+        },
+        "end": {
+          "line": 8,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "String",
+      "value": "\"bar\"",
+      "range": [
+        80,
+        85
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 5
+        },
+        "end": {
+          "line": 8,
+          "column": 10
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    86
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 9,
+      "column": 0
+    }
+  }
+}

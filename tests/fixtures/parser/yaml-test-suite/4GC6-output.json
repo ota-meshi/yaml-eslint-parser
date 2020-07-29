@@ -1,0 +1,80 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLSingleQuoted",
+        "strValue": "here's to \"quotes\"",
+        "value": "here's to \"quotes\"",
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          21
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 21
+          }
+        }
+      },
+      "range": [
+        0,
+        22
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "String",
+      "value": "'here''s to \"quotes\"'",
+      "range": [
+        0,
+        21
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 21
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    22
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 2,
+      "column": 0
+    }
+  }
+}

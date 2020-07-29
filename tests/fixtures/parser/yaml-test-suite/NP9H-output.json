@@ -1,0 +1,80 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLDoubleQuoted",
+        "strValue": "folded to a space,\nto a line feed, or \t \tnon-content",
+        "value": "folded to a space,\nto a line feed, or \t \tnon-content",
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          62
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 5,
+            "column": 16
+          }
+        }
+      },
+      "range": [
+        0,
+        63
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "String",
+      "value": "\"folded \nto a space,\t\n \nto a line feed, or \t\\\n \\ \tnon-content\"",
+      "range": [
+        0,
+        62
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 16
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    63
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 6,
+      "column": 0
+    }
+  }
+}

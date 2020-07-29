@@ -1,0 +1,574 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLSequence",
+        "entries": [
+          {
+            "type": "YAMLMapping",
+            "pairs": [
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLPlain",
+                  "strValue": "sun",
+                  "value": "sun",
+                  "anchor": null,
+                  "tag": null,
+                  "range": [
+                    2,
+                    5
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 5
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLPlain",
+                  "strValue": "yellow",
+                  "value": "yellow",
+                  "anchor": null,
+                  "tag": null,
+                  "range": [
+                    7,
+                    13
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 1,
+                      "column": 7
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 13
+                    }
+                  }
+                },
+                "range": [
+                  2,
+                  13
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 13
+                  }
+                }
+              }
+            ],
+            "anchor": null,
+            "tag": null,
+            "range": [
+              2,
+              13
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 2
+              },
+              "end": {
+                "line": 1,
+                "column": 13
+              }
+            }
+          },
+          {
+            "type": "YAMLMapping",
+            "pairs": [
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLMapping",
+                  "pairs": [
+                    {
+                      "type": "YAMLPair",
+                      "key": {
+                        "type": "YAMLPlain",
+                        "strValue": "earth",
+                        "value": "earth",
+                        "anchor": null,
+                        "tag": null,
+                        "range": [
+                          18,
+                          23
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 2,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 2,
+                            "column": 9
+                          }
+                        }
+                      },
+                      "value": {
+                        "type": "YAMLPlain",
+                        "strValue": "blue",
+                        "value": "blue",
+                        "anchor": null,
+                        "tag": null,
+                        "range": [
+                          25,
+                          29
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 2,
+                            "column": 11
+                          },
+                          "end": {
+                            "line": 2,
+                            "column": 15
+                          }
+                        }
+                      },
+                      "range": [
+                        18,
+                        29
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 15
+                        }
+                      }
+                    }
+                  ],
+                  "anchor": null,
+                  "tag": null,
+                  "range": [
+                    18,
+                    29
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 15
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLMapping",
+                  "pairs": [
+                    {
+                      "type": "YAMLPair",
+                      "key": {
+                        "type": "YAMLPlain",
+                        "strValue": "moon",
+                        "value": "moon",
+                        "anchor": null,
+                        "tag": null,
+                        "range": [
+                          34,
+                          38
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 3,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 3,
+                            "column": 8
+                          }
+                        }
+                      },
+                      "value": {
+                        "type": "YAMLPlain",
+                        "strValue": "white",
+                        "value": "white",
+                        "anchor": null,
+                        "tag": null,
+                        "range": [
+                          40,
+                          45
+                        ],
+                        "loc": {
+                          "start": {
+                            "line": 3,
+                            "column": 10
+                          },
+                          "end": {
+                            "line": 3,
+                            "column": 15
+                          }
+                        }
+                      },
+                      "range": [
+                        34,
+                        45
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 3,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 15
+                        }
+                      }
+                    }
+                  ],
+                  "anchor": null,
+                  "tag": null,
+                  "range": [
+                    34,
+                    45
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 15
+                    }
+                  }
+                },
+                "range": [
+                  16,
+                  45
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 15
+                  }
+                }
+              }
+            ],
+            "anchor": null,
+            "tag": null,
+            "range": [
+              16,
+              45
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 2
+              },
+              "end": {
+                "line": 3,
+                "column": 15
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          45
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 3,
+            "column": 15
+          }
+        }
+      },
+      "range": [
+        0,
+        46
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        0,
+        1
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "sun",
+      "range": [
+        2,
+        5
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 2
+        },
+        "end": {
+          "line": 1,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        5,
+        6
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 5
+        },
+        "end": {
+          "line": 1,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "yellow",
+      "range": [
+        7,
+        13
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 7
+        },
+        "end": {
+          "line": 1,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        14,
+        15
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "?",
+      "range": [
+        16,
+        17
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 2
+        },
+        "end": {
+          "line": 2,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "earth",
+      "range": [
+        18,
+        23
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 4
+        },
+        "end": {
+          "line": 2,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        23,
+        24
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 9
+        },
+        "end": {
+          "line": 2,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "blue",
+      "range": [
+        25,
+        29
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 11
+        },
+        "end": {
+          "line": 2,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        32,
+        33
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 2
+        },
+        "end": {
+          "line": 3,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "moon",
+      "range": [
+        34,
+        38
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 4
+        },
+        "end": {
+          "line": 3,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        38,
+        39
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 8
+        },
+        "end": {
+          "line": 3,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "white",
+      "range": [
+        40,
+        45
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 10
+        },
+        "end": {
+          "line": 3,
+          "column": 15
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    46
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 4,
+      "column": 0
+    }
+  }
+}

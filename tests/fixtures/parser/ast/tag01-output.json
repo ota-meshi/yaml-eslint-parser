@@ -1,0 +1,282 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLSequence",
+        "entries": [
+          {
+            "type": "YAMLPlain",
+            "strValue": "123",
+            "value": "123",
+            "anchor": null,
+            "tag": {
+              "type": "YAMLTag",
+              "tag": "tag:yaml.org,2002:foo",
+              "range": [
+                2,
+                7
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 2
+                },
+                "end": {
+                  "line": 1,
+                  "column": 7
+                }
+              }
+            },
+            "range": [
+              8,
+              11
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 8
+              },
+              "end": {
+                "line": 1,
+                "column": 11
+              }
+            }
+          },
+          {
+            "type": "YAMLPlain",
+            "strValue": "123",
+            "value": "123",
+            "anchor": null,
+            "tag": {
+              "type": "YAMLTag",
+              "tag": "!bar",
+              "range": [
+                14,
+                18
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 2
+                },
+                "end": {
+                  "line": 2,
+                  "column": 6
+                }
+              }
+            },
+            "range": [
+              19,
+              22
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 7
+              },
+              "end": {
+                "line": 2,
+                "column": 10
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          22
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 10
+          }
+        }
+      },
+      "range": [
+        0,
+        22
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 10
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        0,
+        1
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "!!",
+      "range": [
+        2,
+        4
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 2
+        },
+        "end": {
+          "line": 1,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "foo",
+      "range": [
+        4,
+        7
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 4
+        },
+        "end": {
+          "line": 1,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Numeric",
+      "value": "123",
+      "range": [
+        8,
+        11
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 8
+        },
+        "end": {
+          "line": 1,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        12,
+        13
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "!",
+      "range": [
+        14,
+        15
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 2
+        },
+        "end": {
+          "line": 2,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "bar",
+      "range": [
+        15,
+        18
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 3
+        },
+        "end": {
+          "line": 2,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "Numeric",
+      "value": "123",
+      "range": [
+        19,
+        22
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 7
+        },
+        "end": {
+          "line": 2,
+          "column": 10
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    22
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 2,
+      "column": 10
+    }
+  }
+}

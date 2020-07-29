@@ -1,0 +1,80 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLDoubleQuoted",
+        "strValue": " 1st non-empty\n2nd non-empty 3rd non-empty ",
+        "value": " 1st non-empty\n2nd non-empty 3rd non-empty ",
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          49
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 16
+          }
+        }
+      },
+      "range": [
+        0,
+        50
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "String",
+      "value": "\" 1st non-empty\n\n 2nd non-empty \n\t3rd non-empty \"",
+      "range": [
+        0,
+        49
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 16
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    50
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 5,
+      "column": 0
+    }
+  }
+}

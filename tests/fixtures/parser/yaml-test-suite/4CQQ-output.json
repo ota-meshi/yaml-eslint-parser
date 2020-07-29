@@ -1,0 +1,288 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLMapping",
+        "pairs": [
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLPlain",
+              "strValue": "plain",
+              "value": "plain",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                0,
+                5
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 5
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLPlain",
+              "strValue": "This unquoted scalar spans many lines.",
+              "value": "This unquoted scalar spans many lines.",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                9,
+                49
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 2
+                },
+                "end": {
+                  "line": 3,
+                  "column": 19
+                }
+              }
+            },
+            "range": [
+              0,
+              49
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 19
+              }
+            }
+          },
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLPlain",
+              "strValue": "quoted",
+              "value": "quoted",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                51,
+                57
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 0
+                },
+                "end": {
+                  "line": 5,
+                  "column": 6
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLDoubleQuoted",
+              "strValue": "So does this quoted scalar.\n",
+              "value": "So does this quoted scalar.\n",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                59,
+                92
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 8
+                },
+                "end": {
+                  "line": 6,
+                  "column": 19
+                }
+              }
+            },
+            "range": [
+              51,
+              92
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 6,
+                "column": 19
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          92
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 19
+          }
+        }
+      },
+      "range": [
+        0,
+        93
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Identifier",
+      "value": "plain",
+      "range": [
+        0,
+        5
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        5,
+        6
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 5
+        },
+        "end": {
+          "line": 1,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "This unquoted scalar\n  spans many lines.",
+      "range": [
+        9,
+        49
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 2
+        },
+        "end": {
+          "line": 3,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "quoted",
+      "range": [
+        51,
+        57
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        57,
+        58
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 6
+        },
+        "end": {
+          "line": 5,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "String",
+      "value": "\"So does this\n  quoted scalar.\\n\"",
+      "range": [
+        59,
+        92
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 8
+        },
+        "end": {
+          "line": 6,
+          "column": 19
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    93
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 7,
+      "column": 0
+    }
+  }
+}

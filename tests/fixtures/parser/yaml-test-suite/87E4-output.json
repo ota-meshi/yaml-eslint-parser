@@ -1,0 +1,324 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLMapping",
+        "pairs": [
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLSingleQuoted",
+              "strValue": "implicit block key",
+              "value": "implicit block key",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                0,
+                20
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLFlowSequence",
+              "entries": [
+                {
+                  "type": "YAMLPair",
+                  "key": {
+                    "type": "YAMLSingleQuoted",
+                    "strValue": "implicit flow key",
+                    "value": "implicit flow key",
+                    "anchor": null,
+                    "tag": null,
+                    "range": [
+                      27,
+                      46
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 21
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "YAMLPlain",
+                    "strValue": "value",
+                    "value": "value",
+                    "anchor": null,
+                    "tag": null,
+                    "range": [
+                      49,
+                      54
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 24
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 29
+                      }
+                    }
+                  },
+                  "range": [
+                    27,
+                    54
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 29
+                    }
+                  }
+                }
+              ],
+              "anchor": null,
+              "tag": null,
+              "range": [
+                23,
+                58
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 23
+                },
+                "end": {
+                  "line": 3,
+                  "column": 2
+                }
+              }
+            },
+            "range": [
+              0,
+              58
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 3,
+                "column": 2
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          58
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 3,
+            "column": 2
+          }
+        }
+      },
+      "range": [
+        0,
+        59
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "String",
+      "value": "'implicit block key'",
+      "range": [
+        0,
+        20
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        21,
+        22
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 21
+        },
+        "end": {
+          "line": 1,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "[",
+      "range": [
+        23,
+        24
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 23
+        },
+        "end": {
+          "line": 1,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": "String",
+      "value": "'implicit flow key'",
+      "range": [
+        27,
+        46
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 2
+        },
+        "end": {
+          "line": 2,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        47,
+        48
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 22
+        },
+        "end": {
+          "line": 2,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "value",
+      "range": [
+        49,
+        54
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 24
+        },
+        "end": {
+          "line": 2,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ",",
+      "range": [
+        54,
+        55
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 29
+        },
+        "end": {
+          "line": 2,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "]",
+      "range": [
+        57,
+        58
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 2
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    59
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 4,
+      "column": 0
+    }
+  }
+}

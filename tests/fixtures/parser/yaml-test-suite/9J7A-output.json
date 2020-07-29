@@ -1,0 +1,270 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLMapping",
+        "pairs": [
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLPlain",
+              "strValue": "foo",
+              "value": "foo",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                0,
+                3
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 3
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLMapping",
+              "pairs": [
+                {
+                  "type": "YAMLPair",
+                  "key": {
+                    "type": "YAMLPlain",
+                    "strValue": "bar",
+                    "value": "bar",
+                    "anchor": null,
+                    "tag": null,
+                    "range": [
+                      7,
+                      10
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 5
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "YAMLPlain",
+                    "strValue": "baz",
+                    "value": "baz",
+                    "anchor": null,
+                    "tag": null,
+                    "range": [
+                      12,
+                      15
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 2,
+                        "column": 7
+                      },
+                      "end": {
+                        "line": 2,
+                        "column": 10
+                      }
+                    }
+                  },
+                  "range": [
+                    7,
+                    15
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 10
+                    }
+                  }
+                }
+              ],
+              "anchor": null,
+              "tag": null,
+              "range": [
+                7,
+                15
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 2
+                },
+                "end": {
+                  "line": 2,
+                  "column": 10
+                }
+              }
+            },
+            "range": [
+              0,
+              15
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 2,
+                "column": 10
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          15
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 10
+          }
+        }
+      },
+      "range": [
+        0,
+        16
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Identifier",
+      "value": "foo",
+      "range": [
+        0,
+        3
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        3,
+        4
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 3
+        },
+        "end": {
+          "line": 1,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "bar",
+      "range": [
+        7,
+        10
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 2
+        },
+        "end": {
+          "line": 2,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        10,
+        11
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 5
+        },
+        "end": {
+          "line": 2,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "baz",
+      "range": [
+        12,
+        15
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 7
+        },
+        "end": {
+          "line": 2,
+          "column": 10
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    16
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 3,
+      "column": 0
+    }
+  }
+}

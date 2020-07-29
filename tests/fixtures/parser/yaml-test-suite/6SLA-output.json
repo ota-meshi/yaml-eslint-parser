@@ -1,0 +1,288 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLMapping",
+        "pairs": [
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLDoubleQuoted",
+              "strValue": "foo\nbar:baz\tx \\$%^&*()x",
+              "value": "foo\nbar:baz\tx \\$%^&*()x",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                0,
+                28
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 28
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLPlain",
+              "strValue": "23",
+              "value": 23,
+              "anchor": null,
+              "tag": null,
+              "range": [
+                30,
+                32
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 30
+                },
+                "end": {
+                  "line": 1,
+                  "column": 32
+                }
+              }
+            },
+            "range": [
+              0,
+              32
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 32
+              }
+            }
+          },
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLSingleQuoted",
+              "strValue": "x\\ny:z\\tx $%^&*()x",
+              "value": "x\\ny:z\\tx $%^&*()x",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                33,
+                53
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 0
+                },
+                "end": {
+                  "line": 2,
+                  "column": 20
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLPlain",
+              "strValue": "24",
+              "value": 24,
+              "anchor": null,
+              "tag": null,
+              "range": [
+                55,
+                57
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 22
+                },
+                "end": {
+                  "line": 2,
+                  "column": 24
+                }
+              }
+            },
+            "range": [
+              33,
+              57
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 0
+              },
+              "end": {
+                "line": 2,
+                "column": 24
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          57
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 24
+          }
+        }
+      },
+      "range": [
+        0,
+        58
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "String",
+      "value": "\"foo\\nbar:baz\\tx \\\\$%^&*()x\"",
+      "range": [
+        0,
+        28
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        28,
+        29
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 28
+        },
+        "end": {
+          "line": 1,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "Numeric",
+      "value": "23",
+      "range": [
+        30,
+        32
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 30
+        },
+        "end": {
+          "line": 1,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "String",
+      "value": "'x\\ny:z\\tx $%^&*()x'",
+      "range": [
+        33,
+        53
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        53,
+        54
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 20
+        },
+        "end": {
+          "line": 2,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "Numeric",
+      "value": "24",
+      "range": [
+        55,
+        57
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 22
+        },
+        "end": {
+          "line": 2,
+          "column": 24
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    58
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 3,
+      "column": 0
+    }
+  }
+}

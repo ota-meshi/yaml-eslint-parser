@@ -1,0 +1,117 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLBlockLiteral",
+        "chomping": "clip",
+        "indent": null,
+        "value": "literal\n\ttext\n",
+        "anchor": null,
+        "tag": null,
+        "range": [
+          4,
+          22
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 4
+          },
+          "end": {
+            "line": 4,
+            "column": 0
+          }
+        }
+      },
+      "range": [
+        0,
+        24
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Marker",
+      "value": "---",
+      "range": [
+        0,
+        3
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "|",
+      "range": [
+        4,
+        5
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 4
+        },
+        "end": {
+          "line": 1,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "BlockLiteral",
+      "value": "literal\n \ttext\n",
+      "range": [
+        7,
+        22
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 1
+        },
+        "end": {
+          "line": 4,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    24
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 6,
+      "column": 0
+    }
+  }
+}

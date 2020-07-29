@@ -1,0 +1,439 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [],
+      "content": {
+        "type": "YAMLMapping",
+        "pairs": [
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLPlain",
+              "strValue": "name",
+              "value": "name",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                0,
+                4
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 0
+                },
+                "end": {
+                  "line": 1,
+                  "column": 4
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLPlain",
+              "strValue": "Mark McGwire",
+              "value": "Mark McGwire",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                6,
+                18
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 6
+                },
+                "end": {
+                  "line": 1,
+                  "column": 18
+                }
+              }
+            },
+            "range": [
+              0,
+              18
+            ],
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 0
+              },
+              "end": {
+                "line": 1,
+                "column": 18
+              }
+            }
+          },
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLPlain",
+              "strValue": "accomplishment",
+              "value": "accomplishment",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                19,
+                33
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 0
+                },
+                "end": {
+                  "line": 2,
+                  "column": 14
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLBlockFolded",
+              "chomping": "clip",
+              "indent": null,
+              "value": "Mark set a major league home run record in 1998.\n",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                35,
+                90
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 16
+                },
+                "end": {
+                  "line": 5,
+                  "column": 0
+                }
+              }
+            },
+            "range": [
+              19,
+              90
+            ],
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 0
+              },
+              "end": {
+                "line": 5,
+                "column": 0
+              }
+            }
+          },
+          {
+            "type": "YAMLPair",
+            "key": {
+              "type": "YAMLPlain",
+              "strValue": "stats",
+              "value": "stats",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                90,
+                95
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 0
+                },
+                "end": {
+                  "line": 5,
+                  "column": 5
+                }
+              }
+            },
+            "value": {
+              "type": "YAMLBlockLiteral",
+              "chomping": "clip",
+              "indent": null,
+              "value": "65 Home Runs\n0.278 Batting Average\n",
+              "anchor": null,
+              "tag": null,
+              "range": [
+                97,
+                138
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 7
+                },
+                "end": {
+                  "line": 8,
+                  "column": 0
+                }
+              }
+            },
+            "range": [
+              90,
+              138
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 0
+              },
+              "end": {
+                "line": 8,
+                "column": 0
+              }
+            }
+          }
+        ],
+        "anchor": null,
+        "tag": null,
+        "range": [
+          0,
+          138
+        ],
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 8,
+            "column": 0
+          }
+        }
+      },
+      "range": [
+        0,
+        138
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Identifier",
+      "value": "name",
+      "range": [
+        0,
+        4
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        4,
+        5
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 4
+        },
+        "end": {
+          "line": 1,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "Mark McGwire",
+      "range": [
+        6,
+        18
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 6
+        },
+        "end": {
+          "line": 1,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "accomplishment",
+      "range": [
+        19,
+        33
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        33,
+        34
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 14
+        },
+        "end": {
+          "line": 2,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ">",
+      "range": [
+        35,
+        36
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 16
+        },
+        "end": {
+          "line": 2,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "BlockFolded",
+      "value": "Mark set a major league\n  home run record in 1998.\n",
+      "range": [
+        39,
+        90
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 2
+        },
+        "end": {
+          "line": 5,
+          "column": 0
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "stats",
+      "range": [
+        90,
+        95
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        95,
+        96
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 5
+        },
+        "end": {
+          "line": 5,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "|",
+      "range": [
+        97,
+        98
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 7
+        },
+        "end": {
+          "line": 5,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "BlockLiteral",
+      "value": "65 Home Runs\n  0.278 Batting Average\n",
+      "range": [
+        101,
+        138
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 8,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    138
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 8,
+      "column": 0
+    }
+  }
+}
