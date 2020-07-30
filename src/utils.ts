@@ -30,7 +30,7 @@ type YAMLMappingValue = {
 }
 
 export function getStaticYAMLValue(
-    node: YAMLMapping | YAMLFlowMapping,
+    node: YAMLMapping | YAMLFlowMapping | YAMLPair,
 ): YAMLMappingValue
 export function getStaticYAMLValue(
     node: YAMLSequence | YAMLFlowSequence,
@@ -45,14 +45,14 @@ export function getStaticYAMLValue(
 ): string | number | boolean | null
 export function getStaticYAMLValue(node: YAMLAlias): YAMLContentValue
 export function getStaticYAMLValue(
-    node: YAMLProgram | YAMLDocument | YAMLContent,
+    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair,
 ): YAMLContentValue
 
 /**
  * Gets the static value for the given node.
  */
 export function getStaticYAMLValue(
-    node: YAMLProgram | YAMLDocument | YAMLContent,
+    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair,
 ): YAMLContentValue {
     return resolver[node.type](node as any)
 }
@@ -72,13 +72,17 @@ const resolver = {
     YAMLMapping(node: YAMLMapping | YAMLFlowMapping) {
         const result: YAMLMappingValue = {}
         for (const pair of node.pairs) {
-            const key = pair.key ? getStaticYAMLValue(pair.key) : null
-            if (typeof key !== "string" && typeof key !== "number") {
-                // illegal key
-                continue
-            }
-            result[key] = pair.value ? getStaticYAMLValue(pair.value) : null
+            Object.assign(result, getStaticYAMLValue(pair))
         }
+        return result
+    },
+    YAMLPair(node: YAMLPair) {
+        const result: YAMLMappingValue = {}
+        let key = node.key ? getStaticYAMLValue(node.key) : null
+        if (typeof key !== "string" && typeof key !== "number") {
+            key = String(key)
+        }
+        result[key] = node.value ? getStaticYAMLValue(node.value) : null
         return result
     },
     YAMLFlowMapping(node: YAMLFlowMapping) {
@@ -88,10 +92,6 @@ const resolver = {
     YAMLSequence(node: YAMLSequence | YAMLFlowSequence) {
         const result: YAMLContentValue[] = []
         for (const entry of node.entries) {
-            if (entry.type === "YAMLPair") {
-                // illegal entry
-                continue
-            }
             result.push(getStaticYAMLValue(entry))
         }
         return result
