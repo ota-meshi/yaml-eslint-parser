@@ -1,0 +1,13 @@
+common: &common
+  aaa: 1111
+  bbb: 2222
+
+dev:
+  ccc: xxxx
+  <<: *common
+stg:
+  ccc: yyyy
+  <<: *common
+prod:
+  ccc: zzzz
+  <<: *common

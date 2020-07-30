@@ -1,0 +1,4 @@
+- &mark foo
+- bar
+- *mark
+- *mark

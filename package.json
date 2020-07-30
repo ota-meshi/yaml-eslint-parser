@@ -1,0 +1,52 @@
+{
+  "name": "yaml-eslint-parser",
+  "version": "0.0.0",
+  "description": "A YAML parser that produces output compatible with ESLint",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prebuild": "npm run -s clean",
+    "build": "tsc --project ./tsconfig.build.json",
+    "clean": "rimraf .nyc_output lib coverage",
+    "lint": "eslint \"tests\" \"src\" --ext .js,.ts",
+    "eslint-fix": "npm run lint -- --fix",
+    "test": "mocha --require ts-node/register \"tests/src/**/*.ts\" --reporter dot --timeout 60000",
+    "cover": "nyc --reporter=lcov npm run test",
+    "debug": "mocha --require ts-node/register --inspect \"tests/src/**/*.ts\" --reporter dot",
+    "update-fixtures": "ts-node ./tools/update-fixtures.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ota-meshi/yaml-eslint-parser.git"
+  },
+  "keywords": [
+    "yaml",
+    "eslint",
+    "parser"
+  ],
+  "author": "Yosuke Ota",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ota-meshi/yaml-eslint-parser/issues"
+  },
+  "homepage": "https://github.com/ota-meshi/yaml-eslint-parser#readme",
+  "dependencies": {
+    "eslint-visitor-keys": "^1.3.0",
+    "yaml": "^1.10.0",
+    "yaml-unist-parser": "^1.2.1"
+  },
+  "devDependencies": {
+    "@mysticatea/eslint-plugin": "^13.0.0",
+    "@types/eslint": "^7.2.0",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.13",
+    "eslint": "^7.5.0",
+    "mocha": "^7.0.0",
+    "nyc": "^15.1.0",
+    "prettier": "^2.0.5",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
