@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "top1",
               "value": "top1",
               "anchor": null,
@@ -32,11 +34,13 @@
             },
             "value": {
               "type": "YAMLMapping",
+              "style": "block",
               "pairs": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "key1",
                     "value": "key1",
                     "anchor": {
@@ -74,7 +78,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "one",
                     "value": "one",
                     "anchor": null,
@@ -162,7 +167,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "top2",
               "value": "top2",
               "anchor": null,
@@ -184,11 +190,13 @@
             },
             "value": {
               "type": "YAMLMapping",
+              "style": "block",
               "pairs": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "key2",
                     "value": "key2",
                     "anchor": null,
@@ -209,7 +217,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "two",
                     "value": "two",
                     "anchor": null,
@@ -297,7 +306,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "top3",
               "value": "top3",
               "anchor": null,
@@ -319,11 +329,13 @@
             },
             "value": {
               "type": "YAMLMapping",
+              "style": "block",
               "pairs": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "key3",
                     "value": "key3",
                     "anchor": {
@@ -361,7 +373,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "three",
                     "value": "three",
                     "anchor": null,
@@ -432,7 +445,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "top4",
               "value": "top4",
               "anchor": null,
@@ -454,11 +468,13 @@
             },
             "value": {
               "type": "YAMLMapping",
+              "style": "block",
               "pairs": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "key4",
                     "value": "key4",
                     "anchor": {
@@ -496,7 +512,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "four",
                     "value": "four",
                     "anchor": null,
@@ -584,7 +601,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "top5",
               "value": "top5",
               "anchor": null,
@@ -606,11 +624,13 @@
             },
             "value": {
               "type": "YAMLMapping",
+              "style": "block",
               "pairs": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "key5",
                     "value": "key5",
                     "anchor": null,
@@ -631,7 +651,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "five",
                     "value": "five",
                     "anchor": null,
@@ -719,7 +740,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "top6",
               "value": "top6",
               "anchor": null,
@@ -740,7 +762,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "six",
               "value": "six",
               "anchor": {
@@ -795,7 +818,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "top7",
               "value": "top7",
               "anchor": null,
@@ -816,7 +840,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "seven",
               "value": "seven",
               "anchor": {

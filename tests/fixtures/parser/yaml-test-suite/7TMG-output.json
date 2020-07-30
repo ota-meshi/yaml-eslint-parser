@@ -5,10 +5,12 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLFlowSequence",
+        "type": "YAMLSequence",
+        "style": "flow",
         "entries": [
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "word1",
             "value": "word1",
             "anchor": null,
@@ -29,7 +31,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "word2",
             "value": "word2",
             "anchor": null,

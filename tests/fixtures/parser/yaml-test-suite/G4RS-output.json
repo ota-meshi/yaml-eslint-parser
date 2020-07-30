@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "unicode",
               "value": "unicode",
               "anchor": null,
@@ -31,7 +33,8 @@
               }
             },
             "value": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "Sosa did fine.☺",
               "value": "Sosa did fine.☺",
               "anchor": null,
@@ -69,7 +72,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "control",
               "value": "control",
               "anchor": null,
@@ -90,7 +94,8 @@
               }
             },
             "value": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "\b1998\t1999\t2000\n",
               "value": "\b1998\t1999\t2000\n",
               "anchor": null,
@@ -128,7 +133,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "hex esc",
               "value": "hex esc",
               "anchor": null,
@@ -149,7 +155,8 @@
               }
             },
             "value": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "\r\n is \r\n",
               "value": "\r\n is \r\n",
               "anchor": null,
@@ -187,7 +194,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "single",
               "value": "single",
               "anchor": null,
@@ -208,7 +216,8 @@
               }
             },
             "value": {
-              "type": "YAMLSingleQuoted",
+              "type": "YAMLScalar",
+              "style": "single-quoted",
               "strValue": "\"Howdy!\" he cried.",
               "value": "\"Howdy!\" he cried.",
               "anchor": null,
@@ -246,7 +255,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "quoted",
               "value": "quoted",
               "anchor": null,
@@ -267,7 +277,8 @@
               }
             },
             "value": {
-              "type": "YAMLSingleQuoted",
+              "type": "YAMLScalar",
+              "style": "single-quoted",
               "strValue": " # Not a 'comment'.",
               "value": " # Not a 'comment'.",
               "anchor": null,
@@ -305,7 +316,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "tie-fighter",
               "value": "tie-fighter",
               "anchor": null,
@@ -326,7 +338,8 @@
               }
             },
             "value": {
-              "type": "YAMLSingleQuoted",
+              "type": "YAMLScalar",
+              "style": "single-quoted",
               "strValue": "|\\-*-/|",
               "value": "|\\-*-/|",
               "anchor": null,

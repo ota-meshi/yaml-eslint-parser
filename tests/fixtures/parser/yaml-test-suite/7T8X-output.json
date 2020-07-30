@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLBlockFolded",
+        "type": "YAMLScalar",
+        "style": "folded",
         "chomping": "clip",
         "indent": null,
         "value": "\nfolded line\nnext line\n  * bullet\n\n  * list\n  * lines\n\nlast line\n",

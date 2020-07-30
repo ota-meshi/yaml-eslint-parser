@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Mapping",
               "value": "Mapping",
               "anchor": null,
@@ -31,7 +33,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Document",
               "value": "Document",
               "anchor": null,
@@ -142,11 +145,13 @@
       ],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "matches %",
               "value": "matches %",
               "anchor": null,
@@ -167,7 +172,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "20",
               "value": 20,
               "anchor": null,

@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLDoubleQuoted",
+        "type": "YAMLScalar",
+        "style": "double-quoted",
         "strValue": "foo: bar\": baz",
         "value": "foo: bar\": baz",
         "anchor": null,

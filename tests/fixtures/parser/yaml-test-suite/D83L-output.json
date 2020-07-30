@@ -6,9 +6,11 @@
       "directives": [],
       "content": {
         "type": "YAMLSequence",
+        "style": "block",
         "entries": [
           {
-            "type": "YAMLBlockLiteral",
+            "type": "YAMLScalar",
+            "style": "literal",
             "chomping": "strip",
             "indent": 2,
             "value": "explicit indent and chomp",
@@ -30,7 +32,8 @@
             }
           },
           {
-            "type": "YAMLBlockLiteral",
+            "type": "YAMLScalar",
+            "style": "literal",
             "chomping": "strip",
             "indent": 2,
             "value": "chomp and explicit indent",

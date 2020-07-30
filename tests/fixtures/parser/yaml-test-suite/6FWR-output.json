@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLBlockLiteral",
+        "type": "YAMLScalar",
+        "style": "literal",
         "chomping": "keep",
         "indent": null,
         "value": "ab\n\n \n",

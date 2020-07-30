@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLPlain",
+        "type": "YAMLScalar",
+        "style": "plain",
         "strValue": "scalar1",
         "value": "scalar1",
         "anchor": null,
@@ -45,11 +46,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "key",
               "value": "key",
               "anchor": null,
@@ -70,7 +73,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "value",
               "value": "value",
               "anchor": null,

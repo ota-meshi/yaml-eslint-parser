@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "a",
               "value": "a",
               "anchor": null,
@@ -31,7 +33,8 @@
               }
             },
             "value": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "b",
               "value": "b",
               "anchor": null,
@@ -69,7 +72,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "1",
               "value": "1",
               "anchor": null,
@@ -90,7 +94,8 @@
               }
             },
             "value": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "2",
               "value": "2",
               "anchor": null,
@@ -163,11 +168,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLSingleQuoted",
+              "type": "YAMLScalar",
+              "style": "single-quoted",
               "strValue": "a",
               "value": "a",
               "anchor": null,
@@ -188,7 +195,8 @@
               }
             },
             "value": {
-              "type": "YAMLSingleQuoted",
+              "type": "YAMLScalar",
+              "style": "single-quoted",
               "strValue": "b",
               "value": "b",
               "anchor": null,
@@ -226,7 +234,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLSingleQuoted",
+              "type": "YAMLScalar",
+              "style": "single-quoted",
               "strValue": "1",
               "value": "1",
               "anchor": null,
@@ -247,7 +256,8 @@
               }
             },
             "value": {
-              "type": "YAMLSingleQuoted",
+              "type": "YAMLScalar",
+              "style": "single-quoted",
               "strValue": "2",
               "value": "2",
               "anchor": null,

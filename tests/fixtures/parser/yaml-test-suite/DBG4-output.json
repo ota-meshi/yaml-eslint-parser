@@ -6,9 +6,11 @@
       "directives": [],
       "content": {
         "type": "YAMLSequence",
+        "style": "block",
         "entries": [
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "::vector",
             "value": "::vector",
             "anchor": null,
@@ -29,7 +31,8 @@
             }
           },
           {
-            "type": "YAMLDoubleQuoted",
+            "type": "YAMLScalar",
+            "style": "double-quoted",
             "strValue": ": - ()",
             "value": ": - ()",
             "anchor": null,
@@ -50,7 +53,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "Up, up, and away!",
             "value": "Up, up, and away!",
             "anchor": null,
@@ -71,7 +75,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "-123",
             "value": -123,
             "anchor": null,
@@ -92,7 +97,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "http://example.com/foo#bar",
             "value": "http://example.com/foo#bar",
             "anchor": null,
@@ -113,10 +119,12 @@
             }
           },
           {
-            "type": "YAMLFlowSequence",
+            "type": "YAMLSequence",
+            "style": "flow",
             "entries": [
               {
-                "type": "YAMLPlain",
+                "type": "YAMLScalar",
+                "style": "plain",
                 "strValue": "::vector",
                 "value": "::vector",
                 "anchor": null,
@@ -137,7 +145,8 @@
                 }
               },
               {
-                "type": "YAMLDoubleQuoted",
+                "type": "YAMLScalar",
+                "style": "double-quoted",
                 "strValue": ": - ()",
                 "value": ": - ()",
                 "anchor": null,
@@ -158,7 +167,8 @@
                 }
               },
               {
-                "type": "YAMLDoubleQuoted",
+                "type": "YAMLScalar",
+                "style": "double-quoted",
                 "strValue": "Up, up and away!",
                 "value": "Up, up and away!",
                 "anchor": null,
@@ -179,7 +189,8 @@
                 }
               },
               {
-                "type": "YAMLPlain",
+                "type": "YAMLScalar",
+                "style": "plain",
                 "strValue": "-123",
                 "value": -123,
                 "anchor": null,
@@ -200,7 +211,8 @@
                 }
               },
               {
-                "type": "YAMLPlain",
+                "type": "YAMLScalar",
+                "style": "plain",
                 "strValue": "http://example.com/foo#bar",
                 "value": "http://example.com/foo#bar",
                 "anchor": null,

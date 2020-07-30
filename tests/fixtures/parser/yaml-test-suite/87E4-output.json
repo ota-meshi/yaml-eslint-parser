@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLSingleQuoted",
+              "type": "YAMLScalar",
+              "style": "single-quoted",
               "strValue": "implicit block key",
               "value": "implicit block key",
               "anchor": null,
@@ -31,12 +33,14 @@
               }
             },
             "value": {
-              "type": "YAMLFlowSequence",
+              "type": "YAMLSequence",
+              "style": "flow",
               "entries": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLSingleQuoted",
+                    "type": "YAMLScalar",
+                    "style": "single-quoted",
                     "strValue": "implicit flow key",
                     "value": "implicit flow key",
                     "anchor": null,
@@ -57,7 +61,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "value",
                     "value": "value",
                     "anchor": null,

@@ -3,14 +3,8 @@ import {
     YAMLContent,
     YAMLDocument,
     YAMLMapping,
-    YAMLFlowMapping,
     YAMLSequence,
-    YAMLFlowSequence,
-    YAMLPlain,
-    YAMLDoubleQuoted,
-    YAMLSingleQuoted,
-    YAMLBlockLiteral,
-    YAMLBlockFolded,
+    YAMLScalar,
     YAMLAlias,
     YAMLAnchor,
     YAMLPair,
@@ -30,18 +24,11 @@ type YAMLMappingValue = {
 }
 
 export function getStaticYAMLValue(
-    node: YAMLMapping | YAMLFlowMapping | YAMLPair,
+    node: YAMLMapping | YAMLPair,
 ): YAMLMappingValue
+export function getStaticYAMLValue(node: YAMLSequence): YAMLContentValue[]
 export function getStaticYAMLValue(
-    node: YAMLSequence | YAMLFlowSequence,
-): YAMLContentValue[]
-export function getStaticYAMLValue(
-    node:
-        | YAMLPlain
-        | YAMLDoubleQuoted
-        | YAMLSingleQuoted
-        | YAMLBlockLiteral
-        | YAMLBlockFolded,
+    node: YAMLScalar,
 ): string | number | boolean | null
 export function getStaticYAMLValue(node: YAMLAlias): YAMLContentValue
 export function getStaticYAMLValue(
@@ -69,7 +56,7 @@ const resolver = {
     YAMLDocument(node: YAMLDocument) {
         return node.content ? getStaticYAMLValue(node.content) : null
     },
-    YAMLMapping(node: YAMLMapping | YAMLFlowMapping) {
+    YAMLMapping(node: YAMLMapping) {
         const result: YAMLMappingValue = {}
         for (const pair of node.pairs) {
             Object.assign(result, getStaticYAMLValue(pair))
@@ -85,34 +72,14 @@ const resolver = {
         result[key] = node.value ? getStaticYAMLValue(node.value) : null
         return result
     },
-    YAMLFlowMapping(node: YAMLFlowMapping) {
-        // eslint-disable-next-line new-cap
-        return resolver.YAMLMapping(node)
-    },
-    YAMLSequence(node: YAMLSequence | YAMLFlowSequence) {
+    YAMLSequence(node: YAMLSequence) {
         const result: YAMLContentValue[] = []
         for (const entry of node.entries) {
             result.push(getStaticYAMLValue(entry))
         }
         return result
     },
-    YAMLFlowSequence(node: YAMLFlowSequence) {
-        // eslint-disable-next-line new-cap
-        return resolver.YAMLSequence(node)
-    },
-    YAMLPlain(node: YAMLPlain) {
-        return node.value
-    },
-    YAMLDoubleQuoted(node: YAMLDoubleQuoted) {
-        return node.value
-    },
-    YAMLSingleQuoted(node: YAMLSingleQuoted) {
-        return node.value
-    },
-    YAMLBlockLiteral(node: YAMLBlockLiteral) {
-        return node.value
-    },
-    YAMLBlockFolded(node: YAMLBlockFolded) {
+    YAMLScalar(node: YAMLScalar) {
         return node.value
     },
     YAMLAlias(node: YAMLAlias) {
@@ -125,14 +92,8 @@ const resolver = {
  * Find Anchor
  */
 function findAnchor(node: YAMLAlias): YAMLAnchor | null {
-    let p:
-        | YAMLDocument
-        | YAMLSequence
-        | YAMLFlowSequence
-        | YAMLMapping
-        | YAMLFlowMapping
-        | YAMLPair
-        | undefined = node.parent
+    let p: YAMLDocument | YAMLSequence | YAMLMapping | YAMLPair | undefined =
+        node.parent
     let doc: YAMLDocument | null = null
     while (p) {
         if (p.type === "YAMLDocument") {

@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLSingleQuoted",
+              "type": "YAMLScalar",
+              "style": "single-quoted",
               "strValue": "foo: bar\\",
               "value": "foo: bar\\",
               "anchor": null,
@@ -31,7 +33,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "baz'",
               "value": "baz'",
               "anchor": null,

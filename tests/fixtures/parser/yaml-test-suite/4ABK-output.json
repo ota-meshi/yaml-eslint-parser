@@ -5,12 +5,14 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLFlowMapping",
+        "type": "YAMLMapping",
+        "style": "flow",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "unquoted",
               "value": "unquoted",
               "anchor": null,
@@ -31,7 +33,8 @@
               }
             },
             "value": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "separate",
               "value": "separate",
               "anchor": null,
@@ -69,7 +72,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "http://foo.com",
               "value": "http://foo.com",
               "anchor": null,
@@ -108,7 +112,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "omitted value",
               "value": "omitted value",
               "anchor": null,
@@ -148,7 +153,8 @@
             "type": "YAMLPair",
             "key": null,
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "omitted key",
               "value": "omitted key",
               "anchor": null,

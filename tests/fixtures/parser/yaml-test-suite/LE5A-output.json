@@ -6,9 +6,11 @@
       "directives": [],
       "content": {
         "type": "YAMLSequence",
+        "style": "block",
         "entries": [
           {
-            "type": "YAMLDoubleQuoted",
+            "type": "YAMLScalar",
+            "style": "double-quoted",
             "strValue": "a",
             "value": "a",
             "anchor": null,
@@ -46,7 +48,8 @@
             }
           },
           {
-            "type": "YAMLSingleQuoted",
+            "type": "YAMLScalar",
+            "style": "single-quoted",
             "strValue": "b",
             "value": "b",
             "anchor": null,
@@ -67,7 +70,8 @@
             }
           },
           {
-            "type": "YAMLDoubleQuoted",
+            "type": "YAMLScalar",
+            "style": "double-quoted",
             "strValue": "c",
             "value": "c",
             "anchor": {
@@ -125,7 +129,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "",
             "value": "",
             "anchor": null,

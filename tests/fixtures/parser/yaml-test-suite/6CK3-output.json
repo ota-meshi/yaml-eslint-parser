@@ -25,9 +25,11 @@
       ],
       "content": {
         "type": "YAMLSequence",
+        "style": "block",
         "entries": [
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "foo",
             "value": "foo",
             "anchor": null,
@@ -65,7 +67,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "bar",
             "value": "bar",
             "anchor": null,
@@ -103,7 +106,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "baz",
             "value": "baz",
             "anchor": null,

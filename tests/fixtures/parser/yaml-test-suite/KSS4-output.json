@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLDoubleQuoted",
+        "type": "YAMLScalar",
+        "style": "double-quoted",
         "strValue": "quoted string",
         "value": "quoted string",
         "anchor": null,
@@ -44,7 +45,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLPlain",
+        "type": "YAMLScalar",
+        "style": "plain",
         "strValue": "foo",
         "value": "foo",
         "anchor": {

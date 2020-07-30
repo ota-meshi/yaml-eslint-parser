@@ -24,7 +24,8 @@
         }
       ],
       "content": {
-        "type": "YAMLDoubleQuoted",
+        "type": "YAMLScalar",
+        "style": "double-quoted",
         "strValue": "foo",
         "value": "foo",
         "anchor": null,

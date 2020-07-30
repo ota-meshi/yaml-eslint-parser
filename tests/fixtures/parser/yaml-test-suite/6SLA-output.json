@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "foo\nbar:baz\tx \\$%^&*()x",
               "value": "foo\nbar:baz\tx \\$%^&*()x",
               "anchor": null,
@@ -31,7 +33,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "23",
               "value": 23,
               "anchor": null,
@@ -69,7 +72,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLSingleQuoted",
+              "type": "YAMLScalar",
+              "style": "single-quoted",
               "strValue": "x\\ny:z\\tx $%^&*()x",
               "value": "x\\ny:z\\tx $%^&*()x",
               "anchor": null,
@@ -90,7 +94,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "24",
               "value": 24,
               "anchor": null,

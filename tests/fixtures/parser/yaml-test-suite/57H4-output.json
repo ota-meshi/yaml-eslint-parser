@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "sequence",
               "value": "sequence",
               "anchor": null,
@@ -32,9 +34,11 @@
             },
             "value": {
               "type": "YAMLSequence",
+              "style": "block",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "entry",
                   "value": "entry",
                   "anchor": null,
@@ -56,9 +60,11 @@
                 },
                 {
                   "type": "YAMLSequence",
+                  "style": "block",
                   "entries": [
                     {
-                      "type": "YAMLPlain",
+                      "type": "YAMLScalar",
+                      "style": "plain",
                       "strValue": "nested",
                       "value": "nested",
                       "anchor": null,
@@ -166,7 +172,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "mapping",
               "value": "mapping",
               "anchor": null,
@@ -188,11 +195,13 @@
             },
             "value": {
               "type": "YAMLMapping",
+              "style": "block",
               "pairs": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "foo",
                     "value": "foo",
                     "anchor": null,
@@ -213,7 +222,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "bar",
                     "value": "bar",
                     "anchor": null,

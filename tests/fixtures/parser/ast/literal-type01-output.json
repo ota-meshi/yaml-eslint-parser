@@ -6,9 +6,11 @@
       "directives": [],
       "content": {
         "type": "YAMLSequence",
+        "style": "block",
         "entries": [
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "foo",
             "value": "foo",
             "anchor": null,
@@ -29,7 +31,8 @@
             }
           },
           {
-            "type": "YAMLDoubleQuoted",
+            "type": "YAMLScalar",
+            "style": "double-quoted",
             "strValue": "foo",
             "value": "foo",
             "anchor": null,
@@ -50,7 +53,8 @@
             }
           },
           {
-            "type": "YAMLSingleQuoted",
+            "type": "YAMLScalar",
+            "style": "single-quoted",
             "strValue": "foo",
             "value": "foo",
             "anchor": null,
@@ -71,7 +75,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "42",
             "value": 42,
             "anchor": null,
@@ -92,7 +97,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "true",
             "value": true,
             "anchor": null,
@@ -113,7 +119,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "false",
             "value": false,
             "anchor": null,
@@ -134,7 +141,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "True",
             "value": true,
             "anchor": null,
@@ -155,7 +163,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "False",
             "value": false,
             "anchor": null,
@@ -176,7 +185,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "TRUE",
             "value": true,
             "anchor": null,
@@ -197,7 +207,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "FALSE",
             "value": false,
             "anchor": null,
@@ -218,7 +229,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "yes",
             "value": "yes",
             "anchor": null,
@@ -239,7 +251,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "no",
             "value": "no",
             "anchor": null,
@@ -260,7 +273,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "on",
             "value": "on",
             "anchor": null,
@@ -281,7 +295,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "off",
             "value": "off",
             "anchor": null,
@@ -302,7 +317,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "null",
             "value": null,
             "anchor": null,
@@ -323,7 +339,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "Null",
             "value": null,
             "anchor": null,
@@ -344,7 +361,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "NULL",
             "value": null,
             "anchor": null,
@@ -365,7 +383,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "~",
             "value": null,
             "anchor": null,
@@ -386,7 +405,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "2020-12-31",
             "value": "2020-12-31",
             "anchor": null,
@@ -407,7 +427,8 @@
             }
           },
           {
-            "type": "YAMLSingleQuoted",
+            "type": "YAMLScalar",
+            "style": "single-quoted",
             "strValue": "false",
             "value": "false",
             "anchor": null,
@@ -428,7 +449,8 @@
             }
           },
           {
-            "type": "YAMLSingleQuoted",
+            "type": "YAMLScalar",
+            "style": "single-quoted",
             "strValue": "42",
             "value": "42",
             "anchor": null,

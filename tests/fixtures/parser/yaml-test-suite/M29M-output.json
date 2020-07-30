@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "a",
               "value": "a",
               "anchor": null,
@@ -31,7 +33,8 @@
               }
             },
             "value": {
-              "type": "YAMLBlockLiteral",
+              "type": "YAMLScalar",
+              "style": "literal",
               "chomping": "clip",
               "indent": null,
               "value": "ab\n\ncd\nef\n",

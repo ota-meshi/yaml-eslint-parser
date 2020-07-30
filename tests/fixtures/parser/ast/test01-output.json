@@ -6,9 +6,11 @@
       "directives": [],
       "content": {
         "type": "YAMLSequence",
+        "style": "block",
         "entries": [
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "Mark McGwire",
             "value": "Mark McGwire",
             "anchor": null,
@@ -29,7 +31,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "Sammy Sosa",
             "value": "Sammy Sosa",
             "anchor": null,
@@ -50,7 +53,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "Ken Griffey",
             "value": "Ken Griffey",
             "anchor": null,
@@ -108,9 +112,11 @@
       "directives": [],
       "content": {
         "type": "YAMLSequence",
+        "style": "block",
         "entries": [
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "Chicago Cubs",
             "value": "Chicago Cubs",
             "anchor": null,
@@ -131,7 +137,8 @@
             }
           },
           {
-            "type": "YAMLPlain",
+            "type": "YAMLScalar",
+            "style": "plain",
             "strValue": "St Louis Cardinals",
             "value": "St Louis Cardinals",
             "anchor": null,

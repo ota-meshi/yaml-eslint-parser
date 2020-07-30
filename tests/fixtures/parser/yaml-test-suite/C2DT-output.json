@@ -5,12 +5,14 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLFlowMapping",
+        "type": "YAMLMapping",
+        "style": "flow",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "adjacent",
               "value": "adjacent",
               "anchor": null,
@@ -31,7 +33,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "value",
               "value": "value",
               "anchor": null,
@@ -69,7 +72,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "readable",
               "value": "readable",
               "anchor": null,
@@ -90,7 +94,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "value",
               "value": "value",
               "anchor": null,
@@ -128,7 +133,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLDoubleQuoted",
+              "type": "YAMLScalar",
+              "style": "double-quoted",
               "strValue": "empty",
               "value": "empty",
               "anchor": null,

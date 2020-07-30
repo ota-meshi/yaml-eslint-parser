@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "american",
               "value": "american",
               "anchor": null,
@@ -32,9 +34,11 @@
             },
             "value": {
               "type": "YAMLSequence",
+              "style": "block",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Boston Red Sox",
                   "value": "Boston Red Sox",
                   "anchor": null,
@@ -55,7 +59,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Detroit Tigers",
                   "value": "Detroit Tigers",
                   "anchor": null,
@@ -76,7 +81,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "New York Yankees",
                   "value": "New York Yankees",
                   "anchor": null,
@@ -132,7 +138,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "national",
               "value": "national",
               "anchor": null,
@@ -154,9 +161,11 @@
             },
             "value": {
               "type": "YAMLSequence",
+              "style": "block",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "New York Mets",
                   "value": "New York Mets",
                   "anchor": null,
@@ -177,7 +186,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Chicago Cubs",
                   "value": "Chicago Cubs",
                   "anchor": null,
@@ -198,7 +208,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Atlanta Braves",
                   "value": "Atlanta Braves",
                   "anchor": null,

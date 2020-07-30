@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLDoubleQuoted",
+        "type": "YAMLScalar",
+        "style": "double-quoted",
         "strValue": " 1st non-empty\n2nd non-empty 3rd non-empty ",
         "value": " 1st non-empty\n2nd non-empty 3rd non-empty ",
         "anchor": null,

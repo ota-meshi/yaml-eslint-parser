@@ -1,6 +1,6 @@
 {
   "name": "yaml-eslint-parser",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A YAML parser that produces output compatible with ESLint",
   "main": "lib/index.js",
   "files": [

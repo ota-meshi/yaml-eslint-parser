@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLPlain",
+        "type": "YAMLScalar",
+        "style": "plain",
         "strValue": "scalar %YAML 1.2",
         "value": "scalar %YAML 1.2",
         "anchor": null,

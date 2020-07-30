@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLFlowMapping",
+        "type": "YAMLMapping",
+        "style": "flow",
         "pairs": [],
         "anchor": null,
         "tag": null,

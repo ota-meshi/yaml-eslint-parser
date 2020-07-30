@@ -87,28 +87,20 @@ export interface YAMLTag extends BaseYAMLNode {
 interface BaseYAMLContentNode extends BaseYAMLNode {
     anchor: null | YAMLAnchor
     tag: null | YAMLTag
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence
 }
 
-export type YAMLContent =
-    | YAMLMapping
-    | YAMLFlowMapping
-    | YAMLSequence
-    | YAMLFlowSequence
-    | YAMLPlain
-    | YAMLDoubleQuoted
-    | YAMLSingleQuoted
-    | YAMLBlockLiteral
-    | YAMLBlockFolded
-    | YAMLAlias
-
-export interface YAMLMapping extends BaseYAMLContentNode {
+export type YAMLContent = YAMLMapping | YAMLSequence | YAMLScalar | YAMLAlias
+export type YAMLMapping = YAMLBlockMapping | YAMLFlowMapping
+export interface YAMLBlockMapping extends BaseYAMLContentNode {
     type: "YAMLMapping"
+    style: "block"
     pairs: YAMLPair[]
 }
 
 export interface YAMLFlowMapping extends BaseYAMLContentNode {
-    type: "YAMLFlowMapping"
+    type: "YAMLMapping"
+    style: "flow"
     pairs: YAMLPair[]
 }
 
@@ -116,46 +108,58 @@ export interface YAMLPair extends BaseYAMLNode {
     type: "YAMLPair"
     key: YAMLContent | null
     value: YAMLContent | null
-    parent: YAMLMapping | YAMLFlowMapping | YAMLFlowSequence
+    parent: YAMLBlockMapping | YAMLFlowMapping | YAMLFlowSequence
 }
-
-export interface YAMLSequence extends BaseYAMLContentNode {
+export type YAMLSequence = YAMLBlockSequence | YAMLFlowSequence
+export interface YAMLBlockSequence extends BaseYAMLContentNode {
     type: "YAMLSequence"
+    style: "block"
     entries: YAMLContent[]
 }
 
 export interface YAMLFlowSequence extends BaseYAMLContentNode {
-    type: "YAMLFlowSequence"
+    type: "YAMLSequence"
+    style: "flow"
     entries: (YAMLContent | YAMLPair)[]
 }
-
-export interface YAMLPlain extends BaseYAMLContentNode {
-    type: "YAMLPlain"
+export type YAMLScalar =
+    | YAMLPlainScalar
+    | YAMLDoubleQuotedScalar
+    | YAMLSingleQuotedScalar
+    | YAMLBlockLiteralScalar
+    | YAMLBlockFoldedScalar
+export interface YAMLPlainScalar extends BaseYAMLContentNode {
+    type: "YAMLScalar"
+    style: "plain"
     strValue: string
     readonly value: string | number | boolean | null
 }
 
-export interface YAMLDoubleQuoted extends BaseYAMLContentNode {
-    type: "YAMLDoubleQuoted"
+export interface YAMLDoubleQuotedScalar extends BaseYAMLContentNode {
+    type: "YAMLScalar"
+    style: "double-quoted"
     strValue: string
     readonly value: string | number | boolean | null
 }
 
-export interface YAMLSingleQuoted extends BaseYAMLContentNode {
-    type: "YAMLSingleQuoted"
+export interface YAMLSingleQuotedScalar extends BaseYAMLContentNode {
+    type: "YAMLScalar"
+    style: "single-quoted"
     strValue: string
     readonly value: string | number | boolean | null
 }
 
-export interface YAMLBlockLiteral extends BaseYAMLContentNode {
-    type: "YAMLBlockLiteral"
+export interface YAMLBlockLiteralScalar extends BaseYAMLContentNode {
+    type: "YAMLScalar"
+    style: "literal"
     chomping: "clip" | "keep" | "strip"
     indent: null | number
     value: string
 }
 
-export interface YAMLBlockFolded extends BaseYAMLContentNode {
-    type: "YAMLBlockFolded"
+export interface YAMLBlockFoldedScalar extends BaseYAMLContentNode {
+    type: "YAMLScalar"
+    style: "folded"
     chomping: "clip" | "keep" | "strip"
     indent: null | number
     value: string

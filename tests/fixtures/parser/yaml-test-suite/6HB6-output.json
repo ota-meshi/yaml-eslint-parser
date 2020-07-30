@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Not indented",
               "value": "Not indented",
               "anchor": null,
@@ -32,11 +34,13 @@
             },
             "value": {
               "type": "YAMLMapping",
+              "style": "block",
               "pairs": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "By one space",
                     "value": "By one space",
                     "anchor": null,
@@ -57,7 +61,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLBlockLiteral",
+                    "type": "YAMLScalar",
+                    "style": "literal",
                     "chomping": "clip",
                     "indent": null,
                     "value": "By four\n  spaces\n",
@@ -96,7 +101,8 @@
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "Flow style",
                     "value": "Flow style",
                     "anchor": null,
@@ -117,10 +123,12 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLFlowSequence",
+                    "type": "YAMLSequence",
+                    "style": "flow",
                     "entries": [
                       {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "By two",
                         "value": "By two",
                         "anchor": null,
@@ -141,7 +149,8 @@
                         }
                       },
                       {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "Also by two",
                         "value": "Also by two",
                         "anchor": null,
@@ -162,7 +171,8 @@
                         }
                       },
                       {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "Still by two",
                         "value": "Still by two",
                         "anchor": null,

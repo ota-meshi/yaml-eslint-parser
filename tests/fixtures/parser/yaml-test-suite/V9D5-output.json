@@ -6,14 +6,17 @@
       "directives": [],
       "content": {
         "type": "YAMLSequence",
+        "style": "block",
         "entries": [
           {
             "type": "YAMLMapping",
+            "style": "block",
             "pairs": [
               {
                 "type": "YAMLPair",
                 "key": {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "sun",
                   "value": "sun",
                   "anchor": null,
@@ -34,7 +37,8 @@
                   }
                 },
                 "value": {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "yellow",
                   "value": "yellow",
                   "anchor": null,
@@ -89,16 +93,19 @@
           },
           {
             "type": "YAMLMapping",
+            "style": "block",
             "pairs": [
               {
                 "type": "YAMLPair",
                 "key": {
                   "type": "YAMLMapping",
+                  "style": "block",
                   "pairs": [
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "earth",
                         "value": "earth",
                         "anchor": null,
@@ -119,7 +126,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "blue",
                         "value": "blue",
                         "anchor": null,
@@ -174,11 +182,13 @@
                 },
                 "value": {
                   "type": "YAMLMapping",
+                  "style": "block",
                   "pairs": [
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "moon",
                         "value": "moon",
                         "anchor": null,
@@ -199,7 +209,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "white",
                         "value": "white",
                         "anchor": null,

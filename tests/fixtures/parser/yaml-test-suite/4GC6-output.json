@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLSingleQuoted",
+        "type": "YAMLScalar",
+        "style": "single-quoted",
         "strValue": "here's to \"quotes\"",
         "value": "here's to \"quotes\"",
         "anchor": null,

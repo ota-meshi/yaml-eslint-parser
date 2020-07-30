@@ -6,14 +6,17 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLFlowSequence",
+              "type": "YAMLSequence",
+              "style": "flow",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "flow",
                   "value": "flow",
                   "anchor": null,
@@ -52,7 +55,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "block",
               "value": "block",
               "anchor": null,

@@ -6,12 +6,15 @@
       "directives": [],
       "content": {
         "type": "YAMLSequence",
+        "style": "block",
         "entries": [
           {
-            "type": "YAMLFlowSequence",
+            "type": "YAMLSequence",
+            "style": "flow",
             "entries": [
               {
-                "type": "YAMLPlain",
+                "type": "YAMLScalar",
+                "style": "plain",
                 "strValue": "a",
                 "value": "a",
                 "anchor": null,
@@ -32,7 +35,8 @@
                 }
               },
               {
-                "type": "YAMLPlain",
+                "type": "YAMLScalar",
+                "style": "plain",
                 "strValue": "b",
                 "value": "b",
                 "anchor": null,
@@ -53,7 +57,8 @@
                 }
               },
               {
-                "type": "YAMLPlain",
+                "type": "YAMLScalar",
+                "style": "plain",
                 "strValue": "c",
                 "value": "c",
                 "anchor": null,
@@ -92,12 +97,14 @@
             }
           },
           {
-            "type": "YAMLFlowMapping",
+            "type": "YAMLMapping",
+            "style": "flow",
             "pairs": [
               {
                 "type": "YAMLPair",
                 "key": {
-                  "type": "YAMLDoubleQuoted",
+                  "type": "YAMLScalar",
+                  "style": "double-quoted",
                   "strValue": "a",
                   "value": "a",
                   "anchor": null,
@@ -118,7 +125,8 @@
                   }
                 },
                 "value": {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "b",
                   "value": "b",
                   "anchor": null,
@@ -156,7 +164,8 @@
               {
                 "type": "YAMLPair",
                 "key": {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "c",
                   "value": "c",
                   "anchor": null,
@@ -177,7 +186,8 @@
                   }
                 },
                 "value": {
-                  "type": "YAMLSingleQuoted",
+                  "type": "YAMLScalar",
+                  "style": "single-quoted",
                   "strValue": "d",
                   "value": "d",
                   "anchor": null,
@@ -215,7 +225,8 @@
               {
                 "type": "YAMLPair",
                 "key": {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "e",
                   "value": "e",
                   "anchor": null,
@@ -236,7 +247,8 @@
                   }
                 },
                 "value": {
-                  "type": "YAMLDoubleQuoted",
+                  "type": "YAMLScalar",
+                  "style": "double-quoted",
                   "strValue": "f",
                   "value": "f",
                   "anchor": null,
@@ -290,7 +302,8 @@
             }
           },
           {
-            "type": "YAMLFlowSequence",
+            "type": "YAMLSequence",
+            "style": "flow",
             "entries": [],
             "anchor": null,
             "tag": null,

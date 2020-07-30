@@ -24,7 +24,8 @@
         }
       ],
       "content": {
-        "type": "YAMLBlockLiteral",
+        "type": "YAMLScalar",
+        "style": "literal",
         "chomping": "clip",
         "indent": null,
         "value": "%!PS-Adobe-2.0\n",

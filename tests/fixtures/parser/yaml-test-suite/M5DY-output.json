@@ -6,14 +6,17 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
               "type": "YAMLSequence",
+              "style": "block",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Detroit Tigers",
                   "value": "Detroit Tigers",
                   "anchor": null,
@@ -34,7 +37,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Chicago cubs",
                   "value": "Chicago cubs",
                   "anchor": null,
@@ -74,9 +78,11 @@
             },
             "value": {
               "type": "YAMLSequence",
+              "style": "block",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "2001-07-23",
                   "value": "2001-07-23",
                   "anchor": null,
@@ -132,10 +138,12 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLFlowSequence",
+              "type": "YAMLSequence",
+              "style": "flow",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "New York Yankees",
                   "value": "New York Yankees",
                   "anchor": null,
@@ -156,7 +164,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Atlanta Braves",
                   "value": "Atlanta Braves",
                   "anchor": null,
@@ -195,10 +204,12 @@
               }
             },
             "value": {
-              "type": "YAMLFlowSequence",
+              "type": "YAMLSequence",
+              "style": "flow",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "2001-07-02",
                   "value": "2001-07-02",
                   "anchor": null,
@@ -219,7 +230,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "2001-08-12",
                   "value": "2001-08-12",
                   "anchor": null,
@@ -240,7 +252,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "2001-08-14",
                   "value": "2001-08-14",
                   "anchor": null,

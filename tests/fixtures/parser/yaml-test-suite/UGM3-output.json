@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "invoice",
               "value": "invoice",
               "anchor": null,
@@ -31,7 +33,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "34843",
               "value": 34843,
               "anchor": null,
@@ -69,7 +72,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "date",
               "value": "date",
               "anchor": null,
@@ -90,7 +94,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "2001-01-23",
               "value": "2001-01-23",
               "anchor": null,
@@ -128,7 +133,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "bill-to",
               "value": "bill-to",
               "anchor": null,
@@ -150,11 +156,13 @@
             },
             "value": {
               "type": "YAMLMapping",
+              "style": "block",
               "pairs": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "given",
                     "value": "given",
                     "anchor": null,
@@ -175,7 +183,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "Chris",
                     "value": "Chris",
                     "anchor": null,
@@ -213,7 +222,8 @@
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "family",
                     "value": "family",
                     "anchor": null,
@@ -234,7 +244,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "Dumars",
                     "value": "Dumars",
                     "anchor": null,
@@ -272,7 +283,8 @@
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "address",
                     "value": "address",
                     "anchor": null,
@@ -294,11 +306,13 @@
                   },
                   "value": {
                     "type": "YAMLMapping",
+                    "style": "block",
                     "pairs": [
                       {
                         "type": "YAMLPair",
                         "key": {
-                          "type": "YAMLPlain",
+                          "type": "YAMLScalar",
+                          "style": "plain",
                           "strValue": "lines",
                           "value": "lines",
                           "anchor": null,
@@ -319,7 +333,8 @@
                           }
                         },
                         "value": {
-                          "type": "YAMLBlockLiteral",
+                          "type": "YAMLScalar",
+                          "style": "literal",
                           "chomping": "clip",
                           "indent": null,
                           "value": "458 Walkman Dr.\nSuite #292\n",
@@ -358,7 +373,8 @@
                       {
                         "type": "YAMLPair",
                         "key": {
-                          "type": "YAMLPlain",
+                          "type": "YAMLScalar",
+                          "style": "plain",
                           "strValue": "city",
                           "value": "city",
                           "anchor": null,
@@ -379,7 +395,8 @@
                           }
                         },
                         "value": {
-                          "type": "YAMLPlain",
+                          "type": "YAMLScalar",
+                          "style": "plain",
                           "strValue": "Royal Oak",
                           "value": "Royal Oak",
                           "anchor": null,
@@ -417,7 +434,8 @@
                       {
                         "type": "YAMLPair",
                         "key": {
-                          "type": "YAMLPlain",
+                          "type": "YAMLScalar",
+                          "style": "plain",
                           "strValue": "state",
                           "value": "state",
                           "anchor": null,
@@ -438,7 +456,8 @@
                           }
                         },
                         "value": {
-                          "type": "YAMLPlain",
+                          "type": "YAMLScalar",
+                          "style": "plain",
                           "strValue": "MI",
                           "value": "MI",
                           "anchor": null,
@@ -476,7 +495,8 @@
                       {
                         "type": "YAMLPair",
                         "key": {
-                          "type": "YAMLPlain",
+                          "type": "YAMLScalar",
+                          "style": "plain",
                           "strValue": "postal",
                           "value": "postal",
                           "anchor": null,
@@ -497,7 +517,8 @@
                           }
                         },
                         "value": {
-                          "type": "YAMLPlain",
+                          "type": "YAMLScalar",
+                          "style": "plain",
                           "strValue": "48046",
                           "value": 48046,
                           "anchor": null,
@@ -618,7 +639,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "ship-to",
               "value": "ship-to",
               "anchor": null,
@@ -676,7 +698,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "product",
               "value": "product",
               "anchor": null,
@@ -698,14 +721,17 @@
             },
             "value": {
               "type": "YAMLSequence",
+              "style": "block",
               "entries": [
                 {
                   "type": "YAMLMapping",
+                  "style": "block",
                   "pairs": [
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "sku",
                         "value": "sku",
                         "anchor": null,
@@ -726,7 +752,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "BL394D",
                         "value": "BL394D",
                         "anchor": null,
@@ -764,7 +791,8 @@
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "quantity",
                         "value": "quantity",
                         "anchor": null,
@@ -785,7 +813,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "4",
                         "value": 4,
                         "anchor": null,
@@ -823,7 +852,8 @@
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "description",
                         "value": "description",
                         "anchor": null,
@@ -844,7 +874,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "Basketball",
                         "value": "Basketball",
                         "anchor": null,
@@ -882,7 +913,8 @@
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "price",
                         "value": "price",
                         "anchor": null,
@@ -903,7 +935,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "450.00",
                         "value": 450,
                         "anchor": null,
@@ -958,11 +991,13 @@
                 },
                 {
                   "type": "YAMLMapping",
+                  "style": "block",
                   "pairs": [
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "sku",
                         "value": "sku",
                         "anchor": null,
@@ -983,7 +1018,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "BL4438H",
                         "value": "BL4438H",
                         "anchor": null,
@@ -1021,7 +1057,8 @@
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "quantity",
                         "value": "quantity",
                         "anchor": null,
@@ -1042,7 +1079,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "1",
                         "value": 1,
                         "anchor": null,
@@ -1080,7 +1118,8 @@
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "description",
                         "value": "description",
                         "anchor": null,
@@ -1101,7 +1140,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "Super Hoop",
                         "value": "Super Hoop",
                         "anchor": null,
@@ -1139,7 +1179,8 @@
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "price",
                         "value": "price",
                         "anchor": null,
@@ -1160,7 +1201,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "2392.00",
                         "value": 2392,
                         "anchor": null,
@@ -1249,7 +1291,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "tax",
               "value": "tax",
               "anchor": null,
@@ -1270,7 +1313,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "251.42",
               "value": 251.42,
               "anchor": null,
@@ -1308,7 +1352,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "total",
               "value": "total",
               "anchor": null,
@@ -1329,7 +1374,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "4443.52",
               "value": 4443.52,
               "anchor": null,
@@ -1367,7 +1413,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "comments",
               "value": "comments",
               "anchor": null,
@@ -1388,7 +1435,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338.",
               "value": "Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338.",
               "anchor": null,

@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLDoubleQuoted",
+        "type": "YAMLScalar",
+        "style": "double-quoted",
         "strValue": "folded to a space,\nto a line feed, or \t \tnon-content",
         "value": "folded to a space,\nto a line feed, or \t \tnon-content",
         "anchor": null,

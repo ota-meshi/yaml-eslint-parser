@@ -24,7 +24,8 @@
         }
       ],
       "content": {
-        "type": "YAMLPlain",
+        "type": "YAMLScalar",
+        "style": "plain",
         "strValue": "text",
         "value": "text",
         "anchor": null,

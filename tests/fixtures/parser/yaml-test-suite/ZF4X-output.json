@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Mark McGwire",
               "value": "Mark McGwire",
               "anchor": null,
@@ -31,12 +33,14 @@
               }
             },
             "value": {
-              "type": "YAMLFlowMapping",
+              "type": "YAMLMapping",
+              "style": "flow",
               "pairs": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "hr",
                     "value": "hr",
                     "anchor": null,
@@ -57,7 +61,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "65",
                     "value": 65,
                     "anchor": null,
@@ -95,7 +100,8 @@
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "avg",
                     "value": "avg",
                     "anchor": null,
@@ -116,7 +122,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "0.278",
                     "value": 0.278,
                     "anchor": null,
@@ -187,7 +194,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Sammy Sosa",
               "value": "Sammy Sosa",
               "anchor": null,
@@ -208,12 +216,14 @@
               }
             },
             "value": {
-              "type": "YAMLFlowMapping",
+              "type": "YAMLMapping",
+              "style": "flow",
               "pairs": [
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "hr",
                     "value": "hr",
                     "anchor": null,
@@ -234,7 +244,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "63",
                     "value": 63,
                     "anchor": null,
@@ -272,7 +283,8 @@
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "avg",
                     "value": "avg",
                     "anchor": null,
@@ -293,7 +305,8 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLPlain",
+                    "type": "YAMLScalar",
+                    "style": "plain",
                     "strValue": "0.288",
                     "value": 0.288,
                     "anchor": null,

@@ -5,12 +5,14 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLFlowMapping",
+        "type": "YAMLMapping",
+        "style": "flow",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "a",
               "value": "a",
               "anchor": null,
@@ -31,10 +33,12 @@
               }
             },
             "value": {
-              "type": "YAMLFlowSequence",
+              "type": "YAMLSequence",
+              "style": "flow",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "b",
                   "value": "b",
                   "anchor": null,
@@ -55,7 +59,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "c",
                   "value": "c",
                   "anchor": null,
@@ -111,10 +116,12 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLFlowSequence",
+              "type": "YAMLSequence",
+              "style": "flow",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "d",
                   "value": "d",
                   "anchor": null,
@@ -135,7 +142,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "e",
                   "value": "e",
                   "anchor": null,
@@ -174,7 +182,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "f",
               "value": "f",
               "anchor": null,

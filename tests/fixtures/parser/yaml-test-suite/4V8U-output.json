@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLPlain",
+        "type": "YAMLScalar",
+        "style": "plain",
         "strValue": "plain\\value\\with\\backslashes",
         "value": "plain\\value\\with\\backslashes",
         "anchor": null,

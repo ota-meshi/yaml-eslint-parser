@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLBlockFolded",
+        "type": "YAMLScalar",
+        "style": "folded",
         "chomping": "clip",
         "indent": null,
         "value": "Mark McGwire's year was crippled by a knee injury.\n",

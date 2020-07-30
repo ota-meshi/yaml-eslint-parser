@@ -5,7 +5,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLPlain",
+        "type": "YAMLScalar",
+        "style": "plain",
         "strValue": "Bare document",
         "value": "Bare document",
         "anchor": null,
@@ -63,7 +64,8 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLBlockLiteral",
+        "type": "YAMLScalar",
+        "style": "literal",
         "chomping": "clip",
         "indent": null,
         "value": "%!PS-Adobe-2.0 # Not the first line\n",

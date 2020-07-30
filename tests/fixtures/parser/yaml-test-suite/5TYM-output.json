@@ -24,7 +24,8 @@
         }
       ],
       "content": {
-        "type": "YAMLPlain",
+        "type": "YAMLScalar",
+        "style": "plain",
         "strValue": "fluorescent",
         "value": "fluorescent",
         "anchor": null,
@@ -99,7 +100,8 @@
         }
       ],
       "content": {
-        "type": "YAMLPlain",
+        "type": "YAMLScalar",
+        "style": "plain",
         "strValue": "green",
         "value": "green",
         "anchor": null,

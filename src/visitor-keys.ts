@@ -7,16 +7,10 @@ const yamlKeys: { [key in YAMLNode["type"]]: string[] } = {
     YAMLDocument: ["directives", "content"],
     YAMLDirective: [],
     YAMLMapping: ["pairs", "anchor", "tag"],
-    YAMLFlowMapping: ["pairs", "anchor", "tag"],
     YAMLPair: ["key", "value"],
     YAMLSequence: ["entries", "anchor", "tag"],
-    YAMLFlowSequence: ["entries", "anchor", "tag"],
 
-    YAMLPlain: ["anchor", "tag"],
-    YAMLDoubleQuoted: ["anchor", "tag"],
-    YAMLSingleQuoted: ["anchor", "tag"],
-    YAMLBlockLiteral: ["anchor", "tag"],
-    YAMLBlockFolded: ["anchor", "tag"],
+    YAMLScalar: ["anchor", "tag"],
     YAMLAlias: ["anchor", "tag"],
 
     YAMLAnchor: [],

@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "hr",
               "value": "hr",
               "anchor": null,
@@ -32,9 +34,11 @@
             },
             "value": {
               "type": "YAMLSequence",
+              "style": "block",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Mark McGwire",
                   "value": "Mark McGwire",
                   "anchor": null,
@@ -55,7 +59,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Sammy Sosa",
                   "value": "Sammy Sosa",
                   "anchor": null,
@@ -111,7 +116,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "rbi",
               "value": "rbi",
               "anchor": null,
@@ -133,9 +139,11 @@
             },
             "value": {
               "type": "YAMLSequence",
+              "style": "block",
               "entries": [
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Sammy Sosa",
                   "value": "Sammy Sosa",
                   "anchor": null,
@@ -156,7 +164,8 @@
                   }
                 },
                 {
-                  "type": "YAMLPlain",
+                  "type": "YAMLScalar",
+                  "style": "plain",
                   "strValue": "Ken Griffey",
                   "value": "Ken Griffey",
                   "anchor": null,

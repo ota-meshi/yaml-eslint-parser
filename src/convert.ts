@@ -35,16 +35,16 @@ import type {
     YAMLDocument,
     YAMLDirective,
     YAMLContent,
-    YAMLMapping,
+    YAMLBlockMapping,
     YAMLFlowMapping,
     YAMLPair,
-    YAMLPlain,
-    YAMLSequence,
+    YAMLPlainScalar,
+    YAMLBlockSequence,
     YAMLFlowSequence,
-    YAMLDoubleQuoted,
-    YAMLSingleQuoted,
-    YAMLBlockLiteral,
-    YAMLBlockFolded,
+    YAMLDoubleQuotedScalar,
+    YAMLSingleQuotedScalar,
+    YAMLBlockLiteralScalar,
+    YAMLBlockFoldedScalar,
     YAMLAlias,
     YAMLAnchor,
     YAMLTag,
@@ -266,7 +266,7 @@ function convertContentNode(
     node: ContentNode,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLContent {
     if (node.type === "mapping") {
@@ -303,18 +303,19 @@ function convertContentNode(
 }
 
 /**
- * Convert yaml-unist-parser Mapping to YAMLMapping
+ * Convert yaml-unist-parser Mapping to YAMLBlockMapping
  */
 function convertMapping(
     node: Mapping,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLMapping {
+): YAMLBlockMapping {
     const loc = getConvertLocation(node)
-    const ast: YAMLMapping = {
+    const ast: YAMLBlockMapping = {
         type: "YAMLMapping",
+        style: "block",
         pairs: [],
         anchor: null,
         tag: null,
@@ -337,12 +338,13 @@ function convertFlowMapping(
     node: FlowMapping,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLFlowMapping {
     const loc = getConvertLocation(node)
     const ast: YAMLFlowMapping = {
-        type: "YAMLFlowMapping",
+        type: "YAMLMapping",
+        style: "flow",
         pairs: [],
         anchor: null,
         tag: null,
@@ -365,7 +367,7 @@ function convertMappingItem(
     node: MappingItem | FlowMappingItem,
     tokens: Token[],
     code: string,
-    parent: YAMLMapping | YAMLFlowMapping | YAMLFlowSequence,
+    parent: YAMLBlockMapping | YAMLFlowMapping | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLPair {
     const loc = getConvertLocation(node)
@@ -414,18 +416,19 @@ function convertMappingValue(
 }
 
 /**
- * Convert yaml-unist-parser Sequence to YAMLSequence
+ * Convert yaml-unist-parser Sequence to YAMLBlockSequence
  */
 function convertSequence(
     node: Sequence,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLSequence {
+): YAMLBlockSequence {
     const loc = getConvertLocation(node)
-    const ast: YAMLSequence = {
+    const ast: YAMLBlockSequence = {
         type: "YAMLSequence",
+        style: "block",
         entries: [],
         anchor: null,
         tag: null,
@@ -442,18 +445,19 @@ function convertSequence(
 }
 
 /**
- * Convert yaml-unist-parser FlowSequence to YAMLSequence
+ * Convert yaml-unist-parser FlowSequence to YAMLBlockSequence
  */
 function convertFlowSequence(
     node: FlowSequence,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLFlowSequence {
     const loc = getConvertLocation(node)
     const ast: YAMLFlowSequence = {
-        type: "YAMLFlowSequence",
+        type: "YAMLSequence",
+        style: "flow",
         entries: [],
         anchor: null,
         tag: null,
@@ -481,7 +485,7 @@ function* convertSequenceItem(
     node: SequenceItem | FlowSequenceItem,
     tokens: Token[],
     code: string,
-    parent: YAMLSequence | YAMLFlowSequence,
+    parent: YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): IterableIterator<YAMLContent> {
     if (node.children.length) {
@@ -490,15 +494,15 @@ function* convertSequenceItem(
 }
 
 /**
- * Convert yaml-unist-parser Plain to YAMLPlain
+ * Convert yaml-unist-parser Plain to YAMLPlainScalar
  */
 function convertPlain(
     node: Plain,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLPlain {
+): YAMLPlainScalar {
     const loc = getConvertLocation(node)
     const strValue = node.value
     let value: string | number | boolean | null | undefined
@@ -515,8 +519,9 @@ function convertPlain(
     } else {
         tokenValue = strValue
     }
-    const ast: YAMLPlain = {
-        type: "YAMLPlain",
+    const ast: YAMLPlainScalar = {
+        type: "YAMLScalar",
+        style: "plain",
         strValue,
         get value() {
             if (value !== undefined) {
@@ -574,20 +579,21 @@ function convertPlain(
 }
 
 /**
- * Convert yaml-unist-parser QuoteDouble to YAMLDoubleQuoted
+ * Convert yaml-unist-parser QuoteDouble to YAMLDoubleQuotedScalar
  */
 function convertQuoteDouble(
     node: QuoteDouble,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLDoubleQuoted {
+): YAMLDoubleQuotedScalar {
     const loc = getConvertLocation(node)
     const strValue = node.value
     let value: string | number | boolean | null | undefined
-    const ast: YAMLDoubleQuoted = {
-        type: "YAMLDoubleQuoted",
+    const ast: YAMLDoubleQuotedScalar = {
+        type: "YAMLScalar",
+        style: "double-quoted",
         strValue,
         get value() {
             if (value !== undefined) {
@@ -612,20 +618,21 @@ function convertQuoteDouble(
 }
 
 /**
- * Convert yaml-unist-parser QuoteSingle to YAMLSingleQuoted
+ * Convert yaml-unist-parser QuoteSingle to YAMLSingleQuotedScalar
  */
 function convertQuoteSingle(
     node: QuoteSingle,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLSingleQuoted {
+): YAMLSingleQuotedScalar {
     const loc = getConvertLocation(node)
     const strValue = node.value
     let value: string | number | boolean | null | undefined
-    const ast: YAMLSingleQuoted = {
-        type: "YAMLSingleQuoted",
+    const ast: YAMLSingleQuotedScalar = {
+        type: "YAMLScalar",
+        style: "single-quoted",
         strValue,
         get value() {
             if (value !== undefined) {
@@ -656,13 +663,14 @@ function convertBlockLiteral(
     node: BlockLiteral,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLBlockLiteral {
+): YAMLBlockLiteralScalar {
     const loc = getConvertLocation(node)
     const value = node.value
-    const ast: YAMLBlockLiteral = {
-        type: "YAMLBlockLiteral",
+    const ast: YAMLBlockLiteralScalar = {
+        type: "YAMLScalar",
+        style: "literal",
         chomping: node.chomping,
         indent: node.indent,
         value,
@@ -741,13 +749,14 @@ function convertBlockFolded(
     node: BlockFolded,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLBlockFolded {
+): YAMLBlockFoldedScalar {
     const loc = getConvertLocation(node)
     const value = node.value
-    const ast: YAMLBlockFolded = {
-        type: "YAMLBlockFolded",
+    const ast: YAMLBlockFoldedScalar = {
+        type: "YAMLScalar",
+        style: "folded",
         chomping: node.chomping,
         indent: node.indent,
         value,
@@ -826,7 +835,7 @@ function convertAlias(
     node: Alias,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLAlias {
     const loc = getConvertLocation(node)

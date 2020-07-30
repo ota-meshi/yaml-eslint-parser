@@ -6,11 +6,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Time",
               "value": "Time",
               "anchor": null,
@@ -31,7 +33,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "2001-11-23 15:01:42 -5",
               "value": "2001-11-23 15:01:42 -5",
               "anchor": null,
@@ -69,7 +72,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "User",
               "value": "User",
               "anchor": null,
@@ -90,7 +94,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "ed",
               "value": "ed",
               "anchor": null,
@@ -128,7 +133,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Warning",
               "value": "Warning",
               "anchor": null,
@@ -149,7 +155,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "This is an error message for the log file",
               "value": "This is an error message for the log file",
               "anchor": null,
@@ -222,11 +229,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Time",
               "value": "Time",
               "anchor": null,
@@ -247,7 +256,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "2001-11-23 15:02:31 -5",
               "value": "2001-11-23 15:02:31 -5",
               "anchor": null,
@@ -285,7 +295,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "User",
               "value": "User",
               "anchor": null,
@@ -306,7 +317,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "ed",
               "value": "ed",
               "anchor": null,
@@ -344,7 +356,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Warning",
               "value": "Warning",
               "anchor": null,
@@ -365,7 +378,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "A slightly different error message.",
               "value": "A slightly different error message.",
               "anchor": null,
@@ -438,11 +452,13 @@
       "directives": [],
       "content": {
         "type": "YAMLMapping",
+        "style": "block",
         "pairs": [
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Date",
               "value": "Date",
               "anchor": null,
@@ -463,7 +479,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "2001-11-23 15:03:17 -5",
               "value": "2001-11-23 15:03:17 -5",
               "anchor": null,
@@ -501,7 +518,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "User",
               "value": "User",
               "anchor": null,
@@ -522,7 +540,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "ed",
               "value": "ed",
               "anchor": null,
@@ -560,7 +579,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Fatal",
               "value": "Fatal",
               "anchor": null,
@@ -581,7 +601,8 @@
               }
             },
             "value": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Unknown variable \"bar\"",
               "value": "Unknown variable \"bar\"",
               "anchor": null,
@@ -619,7 +640,8 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLPlain",
+              "type": "YAMLScalar",
+              "style": "plain",
               "strValue": "Stack",
               "value": "Stack",
               "anchor": null,
@@ -641,14 +663,17 @@
             },
             "value": {
               "type": "YAMLSequence",
+              "style": "block",
               "entries": [
                 {
                   "type": "YAMLMapping",
+                  "style": "block",
                   "pairs": [
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "file",
                         "value": "file",
                         "anchor": null,
@@ -669,7 +694,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "TopClass.py",
                         "value": "TopClass.py",
                         "anchor": null,
@@ -707,7 +733,8 @@
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "line",
                         "value": "line",
                         "anchor": null,
@@ -728,7 +755,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "23",
                         "value": 23,
                         "anchor": null,
@@ -766,7 +794,8 @@
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "code",
                         "value": "code",
                         "anchor": null,
@@ -787,7 +816,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLBlockLiteral",
+                        "type": "YAMLScalar",
+                        "style": "literal",
                         "chomping": "clip",
                         "indent": null,
                         "value": "x = MoreObject(\"345\\n\")\n",
@@ -843,11 +873,13 @@
                 },
                 {
                   "type": "YAMLMapping",
+                  "style": "block",
                   "pairs": [
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "file",
                         "value": "file",
                         "anchor": null,
@@ -868,7 +900,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "MoreClass.py",
                         "value": "MoreClass.py",
                         "anchor": null,
@@ -906,7 +939,8 @@
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "line",
                         "value": "line",
                         "anchor": null,
@@ -927,7 +961,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "58",
                         "value": 58,
                         "anchor": null,
@@ -965,7 +1000,8 @@
                     {
                       "type": "YAMLPair",
                       "key": {
-                        "type": "YAMLPlain",
+                        "type": "YAMLScalar",
+                        "style": "plain",
                         "strValue": "code",
                         "value": "code",
                         "anchor": null,
@@ -986,7 +1022,8 @@
                         }
                       },
                       "value": {
-                        "type": "YAMLBlockLiteral",
+                        "type": "YAMLScalar",
+                        "style": "literal",
                         "chomping": "strip",
                         "indent": null,
                         "value": "foo = bar",
