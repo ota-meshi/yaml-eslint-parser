@@ -16,8 +16,10 @@ jobs:
         registry-url: 'https://registry.npmjs.org'
     - name: Install Packages
       run: npm install
-    - name: test
-      run: npm run test
+    - name: test and build
+      run: |
+        npm run build
+        npm run test
     - name: check can npm-publish
       run: npx can-npm-publish
     - name: release
