@@ -9,51 +9,73 @@
         "style": "flow",
         "entries": [
           {
-            "type": "YAMLPair",
-            "key": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "foo",
-              "value": "foo",
-              "anchor": null,
-              "tag": null,
-              "range": [
-                2,
-                5
-              ],
-              "loc": {
-                "start": {
-                  "line": 2,
-                  "column": 0
+            "type": "YAMLMapping",
+            "style": "block",
+            "pairs": [
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "foo",
+                  "value": "foo",
+                  "anchor": null,
+                  "tag": null,
+                  "range": [
+                    2,
+                    5
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 0
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 3
+                    }
+                  }
                 },
-                "end": {
-                  "line": 2,
-                  "column": 3
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "bar",
+                  "value": "bar",
+                  "anchor": null,
+                  "tag": null,
+                  "range": [
+                    7,
+                    10
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 8
+                    }
+                  }
+                },
+                "range": [
+                  2,
+                  10
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 0
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 8
+                  }
                 }
               }
-            },
-            "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "bar",
-              "value": "bar",
-              "anchor": null,
-              "tag": null,
-              "range": [
-                7,
-                10
-              ],
-              "loc": {
-                "start": {
-                  "line": 2,
-                  "column": 5
-                },
-                "end": {
-                  "line": 2,
-                  "column": 8
-                }
-              }
-            },
+            ],
+            "anchor": null,
+            "tag": null,
             "range": [
               2,
               10

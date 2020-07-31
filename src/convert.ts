@@ -367,7 +367,7 @@ function convertMappingItem(
     node: MappingItem | FlowMappingItem,
     tokens: Token[],
     code: string,
-    parent: YAMLBlockMapping | YAMLFlowMapping | YAMLFlowSequence,
+    parent: YAMLBlockMapping | YAMLFlowMapping,
     doc: YAMLDocument,
 ): YAMLPair {
     const loc = getConvertLocation(node)
@@ -469,7 +469,18 @@ function convertFlowSequence(
             ast.entries.push(...convertSequenceItem(n, tokens, code, ast, doc))
         }
         if (n.type === "flowMappingItem") {
-            ast.entries.push(convertMappingItem(n, tokens, code, ast, doc))
+            const map: YAMLBlockMapping = {
+                type: "YAMLMapping",
+                style: "block",
+                pairs: [],
+                anchor: null,
+                tag: null,
+                parent,
+                ...getConvertLocation(n),
+            }
+            const pair = convertMappingItem(n, tokens, code, map, doc)
+            map.pairs.push(pair)
+            ast.entries.push(map)
         }
     }
     const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)

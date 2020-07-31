@@ -9,7 +9,7 @@ interface BaseYAMLNode extends Locations {
     type: string
 }
 
-interface SourceLocation {
+export interface SourceLocation {
     start: Position
     end: Position
 }
@@ -87,7 +87,7 @@ export interface YAMLTag extends BaseYAMLNode {
 interface BaseYAMLContentNode extends BaseYAMLNode {
     anchor: null | YAMLAnchor
     tag: null | YAMLTag
-    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence
+    parent: YAMLDocument | YAMLPair | YAMLSequence
 }
 
 export type YAMLContent = YAMLMapping | YAMLSequence | YAMLScalar | YAMLAlias
@@ -108,7 +108,7 @@ export interface YAMLPair extends BaseYAMLNode {
     type: "YAMLPair"
     key: YAMLContent | null
     value: YAMLContent | null
-    parent: YAMLBlockMapping | YAMLFlowMapping | YAMLFlowSequence
+    parent: YAMLMapping
 }
 export type YAMLSequence = YAMLBlockSequence | YAMLFlowSequence
 export interface YAMLBlockSequence extends BaseYAMLContentNode {
@@ -120,7 +120,7 @@ export interface YAMLBlockSequence extends BaseYAMLContentNode {
 export interface YAMLFlowSequence extends BaseYAMLContentNode {
     type: "YAMLSequence"
     style: "flow"
-    entries: (YAMLContent | YAMLPair)[]
+    entries: YAMLContent[]
 }
 export type YAMLScalar =
     | YAMLPlainScalar
