@@ -9,7 +9,7 @@
         "style": "block",
         "entries": [
           {
-            "type": "YAMLWithMark",
+            "type": "YAMLWithMeta",
             "anchor": null,
             "tag": {
               "type": "YAMLTag",
@@ -52,7 +52,7 @@
               {
                 "type": "YAMLPair",
                 "key": {
-                  "type": "YAMLWithMark",
+                  "type": "YAMLWithMeta",
                   "anchor": null,
                   "tag": {
                     "type": "YAMLTag",
@@ -146,7 +146,7 @@
                   }
                 },
                 "value": {
-                  "type": "YAMLWithMark",
+                  "type": "YAMLWithMeta",
                   "anchor": null,
                   "tag": {
                     "type": "YAMLTag",
@@ -220,7 +220,7 @@
               {
                 "type": "YAMLPair",
                 "key": {
-                  "type": "YAMLWithMark",
+                  "type": "YAMLWithMeta",
                   "anchor": null,
                   "tag": {
                     "type": "YAMLTag",
@@ -257,7 +257,7 @@
                   }
                 },
                 "value": {
-                  "type": "YAMLWithMark",
+                  "type": "YAMLWithMeta",
                   "anchor": null,
                   "tag": {
                     "type": "YAMLTag",

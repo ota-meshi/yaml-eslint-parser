@@ -9,7 +9,7 @@
         "style": "block",
         "entries": [
           {
-            "type": "YAMLWithMark",
+            "type": "YAMLWithMeta",
             "anchor": {
               "type": "YAMLAnchor",
               "name": "mark",

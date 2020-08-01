@@ -28,7 +28,7 @@
         "style": "block",
         "entries": [
           {
-            "type": "YAMLWithMark",
+            "type": "YAMLWithMeta",
             "anchor": null,
             "tag": {
               "type": "YAMLTag",
@@ -84,7 +84,7 @@
             }
           },
           {
-            "type": "YAMLWithMark",
+            "type": "YAMLWithMeta",
             "anchor": null,
             "tag": {
               "type": "YAMLTag",
@@ -140,7 +140,7 @@
             }
           },
           {
-            "type": "YAMLWithMark",
+            "type": "YAMLWithMeta",
             "anchor": null,
             "tag": {
               "type": "YAMLTag",

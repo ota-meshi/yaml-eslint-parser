@@ -5,7 +5,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLWithMark",
+        "type": "YAMLWithMeta",
         "anchor": {
           "type": "YAMLAnchor",
           "name": "a1",
@@ -96,7 +96,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLWithMark",
+        "type": "YAMLWithMeta",
         "anchor": {
           "type": "YAMLAnchor",
           "name": "a2",
@@ -187,7 +187,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLWithMark",
+        "type": "YAMLWithMeta",
         "anchor": {
           "type": "YAMLAnchor",
           "name": "a3",
@@ -278,7 +278,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLWithMark",
+        "type": "YAMLWithMeta",
         "anchor": {
           "type": "YAMLAnchor",
           "name": "a4",
@@ -322,7 +322,7 @@
             {
               "type": "YAMLPair",
               "key": {
-                "type": "YAMLWithMark",
+                "type": "YAMLWithMeta",
                 "anchor": {
                   "type": "YAMLAnchor",
                   "name": "a5",
@@ -542,7 +542,7 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "anchor6",
@@ -667,7 +667,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLWithMark",
+        "type": "YAMLWithMeta",
         "anchor": null,
         "tag": {
           "type": "YAMLTag",
@@ -694,7 +694,7 @@
             {
               "type": "YAMLPair",
               "key": {
-                "type": "YAMLWithMark",
+                "type": "YAMLWithMeta",
                 "anchor": {
                   "type": "YAMLAnchor",
                   "name": "a8",
@@ -851,7 +851,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLWithMark",
+        "type": "YAMLWithMeta",
         "anchor": null,
         "tag": {
           "type": "YAMLTag",
@@ -878,7 +878,7 @@
             {
               "type": "YAMLPair",
               "key": {
-                "type": "YAMLWithMark",
+                "type": "YAMLWithMeta",
                 "anchor": {
                   "type": "YAMLAnchor",
                   "name": "a10",
@@ -1035,7 +1035,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLWithMark",
+        "type": "YAMLWithMeta",
         "anchor": {
           "type": "YAMLAnchor",
           "name": "a11",

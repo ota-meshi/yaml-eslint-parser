@@ -9,7 +9,7 @@ import {
     YAMLAlias,
     YAMLAnchor,
     YAMLPair,
-    YAMLWithMark,
+    YAMLWithMeta,
     YAMLTag,
 } from "./ast"
 
@@ -35,14 +35,14 @@ export function getStaticYAMLValue(
 ): string | number | boolean | null
 export function getStaticYAMLValue(node: YAMLAlias): YAMLContentValue
 export function getStaticYAMLValue(
-    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMark,
+    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMeta,
 ): YAMLContentValue
 
 /**
  * Gets the static value for the given node.
  */
 export function getStaticYAMLValue(
-    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMark,
+    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMeta,
 ): YAMLContentValue {
     return resolver[node.type](node as any)
 }
@@ -89,7 +89,7 @@ const resolver = {
         const anchor = findAnchor(node)
         return anchor ? getStaticYAMLValue(anchor.parent) : null
     },
-    YAMLWithMark(node: YAMLWithMark) {
+    YAMLWithMeta(node: YAMLWithMeta) {
         if (node.tag) {
             if (node.value == null) {
                 return getTaggedValue(node.tag, "", "")
@@ -130,7 +130,7 @@ function findAnchor(node: YAMLAlias): YAMLAnchor | null {
         | YAMLSequence
         | YAMLMapping
         | YAMLPair
-        | YAMLWithMark
+        | YAMLWithMeta
         | undefined = node.parent
     let doc: YAMLDocument | null = null
     while (p) {

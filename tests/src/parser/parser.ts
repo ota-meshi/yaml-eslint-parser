@@ -59,7 +59,7 @@ describe("Check for AST.", () => {
             // check tokens
             checkTokens(ast, input)
 
-            checkLoc(ast, inputFileName)
+            checkLoc(ast, inputFileName, input)
 
             // check getStaticYAMLValue
             const value = fs.readFileSync(valueFileName, "utf8")
@@ -124,7 +124,7 @@ describe("yaml-test-suite.", () => {
                 },
             })
 
-            checkLoc(ast, inputFileName)
+            checkLoc(ast, inputFileName, input)
 
             // check getStaticYAMLValue
             const value = fs.readFileSync(valueFileName, "utf8")
@@ -150,9 +150,87 @@ function checkTokens(ast: YAMLProgram, input: string) {
     )
 }
 
-function checkLoc(ast: YAMLProgram, fileName: string) {
+function checkLoc(ast: YAMLProgram, fileName: string, code: string) {
     traverseNodes(ast, {
+        // eslint-disable-next-line complexity
         enterNode(node, parent) {
+            if (node.type === "YAMLWithMeta") {
+                if (node.anchor && node.value) {
+                    assert.ok(
+                        node.anchor.range[1] <= node.value.range[0],
+                        `overlap range on "${node.anchor.type} endIndex:${node.anchor.range[1]}" and "${node.value.type} startIndex:${node.value.range[0]}" in ${fileName}`,
+                    )
+                }
+                if (node.tag && node.value) {
+                    assert.ok(
+                        node.tag.range[1] <= node.value.range[0],
+                        `overlap range on "${node.tag.type} endIndex:${node.tag.range[1]}" and "${node.value.type} startIndex:${node.value.range[0]}" in ${fileName}`,
+                    )
+                }
+            } else if (node.type === "YAMLPair") {
+                if (node.key) {
+                    if (code[node.range[0]] !== "?") {
+                        assert.ok(
+                            node.key.range[0] === node.range[0],
+                            `The start position is off on "${node.type} line:${node.loc.start.line} col:${node.loc.start.column}" > "${node.key.type} line:${node.key.loc.start.line} col:${node.key.loc.start.column}" in ${fileName}`,
+                        )
+                    }
+                }
+                if (node.value) {
+                    assert.ok(
+                        node.value.range[1] === node.range[1],
+                        `The end position is off on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" > "${node.value.type} line:${node.value.loc.end.line} col:${node.value.loc.end.column}" in ${fileName}`,
+                    )
+                }
+            } else if (node.type === "YAMLMapping") {
+                if (node.style === "block") {
+                    if (node.pairs.length) {
+                        assert.ok(
+                            node.pairs[0].range[0] === node.range[0],
+                            `The start position is off on "${node.type} line:${node.loc.start.line} col:${node.loc.start.column}" > "${node.pairs[0].type} line:${node.pairs[0].loc.start.line} col:${node.pairs[0].loc.start.column}" in ${fileName}`,
+                        )
+                        const last = node.pairs[node.pairs.length - 1]
+                        assert.ok(
+                            last.range[1] === node.range[1],
+                            `The end position is off on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" > "${last.type} line:${last.loc.end.line} col:${last.loc.end.column}" in ${fileName}`,
+                        )
+                    }
+                } else if (node.style === "flow") {
+                    assert.ok(
+                        code[node.range[0]] === "{",
+                        `Start position is not "{" on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" in ${fileName}`,
+                    )
+                    assert.ok(
+                        code[node.range[1] - 1] === "}",
+                        `End position is not "{" on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" in ${fileName}`,
+                    )
+                }
+            } else if (node.type === "YAMLSequence") {
+                if (node.style === "block") {
+                    if (node.entries.length) {
+                        assert.ok(
+                            code[node.range[0]] === "-",
+                            `Start position is not "-" on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" in ${fileName}`,
+                        )
+                        const last = node.entries[node.entries.length - 1]
+                        assert.ok(
+                            last.range[1] === node.range[1],
+                            `The end position is off on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" > "${last.type} line:${last.loc.end.line} col:${last.loc.end.column}" in ${fileName}`,
+                        )
+                    }
+                } else if (node.style === "flow") {
+                    assert.ok(
+                        code[node.range[0]] === "[",
+                        `Start position is not "{" on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" in ${fileName}`,
+                    )
+                    assert.ok(
+                        code[node.range[1] - 1] === "]",
+                        `End position is not "{" on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" in ${fileName}`,
+                    )
+                }
+            } else if (node.type === "YAMLScalar") {
+                // TODO
+            }
             if (parent) {
                 assert.ok(
                     parent.range[0] <= node.range[0],

@@ -5,7 +5,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLWithMark",
+        "type": "YAMLWithMeta",
         "anchor": null,
         "tag": {
           "type": "YAMLTag",

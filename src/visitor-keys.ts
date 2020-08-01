@@ -10,7 +10,7 @@ const yamlKeys: { [key in YAMLNode["type"]]: string[] } = {
     YAMLPair: ["key", "value"],
     YAMLSequence: ["entries"],
 
-    YAMLWithMark: ["anchor", "tag", "value"],
+    YAMLWithMeta: ["anchor", "tag", "value"],
 
     YAMLScalar: [],
     YAMLAlias: [],

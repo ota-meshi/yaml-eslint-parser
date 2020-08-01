@@ -59,7 +59,7 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLWithMark",
+                    "type": "YAMLWithMeta",
                     "anchor": {
                       "type": "YAMLAnchor",
                       "name": "alias1",
@@ -211,7 +211,7 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLWithMark",
+                    "type": "YAMLWithMeta",
                     "anchor": {
                       "type": "YAMLAnchor",
                       "name": "alias2",
@@ -335,7 +335,7 @@
               }
             },
             "value": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "node3",
@@ -658,7 +658,7 @@
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLWithMark",
+                    "type": "YAMLWithMeta",
                     "anchor": {
                       "type": "YAMLAnchor",
                       "name": "anchor6",

@@ -5,7 +5,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLWithMark",
+        "type": "YAMLWithMeta",
         "anchor": null,
         "tag": {
           "type": "YAMLTag",
@@ -52,7 +52,7 @@
                 }
               },
               "value": {
-                "type": "YAMLWithMark",
+                "type": "YAMLWithMeta",
                 "anchor": null,
                 "tag": {
                   "type": "YAMLTag",
@@ -97,7 +97,7 @@
                       }
                     },
                     {
-                      "type": "YAMLWithMark",
+                      "type": "YAMLWithMeta",
                       "anchor": null,
                       "tag": {
                         "type": "YAMLTag",
