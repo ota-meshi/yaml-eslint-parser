@@ -9,7 +9,7 @@
         "style": "block",
         "entries": [
           {
-            "type": "YAMLWithMark",
+            "type": "YAMLWithMeta",
             "anchor": {
               "type": "YAMLAnchor",
               "name": "a",
@@ -82,7 +82,7 @@
             }
           },
           {
-            "type": "YAMLWithMark",
+            "type": "YAMLWithMeta",
             "anchor": null,
             "tag": {
               "type": "YAMLTag",
@@ -138,7 +138,7 @@
             }
           },
           {
-            "type": "YAMLWithMark",
+            "type": "YAMLWithMeta",
             "anchor": {
               "type": "YAMLAnchor",
               "name": "c",
@@ -211,7 +211,7 @@
             }
           },
           {
-            "type": "YAMLWithMark",
+            "type": "YAMLWithMeta",
             "anchor": {
               "type": "YAMLAnchor",
               "name": "d",

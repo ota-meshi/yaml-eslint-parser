@@ -11,7 +11,7 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "a1",
@@ -85,7 +85,7 @@
               }
             },
             "value": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -158,7 +158,7 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "a2",

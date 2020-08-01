@@ -47,7 +47,7 @@ export type YAMLNode =
     | YAMLDirective
     | YAMLContent
     | YAMLPair
-    | YAMLWithMark
+    | YAMLWithMeta
     | YAMLAnchor
     | YAMLTag
 export interface YAMLProgram extends BaseYAMLNode {
@@ -62,7 +62,7 @@ export interface YAMLProgram extends BaseYAMLNode {
 export interface YAMLDocument extends BaseYAMLNode {
     type: "YAMLDocument"
     directives: YAMLDirective[]
-    content: YAMLContent | YAMLWithMark | null
+    content: YAMLContent | YAMLWithMeta | null
     parent: YAMLProgram
     anchors: { [key: string]: YAMLAnchor }
 }
@@ -73,8 +73,8 @@ export interface YAMLDirective extends BaseYAMLNode {
     parent: YAMLDocument
 }
 
-export interface YAMLWithMark extends BaseYAMLNode {
-    type: "YAMLWithMark"
+export interface YAMLWithMeta extends BaseYAMLNode {
+    type: "YAMLWithMeta"
     anchor: YAMLAnchor | null
     tag: YAMLTag | null
     value: YAMLContent | null
@@ -84,17 +84,17 @@ export interface YAMLWithMark extends BaseYAMLNode {
 export interface YAMLAnchor extends BaseYAMLNode {
     type: "YAMLAnchor"
     name: string
-    parent: YAMLWithMark
+    parent: YAMLWithMeta
 }
 
 export interface YAMLTag extends BaseYAMLNode {
     type: "YAMLTag"
     tag: string
-    parent: YAMLWithMark
+    parent: YAMLWithMeta
 }
 
 interface BaseYAMLContentNode extends BaseYAMLNode {
-    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLWithMark
+    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLWithMeta
 }
 
 export type YAMLContent = YAMLMapping | YAMLSequence | YAMLScalar | YAMLAlias
@@ -113,8 +113,8 @@ export interface YAMLFlowMapping extends BaseYAMLContentNode {
 
 export interface YAMLPair extends BaseYAMLNode {
     type: "YAMLPair"
-    key: YAMLContent | YAMLWithMark | null
-    value: YAMLContent | YAMLWithMark | null
+    key: YAMLContent | YAMLWithMeta | null
+    value: YAMLContent | YAMLWithMeta | null
     parent: YAMLMapping
 }
 
@@ -122,12 +122,12 @@ export type YAMLSequence = YAMLBlockSequence | YAMLFlowSequence
 export interface YAMLBlockSequence extends BaseYAMLContentNode {
     type: "YAMLSequence"
     style: "block"
-    entries: (YAMLContent | YAMLWithMark)[]
+    entries: (YAMLContent | YAMLWithMeta)[]
 }
 export interface YAMLFlowSequence extends BaseYAMLContentNode {
     type: "YAMLSequence"
     style: "flow"
-    entries: (YAMLContent | YAMLWithMark)[]
+    entries: (YAMLContent | YAMLWithMeta)[]
 }
 export type YAMLScalar =
     | YAMLPlainScalar

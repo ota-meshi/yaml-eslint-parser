@@ -48,7 +48,7 @@ import type {
     YAMLAlias,
     YAMLAnchor,
     YAMLTag,
-    YAMLWithMark,
+    YAMLWithMeta,
     YAMLSequence,
 } from "./ast"
 import { isFalse, isTrue, isNull } from "./utils"
@@ -269,7 +269,7 @@ function convertDocumentBody(
     tokens: Token[],
     code: string,
     parent: YAMLDocument,
-): YAMLContent | YAMLWithMark | null {
+): YAMLContent | YAMLWithMeta | null {
     const contentNode = node.children[0]
     return contentNode
         ? convertContentNode(contentNode, tokens, code, parent, parent)
@@ -285,7 +285,7 @@ function convertContentNode(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLContent | YAMLWithMark {
+): YAMLContent | YAMLWithMeta {
     if (node.type === "mapping") {
         return convertMapping(node, tokens, code, parent, doc)
     }
@@ -328,7 +328,7 @@ function convertMapping(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLSequence,
     doc: YAMLDocument,
-): YAMLBlockMapping | YAMLWithMark {
+): YAMLBlockMapping | YAMLWithMeta {
     const loc = getConvertLocation(node)
     const ast: YAMLBlockMapping = {
         type: "YAMLMapping",
@@ -339,6 +339,12 @@ function convertMapping(
     }
     for (const n of node.children) {
         ast.pairs.push(convertMappingItem(n, tokens, code, ast, doc))
+    }
+    const last = ast.pairs[ast.pairs.length - 1]
+    if (last && ast.range[1] !== last.range[1]) {
+        // adjust location
+        ast.range[1] = last.range[1]
+        ast.loc.end = clone(last.loc.end)
     }
     return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
@@ -352,7 +358,7 @@ function convertFlowMapping(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLFlowMapping | YAMLWithMark {
+): YAMLFlowMapping | YAMLWithMeta {
     const loc = getConvertLocation(node)
     const ast: YAMLFlowMapping = {
         type: "YAMLMapping",
@@ -387,6 +393,11 @@ function convertMappingItem(
     }
     ast.key = convertMappingKey(node.children[0], tokens, code, ast, doc)
     ast.value = convertMappingValue(node.children[1], tokens, code, ast, doc)
+    if (ast.value && ast.range[1] !== ast.value.range[1]) {
+        // adjust location
+        ast.range[1] = ast.value.range[1]
+        ast.loc.end = clone(ast.value.loc.end)
+    }
     return ast
 }
 
@@ -399,7 +410,7 @@ function convertMappingKey(
     code: string,
     parent: YAMLPair,
     doc: YAMLDocument,
-): YAMLContent | YAMLWithMark | null {
+): YAMLContent | YAMLWithMeta | null {
     if (node.children.length) {
         return convertContentNode(node.children[0], tokens, code, parent, doc)
     }
@@ -415,7 +426,7 @@ function convertMappingValue(
     code: string,
     parent: YAMLPair,
     doc: YAMLDocument,
-): YAMLContent | YAMLWithMark | null {
+): YAMLContent | YAMLWithMeta | null {
     if (node.children.length) {
         return convertContentNode(node.children[0], tokens, code, parent, doc)
     }
@@ -431,7 +442,7 @@ function convertSequence(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLBlockSequence | YAMLWithMark {
+): YAMLBlockSequence | YAMLWithMeta {
     const loc = getConvertLocation(node)
     const ast: YAMLBlockSequence = {
         type: "YAMLSequence",
@@ -442,6 +453,12 @@ function convertSequence(
     }
     for (const n of node.children) {
         ast.entries.push(...convertSequenceItem(n, tokens, code, ast, doc))
+    }
+    const last = ast.entries[ast.entries.length - 1]
+    if (last && ast.range[1] !== last.range[1]) {
+        // adjust location
+        ast.range[1] = last.range[1]
+        ast.loc.end = clone(last.loc.end)
     }
     return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
@@ -455,7 +472,7 @@ function convertFlowSequence(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLFlowSequence | YAMLWithMark {
+): YAMLFlowSequence | YAMLWithMeta {
     const loc = getConvertLocation(node)
     const ast: YAMLFlowSequence = {
         type: "YAMLSequence",
@@ -493,7 +510,7 @@ function* convertSequenceItem(
     code: string,
     parent: YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): IterableIterator<YAMLContent | YAMLWithMark> {
+): IterableIterator<YAMLContent | YAMLWithMeta> {
     if (node.children.length) {
         yield convertContentNode(node.children[0], tokens, code, parent, doc)
     }
@@ -508,7 +525,7 @@ function convertPlain(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLPlainScalar | YAMLWithMark {
+): YAMLPlainScalar | YAMLWithMeta {
     const loc = getConvertLocation(node)
     if (loc.range[0] < loc.range[1]) {
         const strValue = node.value
@@ -591,7 +608,7 @@ function convertQuoteDouble(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLDoubleQuotedScalar | YAMLWithMark {
+): YAMLDoubleQuotedScalar | YAMLWithMeta {
     const loc = getConvertLocation(node)
     const strValue = node.value
     const ast: YAMLDoubleQuotedScalar = {
@@ -616,7 +633,7 @@ function convertQuoteSingle(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLSingleQuotedScalar | YAMLWithMark {
+): YAMLSingleQuotedScalar | YAMLWithMeta {
     const loc = getConvertLocation(node)
     const strValue = node.value
     const ast: YAMLSingleQuotedScalar = {
@@ -641,7 +658,7 @@ function convertBlockLiteral(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLBlockLiteralScalar | YAMLWithMark {
+): YAMLBlockLiteralScalar | YAMLWithMeta {
     const loc = getConvertLocation(node)
     const value = node.value
     const ast: YAMLBlockLiteralScalar = {
@@ -722,7 +739,7 @@ function convertBlockFolded(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLBlockFoldedScalar | YAMLWithMark {
+): YAMLBlockFoldedScalar | YAMLWithMeta {
     const loc = getConvertLocation(node)
     const value = node.value
     const ast: YAMLBlockFoldedScalar = {
@@ -803,7 +820,7 @@ function convertAlias(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLAlias | YAMLWithMark {
+): YAMLAlias | YAMLWithMeta {
     const loc = getConvertLocation(node)
     const value = node.value
     const ast: YAMLAlias = {
@@ -851,10 +868,10 @@ function convertAnchorAndTag<V extends YAMLContent>(
     value: V | null,
     doc: YAMLDocument,
     valueLoc: Locations,
-): YAMLWithMark | V {
+): YAMLWithMeta | V {
     if (node.anchor || node.tag) {
-        const ast: YAMLWithMark = {
-            type: "YAMLWithMark",
+        const ast: YAMLWithMeta = {
+            type: "YAMLWithMeta",
             anchor: null,
             tag: null,
             value,
@@ -893,7 +910,7 @@ function convertAnchor(
     node: Anchor,
     tokens: Token[],
     code: string,
-    parent: YAMLWithMark,
+    parent: YAMLWithMeta,
     doc: YAMLDocument,
 ): YAMLAnchor {
     const loc = getConvertLocation(node)
@@ -942,7 +959,7 @@ function convertTag(
     node: Tag,
     tokens: Token[],
     code: string,
-    parent: YAMLWithMark,
+    parent: YAMLWithMeta,
 ): YAMLTag {
     const loc = getConvertLocation(node)
     const value = node.value

@@ -31,7 +31,7 @@
               }
             },
             "value": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "node1",
@@ -58,7 +58,7 @@
                   {
                     "type": "YAMLPair",
                     "key": {
-                      "type": "YAMLWithMark",
+                      "type": "YAMLWithMeta",
                       "anchor": {
                         "type": "YAMLAnchor",
                         "name": "k1",
@@ -217,7 +217,7 @@
               }
             },
             "value": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "node2",
@@ -373,7 +373,7 @@
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLWithMark",
+                    "type": "YAMLWithMeta",
                     "anchor": {
                       "type": "YAMLAnchor",
                       "name": "k3",
@@ -517,7 +517,7 @@
               }
             },
             "value": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "node4",
@@ -544,7 +544,7 @@
                   {
                     "type": "YAMLPair",
                     "key": {
-                      "type": "YAMLWithMark",
+                      "type": "YAMLWithMeta",
                       "anchor": {
                         "type": "YAMLAnchor",
                         "name": "k4",
@@ -703,7 +703,7 @@
               }
             },
             "value": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "node5",
@@ -853,7 +853,7 @@
               }
             },
             "value": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "val6",
@@ -946,7 +946,7 @@
               }
             },
             "value": {
-              "type": "YAMLWithMark",
+              "type": "YAMLWithMeta",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "val7",
