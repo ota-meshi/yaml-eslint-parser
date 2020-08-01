@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "unicode",
               "value": "unicode",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 7
@@ -37,8 +35,7 @@
               "style": "double-quoted",
               "strValue": "Sosa did fine.☺",
               "value": "Sosa did fine.☺",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"Sosa did fine.\\u263A\"",
               "range": [
                 9,
                 31
@@ -76,8 +73,6 @@
               "style": "plain",
               "strValue": "control",
               "value": "control",
-              "anchor": null,
-              "tag": null,
               "range": [
                 32,
                 39
@@ -98,8 +93,7 @@
               "style": "double-quoted",
               "strValue": "\b1998\t1999\t2000\n",
               "value": "\b1998\t1999\t2000\n",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"\\b1998\\t1999\\t2000\\n\"",
               "range": [
                 41,
                 63
@@ -137,8 +131,6 @@
               "style": "plain",
               "strValue": "hex esc",
               "value": "hex esc",
-              "anchor": null,
-              "tag": null,
               "range": [
                 64,
                 71
@@ -159,8 +151,7 @@
               "style": "double-quoted",
               "strValue": "\r\n is \r\n",
               "value": "\r\n is \r\n",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"\\x0d\\x0a is \\r\\n\"",
               "range": [
                 73,
                 91
@@ -198,8 +189,6 @@
               "style": "plain",
               "strValue": "single",
               "value": "single",
-              "anchor": null,
-              "tag": null,
               "range": [
                 93,
                 99
@@ -220,8 +209,7 @@
               "style": "single-quoted",
               "strValue": "\"Howdy!\" he cried.",
               "value": "\"Howdy!\" he cried.",
-              "anchor": null,
-              "tag": null,
+              "raw": "'\"Howdy!\" he cried.'",
               "range": [
                 101,
                 121
@@ -259,8 +247,6 @@
               "style": "plain",
               "strValue": "quoted",
               "value": "quoted",
-              "anchor": null,
-              "tag": null,
               "range": [
                 122,
                 128
@@ -281,8 +267,7 @@
               "style": "single-quoted",
               "strValue": " # Not a 'comment'.",
               "value": " # Not a 'comment'.",
-              "anchor": null,
-              "tag": null,
+              "raw": "' # Not a ''comment''.'",
               "range": [
                 130,
                 153
@@ -320,8 +305,6 @@
               "style": "plain",
               "strValue": "tie-fighter",
               "value": "tie-fighter",
-              "anchor": null,
-              "tag": null,
               "range": [
                 154,
                 165
@@ -342,8 +325,7 @@
               "style": "single-quoted",
               "strValue": "|\\-*-/|",
               "value": "|\\-*-/|",
-              "anchor": null,
-              "tag": null,
+              "raw": "'|\\-*-/|'",
               "range": [
                 167,
                 176
@@ -375,8 +357,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           176

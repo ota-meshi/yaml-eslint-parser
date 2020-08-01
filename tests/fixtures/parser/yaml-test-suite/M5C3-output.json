@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "literal",
               "value": "literal",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 7
@@ -38,8 +36,6 @@
               "chomping": "clip",
               "indent": 2,
               "value": "value\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 9,
                 20
@@ -77,8 +73,6 @@
               "style": "plain",
               "strValue": "folded",
               "value": "folded",
-              "anchor": null,
-              "tag": null,
               "range": [
                 20,
                 26
@@ -95,11 +89,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "folded",
-              "chomping": "clip",
-              "indent": 1,
-              "value": "value\n",
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -119,14 +109,35 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "folded",
+                "chomping": "clip",
+                "indent": 1,
+                "value": "value\n",
+                "range": [
+                  38,
+                  48
+                ],
+                "loc": {
+                  "start": {
+                    "line": 5,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 0
+                  }
+                }
+              },
               "range": [
-                38,
+                31,
                 48
               ],
               "loc": {
                 "start": {
-                  "line": 5,
-                  "column": 2
+                  "line": 4,
+                  "column": 3
                 },
                 "end": {
                   "line": 7,
@@ -150,8 +161,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           48

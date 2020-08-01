@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "foo",
               "value": "foo",
-              "anchor": null,
-              "tag": null,
               "range": [
                 6,
                 9
@@ -56,8 +54,6 @@
               "style": "plain",
               "strValue": "bar",
               "value": "bar",
-              "anchor": null,
-              "tag": null,
               "range": [
                 17,
                 20
@@ -89,8 +85,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           23

@@ -19,8 +19,6 @@
                   "style": "plain",
                   "strValue": "Detroit Tigers",
                   "value": "Detroit Tigers",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     4,
                     18
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "Chicago cubs",
                   "value": "Chicago cubs",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     23,
                     35
@@ -59,8 +55,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 2,
                 35
@@ -85,8 +79,6 @@
                   "style": "plain",
                   "strValue": "2001-07-23",
                   "value": "2001-07-23",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     42,
                     52
@@ -103,8 +95,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 40,
                 52
@@ -146,8 +136,6 @@
                   "style": "plain",
                   "strValue": "New York Yankees",
                   "value": "New York Yankees",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     58,
                     74
@@ -168,8 +156,6 @@
                   "style": "plain",
                   "strValue": "Atlanta Braves",
                   "value": "Atlanta Braves",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     80,
                     94
@@ -186,8 +172,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 56,
                 96
@@ -212,8 +196,6 @@
                   "style": "plain",
                   "strValue": "2001-07-02",
                   "value": "2001-07-02",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     101,
                     111
@@ -234,8 +216,6 @@
                   "style": "plain",
                   "strValue": "2001-08-12",
                   "value": "2001-08-12",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     113,
                     123
@@ -256,8 +236,6 @@
                   "style": "plain",
                   "strValue": "2001-08-14",
                   "value": "2001-08-14",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     129,
                     139
@@ -274,8 +252,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 99,
                 141
@@ -307,8 +283,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           141

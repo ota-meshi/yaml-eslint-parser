@@ -17,8 +17,6 @@
                 "style": "plain",
                 "strValue": "name",
                 "value": "name",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   3,
                   7
@@ -39,8 +37,6 @@
                 "style": "plain",
                 "strValue": "hr",
                 "value": "hr",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   17,
                   19
@@ -61,8 +57,6 @@
                 "style": "plain",
                 "strValue": "avg",
                 "value": "avg",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   21,
                   24
@@ -79,8 +73,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               27
@@ -105,8 +97,6 @@
                 "style": "plain",
                 "strValue": "Mark McGwire",
                 "value": "Mark McGwire",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   31,
                   43
@@ -127,8 +117,6 @@
                 "style": "plain",
                 "strValue": "65",
                 "value": 65,
-                "anchor": null,
-                "tag": null,
                 "range": [
                   45,
                   47
@@ -149,8 +137,6 @@
                 "style": "plain",
                 "strValue": "0.278",
                 "value": 0.278,
-                "anchor": null,
-                "tag": null,
                 "range": [
                   49,
                   54
@@ -167,8 +153,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               30,
               55
@@ -193,8 +177,6 @@
                 "style": "plain",
                 "strValue": "Sammy Sosa",
                 "value": "Sammy Sosa",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   59,
                   69
@@ -215,8 +197,6 @@
                 "style": "plain",
                 "strValue": "63",
                 "value": 63,
-                "anchor": null,
-                "tag": null,
                 "range": [
                   73,
                   75
@@ -237,8 +217,6 @@
                 "style": "plain",
                 "strValue": "0.288",
                 "value": 0.288,
-                "anchor": null,
-                "tag": null,
                 "range": [
                   77,
                   82
@@ -255,8 +233,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               58,
               83
@@ -273,8 +249,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           83

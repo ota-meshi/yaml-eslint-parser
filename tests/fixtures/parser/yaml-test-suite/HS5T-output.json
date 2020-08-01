@@ -9,8 +9,6 @@
         "style": "plain",
         "strValue": "1st non-empty\n2nd non-empty 3rd non-empty",
         "value": "1st non-empty\n2nd non-empty 3rd non-empty",
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           45

@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "single",
               "value": "single",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 6
@@ -37,8 +35,7 @@
               "style": "single-quoted",
               "strValue": "text",
               "value": "text",
-              "anchor": null,
-              "tag": null,
+              "raw": "'text'",
               "range": [
                 8,
                 14
@@ -76,8 +73,6 @@
               "style": "plain",
               "strValue": "double",
               "value": "double",
-              "anchor": null,
-              "tag": null,
               "range": [
                 15,
                 21
@@ -98,8 +93,7 @@
               "style": "double-quoted",
               "strValue": "text",
               "value": "text",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"text\"",
               "range": [
                 23,
                 29
@@ -131,8 +125,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           29

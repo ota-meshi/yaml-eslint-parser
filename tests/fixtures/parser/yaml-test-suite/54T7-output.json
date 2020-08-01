@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "foo",
               "value": "foo",
-              "anchor": null,
-              "tag": null,
               "range": [
                 1,
                 4
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "you",
               "value": "you",
-              "anchor": null,
-              "tag": null,
               "range": [
                 6,
                 9
@@ -76,8 +72,6 @@
               "style": "plain",
               "strValue": "bar",
               "value": "bar",
-              "anchor": null,
-              "tag": null,
               "range": [
                 11,
                 14
@@ -98,8 +92,6 @@
               "style": "plain",
               "strValue": "far",
               "value": "far",
-              "anchor": null,
-              "tag": null,
               "range": [
                 16,
                 19
@@ -131,8 +123,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           20

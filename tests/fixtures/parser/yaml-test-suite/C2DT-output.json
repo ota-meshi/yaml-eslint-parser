@@ -15,8 +15,7 @@
               "style": "double-quoted",
               "strValue": "adjacent",
               "value": "adjacent",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"adjacent\"",
               "range": [
                 2,
                 12
@@ -37,8 +36,6 @@
               "style": "plain",
               "strValue": "value",
               "value": "value",
-              "anchor": null,
-              "tag": null,
               "range": [
                 13,
                 18
@@ -76,8 +73,7 @@
               "style": "double-quoted",
               "strValue": "readable",
               "value": "readable",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"readable\"",
               "range": [
                 20,
                 30
@@ -98,8 +94,6 @@
               "style": "plain",
               "strValue": "value",
               "value": "value",
-              "anchor": null,
-              "tag": null,
               "range": [
                 32,
                 37
@@ -137,8 +131,7 @@
               "style": "double-quoted",
               "strValue": "empty",
               "value": "empty",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"empty\"",
               "range": [
                 39,
                 46
@@ -171,8 +164,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           49

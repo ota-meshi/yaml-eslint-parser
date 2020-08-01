@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "matches %",
               "value": "matches %",
-              "anchor": null,
-              "tag": null,
               "range": [
                 6,
                 15
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "20",
               "value": 20,
-              "anchor": null,
-              "tag": null,
               "range": [
                 18,
                 20
@@ -70,8 +66,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           22

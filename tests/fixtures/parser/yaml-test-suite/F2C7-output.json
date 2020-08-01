@@ -9,10 +9,7 @@
         "style": "block",
         "entries": [
           {
-            "type": "YAMLScalar",
-            "style": "plain",
-            "strValue": "a",
-            "value": "a",
+            "type": "YAMLWithMark",
             "anchor": {
               "type": "YAMLAnchor",
               "name": "a",
@@ -49,14 +46,34 @@
                 }
               }
             },
+            "value": {
+              "type": "YAMLScalar",
+              "style": "plain",
+              "strValue": "a",
+              "value": "a",
+              "range": [
+                12,
+                13
+              ],
+              "loc": {
+                "start": {
+                  "line": 1,
+                  "column": 12
+                },
+                "end": {
+                  "line": 1,
+                  "column": 13
+                }
+              }
+            },
             "range": [
-              12,
+              3,
               13
             ],
             "loc": {
               "start": {
                 "line": 1,
-                "column": 12
+                "column": 3
               },
               "end": {
                 "line": 1,
@@ -65,10 +82,7 @@
             }
           },
           {
-            "type": "YAMLScalar",
-            "style": "plain",
-            "strValue": "2",
-            "value": 2,
+            "type": "YAMLWithMark",
             "anchor": null,
             "tag": {
               "type": "YAMLTag",
@@ -88,14 +102,34 @@
                 }
               }
             },
+            "value": {
+              "type": "YAMLScalar",
+              "style": "plain",
+              "strValue": "2",
+              "value": 2,
+              "range": [
+                23,
+                24
+              ],
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 9
+                },
+                "end": {
+                  "line": 2,
+                  "column": 10
+                }
+              }
+            },
             "range": [
-              23,
+              17,
               24
             ],
             "loc": {
               "start": {
                 "line": 2,
-                "column": 9
+                "column": 3
               },
               "end": {
                 "line": 2,
@@ -104,10 +138,7 @@
             }
           },
           {
-            "type": "YAMLScalar",
-            "style": "plain",
-            "strValue": "4",
-            "value": 4,
+            "type": "YAMLWithMark",
             "anchor": {
               "type": "YAMLAnchor",
               "name": "c",
@@ -144,14 +175,34 @@
                 }
               }
             },
+            "value": {
+              "type": "YAMLScalar",
+              "style": "plain",
+              "strValue": "4",
+              "value": 4,
+              "range": [
+                37,
+                38
+              ],
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 12
+                },
+                "end": {
+                  "line": 3,
+                  "column": 13
+                }
+              }
+            },
             "range": [
-              37,
+              28,
               38
             ],
             "loc": {
               "start": {
                 "line": 3,
-                "column": 12
+                "column": 3
               },
               "end": {
                 "line": 3,
@@ -160,10 +211,7 @@
             }
           },
           {
-            "type": "YAMLScalar",
-            "style": "plain",
-            "strValue": "d",
-            "value": "d",
+            "type": "YAMLWithMark",
             "anchor": {
               "type": "YAMLAnchor",
               "name": "d",
@@ -183,14 +231,34 @@
               }
             },
             "tag": null,
+            "value": {
+              "type": "YAMLScalar",
+              "style": "plain",
+              "strValue": "d",
+              "value": "d",
+              "range": [
+                45,
+                46
+              ],
+              "loc": {
+                "start": {
+                  "line": 4,
+                  "column": 6
+                },
+                "end": {
+                  "line": 4,
+                  "column": 7
+                }
+              }
+            },
             "range": [
-              45,
+              42,
               46
             ],
             "loc": {
               "start": {
                 "line": 4,
-                "column": 6
+                "column": 3
               },
               "end": {
                 "line": 4,
@@ -199,8 +267,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           1,
           46

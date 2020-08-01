@@ -24,10 +24,7 @@
         }
       ],
       "content": {
-        "type": "YAMLScalar",
-        "style": "plain",
-        "strValue": "fluorescent",
-        "value": "fluorescent",
+        "type": "YAMLWithMark",
         "anchor": null,
         "tag": {
           "type": "YAMLTag",
@@ -47,14 +44,34 @@
             }
           }
         },
+        "value": {
+          "type": "YAMLScalar",
+          "style": "plain",
+          "strValue": "fluorescent",
+          "value": "fluorescent",
+          "range": [
+            39,
+            50
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 9
+            },
+            "end": {
+              "line": 3,
+              "column": 20
+            }
+          }
+        },
         "range": [
-          39,
+          30,
           50
         ],
         "loc": {
           "start": {
             "line": 3,
-            "column": 9
+            "column": 0
           },
           "end": {
             "line": 3,
@@ -100,10 +117,7 @@
         }
       ],
       "content": {
-        "type": "YAMLScalar",
-        "style": "plain",
-        "strValue": "green",
-        "value": "green",
+        "type": "YAMLWithMark",
         "anchor": null,
         "tag": {
           "type": "YAMLTag",
@@ -123,14 +137,34 @@
             }
           }
         },
+        "value": {
+          "type": "YAMLScalar",
+          "style": "plain",
+          "strValue": "green",
+          "value": "green",
+          "range": [
+            95,
+            100
+          ],
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 9
+            },
+            "end": {
+              "line": 7,
+              "column": 14
+            }
+          }
+        },
         "range": [
-          95,
+          86,
           100
         ],
         "loc": {
           "start": {
             "line": 7,
-            "column": 9
+            "column": 0
           },
           "end": {
             "line": 7,

@@ -17,8 +17,6 @@
                 "style": "plain",
                 "strValue": "a",
                 "value": "a",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   3,
                   4
@@ -39,8 +37,6 @@
                 "style": "plain",
                 "strValue": "b",
                 "value": "b",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   6,
                   7
@@ -61,8 +57,6 @@
                 "style": "plain",
                 "strValue": "c",
                 "value": "c",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   10,
                   11
@@ -79,8 +73,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               13
@@ -107,8 +99,7 @@
                   "style": "double-quoted",
                   "strValue": "a",
                   "value": "a",
-                  "anchor": null,
-                  "tag": null,
+                  "raw": "\"a\"",
                   "range": [
                     18,
                     21
@@ -129,8 +120,6 @@
                   "style": "plain",
                   "strValue": "b",
                   "value": "b",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     25,
                     26
@@ -168,8 +157,6 @@
                   "style": "plain",
                   "strValue": "c",
                   "value": "c",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     32,
                     33
@@ -190,8 +177,7 @@
                   "style": "single-quoted",
                   "strValue": "d",
                   "value": "d",
-                  "anchor": null,
-                  "tag": null,
+                  "raw": "'d'",
                   "range": [
                     36,
                     39
@@ -229,8 +215,6 @@
                   "style": "plain",
                   "strValue": "e",
                   "value": "e",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     45,
                     46
@@ -251,8 +235,7 @@
                   "style": "double-quoted",
                   "strValue": "f",
                   "value": "f",
-                  "anchor": null,
-                  "tag": null,
+                  "raw": "\"f\"",
                   "range": [
                     51,
                     54
@@ -284,8 +267,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               16,
               58
@@ -305,8 +286,6 @@
             "type": "YAMLSequence",
             "style": "flow",
             "entries": [],
-            "anchor": null,
-            "tag": null,
             "range": [
               61,
               69
@@ -323,8 +302,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           69

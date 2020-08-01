@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "Folding",
               "value": "Folding",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 7
@@ -37,8 +35,7 @@
               "style": "double-quoted",
               "strValue": "Empty line\nas a line feed",
               "value": "Empty line\nas a line feed",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"Empty line\n\n  as a line feed\"",
               "range": [
                 11,
                 41
@@ -76,8 +73,6 @@
               "style": "plain",
               "strValue": "Chomping",
               "value": "Chomping",
-              "anchor": null,
-              "tag": null,
               "range": [
                 42,
                 50
@@ -99,8 +94,6 @@
               "chomping": "clip",
               "indent": null,
               "value": "Clipped empty lines\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 52,
                 76
@@ -132,8 +125,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           76

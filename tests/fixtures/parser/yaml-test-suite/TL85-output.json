@@ -9,8 +9,7 @@
         "style": "double-quoted",
         "strValue": " foo\nbar\nbaz ",
         "value": " foo\nbar\nbaz ",
-        "anchor": null,
-        "tag": null,
+        "raw": "\"\n  foo \n \n  \t bar\n\n  baz\n\"",
         "range": [
           0,
           27

@@ -21,8 +21,6 @@
                     "style": "plain",
                     "strValue": "first",
                     "value": "first",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       2,
                       7
@@ -43,8 +41,6 @@
                     "style": "plain",
                     "strValue": "Sammy",
                     "value": "Sammy",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       9,
                       14
@@ -82,8 +78,6 @@
                     "style": "plain",
                     "strValue": "last",
                     "value": "last",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       16,
                       20
@@ -104,8 +98,6 @@
                     "style": "plain",
                     "strValue": "Sosa",
                     "value": "Sosa",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       22,
                       26
@@ -137,8 +129,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 28
@@ -165,8 +155,6 @@
                     "style": "plain",
                     "strValue": "hr",
                     "value": "hr",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       46,
                       48
@@ -187,8 +175,6 @@
                     "style": "plain",
                     "strValue": "65",
                     "value": 65,
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       68,
                       70
@@ -226,8 +212,6 @@
                     "style": "plain",
                     "strValue": "avg",
                     "value": "avg",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       73,
                       76
@@ -248,8 +232,6 @@
                     "style": "plain",
                     "strValue": "0.278",
                     "value": 0.278,
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       91,
                       96
@@ -281,8 +263,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 46,
                 96
@@ -314,8 +294,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           96

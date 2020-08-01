@@ -11,10 +11,7 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "foo",
-              "value": "foo",
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -34,14 +31,34 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "foo",
+                "value": "foo",
+                "range": [
+                  25,
+                  28
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 25
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 28
+                  }
+                }
+              },
               "range": [
-                25,
+                0,
                 28
               ],
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 25
+                  "column": 0
                 },
                 "end": {
                   "line": 1,
@@ -50,10 +67,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "baz",
-              "value": "baz",
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -73,14 +87,34 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "baz",
+                "value": "baz",
+                "range": [
+                  41,
+                  44
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 10
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 13
+                  }
+                }
+              },
               "range": [
-                41,
+                33,
                 44
               ],
               "loc": {
                 "start": {
                   "line": 2,
-                  "column": 10
+                  "column": 2
                 },
                 "end": {
                   "line": 2,
@@ -104,8 +138,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           44

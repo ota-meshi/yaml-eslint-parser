@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "sequence",
               "value": "sequence",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 8
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "one",
                   "value": "one",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     12,
                     15
@@ -63,8 +59,6 @@
                   "style": "plain",
                   "strValue": "two",
                   "value": "two",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     17,
                     20
@@ -81,8 +75,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 10,
                 23
@@ -120,8 +112,6 @@
               "style": "plain",
               "strValue": "mapping",
               "value": "mapping",
-              "anchor": null,
-              "tag": null,
               "range": [
                 24,
                 31
@@ -148,8 +138,6 @@
                     "style": "plain",
                     "strValue": "sky",
                     "value": "sky",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       35,
                       38
@@ -170,8 +158,6 @@
                     "style": "plain",
                     "strValue": "blue",
                     "value": "blue",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       40,
                       44
@@ -209,8 +195,6 @@
                     "style": "plain",
                     "strValue": "sea",
                     "value": "sea",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       46,
                       49
@@ -231,8 +215,6 @@
                     "style": "plain",
                     "strValue": "green",
                     "value": "green",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       51,
                       56
@@ -264,8 +246,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 33,
                 58
@@ -297,8 +277,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           58

@@ -9,8 +9,6 @@
         "style": "plain",
         "strValue": "k:#foo &a !t s",
         "value": "k:#foo &a !t s",
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           19

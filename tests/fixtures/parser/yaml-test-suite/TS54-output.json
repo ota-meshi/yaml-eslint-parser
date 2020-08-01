@@ -10,8 +10,6 @@
         "chomping": "clip",
         "indent": null,
         "value": "ab cd\nef\n\ngh\n",
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           22

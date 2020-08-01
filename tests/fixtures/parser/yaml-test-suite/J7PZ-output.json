@@ -5,259 +5,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLSequence",
-        "style": "block",
-        "entries": [
-          {
-            "type": "YAMLMapping",
-            "style": "block",
-            "pairs": [
-              {
-                "type": "YAMLPair",
-                "key": {
-                  "type": "YAMLScalar",
-                  "style": "plain",
-                  "strValue": "Mark McGwire",
-                  "value": "Mark McGwire",
-                  "anchor": null,
-                  "tag": null,
-                  "range": [
-                    108,
-                    120
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 5,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 5,
-                      "column": 14
-                    }
-                  }
-                },
-                "value": {
-                  "type": "YAMLScalar",
-                  "style": "plain",
-                  "strValue": "65",
-                  "value": 65,
-                  "anchor": null,
-                  "tag": null,
-                  "range": [
-                    122,
-                    124
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 5,
-                      "column": 16
-                    },
-                    "end": {
-                      "line": 5,
-                      "column": 18
-                    }
-                  }
-                },
-                "range": [
-                  108,
-                  124
-                ],
-                "loc": {
-                  "start": {
-                    "line": 5,
-                    "column": 2
-                  },
-                  "end": {
-                    "line": 5,
-                    "column": 18
-                  }
-                }
-              }
-            ],
-            "anchor": null,
-            "tag": null,
-            "range": [
-              108,
-              124
-            ],
-            "loc": {
-              "start": {
-                "line": 5,
-                "column": 2
-              },
-              "end": {
-                "line": 5,
-                "column": 18
-              }
-            }
-          },
-          {
-            "type": "YAMLMapping",
-            "style": "block",
-            "pairs": [
-              {
-                "type": "YAMLPair",
-                "key": {
-                  "type": "YAMLScalar",
-                  "style": "plain",
-                  "strValue": "Sammy Sosa",
-                  "value": "Sammy Sosa",
-                  "anchor": null,
-                  "tag": null,
-                  "range": [
-                    127,
-                    137
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 6,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 12
-                    }
-                  }
-                },
-                "value": {
-                  "type": "YAMLScalar",
-                  "style": "plain",
-                  "strValue": "63",
-                  "value": 63,
-                  "anchor": null,
-                  "tag": null,
-                  "range": [
-                    139,
-                    141
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 6,
-                      "column": 14
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 16
-                    }
-                  }
-                },
-                "range": [
-                  127,
-                  141
-                ],
-                "loc": {
-                  "start": {
-                    "line": 6,
-                    "column": 2
-                  },
-                  "end": {
-                    "line": 6,
-                    "column": 16
-                  }
-                }
-              }
-            ],
-            "anchor": null,
-            "tag": null,
-            "range": [
-              127,
-              141
-            ],
-            "loc": {
-              "start": {
-                "line": 6,
-                "column": 2
-              },
-              "end": {
-                "line": 6,
-                "column": 16
-              }
-            }
-          },
-          {
-            "type": "YAMLMapping",
-            "style": "block",
-            "pairs": [
-              {
-                "type": "YAMLPair",
-                "key": {
-                  "type": "YAMLScalar",
-                  "style": "plain",
-                  "strValue": "Ken Griffy",
-                  "value": "Ken Griffy",
-                  "anchor": null,
-                  "tag": null,
-                  "range": [
-                    144,
-                    154
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 7,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 7,
-                      "column": 12
-                    }
-                  }
-                },
-                "value": {
-                  "type": "YAMLScalar",
-                  "style": "plain",
-                  "strValue": "58",
-                  "value": 58,
-                  "anchor": null,
-                  "tag": null,
-                  "range": [
-                    156,
-                    158
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 7,
-                      "column": 14
-                    },
-                    "end": {
-                      "line": 7,
-                      "column": 16
-                    }
-                  }
-                },
-                "range": [
-                  144,
-                  158
-                ],
-                "loc": {
-                  "start": {
-                    "line": 7,
-                    "column": 2
-                  },
-                  "end": {
-                    "line": 7,
-                    "column": 16
-                  }
-                }
-              }
-            ],
-            "anchor": null,
-            "tag": null,
-            "range": [
-              144,
-              158
-            ],
-            "loc": {
-              "start": {
-                "line": 7,
-                "column": 2
-              },
-              "end": {
-                "line": 7,
-                "column": 16
-              }
-            }
-          }
-        ],
+        "type": "YAMLWithMark",
         "anchor": null,
         "tag": {
           "type": "YAMLTag",
@@ -277,14 +25,265 @@
             }
           }
         },
+        "value": {
+          "type": "YAMLSequence",
+          "style": "block",
+          "entries": [
+            {
+              "type": "YAMLMapping",
+              "style": "block",
+              "pairs": [
+                {
+                  "type": "YAMLPair",
+                  "key": {
+                    "type": "YAMLScalar",
+                    "style": "plain",
+                    "strValue": "Mark McGwire",
+                    "value": "Mark McGwire",
+                    "range": [
+                      108,
+                      120
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 14
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "YAMLScalar",
+                    "style": "plain",
+                    "strValue": "65",
+                    "value": 65,
+                    "range": [
+                      122,
+                      124
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 18
+                      }
+                    }
+                  },
+                  "range": [
+                    108,
+                    124
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 5,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 18
+                    }
+                  }
+                }
+              ],
+              "range": [
+                108,
+                124
+              ],
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 2
+                },
+                "end": {
+                  "line": 5,
+                  "column": 18
+                }
+              }
+            },
+            {
+              "type": "YAMLMapping",
+              "style": "block",
+              "pairs": [
+                {
+                  "type": "YAMLPair",
+                  "key": {
+                    "type": "YAMLScalar",
+                    "style": "plain",
+                    "strValue": "Sammy Sosa",
+                    "value": "Sammy Sosa",
+                    "range": [
+                      127,
+                      137
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 6,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 6,
+                        "column": 12
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "YAMLScalar",
+                    "style": "plain",
+                    "strValue": "63",
+                    "value": 63,
+                    "range": [
+                      139,
+                      141
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 6,
+                        "column": 14
+                      },
+                      "end": {
+                        "line": 6,
+                        "column": 16
+                      }
+                    }
+                  },
+                  "range": [
+                    127,
+                    141
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 6,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 16
+                    }
+                  }
+                }
+              ],
+              "range": [
+                127,
+                141
+              ],
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 2
+                },
+                "end": {
+                  "line": 6,
+                  "column": 16
+                }
+              }
+            },
+            {
+              "type": "YAMLMapping",
+              "style": "block",
+              "pairs": [
+                {
+                  "type": "YAMLPair",
+                  "key": {
+                    "type": "YAMLScalar",
+                    "style": "plain",
+                    "strValue": "Ken Griffy",
+                    "value": "Ken Griffy",
+                    "range": [
+                      144,
+                      154
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 12
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "YAMLScalar",
+                    "style": "plain",
+                    "strValue": "58",
+                    "value": 58,
+                    "range": [
+                      156,
+                      158
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 14
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 16
+                      }
+                    }
+                  },
+                  "range": [
+                    144,
+                    158
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 7,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 16
+                    }
+                  }
+                }
+              ],
+              "range": [
+                144,
+                158
+              ],
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 2
+                },
+                "end": {
+                  "line": 7,
+                  "column": 16
+                }
+              }
+            }
+          ],
+          "range": [
+            106,
+            158
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 7,
+              "column": 16
+            }
+          }
+        },
         "range": [
-          106,
+          99,
           158
         ],
         "loc": {
           "start": {
-            "line": 5,
-            "column": 0
+            "line": 4,
+            "column": 4
           },
           "end": {
             "line": 7,

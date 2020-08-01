@@ -9,8 +9,6 @@
         "style": "plain",
         "strValue": "---word1 word2",
         "value": "---word1 word2",
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           18

@@ -28,10 +28,7 @@
         "style": "block",
         "entries": [
           {
-            "type": "YAMLScalar",
-            "style": "double-quoted",
-            "strValue": "bar",
-            "value": "bar",
+            "type": "YAMLWithMark",
             "anchor": null,
             "tag": {
               "type": "YAMLTag",
@@ -51,14 +48,35 @@
                 }
               }
             },
+            "value": {
+              "type": "YAMLScalar",
+              "style": "double-quoted",
+              "strValue": "bar",
+              "value": "bar",
+              "raw": "\"bar\"",
+              "range": [
+                48,
+                53
+              ],
+              "loc": {
+                "start": {
+                  "line": 3,
+                  "column": 9
+                },
+                "end": {
+                  "line": 3,
+                  "column": 14
+                }
+              }
+            },
             "range": [
-              48,
+              41,
               53
             ],
             "loc": {
               "start": {
                 "line": 3,
-                "column": 9
+                "column": 2
               },
               "end": {
                 "line": 3,
@@ -67,8 +85,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           39,
           53

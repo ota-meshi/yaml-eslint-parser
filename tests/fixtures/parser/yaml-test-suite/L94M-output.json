@@ -11,10 +11,7 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "a",
-              "value": "a",
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -34,14 +31,34 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "a",
+                "value": "a",
+                "range": [
+                  8,
+                  9
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 9
+                  }
+                }
+              },
               "range": [
-                8,
+                2,
                 9
               ],
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 8
+                  "column": 2
                 },
                 "end": {
                   "line": 1,
@@ -50,10 +67,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "47",
-              "value": 47,
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -73,14 +87,34 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "47",
+                "value": 47,
+                "range": [
+                  18,
+                  20
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 10
+                  }
+                }
+              },
               "range": [
-                18,
+                12,
                 20
               ],
               "loc": {
                 "start": {
                   "line": 2,
-                  "column": 8
+                  "column": 2
                 },
                 "end": {
                   "line": 2,
@@ -110,8 +144,6 @@
               "style": "plain",
               "strValue": "c",
               "value": "c",
-              "anchor": null,
-              "tag": null,
               "range": [
                 23,
                 24
@@ -128,10 +160,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "d",
-              "value": "d",
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -151,14 +180,34 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "d",
+                "value": "d",
+                "range": [
+                  33,
+                  34
+                ],
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 9
+                  }
+                }
+              },
               "range": [
-                33,
+                27,
                 34
               ],
               "loc": {
                 "start": {
                   "line": 4,
-                  "column": 8
+                  "column": 2
                 },
                 "end": {
                   "line": 4,
@@ -182,8 +231,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           34

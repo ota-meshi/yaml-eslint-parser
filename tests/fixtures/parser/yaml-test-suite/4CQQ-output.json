@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "plain",
               "value": "plain",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 5
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "This unquoted scalar spans many lines.",
               "value": "This unquoted scalar spans many lines.",
-              "anchor": null,
-              "tag": null,
               "range": [
                 9,
                 49
@@ -76,8 +72,6 @@
               "style": "plain",
               "strValue": "quoted",
               "value": "quoted",
-              "anchor": null,
-              "tag": null,
               "range": [
                 51,
                 57
@@ -98,8 +92,7 @@
               "style": "double-quoted",
               "strValue": "So does this quoted scalar.\n",
               "value": "So does this quoted scalar.\n",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"So does this\n  quoted scalar.\\n\"",
               "range": [
                 59,
                 92
@@ -131,8 +124,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           92

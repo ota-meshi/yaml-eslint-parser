@@ -1,6 +1,5 @@
 import yaml from "yaml"
 import type {
-    Node as YamlUnistBaseNode,
     Root,
     Document,
     DocumentHead,
@@ -25,6 +24,7 @@ import type {
     Alias,
     Anchor,
     Tag,
+    YamlUnistNode,
 } from "yaml-unist-parser"
 import type {
     Range,
@@ -48,7 +48,10 @@ import type {
     YAMLAlias,
     YAMLAnchor,
     YAMLTag,
+    YAMLWithMark,
+    YAMLSequence,
 } from "./ast"
+import { isFalse, isTrue, isNull } from "./utils"
 
 /**
  * Convert yaml-unist-parser root to YAMLProgram
@@ -122,7 +125,21 @@ export function convertRoot(node: Root, code: string): YAMLProgram {
 
         column++
     }
-    tokens.sort((a, b) => a.range[0] - b.range[0])
+    tokens.sort((a, b) => {
+        if (a.range[0] > b.range[0]) {
+            return 1
+        }
+        if (a.range[0] < b.range[0]) {
+            return -1
+        }
+        if (a.range[1] > b.range[1]) {
+            return 1
+        }
+        if (a.range[1] < b.range[1]) {
+            return -1
+        }
+        return 0
+    })
     return ast
 
     /**
@@ -252,7 +269,7 @@ function convertDocumentBody(
     tokens: Token[],
     code: string,
     parent: YAMLDocument,
-): YAMLContent | null {
+): YAMLContent | YAMLWithMark | null {
     const contentNode = node.children[0]
     return contentNode
         ? convertContentNode(contentNode, tokens, code, parent, parent)
@@ -268,7 +285,7 @@ function convertContentNode(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLContent {
+): YAMLContent | YAMLWithMark {
     if (node.type === "mapping") {
         return convertMapping(node, tokens, code, parent, doc)
     }
@@ -309,26 +326,21 @@ function convertMapping(
     node: Mapping,
     tokens: Token[],
     code: string,
-    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
+    parent: YAMLDocument | YAMLPair | YAMLSequence,
     doc: YAMLDocument,
-): YAMLBlockMapping {
+): YAMLBlockMapping | YAMLWithMark {
     const loc = getConvertLocation(node)
     const ast: YAMLBlockMapping = {
         type: "YAMLMapping",
         style: "block",
         pairs: [],
-        anchor: null,
-        tag: null,
         parent,
         ...loc,
     }
     for (const n of node.children) {
         ast.pairs.push(convertMappingItem(n, tokens, code, ast, doc))
     }
-    const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)
-    ast.anchor = anchor
-    ast.tag = tag
-    return ast
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -340,24 +352,19 @@ function convertFlowMapping(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLFlowMapping {
+): YAMLFlowMapping | YAMLWithMark {
     const loc = getConvertLocation(node)
     const ast: YAMLFlowMapping = {
         type: "YAMLMapping",
         style: "flow",
         pairs: [],
-        anchor: null,
-        tag: null,
         parent,
         ...loc,
     }
     for (const n of node.children) {
         ast.pairs.push(convertMappingItem(n, tokens, code, ast, doc))
     }
-    const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)
-    ast.anchor = anchor
-    ast.tag = tag
-    return ast
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -392,7 +399,7 @@ function convertMappingKey(
     code: string,
     parent: YAMLPair,
     doc: YAMLDocument,
-): YAMLContent | null {
+): YAMLContent | YAMLWithMark | null {
     if (node.children.length) {
         return convertContentNode(node.children[0], tokens, code, parent, doc)
     }
@@ -408,7 +415,7 @@ function convertMappingValue(
     code: string,
     parent: YAMLPair,
     doc: YAMLDocument,
-): YAMLContent | null {
+): YAMLContent | YAMLWithMark | null {
     if (node.children.length) {
         return convertContentNode(node.children[0], tokens, code, parent, doc)
     }
@@ -424,24 +431,19 @@ function convertSequence(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLBlockSequence {
+): YAMLBlockSequence | YAMLWithMark {
     const loc = getConvertLocation(node)
     const ast: YAMLBlockSequence = {
         type: "YAMLSequence",
         style: "block",
         entries: [],
-        anchor: null,
-        tag: null,
         parent,
         ...loc,
     }
     for (const n of node.children) {
         ast.entries.push(...convertSequenceItem(n, tokens, code, ast, doc))
     }
-    const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)
-    ast.anchor = anchor
-    ast.tag = tag
-    return ast
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -453,14 +455,12 @@ function convertFlowSequence(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLFlowSequence {
+): YAMLFlowSequence | YAMLWithMark {
     const loc = getConvertLocation(node)
     const ast: YAMLFlowSequence = {
         type: "YAMLSequence",
         style: "flow",
         entries: [],
-        anchor: null,
-        tag: null,
         parent,
         ...loc,
     }
@@ -473,8 +473,6 @@ function convertFlowSequence(
                 type: "YAMLMapping",
                 style: "block",
                 pairs: [],
-                anchor: null,
-                tag: null,
                 parent,
                 ...getConvertLocation(n),
             }
@@ -483,10 +481,7 @@ function convertFlowSequence(
             ast.entries.push(map)
         }
     }
-    const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)
-    ast.anchor = anchor
-    ast.tag = tag
-    return ast
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -498,7 +493,7 @@ function* convertSequenceItem(
     code: string,
     parent: YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): IterableIterator<YAMLContent> {
+): IterableIterator<YAMLContent | YAMLWithMark> {
     if (node.children.length) {
         yield convertContentNode(node.children[0], tokens, code, parent, doc)
     }
@@ -513,56 +508,54 @@ function convertPlain(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLPlainScalar {
+): YAMLPlainScalar | YAMLWithMark {
     const loc = getConvertLocation(node)
-    const strValue = node.value
-    let value: string | number | boolean | null | undefined
-    let tokenValue: string | number | boolean | null
+    if (loc.range[0] < loc.range[1]) {
+        const strValue = node.value
+        let value: string | number | boolean | null
 
-    if (isTrue(strValue)) {
-        tokenValue = true
-    } else if (isFalse(strValue)) {
-        tokenValue = false
-    } else if (isNull(strValue)) {
-        tokenValue = null
-    } else if (needParse(strValue)) {
-        tokenValue = yaml.parse(strValue) || strValue
-    } else {
-        tokenValue = strValue
+        if (isTrue(strValue)) {
+            value = true
+        } else if (isFalse(strValue)) {
+            value = false
+        } else if (isNull(strValue)) {
+            value = null
+        } else if (needParse(strValue)) {
+            value = yaml.parse(strValue) || strValue
+        } else {
+            value = strValue
+        }
+        const ast: YAMLPlainScalar = {
+            type: "YAMLScalar",
+            style: "plain",
+            strValue,
+            value,
+            parent,
+            ...loc,
+        }
+
+        const type = typeof value
+        if (type === "boolean") {
+            addToken(tokens, "Boolean", clone(loc), code)
+        } else if (type === "number" && isFinite(Number(value))) {
+            addToken(tokens, "Numeric", clone(loc), code)
+        } else if (value === null) {
+            addToken(tokens, "Null", clone(loc), code)
+        } else {
+            addToken(tokens, "Identifier", clone(loc), code)
+        }
+        return convertAnchorAndTag(node, tokens, code, parent, ast, doc, loc)
     }
-    const ast: YAMLPlainScalar = {
-        type: "YAMLScalar",
-        style: "plain",
-        strValue,
-        get value() {
-            if (value !== undefined) {
-                return value
-            }
-            if (node.tag) {
-                return (value = getTaggedValue(node.tag, strValue, strValue))
-            }
-            return (value = tokenValue)
-        },
-        anchor: null,
-        tag: null,
+
+    return convertAnchorAndTag<YAMLPlainScalar>(
+        node,
+        tokens,
+        code,
         parent,
-        ...loc,
-    }
-    const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)
-    ast.anchor = anchor
-    ast.tag = tag
-
-    const type = typeof tokenValue
-    if (type === "boolean") {
-        addToken(tokens, "Boolean", clone(loc), code)
-    } else if (type === "number" && isFinite(Number(tokenValue))) {
-        addToken(tokens, "Numeric", clone(loc), code)
-    } else if (tokenValue === null) {
-        addToken(tokens, "Null", clone(loc), code)
-    } else {
-        addToken(tokens, "Identifier", clone(loc), code)
-    }
-    return ast
+        null,
+        doc,
+        loc,
+    )
 
     /**
      * Checks if the given string needs to be parsed
@@ -598,34 +591,20 @@ function convertQuoteDouble(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLDoubleQuotedScalar {
+): YAMLDoubleQuotedScalar | YAMLWithMark {
     const loc = getConvertLocation(node)
     const strValue = node.value
-    let value: string | number | boolean | null | undefined
     const ast: YAMLDoubleQuotedScalar = {
         type: "YAMLScalar",
         style: "double-quoted",
         strValue,
-        get value() {
-            if (value !== undefined) {
-                return value
-            }
-            if (node.tag) {
-                const text = code.slice(...loc.range)
-                return (value = getTaggedValue(node.tag, text, node.value))
-            }
-            return (value = strValue)
-        },
-        anchor: null,
-        tag: null,
+        value: strValue,
+        raw: code.slice(...loc.range),
         parent,
         ...loc,
     }
-    const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)
-    ast.anchor = anchor
-    ast.tag = tag
     addToken(tokens, "String", clone(loc), code)
-    return ast
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -637,34 +616,20 @@ function convertQuoteSingle(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLSingleQuotedScalar {
+): YAMLSingleQuotedScalar | YAMLWithMark {
     const loc = getConvertLocation(node)
     const strValue = node.value
-    let value: string | number | boolean | null | undefined
     const ast: YAMLSingleQuotedScalar = {
         type: "YAMLScalar",
         style: "single-quoted",
         strValue,
-        get value() {
-            if (value !== undefined) {
-                return value
-            }
-            if (node.tag) {
-                const text = code.slice(...loc.range)
-                return (value = getTaggedValue(node.tag, text, node.value))
-            }
-            return (value = strValue)
-        },
-        anchor: null,
-        tag: null,
+        value: strValue,
+        raw: code.slice(...loc.range),
         parent,
         ...loc,
     }
-    const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)
-    ast.anchor = anchor
-    ast.tag = tag
     addToken(tokens, "String", clone(loc), code)
-    return ast
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -676,7 +641,7 @@ function convertBlockLiteral(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLBlockLiteralScalar {
+): YAMLBlockLiteralScalar | YAMLWithMark {
     const loc = getConvertLocation(node)
     const value = node.value
     const ast: YAMLBlockLiteralScalar = {
@@ -685,14 +650,9 @@ function convertBlockLiteral(
         chomping: node.chomping,
         indent: node.indent,
         value,
-        anchor: null,
-        tag: null,
         parent,
         ...loc,
     }
-    const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)
-    ast.anchor = anchor
-    ast.tag = tag
     const text = code.slice(...loc.range)
     if (text.startsWith("|")) {
         let line = loc.loc.start.line
@@ -750,7 +710,7 @@ function convertBlockLiteral(
         // ??
         addToken(tokens, "BlockLiteral", clone(loc), code)
     }
-    return ast
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -762,7 +722,7 @@ function convertBlockFolded(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLBlockFoldedScalar {
+): YAMLBlockFoldedScalar | YAMLWithMark {
     const loc = getConvertLocation(node)
     const value = node.value
     const ast: YAMLBlockFoldedScalar = {
@@ -771,14 +731,9 @@ function convertBlockFolded(
         chomping: node.chomping,
         indent: node.indent,
         value,
-        anchor: null,
-        tag: null,
         parent,
         ...loc,
     }
-    const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)
-    ast.anchor = anchor
-    ast.tag = tag
     const text = code.slice(...loc.range)
     if (text.startsWith(">")) {
         let line = loc.loc.start.line
@@ -836,7 +791,7 @@ function convertBlockFolded(
         // ??
         addToken(tokens, "BlockFolded", clone(loc), code)
     }
-    return ast
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -848,20 +803,15 @@ function convertAlias(
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLAlias {
+): YAMLAlias | YAMLWithMark {
     const loc = getConvertLocation(node)
     const value = node.value
     const ast: YAMLAlias = {
         type: "YAMLAlias",
         name: value,
-        anchor: null,
-        tag: null,
         parent,
         ...loc,
     }
-    const { anchor, tag } = convertAnchorAndTag(node, tokens, code, ast, doc)
-    ast.anchor = anchor
-    ast.tag = tag
     const text = code.slice(...loc.range)
     if (text.startsWith("*")) {
         const punctuatorLoc: Locations = {
@@ -887,28 +837,53 @@ function convertAlias(
         // ??
         addToken(tokens, "Identifier", clone(loc), code)
     }
-    return ast
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
  * Convert yaml-unist-parser Anchor and Tag
  */
-function convertAnchorAndTag(
+function convertAnchorAndTag<V extends YAMLContent>(
     node: ContentNode,
     tokens: Token[],
     code: string,
-    parent: YAMLContent,
+    parent: YAMLDocument | YAMLPair | YAMLSequence,
+    value: V | null,
     doc: YAMLDocument,
-): {
-    anchor: null | YAMLAnchor
-    tag: null | YAMLTag
-} {
-    return {
-        anchor: node.anchor
-            ? convertAnchor(node.anchor, tokens, code, parent, doc)
-            : null,
-        tag: node.tag ? convertTag(node.tag, tokens, code, parent) : null,
+    valueLoc: Locations,
+): YAMLWithMark | V {
+    if (node.anchor || node.tag) {
+        const ast: YAMLWithMark = {
+            type: "YAMLWithMark",
+            anchor: null,
+            tag: null,
+            value,
+            parent,
+            range: clone(valueLoc.range),
+            loc: clone(valueLoc.loc),
+        }
+        if (value) {
+            value.parent = ast
+        }
+
+        if (node.anchor) {
+            const anchor = convertAnchor(node.anchor, tokens, code, ast, doc)
+            ast.anchor = anchor
+            ast.range[0] = anchor.range[0]
+            ast.loc.start = clone(anchor.loc.start)
+        }
+        if (node.tag) {
+            const tag = convertTag(node.tag, tokens, code, ast)
+            ast.tag = tag
+            if (tag.range[0] < ast.range[0]) {
+                ast.range[0] = tag.range[0]
+                ast.loc.start = clone(tag.loc.start)
+            }
+        }
+        return ast
     }
+
+    return value as any
 }
 
 /**
@@ -918,7 +893,7 @@ function convertAnchor(
     node: Anchor,
     tokens: Token[],
     code: string,
-    parent: YAMLContent,
+    parent: YAMLWithMark,
     doc: YAMLDocument,
 ): YAMLAnchor {
     const loc = getConvertLocation(node)
@@ -967,7 +942,7 @@ function convertTag(
     node: Tag,
     tokens: Token[],
     code: string,
-    parent: YAMLContent,
+    parent: YAMLWithMark,
 ): YAMLTag {
     const loc = getConvertLocation(node)
     const value = node.value
@@ -1007,36 +982,10 @@ function convertTag(
 }
 
 /**
- * Get tagged value
- */
-function getTaggedValue(tag: Tag, text: string, str: string) {
-    if (tag.value === "tag:yaml.org,2002:str") {
-        return str
-    } else if (tag.value === "tag:yaml.org,2002:int") {
-        if (/^(?:[1-9]\d*|0)$/u.test(str)) {
-            return parseInt(str, 10)
-        }
-    } else if (tag.value === "tag:yaml.org,2002:bool") {
-        if (isTrue(str)) {
-            return true
-        }
-        if (isFalse(str)) {
-            return false
-        }
-    } else if (tag.value === "tag:yaml.org,2002:null") {
-        if (isNull(str) || str === "") {
-            return null
-        }
-    }
-    const tagText = tag.value.startsWith("!") ? tag.value : `!<${tag.value}>`
-    return yaml.parseDocument(`${tagText} ${text}`).toJSON()
-}
-
-/**
  * Get the location information of the given node.
  * @param node The node.
  */
-function getConvertLocation(node: YamlUnistBaseNode): Locations {
+function getConvertLocation(node: YamlUnistNode): Locations {
     const { start, end } = node.position
 
     return {
@@ -1086,25 +1035,4 @@ function addToken(
         value: code.slice(...loc.range),
         ...loc,
     })
-}
-
-/**
- * Checks if the given string is true
- */
-function isTrue(str: string) {
-    return str === "true" || str === "True" || str === "TRUE"
-}
-
-/**
- * Checks if the given string is false
- */
-function isFalse(str: string) {
-    return str === "false" || str === "False" || str === "FALSE"
-}
-
-/**
- * Checks if the given string is null
- */
-function isNull(str: string) {
-    return str === "null" || str === "Null" || str === "NULL" || str === "~"
 }

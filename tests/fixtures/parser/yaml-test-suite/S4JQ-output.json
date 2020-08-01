@@ -13,8 +13,7 @@
             "style": "double-quoted",
             "strValue": "12",
             "value": "12",
-            "anchor": null,
-            "tag": null,
+            "raw": "\"12\"",
             "range": [
               38,
               42
@@ -35,8 +34,6 @@
             "style": "plain",
             "strValue": "12",
             "value": 12,
-            "anchor": null,
-            "tag": null,
             "range": [
               45,
               47
@@ -53,10 +50,7 @@
             }
           },
           {
-            "type": "YAMLScalar",
-            "style": "plain",
-            "strValue": "12",
-            "value": "12",
+            "type": "YAMLWithMark",
             "anchor": null,
             "tag": {
               "type": "YAMLTag",
@@ -76,14 +70,34 @@
                 }
               }
             },
+            "value": {
+              "type": "YAMLScalar",
+              "style": "plain",
+              "strValue": "12",
+              "value": 12,
+              "range": [
+                52,
+                54
+              ],
+              "loc": {
+                "start": {
+                  "line": 4,
+                  "column": 4
+                },
+                "end": {
+                  "line": 4,
+                  "column": 6
+                }
+              }
+            },
             "range": [
-              52,
+              50,
               54
             ],
             "loc": {
               "start": {
                 "line": 4,
-                "column": 4
+                "column": 2
               },
               "end": {
                 "line": 4,
@@ -92,8 +106,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           36,
           54

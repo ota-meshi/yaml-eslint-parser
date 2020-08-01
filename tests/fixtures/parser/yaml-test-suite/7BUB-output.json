@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "hr",
               "value": "hr",
-              "anchor": null,
-              "tag": null,
               "range": [
                 4,
                 6
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "Mark McGwire",
                   "value": "Mark McGwire",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     12,
                     24
@@ -59,10 +55,7 @@
                   }
                 },
                 {
-                  "type": "YAMLScalar",
-                  "style": "plain",
-                  "strValue": "Sammy Sosa",
-                  "value": "Sammy Sosa",
+                  "type": "YAMLWithMark",
                   "anchor": {
                     "type": "YAMLAnchor",
                     "name": "SS",
@@ -82,14 +75,34 @@
                     }
                   },
                   "tag": null,
+                  "value": {
+                    "type": "YAMLScalar",
+                    "style": "plain",
+                    "strValue": "Sammy Sosa",
+                    "value": "Sammy Sosa",
+                    "range": [
+                      63,
+                      73
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 5,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 18
+                      }
+                    }
+                  },
                   "range": [
-                    63,
+                    59,
                     73
                   ],
                   "loc": {
                     "start": {
                       "line": 5,
-                      "column": 8
+                      "column": 4
                     },
                     "end": {
                       "line": 5,
@@ -98,8 +111,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 10,
                 73
@@ -137,8 +148,6 @@
               "style": "plain",
               "strValue": "rbi",
               "value": "rbi",
-              "anchor": null,
-              "tag": null,
               "range": [
                 74,
                 77
@@ -161,8 +170,6 @@
                 {
                   "type": "YAMLAlias",
                   "name": "SS",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     83,
                     86
@@ -183,8 +190,6 @@
                   "style": "plain",
                   "strValue": "Ken Griffey",
                   "value": "Ken Griffey",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     115,
                     126
@@ -201,8 +206,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 81,
                 126
@@ -234,8 +237,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           126

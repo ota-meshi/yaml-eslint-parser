@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "a",
               "value": "a",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 1
@@ -38,8 +36,6 @@
               "chomping": "clip",
               "indent": null,
               "value": "ab\n\ncd\nef\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 3,
                 19
@@ -71,8 +67,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           19

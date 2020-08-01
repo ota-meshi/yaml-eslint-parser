@@ -10,8 +10,6 @@
         "chomping": "clip",
         "indent": null,
         "value": "foo \n\n\t bar\n\nbaz\n",
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           26

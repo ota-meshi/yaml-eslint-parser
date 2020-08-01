@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "a",
               "value": "a",
-              "anchor": null,
-              "tag": null,
               "range": [
                 2,
                 3
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "13",
               "value": 13,
-              "anchor": null,
-              "tag": null,
               "range": [
                 6,
                 8
@@ -76,8 +72,6 @@
               "style": "plain",
               "strValue": "1.5",
               "value": 1.5,
-              "anchor": null,
-              "tag": null,
               "range": [
                 9,
                 12
@@ -98,8 +92,6 @@
               "style": "plain",
               "strValue": "d",
               "value": "d",
-              "anchor": null,
-              "tag": null,
               "range": [
                 14,
                 15
@@ -131,8 +123,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           15

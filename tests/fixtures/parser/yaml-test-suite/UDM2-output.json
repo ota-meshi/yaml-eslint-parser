@@ -19,8 +19,6 @@
                   "style": "plain",
                   "strValue": "url",
                   "value": "url",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     4,
                     7
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "http://example.org",
                   "value": "http://example.org",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     9,
                     27
@@ -74,8 +70,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               29
@@ -92,8 +86,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           29

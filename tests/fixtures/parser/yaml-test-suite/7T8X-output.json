@@ -10,8 +10,6 @@
         "chomping": "clip",
         "indent": null,
         "value": "\nfolded line\nnext line\n  * bullet\n\n  * list\n  * lines\n\nlast line\n",
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           77

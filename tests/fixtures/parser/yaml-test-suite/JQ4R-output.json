@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "block sequence",
               "value": "block sequence",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 14
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "one",
                   "value": "one",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     20,
                     23
@@ -69,8 +65,6 @@
                         "style": "plain",
                         "strValue": "two",
                         "value": "two",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           28,
                           31
@@ -91,8 +85,6 @@
                         "style": "plain",
                         "strValue": "three",
                         "value": "three",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           34,
                           39
@@ -124,8 +116,6 @@
                       }
                     }
                   ],
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     28,
                     39
@@ -142,8 +132,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 18,
                 39
@@ -175,8 +163,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           39

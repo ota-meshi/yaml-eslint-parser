@@ -9,8 +9,6 @@
         "style": "plain",
         "strValue": "a b c d\ne",
         "value": "a b c d\ne",
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           14

@@ -28,8 +28,7 @@
         "style": "double-quoted",
         "strValue": "foo",
         "value": "foo",
-        "anchor": null,
-        "tag": null,
+        "raw": "\"foo\"",
         "range": [
           70,
           75

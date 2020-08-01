@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "hr",
               "value": "hr",
-              "anchor": null,
-              "tag": null,
               "range": [
                 4,
                 6
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "Mark McGwire",
                   "value": "Mark McGwire",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     30,
                     42
@@ -63,8 +59,6 @@
                   "style": "plain",
                   "strValue": "Sammy Sosa",
                   "value": "Sammy Sosa",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     47,
                     57
@@ -81,8 +75,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 28,
                 57
@@ -120,8 +112,6 @@
               "style": "plain",
               "strValue": "rbi",
               "value": "rbi",
-              "anchor": null,
-              "tag": null,
               "range": [
                 58,
                 61
@@ -146,8 +136,6 @@
                   "style": "plain",
                   "strValue": "Sammy Sosa",
                   "value": "Sammy Sosa",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     88,
                     98
@@ -168,8 +156,6 @@
                   "style": "plain",
                   "strValue": "Ken Griffey",
                   "value": "Ken Griffey",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     103,
                     114
@@ -186,8 +172,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 86,
                 114
@@ -219,8 +203,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           114

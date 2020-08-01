@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "canonical",
               "value": "canonical",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 9
@@ -33,10 +31,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "double-quoted",
-              "strValue": "R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLCAgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=",
-              "value": "R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLCAgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=",
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -56,14 +51,35 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "double-quoted",
+                "strValue": "R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLCAgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=",
+                "value": "R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLCAgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=",
+                "raw": "\"\\\n R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5\\\n OTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+\\\n +f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC\\\n AgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=\"",
+                "range": [
+                  20,
+                  282
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 64
+                  }
+                }
+              },
               "range": [
-                20,
+                11,
                 282
               ],
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 20
+                  "column": 11
                 },
                 "end": {
                   "line": 5,
@@ -93,8 +109,6 @@
               "style": "plain",
               "strValue": "generic",
               "value": "generic",
-              "anchor": null,
-              "tag": null,
               "range": [
                 283,
                 290
@@ -111,11 +125,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "literal",
-              "chomping": "clip",
-              "indent": null,
-              "value": "R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5\nOTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+\n+f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC\nAgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=\n",
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -135,14 +145,35 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "literal",
+                "chomping": "clip",
+                "indent": null,
+                "value": "R0lGODlhDAAMAIQAAP//9/X17unp5WZmZgAAAOfn515eXvPz7Y6OjuDg4J+fn5\nOTk6enp56enmlpaWNjY6Ojo4SEhP/++f/++f/++f/++f/++f/++f/++f/++f/+\n+f/++f/++f/++f/++f/++SH+Dk1hZGUgd2l0aCBHSU1QACwAAAAADAAMAAAFLC\nAgjoEwnuNAFOhpEMTRiggcz4BNJHrv/zCFcLiwMWYNG84BwwEeECcgggoBADs=\n",
+                "range": [
+                  301,
+                  559
+                ],
+                "loc": {
+                  "start": {
+                    "line": 6,
+                    "column": 18
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 0
+                  }
+                }
+              },
               "range": [
-                301,
+                292,
                 559
               ],
               "loc": {
                 "start": {
                   "line": 6,
-                  "column": 18
+                  "column": 9
                 },
                 "end": {
                   "line": 11,
@@ -172,8 +203,6 @@
               "style": "plain",
               "strValue": "description",
               "value": "description",
-              "anchor": null,
-              "tag": null,
               "range": [
                 559,
                 570
@@ -194,8 +223,6 @@
               "style": "plain",
               "strValue": "The binary value above is a tiny arrow encoded as a gif image.",
               "value": "The binary value above is a tiny arrow encoded as a gif image.",
-              "anchor": null,
-              "tag": null,
               "range": [
                 573,
                 635
@@ -227,8 +254,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           635

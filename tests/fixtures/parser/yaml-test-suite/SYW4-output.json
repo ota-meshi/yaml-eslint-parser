@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "hr",
               "value": "hr",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 2
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "65",
               "value": 65,
-              "anchor": null,
-              "tag": null,
               "range": [
                 5,
                 7
@@ -76,8 +72,6 @@
               "style": "plain",
               "strValue": "avg",
               "value": "avg",
-              "anchor": null,
-              "tag": null,
               "range": [
                 23,
                 26
@@ -98,8 +92,6 @@
               "style": "plain",
               "strValue": "0.278",
               "value": 0.278,
-              "anchor": null,
-              "tag": null,
               "range": [
                 28,
                 33
@@ -137,8 +129,6 @@
               "style": "plain",
               "strValue": "rbi",
               "value": "rbi",
-              "anchor": null,
-              "tag": null,
               "range": [
                 52,
                 55
@@ -159,8 +149,6 @@
               "style": "plain",
               "strValue": "147",
               "value": 147,
-              "anchor": null,
-              "tag": null,
               "range": [
                 57,
                 60
@@ -192,8 +180,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           79

@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "unquoted",
               "value": "unquoted",
-              "anchor": null,
-              "tag": null,
               "range": [
                 2,
                 10
@@ -37,8 +35,7 @@
               "style": "double-quoted",
               "strValue": "separate",
               "value": "separate",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"separate\"",
               "range": [
                 13,
                 23
@@ -76,8 +73,6 @@
               "style": "plain",
               "strValue": "http://foo.com",
               "value": "http://foo.com",
-              "anchor": null,
-              "tag": null,
               "range": [
                 25,
                 39
@@ -116,8 +111,6 @@
               "style": "plain",
               "strValue": "omitted value",
               "value": "omitted value",
-              "anchor": null,
-              "tag": null,
               "range": [
                 41,
                 54
@@ -157,8 +150,6 @@
               "style": "plain",
               "strValue": "omitted key",
               "value": "omitted key",
-              "anchor": null,
-              "tag": null,
               "range": [
                 59,
                 70
@@ -190,8 +181,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           73

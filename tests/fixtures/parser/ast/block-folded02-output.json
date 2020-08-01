@@ -14,8 +14,6 @@
             "chomping": "clip",
             "indent": null,
             "value": "literal\n",
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               29
@@ -37,8 +35,6 @@
             "chomping": "clip",
             "indent": 1,
             "value": "·folded\n",
-            "anchor": null,
-            "tag": null,
             "range": [
               31,
               68
@@ -60,8 +56,6 @@
             "chomping": "keep",
             "indent": null,
             "value": "keep\n\n",
-            "anchor": null,
-            "tag": null,
             "range": [
               70,
               102
@@ -83,8 +77,6 @@
             "chomping": "strip",
             "indent": 1,
             "value": "·strip",
-            "anchor": null,
-            "tag": null,
             "range": [
               104,
               134
@@ -101,8 +93,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           134

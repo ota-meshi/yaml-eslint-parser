@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "a",
               "value": "a",
-              "anchor": null,
-              "tag": null,
               "range": [
                 1,
                 2
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "b",
                   "value": "b",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     5,
                     6
@@ -63,8 +59,6 @@
                   "style": "plain",
                   "strValue": "c",
                   "value": "c",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     8,
                     9
@@ -81,8 +75,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 4,
                 10
@@ -124,8 +116,6 @@
                   "style": "plain",
                   "strValue": "d",
                   "value": "d",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     13,
                     14
@@ -146,8 +136,6 @@
                   "style": "plain",
                   "strValue": "e",
                   "value": "e",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     16,
                     17
@@ -164,8 +152,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 12,
                 18
@@ -186,8 +172,6 @@
               "style": "plain",
               "strValue": "f",
               "value": "f",
-              "anchor": null,
-              "tag": null,
               "range": [
                 20,
                 21
@@ -219,8 +203,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           22

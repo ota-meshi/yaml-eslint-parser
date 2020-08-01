@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "block mapping",
               "value": "block mapping",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 13
@@ -43,8 +41,6 @@
                     "style": "plain",
                     "strValue": "key",
                     "value": "key",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       16,
                       19
@@ -65,8 +61,6 @@
                     "style": "plain",
                     "strValue": "value",
                     "value": "value",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       21,
                       26
@@ -98,8 +92,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 16,
                 26
@@ -131,8 +123,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           26

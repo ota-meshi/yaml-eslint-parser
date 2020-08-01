@@ -9,8 +9,6 @@
         "style": "plain",
         "strValue": "Bare document",
         "value": "Bare document",
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           13
@@ -69,8 +67,6 @@
         "chomping": "clip",
         "indent": null,
         "value": "%!PS-Adobe-2.0 # Not the first line\n",
-        "anchor": null,
-        "tag": null,
         "range": [
           36,
           74

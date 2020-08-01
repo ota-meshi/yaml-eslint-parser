@@ -9,8 +9,7 @@
         "style": "single-quoted",
         "strValue": " 1st non-empty\n2nd non-empty 3rd non-empty ",
         "value": " 1st non-empty\n2nd non-empty 3rd non-empty ",
-        "anchor": null,
-        "tag": null,
+        "raw": "' 1st non-empty\n\n 2nd non-empty \n 3rd non-empty '",
         "range": [
           4,
           53

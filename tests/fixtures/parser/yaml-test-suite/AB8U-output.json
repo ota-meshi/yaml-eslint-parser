@@ -13,8 +13,6 @@
             "style": "plain",
             "strValue": "single multiline - sequence entry",
             "value": "single multiline - sequence entry",
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               36
@@ -31,8 +29,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           36

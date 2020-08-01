@@ -9,8 +9,7 @@
         "style": "double-quoted",
         "strValue": "quoted string",
         "value": "quoted string",
-        "anchor": null,
-        "tag": null,
+        "raw": "\"quoted\nstring\"",
         "range": [
           4,
           19
@@ -45,10 +44,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLScalar",
-        "style": "plain",
-        "strValue": "foo",
-        "value": "foo",
+        "type": "YAMLWithMark",
         "anchor": {
           "type": "YAMLAnchor",
           "name": "node",
@@ -68,14 +64,34 @@
           }
         },
         "tag": null,
+        "value": {
+          "type": "YAMLScalar",
+          "style": "plain",
+          "strValue": "foo",
+          "value": "foo",
+          "range": [
+            30,
+            33
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 10
+            },
+            "end": {
+              "line": 3,
+              "column": 13
+            }
+          }
+        },
         "range": [
-          30,
+          24,
           33
         ],
         "loc": {
           "start": {
             "line": 3,
-            "column": 10
+            "column": 4
           },
           "end": {
             "line": 3,
