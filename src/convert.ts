@@ -125,7 +125,21 @@ export function convertRoot(node: Root, code: string): YAMLProgram {
 
         column++
     }
-    tokens.sort((a, b) => a.range[0] - b.range[0])
+    tokens.sort((a, b) => {
+        if (a.range[0] > b.range[0]) {
+            return 1
+        }
+        if (a.range[0] < b.range[0]) {
+            return -1
+        }
+        if (a.range[1] > b.range[1]) {
+            return 1
+        }
+        if (a.range[1] < b.range[1]) {
+            return -1
+        }
+        return 0
+    })
     return ast
 
     /**
