@@ -340,7 +340,7 @@ function convertMapping(
     for (const n of node.children) {
         ast.pairs.push(convertMappingItem(n, tokens, code, ast, doc))
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc)
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -364,7 +364,7 @@ function convertFlowMapping(
     for (const n of node.children) {
         ast.pairs.push(convertMappingItem(n, tokens, code, ast, doc))
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc)
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -443,7 +443,7 @@ function convertSequence(
     for (const n of node.children) {
         ast.entries.push(...convertSequenceItem(n, tokens, code, ast, doc))
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc)
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -481,7 +481,7 @@ function convertFlowSequence(
             ast.entries.push(map)
         }
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc)
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -510,40 +510,52 @@ function convertPlain(
     doc: YAMLDocument,
 ): YAMLPlainScalar | YAMLWithMark {
     const loc = getConvertLocation(node)
-    const strValue = node.value
-    let value: string | number | boolean | null
+    if (loc.range[0] < loc.range[1]) {
+        const strValue = node.value
+        let value: string | number | boolean | null
 
-    if (isTrue(strValue)) {
-        value = true
-    } else if (isFalse(strValue)) {
-        value = false
-    } else if (isNull(strValue)) {
-        value = null
-    } else if (needParse(strValue)) {
-        value = yaml.parse(strValue) || strValue
-    } else {
-        value = strValue
+        if (isTrue(strValue)) {
+            value = true
+        } else if (isFalse(strValue)) {
+            value = false
+        } else if (isNull(strValue)) {
+            value = null
+        } else if (needParse(strValue)) {
+            value = yaml.parse(strValue) || strValue
+        } else {
+            value = strValue
+        }
+        const ast: YAMLPlainScalar = {
+            type: "YAMLScalar",
+            style: "plain",
+            strValue,
+            value,
+            parent,
+            ...loc,
+        }
+
+        const type = typeof value
+        if (type === "boolean") {
+            addToken(tokens, "Boolean", clone(loc), code)
+        } else if (type === "number" && isFinite(Number(value))) {
+            addToken(tokens, "Numeric", clone(loc), code)
+        } else if (value === null) {
+            addToken(tokens, "Null", clone(loc), code)
+        } else {
+            addToken(tokens, "Identifier", clone(loc), code)
+        }
+        return convertAnchorAndTag(node, tokens, code, parent, ast, doc, loc)
     }
-    const ast: YAMLPlainScalar = {
-        type: "YAMLScalar",
-        style: "plain",
-        strValue,
-        value,
+
+    return convertAnchorAndTag<YAMLPlainScalar>(
+        node,
+        tokens,
+        code,
         parent,
-        ...loc,
-    }
-
-    const type = typeof value
-    if (type === "boolean") {
-        addToken(tokens, "Boolean", clone(loc), code)
-    } else if (type === "number" && isFinite(Number(value))) {
-        addToken(tokens, "Numeric", clone(loc), code)
-    } else if (value === null) {
-        addToken(tokens, "Null", clone(loc), code)
-    } else {
-        addToken(tokens, "Identifier", clone(loc), code)
-    }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc)
+        null,
+        doc,
+        loc,
+    )
 
     /**
      * Checks if the given string needs to be parsed
@@ -592,7 +604,7 @@ function convertQuoteDouble(
         ...loc,
     }
     addToken(tokens, "String", clone(loc), code)
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc)
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -617,7 +629,7 @@ function convertQuoteSingle(
         ...loc,
     }
     addToken(tokens, "String", clone(loc), code)
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc)
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -698,7 +710,7 @@ function convertBlockLiteral(
         // ??
         addToken(tokens, "BlockLiteral", clone(loc), code)
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc)
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -779,7 +791,7 @@ function convertBlockFolded(
         // ??
         addToken(tokens, "BlockFolded", clone(loc), code)
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc)
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -825,7 +837,7 @@ function convertAlias(
         // ??
         addToken(tokens, "Identifier", clone(loc), code)
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc)
+    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
 }
 
 /**
@@ -836,8 +848,9 @@ function convertAnchorAndTag<V extends YAMLContent>(
     tokens: Token[],
     code: string,
     parent: YAMLDocument | YAMLPair | YAMLSequence,
-    value: V,
+    value: V | null,
     doc: YAMLDocument,
+    valueLoc: Locations,
 ): YAMLWithMark | V {
     if (node.anchor || node.tag) {
         const ast: YAMLWithMark = {
@@ -846,10 +859,12 @@ function convertAnchorAndTag<V extends YAMLContent>(
             tag: null,
             value,
             parent,
-            range: clone(value.range),
-            loc: clone(value.loc),
+            range: clone(valueLoc.range),
+            loc: clone(valueLoc.loc),
         }
-        value.parent = ast
+        if (value) {
+            value.parent = ast
+        }
 
         if (node.anchor) {
             const anchor = convertAnchor(node.anchor, tokens, code, ast, doc)
@@ -868,7 +883,7 @@ function convertAnchorAndTag<V extends YAMLContent>(
         return ast
     }
 
-    return value
+    return value as any
 }
 
 /**

@@ -51,26 +51,7 @@
                   }
                 }
               },
-              "value": {
-                "type": "YAMLScalar",
-                "style": "plain",
-                "strValue": "",
-                "value": "",
-                "range": [
-                  15,
-                  15
-                ],
-                "loc": {
-                  "start": {
-                    "line": 2,
-                    "column": 13
-                  },
-                  "end": {
-                    "line": 2,
-                    "column": 13
-                  }
-                }
-              },
+              "value": null,
               "range": [
                 10,
                 15
@@ -124,26 +105,7 @@
                   }
                 }
               },
-              "value": {
-                "type": "YAMLScalar",
-                "style": "plain",
-                "strValue": "",
-                "value": "",
-                "range": [
-                  24,
-                  24
-                ],
-                "loc": {
-                  "start": {
-                    "line": 3,
-                    "column": 7
-                  },
-                  "end": {
-                    "line": 3,
-                    "column": 7
-                  }
-                }
-              },
+              "value": null,
               "range": [
                 19,
                 24
@@ -320,24 +282,6 @@
       }
     },
     {
-      "type": "Identifier",
-      "value": "",
-      "range": [
-        15,
-        15
-      ],
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 13
-        },
-        "end": {
-          "line": 2,
-          "column": 13
-        }
-      }
-    },
-    {
       "type": "Punctuator",
       "value": ",",
       "range": [
@@ -384,24 +328,6 @@
         "start": {
           "line": 3,
           "column": 4
-        },
-        "end": {
-          "line": 3,
-          "column": 7
-        }
-      }
-    },
-    {
-      "type": "Identifier",
-      "value": "",
-      "range": [
-        24,
-        24
-      ],
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 7
         },
         "end": {
           "line": 3,

@@ -91,6 +91,9 @@ const resolver = {
     },
     YAMLWithMark(node: YAMLWithMark) {
         if (node.tag) {
+            if (node.value == null) {
+                return getTaggedValue(node.tag, "", "")
+            }
             if (node.value.type === "YAMLScalar") {
                 if (node.value.style === "plain") {
                     return getTaggedValue(
@@ -110,6 +113,9 @@ const resolver = {
                     )
                 }
             }
+        }
+        if (node.value == null) {
+            return null
         }
         return getStaticYAMLValue(node.value)
     },

@@ -77,7 +77,7 @@ export interface YAMLWithMark extends BaseYAMLNode {
     type: "YAMLWithMark"
     anchor: YAMLAnchor | null
     tag: YAMLTag | null
-    value: YAMLContent
+    value: YAMLContent | null
     parent: YAMLDocument | YAMLPair | YAMLSequence
 }
 

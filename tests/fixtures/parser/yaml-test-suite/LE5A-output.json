@@ -182,26 +182,7 @@
                 }
               }
             },
-            "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "",
-              "value": "",
-              "range": [
-                49,
-                49
-              ],
-              "loc": {
-                "start": {
-                  "line": 5,
-                  "column": 7
-                },
-                "end": {
-                  "line": 5,
-                  "column": 7
-                }
-              }
-            },
+            "value": null,
             "range": [
               44,
               49
@@ -533,24 +514,6 @@
         "start": {
           "line": 5,
           "column": 4
-        },
-        "end": {
-          "line": 5,
-          "column": 7
-        }
-      }
-    },
-    {
-      "type": "Identifier",
-      "value": "",
-      "range": [
-        49,
-        49
-      ],
-      "loc": {
-        "start": {
-          "line": 5,
-          "column": 7
         },
         "end": {
           "line": 5,
