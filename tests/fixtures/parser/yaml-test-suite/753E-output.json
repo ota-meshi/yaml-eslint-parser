@@ -10,8 +10,6 @@
         "chomping": "strip",
         "indent": null,
         "value": "ab",
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           11

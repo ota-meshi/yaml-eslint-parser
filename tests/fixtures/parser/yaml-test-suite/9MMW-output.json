@@ -23,8 +23,6 @@
                       "style": "plain",
                       "strValue": "YAML",
                       "value": "YAML",
-                      "anchor": null,
-                      "tag": null,
                       "range": [
                         4,
                         8
@@ -45,8 +43,6 @@
                       "style": "plain",
                       "strValue": "separate",
                       "value": "separate",
-                      "anchor": null,
-                      "tag": null,
                       "range": [
                         11,
                         19
@@ -78,8 +74,6 @@
                     }
                   }
                 ],
-                "anchor": null,
-                "tag": null,
                 "range": [
                   4,
                   19
@@ -96,8 +90,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               21
@@ -129,8 +121,6 @@
                       "style": "plain",
                       "strValue": "empty key entry",
                       "value": "empty key entry",
-                      "anchor": null,
-                      "tag": null,
                       "range": [
                         28,
                         43
@@ -162,8 +152,6 @@
                     }
                   }
                 ],
-                "anchor": null,
-                "tag": null,
                 "range": [
                   26,
                   43
@@ -180,8 +168,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               24,
               45
@@ -212,8 +198,7 @@
                       "style": "double-quoted",
                       "strValue": "JSON like",
                       "value": "JSON like",
-                      "anchor": null,
-                      "tag": null,
+                      "raw": "\"JSON like\"",
                       "range": [
                         50,
                         61
@@ -234,8 +219,6 @@
                       "style": "plain",
                       "strValue": "adjacent",
                       "value": "adjacent",
-                      "anchor": null,
-                      "tag": null,
                       "range": [
                         62,
                         70
@@ -267,8 +250,6 @@
                     }
                   }
                 ],
-                "anchor": null,
-                "tag": null,
                 "range": [
                   50,
                   70
@@ -285,8 +266,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               48,
               72
@@ -303,8 +282,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           72

@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "name",
               "value": "name",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 4
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "Mark McGwire",
               "value": "Mark McGwire",
-              "anchor": null,
-              "tag": null,
               "range": [
                 6,
                 18
@@ -76,8 +72,6 @@
               "style": "plain",
               "strValue": "accomplishment",
               "value": "accomplishment",
-              "anchor": null,
-              "tag": null,
               "range": [
                 19,
                 33
@@ -99,8 +93,6 @@
               "chomping": "clip",
               "indent": null,
               "value": "Mark set a major league home run record in 1998.\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 35,
                 90
@@ -138,8 +130,6 @@
               "style": "plain",
               "strValue": "stats",
               "value": "stats",
-              "anchor": null,
-              "tag": null,
               "range": [
                 90,
                 95
@@ -161,8 +151,6 @@
               "chomping": "clip",
               "indent": null,
               "value": "65 Home Runs\n0.278 Batting Average\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 97,
                 138
@@ -194,8 +182,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           138

@@ -5,10 +5,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": {
-        "type": "YAMLScalar",
-        "style": "plain",
-        "strValue": "a",
-        "value": "a",
+        "type": "YAMLWithMark",
         "anchor": null,
         "tag": {
           "type": "YAMLTag",
@@ -28,14 +25,34 @@
             }
           }
         },
+        "value": {
+          "type": "YAMLScalar",
+          "style": "plain",
+          "strValue": "a",
+          "value": "a",
+          "range": [
+            6,
+            7
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 2
+            },
+            "end": {
+              "line": 2,
+              "column": 3
+            }
+          }
+        },
         "range": [
-          6,
+          4,
           7
         ],
         "loc": {
           "start": {
             "line": 2,
-            "column": 2
+            "column": 0
           },
           "end": {
             "line": 2,

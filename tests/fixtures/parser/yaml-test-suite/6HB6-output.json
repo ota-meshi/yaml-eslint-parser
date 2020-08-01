@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "Not indented",
               "value": "Not indented",
-              "anchor": null,
-              "tag": null,
               "range": [
                 79,
                 91
@@ -43,8 +41,6 @@
                     "style": "plain",
                     "strValue": "By one space",
                     "value": "By one space",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       94,
                       106
@@ -66,8 +62,6 @@
                     "chomping": "clip",
                     "indent": null,
                     "value": "By four\n  spaces\n",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       108,
                       135
@@ -105,8 +99,6 @@
                     "style": "plain",
                     "strValue": "Flow style",
                     "value": "Flow style",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       136,
                       146
@@ -131,8 +123,6 @@
                         "style": "plain",
                         "strValue": "By two",
                         "value": "By two",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           173,
                           179
@@ -153,8 +143,6 @@
                         "style": "plain",
                         "strValue": "Also by two",
                         "value": "Also by two",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           206,
                           217
@@ -175,8 +163,6 @@
                         "style": "plain",
                         "strValue": "Still by two",
                         "value": "Still by two",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           239,
                           251
@@ -193,8 +179,6 @@
                         }
                       }
                     ],
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       148,
                       273
@@ -226,8 +210,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 94,
                 300
@@ -259,8 +241,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           79,
           300

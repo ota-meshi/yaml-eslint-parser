@@ -19,8 +19,6 @@
                   "style": "plain",
                   "strValue": "bla\"keks",
                   "value": "bla\"keks",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     2,
                     10
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "foo",
                   "value": "foo",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     12,
                     15
@@ -74,8 +70,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               15
@@ -102,8 +96,6 @@
                   "style": "plain",
                   "strValue": "bla]keks",
                   "value": "bla]keks",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     18,
                     26
@@ -124,8 +116,6 @@
                   "style": "plain",
                   "strValue": "foo",
                   "value": "foo",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     28,
                     31
@@ -157,8 +147,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               18,
               31
@@ -175,8 +163,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           31

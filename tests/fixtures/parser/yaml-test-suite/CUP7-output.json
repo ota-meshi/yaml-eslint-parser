@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "anchored",
               "value": "anchored",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 8
@@ -33,10 +31,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "value",
-              "value": "value",
+              "type": "YAMLWithMark",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "anchor",
@@ -73,14 +68,34 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "value",
+                "value": "value",
+                "range": [
+                  25,
+                  30
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 25
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 30
+                  }
+                }
+              },
               "range": [
-                25,
+                10,
                 30
               ],
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 25
+                  "column": 10
                 },
                 "end": {
                   "line": 1,
@@ -110,8 +125,6 @@
               "style": "plain",
               "strValue": "alias",
               "value": "alias",
-              "anchor": null,
-              "tag": null,
               "range": [
                 31,
                 36
@@ -130,8 +143,6 @@
             "value": {
               "type": "YAMLAlias",
               "name": "anchor",
-              "anchor": null,
-              "tag": null,
               "range": [
                 38,
                 45
@@ -163,8 +174,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           45

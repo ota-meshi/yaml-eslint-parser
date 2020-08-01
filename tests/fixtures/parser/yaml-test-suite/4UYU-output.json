@@ -9,8 +9,7 @@
         "style": "double-quoted",
         "strValue": "foo: bar\": baz",
         "value": "foo: bar\": baz",
-        "anchor": null,
-        "tag": null,
+        "raw": "\"foo: bar\\\": baz\"",
         "range": [
           0,
           17

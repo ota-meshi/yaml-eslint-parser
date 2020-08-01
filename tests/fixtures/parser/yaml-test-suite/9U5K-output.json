@@ -19,8 +19,6 @@
                   "style": "plain",
                   "strValue": "item",
                   "value": "item",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     27,
                     31
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "Super Hoop",
                   "value": "Super Hoop",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     37,
                     47
@@ -80,8 +76,6 @@
                   "style": "plain",
                   "strValue": "quantity",
                   "value": "quantity",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     50,
                     58
@@ -102,8 +96,6 @@
                   "style": "plain",
                   "strValue": "1",
                   "value": 1,
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     60,
                     61
@@ -135,8 +127,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               27,
               61
@@ -163,8 +153,6 @@
                   "style": "plain",
                   "strValue": "item",
                   "value": "item",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     64,
                     68
@@ -185,8 +173,6 @@
                   "style": "plain",
                   "strValue": "Basketball",
                   "value": "Basketball",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     74,
                     84
@@ -224,8 +210,6 @@
                   "style": "plain",
                   "strValue": "quantity",
                   "value": "quantity",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     87,
                     95
@@ -246,8 +230,6 @@
                   "style": "plain",
                   "strValue": "4",
                   "value": 4,
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     97,
                     98
@@ -279,8 +261,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               64,
               98
@@ -307,8 +287,6 @@
                   "style": "plain",
                   "strValue": "item",
                   "value": "item",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     101,
                     105
@@ -329,8 +307,6 @@
                   "style": "plain",
                   "strValue": "Big Shoes",
                   "value": "Big Shoes",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     111,
                     120
@@ -368,8 +344,6 @@
                   "style": "plain",
                   "strValue": "quantity",
                   "value": "quantity",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     123,
                     131
@@ -390,8 +364,6 @@
                   "style": "plain",
                   "strValue": "1",
                   "value": 1,
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     133,
                     134
@@ -423,8 +395,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               101,
               134
@@ -441,8 +411,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           25,
           134

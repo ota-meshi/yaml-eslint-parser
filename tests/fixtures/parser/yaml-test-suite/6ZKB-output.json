@@ -9,8 +9,6 @@
         "style": "plain",
         "strValue": "Document",
         "value": "Document",
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           8
@@ -93,8 +91,6 @@
               "style": "plain",
               "strValue": "matches %",
               "value": "matches %",
-              "anchor": null,
-              "tag": null,
               "range": [
                 39,
                 48
@@ -115,8 +111,6 @@
               "style": "plain",
               "strValue": "20",
               "value": 20,
-              "anchor": null,
-              "tag": null,
               "range": [
                 50,
                 52
@@ -148,8 +142,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           39,
           52

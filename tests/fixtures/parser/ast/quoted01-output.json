@@ -15,8 +15,7 @@
               "style": "double-quoted",
               "strValue": "a",
               "value": "a",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"a\"",
               "range": [
                 0,
                 3
@@ -37,8 +36,7 @@
               "style": "double-quoted",
               "strValue": "b",
               "value": "b",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"b\"",
               "range": [
                 5,
                 8
@@ -76,8 +74,7 @@
               "style": "double-quoted",
               "strValue": "1",
               "value": "1",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"1\"",
               "range": [
                 9,
                 12
@@ -98,8 +95,7 @@
               "style": "double-quoted",
               "strValue": "2",
               "value": "2",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"2\"",
               "range": [
                 14,
                 17
@@ -131,8 +127,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           17
@@ -177,8 +171,7 @@
               "style": "single-quoted",
               "strValue": "a",
               "value": "a",
-              "anchor": null,
-              "tag": null,
+              "raw": "'a'",
               "range": [
                 23,
                 26
@@ -199,8 +192,7 @@
               "style": "single-quoted",
               "strValue": "b",
               "value": "b",
-              "anchor": null,
-              "tag": null,
+              "raw": "'b'",
               "range": [
                 28,
                 31
@@ -238,8 +230,7 @@
               "style": "single-quoted",
               "strValue": "1",
               "value": "1",
-              "anchor": null,
-              "tag": null,
+              "raw": "'1'",
               "range": [
                 32,
                 35
@@ -260,8 +251,7 @@
               "style": "single-quoted",
               "strValue": "2",
               "value": "2",
-              "anchor": null,
-              "tag": null,
+              "raw": "'2'",
               "range": [
                 37,
                 40
@@ -293,8 +283,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           23,
           40

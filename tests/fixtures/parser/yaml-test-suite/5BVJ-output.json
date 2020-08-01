@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "literal",
               "value": "literal",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 7
@@ -38,8 +36,6 @@
               "chomping": "clip",
               "indent": null,
               "value": "some\ntext\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 9,
                 25
@@ -77,8 +73,6 @@
               "style": "plain",
               "strValue": "folded",
               "value": "folded",
-              "anchor": null,
-              "tag": null,
               "range": [
                 25,
                 31
@@ -100,8 +94,6 @@
               "chomping": "clip",
               "indent": null,
               "value": "some text\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 33,
                 49
@@ -133,8 +125,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           49

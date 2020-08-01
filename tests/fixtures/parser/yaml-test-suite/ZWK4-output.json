@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "a",
               "value": "a",
-              "anchor": null,
-              "tag": null,
               "range": [
                 4,
                 5
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "1",
               "value": 1,
-              "anchor": null,
-              "tag": null,
               "range": [
                 7,
                 8
@@ -76,8 +72,6 @@
               "style": "plain",
               "strValue": "b",
               "value": "b",
-              "anchor": null,
-              "tag": null,
               "range": [
                 11,
                 12
@@ -112,10 +106,7 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "c",
-              "value": "c",
+              "type": "YAMLWithMark",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "anchor",
@@ -135,14 +126,34 @@
                 }
               },
               "tag": null,
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "c",
+                "value": "c",
+                "range": [
+                  21,
+                  22
+                ],
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 9
+                  }
+                }
+              },
               "range": [
-                21,
+                13,
                 22
               ],
               "loc": {
                 "start": {
                   "line": 4,
-                  "column": 8
+                  "column": 0
                 },
                 "end": {
                   "line": 4,
@@ -155,8 +166,6 @@
               "style": "plain",
               "strValue": "3",
               "value": 3,
-              "anchor": null,
-              "tag": null,
               "range": [
                 24,
                 25
@@ -188,8 +197,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           25

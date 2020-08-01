@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "Mapping",
               "value": "Mapping",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 7
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "Document",
               "value": "Document",
-              "anchor": null,
-              "tag": null,
               "range": [
                 9,
                 17
@@ -70,8 +66,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           17
@@ -154,8 +148,6 @@
               "style": "plain",
               "strValue": "matches %",
               "value": "matches %",
-              "anchor": null,
-              "tag": null,
               "range": [
                 48,
                 57
@@ -176,8 +168,6 @@
               "style": "plain",
               "strValue": "20",
               "value": 20,
-              "anchor": null,
-              "tag": null,
               "range": [
                 59,
                 61
@@ -209,8 +199,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           48,
           61

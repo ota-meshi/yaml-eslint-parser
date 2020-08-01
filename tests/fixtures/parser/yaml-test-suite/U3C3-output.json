@@ -24,10 +24,7 @@
         }
       ],
       "content": {
-        "type": "YAMLScalar",
-        "style": "double-quoted",
-        "strValue": "foo",
-        "value": "foo",
+        "type": "YAMLWithMark",
         "anchor": null,
         "tag": {
           "type": "YAMLTag",
@@ -47,14 +44,35 @@
             }
           }
         },
+        "value": {
+          "type": "YAMLScalar",
+          "style": "double-quoted",
+          "strValue": "foo",
+          "value": "foo",
+          "raw": "\"foo\"",
+          "range": [
+            45,
+            50
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 10
+            },
+            "end": {
+              "line": 3,
+              "column": 15
+            }
+          }
+        },
         "range": [
-          45,
+          35,
           50
         ],
         "loc": {
           "start": {
             "line": 3,
-            "column": 10
+            "column": 0
           },
           "end": {
             "line": 3,

@@ -13,8 +13,6 @@
             "style": "plain",
             "strValue": "foo",
             "value": "foo",
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               5
@@ -35,8 +33,7 @@
             "style": "double-quoted",
             "strValue": "foo",
             "value": "foo",
-            "anchor": null,
-            "tag": null,
+            "raw": "\"foo\"",
             "range": [
               8,
               13
@@ -57,8 +54,7 @@
             "style": "single-quoted",
             "strValue": "foo",
             "value": "foo",
-            "anchor": null,
-            "tag": null,
+            "raw": "'foo'",
             "range": [
               16,
               21
@@ -79,8 +75,6 @@
             "style": "plain",
             "strValue": "42",
             "value": 42,
-            "anchor": null,
-            "tag": null,
             "range": [
               24,
               26
@@ -101,8 +95,6 @@
             "style": "plain",
             "strValue": "true",
             "value": true,
-            "anchor": null,
-            "tag": null,
             "range": [
               29,
               33
@@ -123,8 +115,6 @@
             "style": "plain",
             "strValue": "false",
             "value": false,
-            "anchor": null,
-            "tag": null,
             "range": [
               36,
               41
@@ -145,8 +135,6 @@
             "style": "plain",
             "strValue": "True",
             "value": true,
-            "anchor": null,
-            "tag": null,
             "range": [
               44,
               48
@@ -167,8 +155,6 @@
             "style": "plain",
             "strValue": "False",
             "value": false,
-            "anchor": null,
-            "tag": null,
             "range": [
               51,
               56
@@ -189,8 +175,6 @@
             "style": "plain",
             "strValue": "TRUE",
             "value": true,
-            "anchor": null,
-            "tag": null,
             "range": [
               59,
               63
@@ -211,8 +195,6 @@
             "style": "plain",
             "strValue": "FALSE",
             "value": false,
-            "anchor": null,
-            "tag": null,
             "range": [
               66,
               71
@@ -233,8 +215,6 @@
             "style": "plain",
             "strValue": "yes",
             "value": "yes",
-            "anchor": null,
-            "tag": null,
             "range": [
               74,
               77
@@ -255,8 +235,6 @@
             "style": "plain",
             "strValue": "no",
             "value": "no",
-            "anchor": null,
-            "tag": null,
             "range": [
               80,
               82
@@ -277,8 +255,6 @@
             "style": "plain",
             "strValue": "on",
             "value": "on",
-            "anchor": null,
-            "tag": null,
             "range": [
               85,
               87
@@ -299,8 +275,6 @@
             "style": "plain",
             "strValue": "off",
             "value": "off",
-            "anchor": null,
-            "tag": null,
             "range": [
               90,
               93
@@ -321,8 +295,6 @@
             "style": "plain",
             "strValue": "null",
             "value": null,
-            "anchor": null,
-            "tag": null,
             "range": [
               96,
               100
@@ -343,8 +315,6 @@
             "style": "plain",
             "strValue": "Null",
             "value": null,
-            "anchor": null,
-            "tag": null,
             "range": [
               103,
               107
@@ -365,8 +335,6 @@
             "style": "plain",
             "strValue": "NULL",
             "value": null,
-            "anchor": null,
-            "tag": null,
             "range": [
               110,
               114
@@ -387,8 +355,6 @@
             "style": "plain",
             "strValue": "~",
             "value": null,
-            "anchor": null,
-            "tag": null,
             "range": [
               117,
               118
@@ -409,8 +375,6 @@
             "style": "plain",
             "strValue": "2020-12-31",
             "value": "2020-12-31",
-            "anchor": null,
-            "tag": null,
             "range": [
               121,
               131
@@ -431,8 +395,7 @@
             "style": "single-quoted",
             "strValue": "false",
             "value": "false",
-            "anchor": null,
-            "tag": null,
+            "raw": "'false'",
             "range": [
               134,
               141
@@ -453,8 +416,7 @@
             "style": "single-quoted",
             "strValue": "42",
             "value": "42",
-            "anchor": null,
-            "tag": null,
+            "raw": "'42'",
             "range": [
               144,
               148
@@ -471,8 +433,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           148

@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "strip",
               "value": "strip",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 5
@@ -38,8 +36,6 @@
               "chomping": "strip",
               "indent": null,
               "value": "",
-              "anchor": null,
-              "tag": null,
               "range": [
                 7,
                 10
@@ -77,8 +73,6 @@
               "style": "plain",
               "strValue": "clip",
               "value": "clip",
-              "anchor": null,
-              "tag": null,
               "range": [
                 11,
                 15
@@ -100,8 +94,6 @@
               "chomping": "clip",
               "indent": null,
               "value": "",
-              "anchor": null,
-              "tag": null,
               "range": [
                 17,
                 19
@@ -139,8 +131,6 @@
               "style": "plain",
               "strValue": "keep",
               "value": "keep",
-              "anchor": null,
-              "tag": null,
               "range": [
                 20,
                 24
@@ -162,8 +152,6 @@
               "chomping": "keep",
               "indent": null,
               "value": "\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 26,
                 30
@@ -195,8 +183,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           30

@@ -47,6 +47,7 @@ export type YAMLNode =
     | YAMLDirective
     | YAMLContent
     | YAMLPair
+    | YAMLWithMark
     | YAMLAnchor
     | YAMLTag
 export interface YAMLProgram extends BaseYAMLNode {
@@ -61,7 +62,7 @@ export interface YAMLProgram extends BaseYAMLNode {
 export interface YAMLDocument extends BaseYAMLNode {
     type: "YAMLDocument"
     directives: YAMLDirective[]
-    content: YAMLContent | null
+    content: YAMLContent | YAMLWithMark | null
     parent: YAMLProgram
     anchors: { [key: string]: YAMLAnchor }
 }
@@ -72,32 +73,38 @@ export interface YAMLDirective extends BaseYAMLNode {
     parent: YAMLDocument
 }
 
+export interface YAMLWithMark extends BaseYAMLNode {
+    type: "YAMLWithMark"
+    anchor: YAMLAnchor | null
+    tag: YAMLTag | null
+    value: YAMLContent
+    parent: YAMLDocument | YAMLPair | YAMLSequence
+}
+
 export interface YAMLAnchor extends BaseYAMLNode {
     type: "YAMLAnchor"
     name: string
-    parent: YAMLContent
+    parent: YAMLWithMark
 }
 
 export interface YAMLTag extends BaseYAMLNode {
     type: "YAMLTag"
     tag: string
-    parent: YAMLContent
+    parent: YAMLWithMark
 }
 
 interface BaseYAMLContentNode extends BaseYAMLNode {
-    anchor: null | YAMLAnchor
-    tag: null | YAMLTag
-    parent: YAMLDocument | YAMLPair | YAMLSequence
+    parent: YAMLDocument | YAMLPair | YAMLSequence | YAMLWithMark
 }
 
 export type YAMLContent = YAMLMapping | YAMLSequence | YAMLScalar | YAMLAlias
 export type YAMLMapping = YAMLBlockMapping | YAMLFlowMapping
+
 export interface YAMLBlockMapping extends BaseYAMLContentNode {
     type: "YAMLMapping"
     style: "block"
     pairs: YAMLPair[]
 }
-
 export interface YAMLFlowMapping extends BaseYAMLContentNode {
     type: "YAMLMapping"
     style: "flow"
@@ -106,21 +113,21 @@ export interface YAMLFlowMapping extends BaseYAMLContentNode {
 
 export interface YAMLPair extends BaseYAMLNode {
     type: "YAMLPair"
-    key: YAMLContent | null
-    value: YAMLContent | null
+    key: YAMLContent | YAMLWithMark | null
+    value: YAMLContent | YAMLWithMark | null
     parent: YAMLMapping
 }
+
 export type YAMLSequence = YAMLBlockSequence | YAMLFlowSequence
 export interface YAMLBlockSequence extends BaseYAMLContentNode {
     type: "YAMLSequence"
     style: "block"
-    entries: YAMLContent[]
+    entries: (YAMLContent | YAMLWithMark)[]
 }
-
 export interface YAMLFlowSequence extends BaseYAMLContentNode {
     type: "YAMLSequence"
     style: "flow"
-    entries: YAMLContent[]
+    entries: (YAMLContent | YAMLWithMark)[]
 }
 export type YAMLScalar =
     | YAMLPlainScalar
@@ -132,21 +139,23 @@ export interface YAMLPlainScalar extends BaseYAMLContentNode {
     type: "YAMLScalar"
     style: "plain"
     strValue: string
-    readonly value: string | number | boolean | null
+    value: string | number | boolean | null
 }
 
 export interface YAMLDoubleQuotedScalar extends BaseYAMLContentNode {
     type: "YAMLScalar"
     style: "double-quoted"
     strValue: string
-    readonly value: string | number | boolean | null
+    value: string
+    raw: string
 }
 
 export interface YAMLSingleQuotedScalar extends BaseYAMLContentNode {
     type: "YAMLScalar"
     style: "single-quoted"
     strValue: string
-    readonly value: string | number | boolean | null
+    value: string
+    raw: string
 }
 
 export interface YAMLBlockLiteralScalar extends BaseYAMLContentNode {

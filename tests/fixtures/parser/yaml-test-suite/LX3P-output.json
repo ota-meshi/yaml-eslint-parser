@@ -19,8 +19,6 @@
                   "style": "plain",
                   "strValue": "flow",
                   "value": "flow",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     1,
                     5
@@ -37,8 +35,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 6
@@ -59,8 +55,6 @@
               "style": "plain",
               "strValue": "block",
               "value": "block",
-              "anchor": null,
-              "tag": null,
               "range": [
                 8,
                 13
@@ -92,8 +86,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           13

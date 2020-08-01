@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "a",
               "value": "a",
-              "anchor": null,
-              "tag": null,
               "range": [
                 6,
                 7
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "b",
                   "value": "b",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     10,
                     11
@@ -63,8 +59,6 @@
                   "style": "plain",
                   "strValue": "c",
                   "value": "c",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     13,
                     14
@@ -91,8 +85,6 @@
                         "style": "plain",
                         "strValue": "d",
                         "value": "d",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           18,
                           19
@@ -117,8 +109,6 @@
                             "style": "plain",
                             "strValue": "e",
                             "value": "e",
-                            "anchor": null,
-                            "tag": null,
                             "range": [
                               22,
                               23
@@ -139,8 +129,6 @@
                             "style": "plain",
                             "strValue": "f",
                             "value": "f",
-                            "anchor": null,
-                            "tag": null,
                             "range": [
                               25,
                               26
@@ -157,8 +145,6 @@
                             }
                           }
                         ],
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           21,
                           27
@@ -190,8 +176,6 @@
                       }
                     }
                   ],
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     16,
                     29
@@ -208,8 +192,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 9,
                 31
@@ -241,8 +223,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           33

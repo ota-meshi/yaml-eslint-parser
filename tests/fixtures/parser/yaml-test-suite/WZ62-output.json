@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "foo",
               "value": "foo",
-              "anchor": null,
-              "tag": null,
               "range": [
                 4,
                 7
@@ -33,10 +31,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "",
-              "value": "",
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -56,14 +51,34 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "",
+                "value": "",
+                "range": [
+                  15,
+                  15
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 13
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 13
+                  }
+                }
+              },
               "range": [
-                15,
+                10,
                 15
               ],
               "loc": {
                 "start": {
                   "line": 2,
-                  "column": 13
+                  "column": 8
                 },
                 "end": {
                   "line": 2,
@@ -89,10 +104,7 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "",
-              "value": "",
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -112,14 +124,34 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "",
+                "value": "",
+                "range": [
+                  24,
+                  24
+                ],
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 7
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 7
+                  }
+                }
+              },
               "range": [
-                24,
+                19,
                 24
               ],
               "loc": {
                 "start": {
                   "line": 3,
-                  "column": 7
+                  "column": 2
                 },
                 "end": {
                   "line": 3,
@@ -132,8 +164,6 @@
               "style": "plain",
               "strValue": "bar",
               "value": "bar",
-              "anchor": null,
-              "tag": null,
               "range": [
                 27,
                 30
@@ -165,8 +195,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           33

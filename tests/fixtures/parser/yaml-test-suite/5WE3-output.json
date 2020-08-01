@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "explicit key",
               "value": "explicit key",
-              "anchor": null,
-              "tag": null,
               "range": [
                 2,
                 14
@@ -56,8 +54,6 @@
               "chomping": "clip",
               "indent": null,
               "value": "block key\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 31,
                 45
@@ -82,8 +78,6 @@
                   "style": "plain",
                   "strValue": "one",
                   "value": "one",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     49,
                     52
@@ -104,8 +98,6 @@
                   "style": "plain",
                   "strValue": "two",
                   "value": "two",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     76,
                     79
@@ -122,8 +114,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 47,
                 93
@@ -155,8 +145,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           93

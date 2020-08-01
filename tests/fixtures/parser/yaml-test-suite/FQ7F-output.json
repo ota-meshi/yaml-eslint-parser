@@ -13,8 +13,6 @@
             "style": "plain",
             "strValue": "Mark McGwire",
             "value": "Mark McGwire",
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               14
@@ -35,8 +33,6 @@
             "style": "plain",
             "strValue": "Sammy Sosa",
             "value": "Sammy Sosa",
-            "anchor": null,
-            "tag": null,
             "range": [
               17,
               27
@@ -57,8 +53,6 @@
             "style": "plain",
             "strValue": "Ken Griffey",
             "value": "Ken Griffey",
-            "anchor": null,
-            "tag": null,
             "range": [
               30,
               41
@@ -75,8 +69,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           41

@@ -10,8 +10,6 @@
         "chomping": "clip",
         "indent": null,
         "value": "folded text\n",
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           20

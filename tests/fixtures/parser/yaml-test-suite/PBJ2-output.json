@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "american",
               "value": "american",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 8
@@ -41,8 +39,6 @@
                   "style": "plain",
                   "strValue": "Boston Red Sox",
                   "value": "Boston Red Sox",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     14,
                     28
@@ -63,8 +59,6 @@
                   "style": "plain",
                   "strValue": "Detroit Tigers",
                   "value": "Detroit Tigers",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     33,
                     47
@@ -85,8 +79,6 @@
                   "style": "plain",
                   "strValue": "New York Yankees",
                   "value": "New York Yankees",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     52,
                     68
@@ -103,8 +95,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 12,
                 68
@@ -142,8 +132,6 @@
               "style": "plain",
               "strValue": "national",
               "value": "national",
-              "anchor": null,
-              "tag": null,
               "range": [
                 69,
                 77
@@ -168,8 +156,6 @@
                   "style": "plain",
                   "strValue": "New York Mets",
                   "value": "New York Mets",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     83,
                     96
@@ -190,8 +176,6 @@
                   "style": "plain",
                   "strValue": "Chicago Cubs",
                   "value": "Chicago Cubs",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     101,
                     113
@@ -212,8 +196,6 @@
                   "style": "plain",
                   "strValue": "Atlanta Braves",
                   "value": "Atlanta Braves",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     118,
                     132
@@ -230,8 +212,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 81,
                 132
@@ -263,8 +243,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           132

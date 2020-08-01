@@ -6,12 +6,14 @@ const yamlKeys: { [key in YAMLNode["type"]]: string[] } = {
     Program: ["body"],
     YAMLDocument: ["directives", "content"],
     YAMLDirective: [],
-    YAMLMapping: ["pairs", "anchor", "tag"],
+    YAMLMapping: ["pairs"],
     YAMLPair: ["key", "value"],
-    YAMLSequence: ["entries", "anchor", "tag"],
+    YAMLSequence: ["entries"],
 
-    YAMLScalar: ["anchor", "tag"],
-    YAMLAlias: ["anchor", "tag"],
+    YAMLWithMark: ["anchor", "tag", "value"],
+
+    YAMLScalar: [],
+    YAMLAlias: [],
 
     YAMLAnchor: [],
     YAMLTag: [],

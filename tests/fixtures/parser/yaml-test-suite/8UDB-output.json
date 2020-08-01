@@ -13,8 +13,7 @@
             "style": "double-quoted",
             "strValue": "double quoted",
             "value": "double quoted",
-            "anchor": null,
-            "tag": null,
+            "raw": "\"double\n quoted\"",
             "range": [
               2,
               18
@@ -35,8 +34,7 @@
             "style": "single-quoted",
             "strValue": "single quoted",
             "value": "single quoted",
-            "anchor": null,
-            "tag": null,
+            "raw": "'single\n           quoted'",
             "range": [
               20,
               46
@@ -57,8 +55,6 @@
             "style": "plain",
             "strValue": "plain text",
             "value": "plain text",
-            "anchor": null,
-            "tag": null,
             "range": [
               48,
               59
@@ -83,8 +79,6 @@
                 "style": "plain",
                 "strValue": "nested",
                 "value": "nested",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   63,
                   69
@@ -101,8 +95,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               61,
               71
@@ -129,8 +121,6 @@
                   "style": "plain",
                   "strValue": "single",
                   "value": "single",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     73,
                     79
@@ -151,8 +141,6 @@
                   "style": "plain",
                   "strValue": "pair",
                   "value": "pair",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     81,
                     85
@@ -184,8 +172,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               73,
               85
@@ -202,8 +188,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           88

@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "First occurrence",
               "value": "First occurrence",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 16
@@ -33,10 +31,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "Foo",
-              "value": "Foo",
+              "type": "YAMLWithMark",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "anchor",
@@ -56,14 +51,34 @@
                 }
               },
               "tag": null,
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "Foo",
+                "value": "Foo",
+                "range": [
+                  26,
+                  29
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 26
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 29
+                  }
+                }
+              },
               "range": [
-                26,
+                18,
                 29
               ],
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 26
+                  "column": 18
                 },
                 "end": {
                   "line": 1,
@@ -93,8 +108,6 @@
               "style": "plain",
               "strValue": "Second occurrence",
               "value": "Second occurrence",
-              "anchor": null,
-              "tag": null,
               "range": [
                 30,
                 47
@@ -113,8 +126,6 @@
             "value": {
               "type": "YAMLAlias",
               "name": "anchor",
-              "anchor": null,
-              "tag": null,
               "range": [
                 49,
                 56
@@ -152,8 +163,6 @@
               "style": "plain",
               "strValue": "Override anchor",
               "value": "Override anchor",
-              "anchor": null,
-              "tag": null,
               "range": [
                 57,
                 72
@@ -170,10 +179,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "Bar",
-              "value": "Bar",
+              "type": "YAMLWithMark",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "anchor",
@@ -193,14 +199,34 @@
                 }
               },
               "tag": null,
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "Bar",
+                "value": "Bar",
+                "range": [
+                  82,
+                  85
+                ],
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 25
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 28
+                  }
+                }
+              },
               "range": [
-                82,
+                74,
                 85
               ],
               "loc": {
                 "start": {
                   "line": 3,
-                  "column": 25
+                  "column": 17
                 },
                 "end": {
                   "line": 3,
@@ -230,8 +256,6 @@
               "style": "plain",
               "strValue": "Reuse anchor",
               "value": "Reuse anchor",
-              "anchor": null,
-              "tag": null,
               "range": [
                 86,
                 98
@@ -250,8 +274,6 @@
             "value": {
               "type": "YAMLAlias",
               "name": "anchor",
-              "anchor": null,
-              "tag": null,
               "range": [
                 100,
                 107
@@ -283,8 +305,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           107

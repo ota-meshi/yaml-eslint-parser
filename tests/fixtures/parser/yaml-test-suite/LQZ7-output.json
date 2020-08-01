@@ -15,8 +15,7 @@
               "style": "double-quoted",
               "strValue": "implicit block key",
               "value": "implicit block key",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"implicit block key\"",
               "range": [
                 0,
                 20
@@ -47,8 +46,7 @@
                         "style": "double-quoted",
                         "strValue": "implicit flow key",
                         "value": "implicit flow key",
-                        "anchor": null,
-                        "tag": null,
+                        "raw": "\"implicit flow key\"",
                         "range": [
                           27,
                           46
@@ -69,8 +67,6 @@
                         "style": "plain",
                         "strValue": "value",
                         "value": "value",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           49,
                           54
@@ -102,8 +98,6 @@
                       }
                     }
                   ],
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     27,
                     54
@@ -120,8 +114,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 23,
                 58
@@ -153,8 +145,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           58

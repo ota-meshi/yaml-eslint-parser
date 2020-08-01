@@ -15,8 +15,7 @@
               "style": "single-quoted",
               "strValue": "foo: bar\\",
               "value": "foo: bar\\",
-              "anchor": null,
-              "tag": null,
+              "raw": "'foo: bar\\'",
               "range": [
                 0,
                 11
@@ -37,8 +36,6 @@
               "style": "plain",
               "strValue": "baz'",
               "value": "baz'",
-              "anchor": null,
-              "tag": null,
               "range": [
                 13,
                 17
@@ -70,8 +67,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           17

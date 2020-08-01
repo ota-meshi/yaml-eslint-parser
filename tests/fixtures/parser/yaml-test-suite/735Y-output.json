@@ -13,8 +13,7 @@
             "style": "double-quoted",
             "strValue": "flow in block",
             "value": "flow in block",
-            "anchor": null,
-            "tag": null,
+            "raw": "\"flow in block\"",
             "range": [
               4,
               19
@@ -36,8 +35,6 @@
             "chomping": "clip",
             "indent": null,
             "value": "Block scalar\n",
-            "anchor": null,
-            "tag": null,
             "range": [
               22,
               38
@@ -54,71 +51,7 @@
             }
           },
           {
-            "type": "YAMLMapping",
-            "style": "block",
-            "pairs": [
-              {
-                "type": "YAMLPair",
-                "key": {
-                  "type": "YAMLScalar",
-                  "style": "plain",
-                  "strValue": "foo",
-                  "value": "foo",
-                  "anchor": null,
-                  "tag": null,
-                  "range": [
-                    67,
-                    70
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 6,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 5
-                    }
-                  }
-                },
-                "value": {
-                  "type": "YAMLScalar",
-                  "style": "plain",
-                  "strValue": "bar",
-                  "value": "bar",
-                  "anchor": null,
-                  "tag": null,
-                  "range": [
-                    73,
-                    76
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 6,
-                      "column": 8
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 11
-                    }
-                  }
-                },
-                "range": [
-                  67,
-                  76
-                ],
-                "loc": {
-                  "start": {
-                    "line": 6,
-                    "column": 2
-                  },
-                  "end": {
-                    "line": 6,
-                    "column": 11
-                  }
-                }
-              }
-            ],
+            "type": "YAMLWithMark",
             "anchor": null,
             "tag": {
               "type": "YAMLTag",
@@ -138,13 +71,90 @@
                 }
               }
             },
+            "value": {
+              "type": "YAMLMapping",
+              "style": "block",
+              "pairs": [
+                {
+                  "type": "YAMLPair",
+                  "key": {
+                    "type": "YAMLScalar",
+                    "style": "plain",
+                    "strValue": "foo",
+                    "value": "foo",
+                    "range": [
+                      67,
+                      70
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 6,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 6,
+                        "column": 5
+                      }
+                    }
+                  },
+                  "value": {
+                    "type": "YAMLScalar",
+                    "style": "plain",
+                    "strValue": "bar",
+                    "value": "bar",
+                    "range": [
+                      73,
+                      76
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 6,
+                        "column": 8
+                      },
+                      "end": {
+                        "line": 6,
+                        "column": 11
+                      }
+                    }
+                  },
+                  "range": [
+                    67,
+                    76
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 6,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 11
+                    }
+                  }
+                }
+              ],
+              "range": [
+                67,
+                76
+              ],
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 2
+                },
+                "end": {
+                  "line": 6,
+                  "column": 11
+                }
+              }
+            },
             "range": [
-              67,
+              40,
               76
             ],
             "loc": {
               "start": {
-                "line": 6,
+                "line": 5,
                 "column": 2
               },
               "end": {
@@ -154,8 +164,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           76

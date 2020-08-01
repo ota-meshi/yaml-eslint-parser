@@ -11,10 +11,7 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "a",
-              "value": "a",
+              "type": "YAMLWithMark",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "a",
@@ -34,14 +31,34 @@
                 }
               },
               "tag": null,
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "a",
+                "value": "a",
+                "range": [
+                  5,
+                  6
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 6
+                  }
+                }
+              },
               "range": [
-                5,
+                2,
                 6
               ],
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 5
+                  "column": 2
                 },
                 "end": {
                   "line": 1,
@@ -50,10 +67,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "b",
-              "value": "b",
+              "type": "YAMLWithMark",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "b",
@@ -73,14 +87,34 @@
                 }
               },
               "tag": null,
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "b",
+                "value": "b",
+                "range": [
+                  12,
+                  13
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 5
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 6
+                  }
+                }
+              },
               "range": [
-                12,
+                9,
                 13
               ],
               "loc": {
                 "start": {
                   "line": 2,
-                  "column": 5
+                  "column": 2
                 },
                 "end": {
                   "line": 2,
@@ -109,8 +143,6 @@
             "value": {
               "type": "YAMLAlias",
               "name": "a",
-              "anchor": null,
-              "tag": null,
               "range": [
                 16,
                 18
@@ -142,8 +174,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           18

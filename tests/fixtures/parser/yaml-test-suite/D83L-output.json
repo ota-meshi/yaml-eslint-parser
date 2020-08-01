@@ -14,8 +14,6 @@
             "chomping": "strip",
             "indent": 2,
             "value": "explicit indent and chomp",
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               34
@@ -37,8 +35,6 @@
             "chomping": "strip",
             "indent": 2,
             "value": "chomp and explicit indent",
-            "anchor": null,
-            "tag": null,
             "range": [
               36,
               68
@@ -55,8 +51,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           68

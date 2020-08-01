@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "safe",
               "value": "safe",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 4
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "a!\"#$%&'()*+,-./09:;<=>?@AZ[\\]^_`az{|}~ !\"#$%&'()*+,-./09:;<=>?@AZ[\\]^_`az{|}~",
               "value": "a!\"#$%&'()*+,-./09:;<=>?@AZ[\\]^_`az{|}~ !\"#$%&'()*+,-./09:;<=>?@AZ[\\]^_`az{|}~",
-              "anchor": null,
-              "tag": null,
               "range": [
                 6,
                 89
@@ -76,8 +72,6 @@
               "style": "plain",
               "strValue": "safe question mark",
               "value": "safe question mark",
-              "anchor": null,
-              "tag": null,
               "range": [
                 90,
                 108
@@ -98,8 +92,6 @@
               "style": "plain",
               "strValue": "?foo",
               "value": "?foo",
-              "anchor": null,
-              "tag": null,
               "range": [
                 110,
                 114
@@ -137,8 +129,6 @@
               "style": "plain",
               "strValue": "safe colon",
               "value": "safe colon",
-              "anchor": null,
-              "tag": null,
               "range": [
                 115,
                 125
@@ -159,8 +149,6 @@
               "style": "plain",
               "strValue": ":foo",
               "value": ":foo",
-              "anchor": null,
-              "tag": null,
               "range": [
                 127,
                 131
@@ -198,8 +186,6 @@
               "style": "plain",
               "strValue": "safe dash",
               "value": "safe dash",
-              "anchor": null,
-              "tag": null,
               "range": [
                 132,
                 141
@@ -220,8 +206,6 @@
               "style": "plain",
               "strValue": "-foo",
               "value": "-foo",
-              "anchor": null,
-              "tag": null,
               "range": [
                 143,
                 147
@@ -253,8 +237,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           147

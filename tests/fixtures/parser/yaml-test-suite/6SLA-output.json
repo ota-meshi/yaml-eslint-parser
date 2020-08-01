@@ -15,8 +15,7 @@
               "style": "double-quoted",
               "strValue": "foo\nbar:baz\tx \\$%^&*()x",
               "value": "foo\nbar:baz\tx \\$%^&*()x",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"foo\\nbar:baz\\tx \\\\$%^&*()x\"",
               "range": [
                 0,
                 28
@@ -37,8 +36,6 @@
               "style": "plain",
               "strValue": "23",
               "value": 23,
-              "anchor": null,
-              "tag": null,
               "range": [
                 30,
                 32
@@ -76,8 +73,7 @@
               "style": "single-quoted",
               "strValue": "x\\ny:z\\tx $%^&*()x",
               "value": "x\\ny:z\\tx $%^&*()x",
-              "anchor": null,
-              "tag": null,
+              "raw": "'x\\ny:z\\tx $%^&*()x'",
               "range": [
                 33,
                 53
@@ -98,8 +94,6 @@
               "style": "plain",
               "strValue": "24",
               "value": 24,
-              "anchor": null,
-              "tag": null,
               "range": [
                 55,
                 57
@@ -131,8 +125,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           57

@@ -10,8 +10,6 @@
         "chomping": "clip",
         "indent": null,
         "value": "line1 line2 line3\n",
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           24

@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "foo",
               "value": "foo",
-              "anchor": null,
-              "tag": null,
               "range": [
                 4,
                 7
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "123",
               "value": 123,
-              "anchor": null,
-              "tag": null,
               "range": [
                 9,
                 12
@@ -70,8 +66,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           12
@@ -110,8 +104,6 @@
         "style": "plain",
         "strValue": "bar",
         "value": "bar",
-        "anchor": null,
-        "tag": null,
         "range": [
           17,
           20
@@ -156,8 +148,6 @@
               "style": "plain",
               "strValue": "baz",
               "value": "baz",
-              "anchor": null,
-              "tag": null,
               "range": [
                 25,
                 28
@@ -178,8 +168,6 @@
               "style": "plain",
               "strValue": "456",
               "value": 456,
-              "anchor": null,
-              "tag": null,
               "range": [
                 30,
                 33
@@ -211,8 +199,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           25,
           33

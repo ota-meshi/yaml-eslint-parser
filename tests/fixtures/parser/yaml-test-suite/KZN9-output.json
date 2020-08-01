@@ -23,8 +23,6 @@
                       "style": "plain",
                       "strValue": "YAML",
                       "value": "YAML",
-                      "anchor": null,
-                      "tag": null,
                       "range": [
                         4,
                         8
@@ -45,8 +43,6 @@
                       "style": "plain",
                       "strValue": "separate",
                       "value": "separate",
-                      "anchor": null,
-                      "tag": null,
                       "range": [
                         11,
                         19
@@ -78,8 +74,6 @@
                     }
                   }
                 ],
-                "anchor": null,
-                "tag": null,
                 "range": [
                   4,
                   19
@@ -96,8 +90,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               2,
               21
@@ -129,8 +121,6 @@
                       "style": "plain",
                       "strValue": "empty key entry",
                       "value": "empty key entry",
-                      "anchor": null,
-                      "tag": null,
                       "range": [
                         28,
                         43
@@ -162,8 +152,6 @@
                     }
                   }
                 ],
-                "anchor": null,
-                "tag": null,
                 "range": [
                   26,
                   43
@@ -180,8 +168,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               24,
               45
@@ -218,8 +204,6 @@
                             "style": "plain",
                             "strValue": "JSON",
                             "value": "JSON",
-                            "anchor": null,
-                            "tag": null,
                             "range": [
                               51,
                               55
@@ -240,8 +224,6 @@
                             "style": "plain",
                             "strValue": "like",
                             "value": "like",
-                            "anchor": null,
-                            "tag": null,
                             "range": [
                               57,
                               61
@@ -273,8 +255,6 @@
                           }
                         }
                       ],
-                      "anchor": null,
-                      "tag": null,
                       "range": [
                         50,
                         62
@@ -295,8 +275,6 @@
                       "style": "plain",
                       "strValue": "adjacent",
                       "value": "adjacent",
-                      "anchor": null,
-                      "tag": null,
                       "range": [
                         63,
                         71
@@ -328,8 +306,6 @@
                     }
                   }
                 ],
-                "anchor": null,
-                "tag": null,
                 "range": [
                   50,
                   71
@@ -346,8 +322,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               48,
               73
@@ -364,8 +338,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           73

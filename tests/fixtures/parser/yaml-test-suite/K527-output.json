@@ -10,8 +10,6 @@
         "chomping": "strip",
         "indent": null,
         "value": "trimmed\n\n\nas space",
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           32

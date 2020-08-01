@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "wanted",
               "value": "wanted",
-              "anchor": null,
-              "tag": null,
               "range": [
                 4,
                 10
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "love ♥ and peace ☮",
               "value": "love ♥ and peace ☮",
-              "anchor": null,
-              "tag": null,
               "range": [
                 12,
                 30
@@ -70,8 +66,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           30

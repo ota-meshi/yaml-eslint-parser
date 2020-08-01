@@ -1,3 +1,4 @@
+import yaml from "yaml"
 import {
     YAMLProgram,
     YAMLContent,
@@ -8,6 +9,8 @@ import {
     YAMLAlias,
     YAMLAnchor,
     YAMLPair,
+    YAMLWithMark,
+    YAMLTag,
 } from "./ast"
 
 type YAMLContentValue =
@@ -32,14 +35,14 @@ export function getStaticYAMLValue(
 ): string | number | boolean | null
 export function getStaticYAMLValue(node: YAMLAlias): YAMLContentValue
 export function getStaticYAMLValue(
-    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair,
+    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMark,
 ): YAMLContentValue
 
 /**
  * Gets the static value for the given node.
  */
 export function getStaticYAMLValue(
-    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair,
+    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMark,
 ): YAMLContentValue {
     return resolver[node.type](node as any)
 }
@@ -86,14 +89,43 @@ const resolver = {
         const anchor = findAnchor(node)
         return anchor ? getStaticYAMLValue(anchor.parent) : null
     },
+    YAMLWithMark(node: YAMLWithMark) {
+        if (node.tag) {
+            if (node.value.type === "YAMLScalar") {
+                if (node.value.style === "plain") {
+                    return getTaggedValue(
+                        node.tag,
+                        node.value.strValue,
+                        node.value.strValue,
+                    )
+                }
+                if (
+                    node.value.style === "double-quoted" ||
+                    node.value.style === "single-quoted"
+                ) {
+                    return getTaggedValue(
+                        node.tag,
+                        node.value.raw,
+                        node.value.strValue,
+                    )
+                }
+            }
+        }
+        return getStaticYAMLValue(node.value)
+    },
 }
 
 /**
  * Find Anchor
  */
 function findAnchor(node: YAMLAlias): YAMLAnchor | null {
-    let p: YAMLDocument | YAMLSequence | YAMLMapping | YAMLPair | undefined =
-        node.parent
+    let p:
+        | YAMLDocument
+        | YAMLSequence
+        | YAMLMapping
+        | YAMLPair
+        | YAMLWithMark
+        | undefined = node.parent
     let doc: YAMLDocument | null = null
     while (p) {
         if (p.type === "YAMLDocument") {
@@ -103,4 +135,51 @@ function findAnchor(node: YAMLAlias): YAMLAnchor | null {
         p = p.parent
     }
     return doc!.anchors[node.name] || null
+}
+
+/**
+ * Get tagged value
+ */
+function getTaggedValue(tag: YAMLTag, text: string, str: string) {
+    if (tag.tag === "tag:yaml.org,2002:str") {
+        return str
+    } else if (tag.tag === "tag:yaml.org,2002:int") {
+        if (/^(?:[1-9]\d*|0)$/u.test(str)) {
+            return parseInt(str, 10)
+        }
+    } else if (tag.tag === "tag:yaml.org,2002:bool") {
+        if (isTrue(str)) {
+            return true
+        }
+        if (isFalse(str)) {
+            return false
+        }
+    } else if (tag.tag === "tag:yaml.org,2002:null") {
+        if (isNull(str) || str === "") {
+            return null
+        }
+    }
+    const tagText = tag.tag.startsWith("!") ? tag.tag : `!<${tag.tag}>`
+    return yaml.parseDocument(`${tagText} ${text}`).toJSON()
+}
+
+/**
+ * Checks if the given string is true
+ */
+export function isTrue(str: string) {
+    return str === "true" || str === "True" || str === "TRUE"
+}
+
+/**
+ * Checks if the given string is false
+ */
+export function isFalse(str: string) {
+    return str === "false" || str === "False" || str === "FALSE"
+}
+
+/**
+ * Checks if the given string is null
+ */
+export function isNull(str: string) {
+    return str === "null" || str === "Null" || str === "NULL" || str === "~"
 }

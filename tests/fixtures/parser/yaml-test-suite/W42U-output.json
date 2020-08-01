@@ -14,8 +14,6 @@
             "chomping": "clip",
             "indent": null,
             "value": "block node\n",
-            "anchor": null,
-            "tag": null,
             "range": [
               12,
               26
@@ -40,8 +38,6 @@
                 "style": "plain",
                 "strValue": "one",
                 "value": "one",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   30,
                   33
@@ -62,8 +58,6 @@
                 "style": "plain",
                 "strValue": "two",
                 "value": "two",
-                "anchor": null,
-                "tag": null,
                 "range": [
                   48,
                   51
@@ -80,8 +74,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               28,
               62
@@ -108,8 +100,6 @@
                   "style": "plain",
                   "strValue": "one",
                   "value": "one",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     65,
                     68
@@ -130,8 +120,6 @@
                   "style": "plain",
                   "strValue": "two",
                   "value": "two",
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     70,
                     73
@@ -163,8 +151,6 @@
                 }
               }
             ],
-            "anchor": null,
-            "tag": null,
             "range": [
               65,
               91
@@ -181,8 +167,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           91

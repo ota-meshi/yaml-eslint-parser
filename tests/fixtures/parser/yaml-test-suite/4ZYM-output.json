@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "plain",
               "value": "plain",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 5
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "text lines",
               "value": "text lines",
-              "anchor": null,
-              "tag": null,
               "range": [
                 7,
                 19
@@ -76,8 +72,6 @@
               "style": "plain",
               "strValue": "quoted",
               "value": "quoted",
-              "anchor": null,
-              "tag": null,
               "range": [
                 20,
                 26
@@ -98,8 +92,7 @@
               "style": "double-quoted",
               "strValue": "text lines",
               "value": "text lines",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"text\n  \tlines\"",
               "range": [
                 28,
                 43
@@ -137,8 +130,6 @@
               "style": "plain",
               "strValue": "block",
               "value": "block",
-              "anchor": null,
-              "tag": null,
               "range": [
                 44,
                 49
@@ -160,8 +151,6 @@
               "chomping": "clip",
               "indent": null,
               "value": "text\n \tlines\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 51,
                 70
@@ -193,8 +182,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           70

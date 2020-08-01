@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "Mark McGwire",
               "value": "Mark McGwire",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 12
@@ -43,8 +41,6 @@
                     "style": "plain",
                     "strValue": "hr",
                     "value": "hr",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       15,
                       17
@@ -65,8 +61,6 @@
                     "style": "plain",
                     "strValue": "65",
                     "value": 65,
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       19,
                       21
@@ -104,8 +98,6 @@
                     "style": "plain",
                     "strValue": "avg",
                     "value": "avg",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       23,
                       26
@@ -126,8 +118,6 @@
                     "style": "plain",
                     "strValue": "0.278",
                     "value": 0.278,
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       28,
                       33
@@ -159,8 +149,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 14,
                 34
@@ -198,8 +186,6 @@
               "style": "plain",
               "strValue": "Sammy Sosa",
               "value": "Sammy Sosa",
-              "anchor": null,
-              "tag": null,
               "range": [
                 35,
                 45
@@ -226,8 +212,6 @@
                     "style": "plain",
                     "strValue": "hr",
                     "value": "hr",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       53,
                       55
@@ -248,8 +232,6 @@
                     "style": "plain",
                     "strValue": "63",
                     "value": 63,
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       57,
                       59
@@ -287,8 +269,6 @@
                     "style": "plain",
                     "strValue": "avg",
                     "value": "avg",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       65,
                       68
@@ -309,8 +289,6 @@
                     "style": "plain",
                     "strValue": "0.288",
                     "value": 0.288,
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       70,
                       75
@@ -342,8 +320,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 47,
                 79
@@ -375,8 +351,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           79

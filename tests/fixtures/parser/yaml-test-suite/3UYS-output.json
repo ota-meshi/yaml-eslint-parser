@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "escaped slash",
               "value": "escaped slash",
-              "anchor": null,
-              "tag": null,
               "range": [
                 0,
                 13
@@ -37,8 +35,7 @@
               "style": "double-quoted",
               "strValue": "a/b",
               "value": "a/b",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"a\\/b\"",
               "range": [
                 15,
                 21
@@ -70,8 +67,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           21

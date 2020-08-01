@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "Time",
               "value": "Time",
-              "anchor": null,
-              "tag": null,
               "range": [
                 4,
                 8
@@ -37,8 +35,6 @@
               "style": "plain",
               "strValue": "2001-11-23 15:01:42 -5",
               "value": "2001-11-23 15:01:42 -5",
-              "anchor": null,
-              "tag": null,
               "range": [
                 10,
                 32
@@ -76,8 +72,6 @@
               "style": "plain",
               "strValue": "User",
               "value": "User",
-              "anchor": null,
-              "tag": null,
               "range": [
                 33,
                 37
@@ -98,8 +92,6 @@
               "style": "plain",
               "strValue": "ed",
               "value": "ed",
-              "anchor": null,
-              "tag": null,
               "range": [
                 39,
                 41
@@ -137,8 +129,6 @@
               "style": "plain",
               "strValue": "Warning",
               "value": "Warning",
-              "anchor": null,
-              "tag": null,
               "range": [
                 42,
                 49
@@ -159,8 +149,6 @@
               "style": "plain",
               "strValue": "This is an error message for the log file",
               "value": "This is an error message for the log file",
-              "anchor": null,
-              "tag": null,
               "range": [
                 53,
                 96
@@ -192,8 +180,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           4,
           96
@@ -238,8 +224,6 @@
               "style": "plain",
               "strValue": "Time",
               "value": "Time",
-              "anchor": null,
-              "tag": null,
               "range": [
                 101,
                 105
@@ -260,8 +244,6 @@
               "style": "plain",
               "strValue": "2001-11-23 15:02:31 -5",
               "value": "2001-11-23 15:02:31 -5",
-              "anchor": null,
-              "tag": null,
               "range": [
                 107,
                 129
@@ -299,8 +281,6 @@
               "style": "plain",
               "strValue": "User",
               "value": "User",
-              "anchor": null,
-              "tag": null,
               "range": [
                 130,
                 134
@@ -321,8 +301,6 @@
               "style": "plain",
               "strValue": "ed",
               "value": "ed",
-              "anchor": null,
-              "tag": null,
               "range": [
                 136,
                 138
@@ -360,8 +338,6 @@
               "style": "plain",
               "strValue": "Warning",
               "value": "Warning",
-              "anchor": null,
-              "tag": null,
               "range": [
                 139,
                 146
@@ -382,8 +358,6 @@
               "style": "plain",
               "strValue": "A slightly different error message.",
               "value": "A slightly different error message.",
-              "anchor": null,
-              "tag": null,
               "range": [
                 150,
                 187
@@ -415,8 +389,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           101,
           187
@@ -461,8 +433,6 @@
               "style": "plain",
               "strValue": "Date",
               "value": "Date",
-              "anchor": null,
-              "tag": null,
               "range": [
                 192,
                 196
@@ -483,8 +453,6 @@
               "style": "plain",
               "strValue": "2001-11-23 15:03:17 -5",
               "value": "2001-11-23 15:03:17 -5",
-              "anchor": null,
-              "tag": null,
               "range": [
                 198,
                 220
@@ -522,8 +490,6 @@
               "style": "plain",
               "strValue": "User",
               "value": "User",
-              "anchor": null,
-              "tag": null,
               "range": [
                 221,
                 225
@@ -544,8 +510,6 @@
               "style": "plain",
               "strValue": "ed",
               "value": "ed",
-              "anchor": null,
-              "tag": null,
               "range": [
                 227,
                 229
@@ -583,8 +547,6 @@
               "style": "plain",
               "strValue": "Fatal",
               "value": "Fatal",
-              "anchor": null,
-              "tag": null,
               "range": [
                 230,
                 235
@@ -605,8 +567,6 @@
               "style": "plain",
               "strValue": "Unknown variable \"bar\"",
               "value": "Unknown variable \"bar\"",
-              "anchor": null,
-              "tag": null,
               "range": [
                 239,
                 261
@@ -644,8 +604,6 @@
               "style": "plain",
               "strValue": "Stack",
               "value": "Stack",
-              "anchor": null,
-              "tag": null,
               "range": [
                 262,
                 267
@@ -676,8 +634,6 @@
                         "style": "plain",
                         "strValue": "file",
                         "value": "file",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           273,
                           277
@@ -698,8 +654,6 @@
                         "style": "plain",
                         "strValue": "TopClass.py",
                         "value": "TopClass.py",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           279,
                           290
@@ -737,8 +691,6 @@
                         "style": "plain",
                         "strValue": "line",
                         "value": "line",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           295,
                           299
@@ -759,8 +711,6 @@
                         "style": "plain",
                         "strValue": "23",
                         "value": 23,
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           301,
                           303
@@ -798,8 +748,6 @@
                         "style": "plain",
                         "strValue": "code",
                         "value": "code",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           308,
                           312
@@ -821,8 +769,6 @@
                         "chomping": "clip",
                         "indent": null,
                         "value": "x = MoreObject(\"345\\n\")\n",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           314,
                           346
@@ -854,8 +800,6 @@
                       }
                     }
                   ],
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     273,
                     346
@@ -882,8 +826,6 @@
                         "style": "plain",
                         "strValue": "file",
                         "value": "file",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           350,
                           354
@@ -904,8 +846,6 @@
                         "style": "plain",
                         "strValue": "MoreClass.py",
                         "value": "MoreClass.py",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           356,
                           368
@@ -943,8 +883,6 @@
                         "style": "plain",
                         "strValue": "line",
                         "value": "line",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           373,
                           377
@@ -965,8 +903,6 @@
                         "style": "plain",
                         "strValue": "58",
                         "value": 58,
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           379,
                           381
@@ -1004,8 +940,6 @@
                         "style": "plain",
                         "strValue": "code",
                         "value": "code",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           386,
                           390
@@ -1027,8 +961,6 @@
                         "chomping": "strip",
                         "indent": null,
                         "value": "foo = bar",
-                        "anchor": null,
-                        "tag": null,
                         "range": [
                           392,
                           411
@@ -1060,8 +992,6 @@
                       }
                     }
                   ],
-                  "anchor": null,
-                  "tag": null,
                   "range": [
                     350,
                     411
@@ -1078,8 +1008,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 271,
                 411
@@ -1111,8 +1039,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           192,
           411

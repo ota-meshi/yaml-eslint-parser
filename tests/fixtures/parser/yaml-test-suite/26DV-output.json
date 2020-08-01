@@ -15,8 +15,7 @@
               "style": "double-quoted",
               "strValue": "top1",
               "value": "top1",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"top1\"",
               "range": [
                 0,
                 6
@@ -43,8 +42,7 @@
                     "style": "double-quoted",
                     "strValue": "key1",
                     "value": "key1",
-                    "anchor": null,
-                    "tag": null,
+                    "raw": "\"key1\"",
                     "range": [
                       12,
                       18
@@ -61,10 +59,7 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLScalar",
-                    "style": "plain",
-                    "strValue": "scalar1",
-                    "value": "scalar1",
+                    "type": "YAMLWithMark",
                     "anchor": {
                       "type": "YAMLAnchor",
                       "name": "alias1",
@@ -84,14 +79,34 @@
                       }
                     },
                     "tag": null,
+                    "value": {
+                      "type": "YAMLScalar",
+                      "style": "plain",
+                      "strValue": "scalar1",
+                      "value": "scalar1",
+                      "range": [
+                        29,
+                        36
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 26
+                        }
+                      }
+                    },
                     "range": [
-                      29,
+                      21,
                       36
                     ],
                     "loc": {
                       "start": {
                         "line": 2,
-                        "column": 19
+                        "column": 11
                       },
                       "end": {
                         "line": 2,
@@ -115,8 +130,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 12,
                 36
@@ -154,8 +167,7 @@
               "style": "single-quoted",
               "strValue": "top2",
               "value": "top2",
-              "anchor": null,
-              "tag": null,
+              "raw": "'top2'",
               "range": [
                 37,
                 43
@@ -182,8 +194,7 @@
                     "style": "single-quoted",
                     "strValue": "key2",
                     "value": "key2",
-                    "anchor": null,
-                    "tag": null,
+                    "raw": "'key2'",
                     "range": [
                       49,
                       55
@@ -200,10 +211,7 @@
                     }
                   },
                   "value": {
-                    "type": "YAMLScalar",
-                    "style": "plain",
-                    "strValue": "scalar2",
-                    "value": "scalar2",
+                    "type": "YAMLWithMark",
                     "anchor": {
                       "type": "YAMLAnchor",
                       "name": "alias2",
@@ -223,14 +231,34 @@
                       }
                     },
                     "tag": null,
+                    "value": {
+                      "type": "YAMLScalar",
+                      "style": "plain",
+                      "strValue": "scalar2",
+                      "value": "scalar2",
+                      "range": [
+                        66,
+                        73
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 4,
+                          "column": 19
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 26
+                        }
+                      }
+                    },
                     "range": [
-                      66,
+                      58,
                       73
                     ],
                     "loc": {
                       "start": {
                         "line": 4,
-                        "column": 19
+                        "column": 11
                       },
                       "end": {
                         "line": 4,
@@ -254,8 +282,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 49,
                 73
@@ -293,8 +319,6 @@
               "style": "plain",
               "strValue": "top3",
               "value": "top3",
-              "anchor": null,
-              "tag": null,
               "range": [
                 74,
                 78
@@ -311,69 +335,7 @@
               }
             },
             "value": {
-              "type": "YAMLMapping",
-              "style": "block",
-              "pairs": [
-                {
-                  "type": "YAMLPair",
-                  "key": {
-                    "type": "YAMLAlias",
-                    "name": "alias1",
-                    "anchor": null,
-                    "tag": null,
-                    "range": [
-                      90,
-                      97
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 6,
-                        "column": 2
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 9
-                      }
-                    }
-                  },
-                  "value": {
-                    "type": "YAMLScalar",
-                    "style": "plain",
-                    "strValue": "scalar3",
-                    "value": "scalar3",
-                    "anchor": null,
-                    "tag": null,
-                    "range": [
-                      100,
-                      107
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 6,
-                        "column": 12
-                      },
-                      "end": {
-                        "line": 6,
-                        "column": 19
-                      }
-                    }
-                  },
-                  "range": [
-                    90,
-                    107
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 6,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 19
-                    }
-                  }
-                }
-              ],
+              "type": "YAMLWithMark",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "node3",
@@ -393,14 +355,89 @@
                 }
               },
               "tag": null,
+              "value": {
+                "type": "YAMLMapping",
+                "style": "block",
+                "pairs": [
+                  {
+                    "type": "YAMLPair",
+                    "key": {
+                      "type": "YAMLAlias",
+                      "name": "alias1",
+                      "range": [
+                        90,
+                        97
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 6,
+                          "column": 2
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 9
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "YAMLScalar",
+                      "style": "plain",
+                      "strValue": "scalar3",
+                      "value": "scalar3",
+                      "range": [
+                        100,
+                        107
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 6,
+                          "column": 12
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 19
+                        }
+                      }
+                    },
+                    "range": [
+                      90,
+                      107
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 6,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 6,
+                        "column": 19
+                      }
+                    }
+                  }
+                ],
+                "range": [
+                  90,
+                  107
+                ],
+                "loc": {
+                  "start": {
+                    "line": 6,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 6,
+                    "column": 19
+                  }
+                }
+              },
               "range": [
-                90,
+                80,
                 107
               ],
               "loc": {
                 "start": {
-                  "line": 6,
-                  "column": 2
+                  "line": 5,
+                  "column": 6
                 },
                 "end": {
                   "line": 6,
@@ -430,8 +467,6 @@
               "style": "plain",
               "strValue": "top4",
               "value": "top4",
-              "anchor": null,
-              "tag": null,
               "range": [
                 108,
                 112
@@ -456,8 +491,6 @@
                   "key": {
                     "type": "YAMLAlias",
                     "name": "alias2",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       117,
                       124
@@ -478,8 +511,6 @@
                     "style": "plain",
                     "strValue": "scalar4",
                     "value": "scalar4",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       127,
                       134
@@ -511,8 +542,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 117,
                 134
@@ -550,8 +579,6 @@
               "style": "plain",
               "strValue": "top5",
               "value": "top5",
-              "anchor": null,
-              "tag": null,
               "range": [
                 135,
                 139
@@ -572,8 +599,6 @@
               "style": "plain",
               "strValue": "scalar5",
               "value": "scalar5",
-              "anchor": null,
-              "tag": null,
               "range": [
                 150,
                 157
@@ -611,8 +636,6 @@
               "style": "plain",
               "strValue": "top6",
               "value": "top6",
-              "anchor": null,
-              "tag": null,
               "range": [
                 158,
                 162
@@ -635,10 +658,7 @@
                 {
                   "type": "YAMLPair",
                   "key": {
-                    "type": "YAMLScalar",
-                    "style": "single-quoted",
-                    "strValue": "key6",
-                    "value": "key6",
+                    "type": "YAMLWithMark",
                     "anchor": {
                       "type": "YAMLAnchor",
                       "name": "anchor6",
@@ -658,14 +678,35 @@
                       }
                     },
                     "tag": null,
+                    "value": {
+                      "type": "YAMLScalar",
+                      "style": "single-quoted",
+                      "strValue": "key6",
+                      "value": "key6",
+                      "raw": "'key6'",
+                      "range": [
+                        176,
+                        182
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 12,
+                          "column": 11
+                        },
+                        "end": {
+                          "line": 12,
+                          "column": 17
+                        }
+                      }
+                    },
                     "range": [
-                      176,
+                      167,
                       182
                     ],
                     "loc": {
                       "start": {
                         "line": 12,
-                        "column": 11
+                        "column": 2
                       },
                       "end": {
                         "line": 12,
@@ -678,8 +719,6 @@
                     "style": "plain",
                     "strValue": "scalar6",
                     "value": "scalar6",
-                    "anchor": null,
-                    "tag": null,
                     "range": [
                       185,
                       192
@@ -711,8 +750,6 @@
                   }
                 }
               ],
-              "anchor": null,
-              "tag": null,
               "range": [
                 167,
                 192
@@ -744,8 +781,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           192

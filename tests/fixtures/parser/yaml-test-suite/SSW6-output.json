@@ -9,8 +9,7 @@
         "style": "single-quoted",
         "strValue": "here's to \"quotes\"",
         "value": "here's to \"quotes\"",
-        "anchor": null,
-        "tag": null,
+        "raw": "'here''s to \"quotes\"'",
         "range": [
           4,
           25

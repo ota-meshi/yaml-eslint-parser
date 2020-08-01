@@ -15,8 +15,6 @@
               "style": "plain",
               "strValue": "quoted",
               "value": "quoted",
-              "anchor": null,
-              "tag": null,
               "range": [
                 18,
                 24
@@ -37,8 +35,7 @@
               "style": "double-quoted",
               "strValue": "Quoted \t",
               "value": "Quoted \t",
-              "anchor": null,
-              "tag": null,
+              "raw": "\"Quoted \t\"",
               "range": [
                 26,
                 36
@@ -76,8 +73,6 @@
               "style": "plain",
               "strValue": "block",
               "value": "block",
-              "anchor": null,
-              "tag": null,
               "range": [
                 37,
                 42
@@ -99,8 +94,6 @@
               "chomping": "clip",
               "indent": null,
               "value": "void main() {\n\tprintf(\"Hello, world!\\n\");\n}\n",
-              "anchor": null,
-              "tag": null,
               "range": [
                 44,
                 96
@@ -132,8 +125,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           18,
           96

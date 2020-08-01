@@ -11,10 +11,7 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLScalar",
-              "style": "double-quoted",
-              "strValue": "foo",
-              "value": "foo",
+              "type": "YAMLWithMark",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "a1",
@@ -51,14 +48,35 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "double-quoted",
+                "strValue": "foo",
+                "value": "foo",
+                "raw": "\"foo\"",
+                "range": [
+                  10,
+                  15
+                ],
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 10
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 15
+                  }
+                }
+              },
               "range": [
-                10,
+                0,
                 15
               ],
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 10
+                  "column": 0
                 },
                 "end": {
                   "line": 1,
@@ -67,10 +85,7 @@
               }
             },
             "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "bar",
-              "value": "bar",
+              "type": "YAMLWithMark",
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
@@ -90,14 +105,34 @@
                   }
                 }
               },
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "bar",
+                "value": "bar",
+                "range": [
+                  25,
+                  28
+                ],
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 8
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 11
+                  }
+                }
+              },
               "range": [
-                25,
+                19,
                 28
               ],
               "loc": {
                 "start": {
                   "line": 2,
-                  "column": 8
+                  "column": 2
                 },
                 "end": {
                   "line": 2,
@@ -123,10 +158,7 @@
           {
             "type": "YAMLPair",
             "key": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "baz",
-              "value": "baz",
+              "type": "YAMLWithMark",
               "anchor": {
                 "type": "YAMLAnchor",
                 "name": "a2",
@@ -146,14 +178,34 @@
                 }
               },
               "tag": null,
+              "value": {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "baz",
+                "value": "baz",
+                "range": [
+                  33,
+                  36
+                ],
+                "loc": {
+                  "start": {
+                    "line": 3,
+                    "column": 4
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 7
+                  }
+                }
+              },
               "range": [
-                33,
+                29,
                 36
               ],
               "loc": {
                 "start": {
                   "line": 3,
-                  "column": 4
+                  "column": 0
                 },
                 "end": {
                   "line": 3,
@@ -164,8 +216,6 @@
             "value": {
               "type": "YAMLAlias",
               "name": "a1",
-              "anchor": null,
-              "tag": null,
               "range": [
                 39,
                 42
@@ -197,8 +247,6 @@
             }
           }
         ],
-        "anchor": null,
-        "tag": null,
         "range": [
           0,
           42
