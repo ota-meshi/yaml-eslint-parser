@@ -117,24 +117,6 @@
     },
     {
       "type": "Identifier",
-      "value": "",
-      "range": [
-        5,
-        5
-      ],
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 1
-        },
-        "end": {
-          "line": 2,
-          "column": 1
-        }
-      }
-    },
-    {
-      "type": "Identifier",
       "value": "a",
       "range": [
         6,

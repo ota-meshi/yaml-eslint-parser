@@ -151,9 +151,27 @@ function checkTokens(ast: YAMLProgram, input: string) {
 }
 
 function checkLoc(ast: YAMLProgram, fileName: string, code: string) {
+    for (const token of ast.tokens) {
+        assert.ok(
+            token.range[0] < token.range[1],
+            `No range on "${token.type} line:${token.loc.start.line} col:${token.loc.start.column}" in ${fileName}`,
+        )
+    }
+    for (const token of ast.comments) {
+        assert.ok(
+            token.range[0] < token.range[1],
+            `No range on "${token.type} line:${token.loc.start.line} col:${token.loc.start.column}" in ${fileName}`,
+        )
+    }
     traverseNodes(ast, {
         // eslint-disable-next-line complexity
         enterNode(node, parent) {
+            if (node.type !== "Program" && node.type !== "YAMLDocument") {
+                assert.ok(
+                    node.range[0] < node.range[1],
+                    `No range on "${node.type} line:${node.loc.start.line} col:${node.loc.start.column}" in ${fileName}`,
+                )
+            }
             if (node.type === "YAMLWithMeta") {
                 if (node.anchor && node.value) {
                     assert.ok(

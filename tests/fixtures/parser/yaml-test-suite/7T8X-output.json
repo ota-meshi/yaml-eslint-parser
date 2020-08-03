@@ -83,15 +83,15 @@
     },
     {
       "type": "BlockFolded",
-      "value": "folded\n line\n\n next\n line\n   * bullet\n\n   * list\n   * lines\n\n last\n line\n",
+      "value": "\n folded\n line\n\n next\n line\n   * bullet\n\n   * list\n   * lines\n\n last\n line\n",
       "range": [
-        4,
+        2,
         77
       ],
       "loc": {
         "start": {
-          "line": 3,
-          "column": 1
+          "line": 2,
+          "column": 0
         },
         "end": {
           "line": 15,

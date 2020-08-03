@@ -219,15 +219,15 @@
     },
     {
       "type": "BlockFolded",
-      "value": "# detected\n",
+      "value": "\n  \n  # detected\n",
       "range": [
-        25,
+        19,
         36
       ],
       "loc": {
         "start": {
-          "line": 6,
-          "column": 2
+          "line": 4,
+          "column": 1
         },
         "end": {
           "line": 7,
@@ -327,15 +327,15 @@
     },
     {
       "type": "BlockFolded",
-      "value": "detected\n",
+      "value": "\n detected\n",
       "range": [
-        60,
+        58,
         69
       ],
       "loc": {
         "start": {
-          "line": 11,
-          "column": 1
+          "line": 10,
+          "column": 2
         },
         "end": {
           "line": 12,
