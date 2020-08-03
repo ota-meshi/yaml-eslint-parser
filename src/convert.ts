@@ -682,11 +682,6 @@ function convertBlockLiteral(
                 break
             }
             column++
-            if (c === "\n") {
-                line++
-                column = 0
-                break
-            }
             index++
         }
         const punctuatorLoc: Locations = {
@@ -700,15 +695,21 @@ function convertBlockLiteral(
             },
         }
         addToken(tokens, "Punctuator", punctuatorLoc, code)
+        let lineFeed = false
         while (index < text.length) {
             const c = text[index]
             if (c.trim()) {
                 break
             }
-            column++
             if (c === "\n") {
+                if (lineFeed) {
+                    break
+                }
                 line++
                 column = 0
+                lineFeed = true
+            } else {
+                column++
             }
             index++
         }
@@ -722,7 +723,9 @@ function convertBlockLiteral(
                 end: clone(loc.loc.end),
             },
         }
-        addToken(tokens, "BlockLiteral", tokenLoc, code)
+        if (tokenLoc.range[0] < tokenLoc.range[1]) {
+            addToken(tokens, "BlockLiteral", tokenLoc, code)
+        }
     } else {
         // ??
         addToken(tokens, "BlockLiteral", clone(loc), code)
@@ -763,11 +766,6 @@ function convertBlockFolded(
                 break
             }
             column++
-            if (c === "\n") {
-                line++
-                column = 0
-                break
-            }
             index++
         }
         const punctuatorLoc: Locations = {
@@ -781,15 +779,21 @@ function convertBlockFolded(
             },
         }
         addToken(tokens, "Punctuator", punctuatorLoc, code)
+        let lineFeed = false
         while (index < text.length) {
             const c = text[index]
             if (c.trim()) {
                 break
             }
-            column++
             if (c === "\n") {
+                if (lineFeed) {
+                    break
+                }
                 line++
                 column = 0
+                lineFeed = true
+            } else {
+                column++
             }
             index++
         }
@@ -803,7 +807,9 @@ function convertBlockFolded(
                 end: clone(loc.loc.end),
             },
         }
-        addToken(tokens, "BlockFolded", tokenLoc, code)
+        if (tokenLoc.range[0] < tokenLoc.range[1]) {
+            addToken(tokens, "BlockFolded", tokenLoc, code)
+        }
     } else {
         // ??
         addToken(tokens, "BlockFolded", clone(loc), code)
@@ -849,7 +855,9 @@ function convertAlias(
                 end: clone(loc.loc.end),
             },
         }
-        addToken(tokens, "Identifier", tokenLoc, code)
+        if (tokenLoc.range[0] < tokenLoc.range[1]) {
+            addToken(tokens, "Identifier", tokenLoc, code)
+        }
     } else {
         // ??
         addToken(tokens, "Identifier", clone(loc), code)
@@ -944,7 +952,9 @@ function convertAnchor(
                 end: clone(loc.loc.end),
             },
         }
-        addToken(tokens, "Identifier", tokenLoc, code)
+        if (tokenLoc.range[0] < tokenLoc.range[1]) {
+            addToken(tokens, "Identifier", tokenLoc, code)
+        }
     } else {
         // ??
         addToken(tokens, "Identifier", clone(loc), code)
@@ -990,7 +1000,9 @@ function convertTag(
                 end: clone(loc.loc.end),
             },
         }
-        addToken(tokens, "Identifier", tokenLoc, code)
+        if (tokenLoc.range[0] < tokenLoc.range[1]) {
+            addToken(tokens, "Identifier", tokenLoc, code)
+        }
     } else {
         // ??
         addToken(tokens, "Identifier", clone(loc), code)

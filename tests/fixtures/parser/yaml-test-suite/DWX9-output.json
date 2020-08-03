@@ -83,15 +83,15 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "literal\n   \n  \n  text\n",
+      "value": "\n  \n  literal\n   \n  \n  text\n",
       "range": [
-        9,
+        3,
         31
       ],
       "loc": {
         "start": {
-          "line": 4,
-          "column": 2
+          "line": 2,
+          "column": 1
         },
         "end": {
           "line": 8,
