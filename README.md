@@ -39,33 +39,7 @@ module.exports = {
 }
 ```
 
-### Running ESLint from the command line
+## Usage for Custom Rules / Plugins
 
-If you want to run `eslint` from the command line, make sure you include the `.yaml` extension using [the `--ext` option](https://eslint.org/docs/user-guide/configuring#specifying-file-extensions-to-lint) or a glob pattern, because ESLint targets only `.js` files by default.
-
-Examples:
-
-```bash
-eslint --ext .js,.yaml,.yml src
-eslint "src/**/*.{js,yaml,yml}"
-```
-
-## Editor Integrations
-
-### Visual Studio Code
-
-Use the [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) extension that Microsoft provides officially.
-
-You have to configure the `eslint.validate` option of the extension to check `.yaml` files, because the extension targets only `*.js` or `*.jsx` files by default.
-
-Example **.vscode/settings.json**:
-
-```json
-{
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "yaml"
-  ]
-}
-```
+- [AST.md](./docs/AST.md) is AST specification.
+- [block-mapping.ts](https://github.com/ota-meshi/eslint-plugin-yml/blob/master/src/rules/block-mapping.ts) is an example.
