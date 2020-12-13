@@ -6,7 +6,7 @@ import { parseForESLint } from "../../../src/parser"
 import { KEYS } from "../../../src/visitor-keys"
 import { traverseNodes, getKeys } from "../../../src/traverse"
 import { getStaticYAMLValue } from "../../../src/utils"
-import { YAMLProgram } from "../../../src/ast"
+import type { YAMLProgram } from "../../../src/ast"
 
 const AST_FIXTURE_ROOT = path.resolve(__dirname, "../../fixtures/parser/ast")
 const SUITE_FIXTURE_ROOT = path.resolve(
@@ -164,7 +164,7 @@ function checkLoc(ast: YAMLProgram, fileName: string, code: string) {
         )
     }
     traverseNodes(ast, {
-        // eslint-disable-next-line complexity
+        // eslint-disable-next-line complexity, no-shadow -- test
         enterNode(node, parent) {
             if (node.type !== "Program" && node.type !== "YAMLDocument") {
                 assert.ok(

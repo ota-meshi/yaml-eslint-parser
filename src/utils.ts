@@ -1,5 +1,5 @@
 import yaml from "yaml"
-import {
+import type {
     YAMLProgram,
     YAMLContent,
     YAMLDocument,
@@ -33,9 +33,14 @@ export function getStaticYAMLValue(node: YAMLSequence): YAMLContentValue[]
 export function getStaticYAMLValue(
     node: YAMLScalar,
 ): string | number | boolean | null
-export function getStaticYAMLValue(node: YAMLAlias): YAMLContentValue
 export function getStaticYAMLValue(
-    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMeta,
+    node:
+        | YAMLAlias
+        | YAMLProgram
+        | YAMLDocument
+        | YAMLContent
+        | YAMLPair
+        | YAMLWithMeta,
 ): YAMLContentValue
 
 /**
@@ -44,7 +49,7 @@ export function getStaticYAMLValue(
 export function getStaticYAMLValue(
     node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMeta,
 ): YAMLContentValue {
-    return resolver[node.type](node as any)
+    return resolver[node.type](node as never)
 }
 
 const resolver = {
@@ -52,9 +57,10 @@ const resolver = {
         return node.body.length === 0
             ? null
             : node.body.length === 1
-            ? // eslint-disable-next-line new-cap
+            ? // eslint-disable-next-line new-cap -- traverse key
               resolver.YAMLDocument(node.body[0])
-            : node.body.map(resolver.YAMLDocument)
+            : // eslint-disable-next-line new-cap -- traverse key
+              node.body.map((n) => resolver.YAMLDocument(n))
     },
     YAMLDocument(node: YAMLDocument) {
         return node.content ? getStaticYAMLValue(node.content) : null
@@ -172,20 +178,20 @@ function getTaggedValue(tag: YAMLTag, text: string, str: string) {
 /**
  * Checks if the given string is true
  */
-export function isTrue(str: string) {
+export function isTrue(str: string): boolean {
     return str === "true" || str === "True" || str === "TRUE"
 }
 
 /**
  * Checks if the given string is false
  */
-export function isFalse(str: string) {
+export function isFalse(str: string): boolean {
     return str === "false" || str === "False" || str === "FALSE"
 }
 
 /**
  * Checks if the given string is null
  */
-export function isNull(str: string) {
+export function isNull(str: string): boolean {
     return str === "null" || str === "Null" || str === "NULL" || str === "~"
 }

@@ -1040,10 +1040,9 @@ function clone<T>(loc: T): T {
         return loc
     }
     if (Array.isArray(loc)) {
-        return loc.map(clone) as never
+        return (loc as any).map(clone)
     }
     const n: any = {}
-    // eslint-disable-next-line @mysticatea/prefer-for-of
     for (const key in loc) {
         n[key] = clone(loc[key])
     }

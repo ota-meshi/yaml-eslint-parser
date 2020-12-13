@@ -1,6 +1,6 @@
 import type { SourceCode } from "eslint"
 import { unionWith } from "eslint-visitor-keys"
-import { YAMLNode } from "./ast"
+import type { YAMLNode } from "./ast"
 
 const yamlKeys: { [key in YAMLNode["type"]]: string[] } = {
     Program: ["body"],

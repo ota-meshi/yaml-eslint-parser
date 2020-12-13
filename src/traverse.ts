@@ -1,6 +1,6 @@
 import type { VisitorKeys } from "eslint-visitor-keys"
 import { KEYS } from "./visitor-keys"
-import { YAMLNode } from "./ast"
+import type { YAMLNode } from "./ast"
 
 /**
  * Check that the given key should be traversed or not.
@@ -47,9 +47,8 @@ export function getKeys(node: any, visitorKeys?: VisitorKeys): string[] {
 /**
  * Get the nodes of the given node.
  * @param node The node to get.
- * @returns {IterableIterator<YAMLNode>}
  */
-export function* getNodes(node: any, key: string) {
+export function* getNodes(node: any, key: string): IterableIterator<YAMLNode> {
     const child = node[key]
     if (Array.isArray(child)) {
         for (const c of child) {

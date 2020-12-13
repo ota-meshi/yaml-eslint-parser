@@ -1,10 +1,20 @@
-import { parse as parseYaml, YAMLSyntaxError } from "yaml-unist-parser"
+import type { YAMLSyntaxError } from "yaml-unist-parser"
+import { parse as parseYaml } from "yaml-unist-parser"
+import type { SourceCode } from "eslint"
 import { KEYS } from "./visitor-keys"
 import { convertRoot } from "./convert"
+import type { YAMLProgram } from "./ast"
 /**
  * Parse source code
  */
-export function parseForESLint(code: string, _options?: any) {
+export function parseForESLint(
+    code: string,
+    _options?: any,
+): {
+    ast: YAMLProgram
+    visitorKeys: SourceCode.VisitorKeys
+    services: { isYAML: boolean }
+} {
     try {
         const rootNode = parseYaml(code)
         const ast = convertRoot(rootNode, code)
@@ -51,7 +61,9 @@ function isYAMLSyntaxError(error: any): error is YAMLSyntaxError {
  */
 export class ParseError extends SyntaxError {
     public index: number
+
     public lineNumber: number
+
     public column: number
 
     /**
