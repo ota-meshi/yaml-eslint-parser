@@ -3,8 +3,6 @@ name: GHPages
 on:
   push:
     branches: [master]
-  schedule:
-    - cron:  '0 17 * * *'
 
 jobs:
   deploy-docs:
