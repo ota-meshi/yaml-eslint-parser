@@ -21,7 +21,7 @@ export default {
         },
         readOnly: Boolean,
     },
-    emits: ["update:modelValue"],
+    emits: ["update:modelValue", "changeCursorPosition", "focusEditorText"],
     watch: {
         modelValue(newValue) {
             const vm = this
@@ -47,6 +47,11 @@ export default {
                 minimap: {
                     enabled: false,
                 },
+                renderControlCharacters: true,
+                renderIndentGuides: true,
+                renderValidationDecorations: "on",
+                renderWhitespace: "boundary",
+                scrollBeyondLastLine: false,
             },
             vm.options,
         )
@@ -58,6 +63,25 @@ export default {
                 vm.$emit("update:modelValue", value, evt)
             }
         })
+        vm.editor.onDidChangeCursorPosition((evt) => {
+            vm.$emit("changeCursorPosition", evt)
+        })
+        vm.editor.onDidFocusEditorText((evt) => {
+            vm.$emit("focusEditorText", evt)
+        })
+    },
+    methods: {
+        setCursorPosition(loc, { columnOffset = 0 } = {}) {
+            const vm = this
+            if (vm.editor) {
+                vm.editor.setSelection({
+                    startLineNumber: loc.start.line,
+                    startColumn: loc.start.column + columnOffset,
+                    endLineNumber: loc.end.line,
+                    endColumn: loc.end.column + columnOffset,
+                })
+            }
+        },
     },
 }
 </script>

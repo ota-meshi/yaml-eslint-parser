@@ -1,10 +1,11 @@
 <template>
     <header class="header">
         <label class="title">yaml-eslint-parser</label>
+        <SnsBar />
         <a
             href="https://github.com/ota-meshi/yaml-eslint-parser"
             class="github-link"
-            >GitHub</a
+            >View on GitHub</a
         >
     </header>
     <main class="main">
@@ -14,11 +15,13 @@
 
 <script>
 import AstExplorer from "./components/AstExplorer.vue"
+import SnsBar from "./components/SnsBar.vue"
 
 export default {
     name: "App",
     components: {
         AstExplorer,
+        SnsBar,
     },
 }
 </script>
@@ -35,7 +38,6 @@ export default {
     align-items: center;
 }
 .github-link {
-    width: 4em;
     display: flex;
     align-items: center;
 }
