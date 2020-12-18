@@ -930,7 +930,8 @@ function convertAnchor(
         ...loc,
     }
 
-    doc.anchors[value] = ast
+    const anchors = doc.anchors[value] || (doc.anchors[value] = [])
+    anchors.push(ast)
 
     const text = code.slice(...loc.range)
     if (text.startsWith("&")) {

@@ -2,11 +2,11 @@ import assert from "assert"
 import path from "path"
 import fs from "fs"
 
-import { parseForESLint } from "../../../src/parser"
 import { KEYS } from "../../../src/visitor-keys"
 import { traverseNodes, getKeys } from "../../../src/traverse"
 import { getStaticYAMLValue } from "../../../src/utils"
 import type { YAMLProgram } from "../../../src/ast"
+import { parseYAML } from "../../../src"
 
 const AST_FIXTURE_ROOT = path.resolve(__dirname, "../../fixtures/parser/ast")
 const SUITE_FIXTURE_ROOT = path.resolve(
@@ -32,7 +32,7 @@ function replacer(key: string, value: any) {
 }
 
 function parse(code: string) {
-    return parseForESLint(code, {})
+    return parseYAML(code)
 }
 
 describe("Check for AST.", () => {
@@ -51,7 +51,7 @@ describe("Check for AST.", () => {
             )
 
             const input = fs.readFileSync(inputFileName, "utf8")
-            const ast = parse(input).ast
+            const ast = parse(input)
             const astJson = JSON.stringify(ast, replacer, 2)
             const output = fs.readFileSync(outputFileName, "utf8")
             assert.strictEqual(astJson, output)
@@ -91,7 +91,7 @@ describe("yaml-test-suite.", () => {
 
             let ast
             try {
-                ast = parse(input).ast
+                ast = parse(input)
             } catch (e) {
                 if (
                     typeof e.lineNumber === "number" &&

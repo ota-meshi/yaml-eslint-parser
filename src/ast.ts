@@ -64,7 +64,7 @@ export interface YAMLDocument extends BaseYAMLNode {
     directives: YAMLDirective[]
     content: YAMLContent | YAMLWithMeta | null
     parent: YAMLProgram
-    anchors: { [key: string]: YAMLAnchor }
+    anchors: { [key: string]: YAMLAnchor[] }
 }
 
 export interface YAMLDirective extends BaseYAMLNode {

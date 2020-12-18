@@ -217,7 +217,7 @@ interface YAMLDocument extends Node {
     directives: YAMLDirective[]
     content: YAMLMapping | YAMLSequence | YAMLScalar | YAMLAlias | YAMLWithMeta | null
     parent: YAMLProgram
-    anchors: { [key: string]: YAMLAnchor }
+    anchors: { [key: string]: YAMLAnchor[] }
 }
 ```
 

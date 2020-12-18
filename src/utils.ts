@@ -146,7 +146,26 @@ function findAnchor(node: YAMLAlias): YAMLAnchor | null {
         }
         p = p.parent
     }
-    return doc!.anchors[node.name] || null
+    const anchors = doc!.anchors[node.name]
+    if (!anchors) {
+        return null
+    }
+    let target: { anchor: null | YAMLAnchor; distance: number } = {
+        anchor: null,
+        distance: Infinity,
+    }
+    for (const anchor of anchors) {
+        if (anchor.range[0] < node.range[0]) {
+            const distance = node.range[0] - anchor.range[0]
+            if (target.distance >= distance) {
+                target = {
+                    anchor,
+                    distance,
+                }
+            }
+        }
+    }
+    return target.anchor
 }
 
 /**
