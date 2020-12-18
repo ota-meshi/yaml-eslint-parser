@@ -43,4 +43,4 @@ module.exports = {
 
 - [AST.md](./docs/AST.md) is AST specification.
 - [block-mapping.ts](https://github.com/ota-meshi/eslint-plugin-yml/blob/master/src/rules/block-mapping.ts) is an example.
-- You can see the AST on the [DEMO](https://ota-meshi.github.io/yaml-eslint-parser/).
+- You can see the AST on the [Online DEMO](https://ota-meshi.github.io/yaml-eslint-parser/).
