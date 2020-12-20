@@ -15,6 +15,7 @@
     "test": "mocha --require ts-node/register \"tests/src/**/*.ts\" --reporter dot --timeout 60000",
     "cover": "nyc --reporter=lcov npm run test",
     "debug": "mocha --require ts-node/register --inspect \"tests/src/**/*.ts\" --reporter dot",
+    "preversion": "npm run lint && npm test",
     "update-fixtures": "ts-node ./tools/update-fixtures.ts"
   },
   "repository": {
