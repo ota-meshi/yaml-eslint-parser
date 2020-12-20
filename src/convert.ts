@@ -464,7 +464,7 @@ function convertSequence(
 }
 
 /**
- * Convert yaml-unist-parser FlowSequence to YAMLBlockSequence
+ * Convert yaml-unist-parser FlowSequence to YAMLFlowSequence
  */
 function convertFlowSequence(
     node: FlowSequence,
@@ -483,7 +483,9 @@ function convertFlowSequence(
     }
     for (const n of node.children) {
         if (n.type === "flowSequenceItem") {
-            ast.entries.push(...convertSequenceItem(n, tokens, code, ast, doc))
+            ast.entries.push(
+                ...convertFlowSequenceItem(n, tokens, code, ast, doc),
+            )
         }
         if (n.type === "flowMappingItem") {
             const map: YAMLBlockMapping = {
@@ -505,7 +507,24 @@ function convertFlowSequence(
  * Convert yaml-unist-parser SequenceItem to YAMLContent
  */
 function* convertSequenceItem(
-    node: SequenceItem | FlowSequenceItem,
+    node: SequenceItem,
+    tokens: Token[],
+    code: string,
+    parent: YAMLBlockSequence | YAMLFlowSequence,
+    doc: YAMLDocument,
+): IterableIterator<YAMLContent | YAMLWithMeta | null> {
+    if (node.children.length) {
+        yield convertContentNode(node.children[0], tokens, code, parent, doc)
+    } else {
+        yield null
+    }
+}
+
+/**
+ * Convert yaml-unist-parser FlowSequenceItem to YAMLContent
+ */
+function* convertFlowSequenceItem(
+    node: FlowSequenceItem,
     tokens: Token[],
     code: string,
     parent: YAMLBlockSequence | YAMLFlowSequence,

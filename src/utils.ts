@@ -84,7 +84,7 @@ const resolver = {
     YAMLSequence(node: YAMLSequence) {
         const result: YAMLContentValue[] = []
         for (const entry of node.entries) {
-            result.push(getStaticYAMLValue(entry))
+            result.push(entry ? getStaticYAMLValue(entry) : null)
         }
         return result
     },
