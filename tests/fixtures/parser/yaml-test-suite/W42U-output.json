@@ -8,6 +8,7 @@
         "type": "YAMLSequence",
         "style": "block",
         "entries": [
+          null,
           {
             "type": "YAMLScalar",
             "style": "literal",

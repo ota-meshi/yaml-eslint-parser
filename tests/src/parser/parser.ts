@@ -231,10 +231,11 @@ function checkLoc(ast: YAMLProgram, fileName: string, code: string) {
                             `Start position is not "-" on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" in ${fileName}`,
                         )
                         const last = node.entries[node.entries.length - 1]
-                        assert.ok(
-                            last.range[1] === node.range[1],
-                            `The end position is off on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" > "${last.type} line:${last.loc.end.line} col:${last.loc.end.column}" in ${fileName}`,
-                        )
+                        if (last)
+                            assert.ok(
+                                last.range[1] === node.range[1],
+                                `The end position is off on "${node.type} line:${node.loc.end.line} col:${node.loc.end.column}" > "${last.type} line:${last.loc.end.line} col:${last.loc.end.column}" in ${fileName}`,
+                            )
                     }
                 } else if (node.style === "flow") {
                     assert.ok(

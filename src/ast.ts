@@ -122,7 +122,7 @@ export type YAMLSequence = YAMLBlockSequence | YAMLFlowSequence
 export interface YAMLBlockSequence extends BaseYAMLContentNode {
     type: "YAMLSequence"
     style: "block"
-    entries: (YAMLContent | YAMLWithMeta)[]
+    entries: (YAMLContent | YAMLWithMeta | null)[]
 }
 export interface YAMLFlowSequence extends BaseYAMLContentNode {
     type: "YAMLSequence"
