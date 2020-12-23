@@ -9,6 +9,7 @@
         "style": "plain",
         "strValue": "---word1 word2",
         "value": "---word1 word2",
+        "raw": "---word1\nword2",
         "range": [
           0,
           14

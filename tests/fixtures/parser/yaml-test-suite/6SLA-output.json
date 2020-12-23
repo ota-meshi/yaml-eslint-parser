@@ -36,6 +36,7 @@
               "style": "plain",
               "strValue": "23",
               "value": 23,
+              "raw": "23",
               "range": [
                 30,
                 32
@@ -94,6 +95,7 @@
               "style": "plain",
               "strValue": "24",
               "value": 24,
+              "raw": "24",
               "range": [
                 55,
                 57

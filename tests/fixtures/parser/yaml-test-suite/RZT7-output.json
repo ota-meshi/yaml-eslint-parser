@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "Time",
               "value": "Time",
+              "raw": "Time",
               "range": [
                 4,
                 8
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "2001-11-23 15:01:42 -5",
               "value": "2001-11-23 15:01:42 -5",
+              "raw": "2001-11-23 15:01:42 -5",
               "range": [
                 10,
                 32
@@ -72,6 +74,7 @@
               "style": "plain",
               "strValue": "User",
               "value": "User",
+              "raw": "User",
               "range": [
                 33,
                 37
@@ -92,6 +95,7 @@
               "style": "plain",
               "strValue": "ed",
               "value": "ed",
+              "raw": "ed",
               "range": [
                 39,
                 41
@@ -129,6 +133,7 @@
               "style": "plain",
               "strValue": "Warning",
               "value": "Warning",
+              "raw": "Warning",
               "range": [
                 42,
                 49
@@ -149,6 +154,7 @@
               "style": "plain",
               "strValue": "This is an error message for the log file",
               "value": "This is an error message for the log file",
+              "raw": "This is an error message\n  for the log file",
               "range": [
                 53,
                 96
@@ -224,6 +230,7 @@
               "style": "plain",
               "strValue": "Time",
               "value": "Time",
+              "raw": "Time",
               "range": [
                 101,
                 105
@@ -244,6 +251,7 @@
               "style": "plain",
               "strValue": "2001-11-23 15:02:31 -5",
               "value": "2001-11-23 15:02:31 -5",
+              "raw": "2001-11-23 15:02:31 -5",
               "range": [
                 107,
                 129
@@ -281,6 +289,7 @@
               "style": "plain",
               "strValue": "User",
               "value": "User",
+              "raw": "User",
               "range": [
                 130,
                 134
@@ -301,6 +310,7 @@
               "style": "plain",
               "strValue": "ed",
               "value": "ed",
+              "raw": "ed",
               "range": [
                 136,
                 138
@@ -338,6 +348,7 @@
               "style": "plain",
               "strValue": "Warning",
               "value": "Warning",
+              "raw": "Warning",
               "range": [
                 139,
                 146
@@ -358,6 +369,7 @@
               "style": "plain",
               "strValue": "A slightly different error message.",
               "value": "A slightly different error message.",
+              "raw": "A slightly different error\n  message.",
               "range": [
                 150,
                 187
@@ -433,6 +445,7 @@
               "style": "plain",
               "strValue": "Date",
               "value": "Date",
+              "raw": "Date",
               "range": [
                 192,
                 196
@@ -453,6 +466,7 @@
               "style": "plain",
               "strValue": "2001-11-23 15:03:17 -5",
               "value": "2001-11-23 15:03:17 -5",
+              "raw": "2001-11-23 15:03:17 -5",
               "range": [
                 198,
                 220
@@ -490,6 +504,7 @@
               "style": "plain",
               "strValue": "User",
               "value": "User",
+              "raw": "User",
               "range": [
                 221,
                 225
@@ -510,6 +525,7 @@
               "style": "plain",
               "strValue": "ed",
               "value": "ed",
+              "raw": "ed",
               "range": [
                 227,
                 229
@@ -547,6 +563,7 @@
               "style": "plain",
               "strValue": "Fatal",
               "value": "Fatal",
+              "raw": "Fatal",
               "range": [
                 230,
                 235
@@ -567,6 +584,7 @@
               "style": "plain",
               "strValue": "Unknown variable \"bar\"",
               "value": "Unknown variable \"bar\"",
+              "raw": "Unknown variable \"bar\"",
               "range": [
                 239,
                 261
@@ -604,6 +622,7 @@
               "style": "plain",
               "strValue": "Stack",
               "value": "Stack",
+              "raw": "Stack",
               "range": [
                 262,
                 267
@@ -634,6 +653,7 @@
                         "style": "plain",
                         "strValue": "file",
                         "value": "file",
+                        "raw": "file",
                         "range": [
                           273,
                           277
@@ -654,6 +674,7 @@
                         "style": "plain",
                         "strValue": "TopClass.py",
                         "value": "TopClass.py",
+                        "raw": "TopClass.py",
                         "range": [
                           279,
                           290
@@ -691,6 +712,7 @@
                         "style": "plain",
                         "strValue": "line",
                         "value": "line",
+                        "raw": "line",
                         "range": [
                           295,
                           299
@@ -711,6 +733,7 @@
                         "style": "plain",
                         "strValue": "23",
                         "value": 23,
+                        "raw": "23",
                         "range": [
                           301,
                           303
@@ -748,6 +771,7 @@
                         "style": "plain",
                         "strValue": "code",
                         "value": "code",
+                        "raw": "code",
                         "range": [
                           308,
                           312
@@ -826,6 +850,7 @@
                         "style": "plain",
                         "strValue": "file",
                         "value": "file",
+                        "raw": "file",
                         "range": [
                           350,
                           354
@@ -846,6 +871,7 @@
                         "style": "plain",
                         "strValue": "MoreClass.py",
                         "value": "MoreClass.py",
+                        "raw": "MoreClass.py",
                         "range": [
                           356,
                           368
@@ -883,6 +909,7 @@
                         "style": "plain",
                         "strValue": "line",
                         "value": "line",
+                        "raw": "line",
                         "range": [
                           373,
                           377
@@ -903,6 +930,7 @@
                         "style": "plain",
                         "strValue": "58",
                         "value": 58,
+                        "raw": "58",
                         "range": [
                           379,
                           381
@@ -940,6 +968,7 @@
                         "style": "plain",
                         "strValue": "code",
                         "value": "code",
+                        "raw": "code",
                         "range": [
                           386,
                           390

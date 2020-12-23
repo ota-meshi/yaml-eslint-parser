@@ -9,6 +9,7 @@
         "style": "plain",
         "strValue": "Bare document",
         "value": "Bare document",
+        "raw": "Bare\ndocument",
         "range": [
           0,
           13

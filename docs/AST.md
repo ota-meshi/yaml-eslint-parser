@@ -80,6 +80,7 @@ This is scalars.
 interface YAMLPlainScalar extends YAMLScalar {
     style: "plain"
     strValue: string
+    raw: string
 }
 ```
 

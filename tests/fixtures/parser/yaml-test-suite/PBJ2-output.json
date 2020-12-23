@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "american",
               "value": "american",
+              "raw": "american",
               "range": [
                 0,
                 8
@@ -39,6 +40,7 @@
                   "style": "plain",
                   "strValue": "Boston Red Sox",
                   "value": "Boston Red Sox",
+                  "raw": "Boston Red Sox",
                   "range": [
                     14,
                     28
@@ -59,6 +61,7 @@
                   "style": "plain",
                   "strValue": "Detroit Tigers",
                   "value": "Detroit Tigers",
+                  "raw": "Detroit Tigers",
                   "range": [
                     33,
                     47
@@ -79,6 +82,7 @@
                   "style": "plain",
                   "strValue": "New York Yankees",
                   "value": "New York Yankees",
+                  "raw": "New York Yankees",
                   "range": [
                     52,
                     68
@@ -132,6 +136,7 @@
               "style": "plain",
               "strValue": "national",
               "value": "national",
+              "raw": "national",
               "range": [
                 69,
                 77
@@ -156,6 +161,7 @@
                   "style": "plain",
                   "strValue": "New York Mets",
                   "value": "New York Mets",
+                  "raw": "New York Mets",
                   "range": [
                     83,
                     96
@@ -176,6 +182,7 @@
                   "style": "plain",
                   "strValue": "Chicago Cubs",
                   "value": "Chicago Cubs",
+                  "raw": "Chicago Cubs",
                   "range": [
                     101,
                     113
@@ -196,6 +203,7 @@
                   "style": "plain",
                   "strValue": "Atlanta Braves",
                   "value": "Atlanta Braves",
+                  "raw": "Atlanta Braves",
                   "range": [
                     118,
                     132

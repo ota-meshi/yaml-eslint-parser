@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "top1",
               "value": "top1",
+              "raw": "top1",
               "range": [
                 4,
                 8
@@ -83,6 +84,7 @@
                         "style": "plain",
                         "strValue": "key1",
                         "value": "key1",
+                        "raw": "key1",
                         "range": [
                           23,
                           27
@@ -118,6 +120,7 @@
                       "style": "plain",
                       "strValue": "one",
                       "value": "one",
+                      "raw": "one",
                       "range": [
                         29,
                         32
@@ -201,6 +204,7 @@
               "style": "plain",
               "strValue": "top2",
               "value": "top2",
+              "raw": "top2",
               "range": [
                 33,
                 37
@@ -248,6 +252,7 @@
                       "style": "plain",
                       "strValue": "key2",
                       "value": "key2",
+                      "raw": "key2",
                       "range": [
                         58,
                         62
@@ -268,6 +273,7 @@
                       "style": "plain",
                       "strValue": "two",
                       "value": "two",
+                      "raw": "two",
                       "range": [
                         64,
                         67
@@ -351,6 +357,7 @@
               "style": "plain",
               "strValue": "top3",
               "value": "top3",
+              "raw": "top3",
               "range": [
                 68,
                 72
@@ -398,6 +405,7 @@
                       "style": "plain",
                       "strValue": "key3",
                       "value": "key3",
+                      "raw": "key3",
                       "range": [
                         80,
                         84
@@ -433,6 +441,7 @@
                     "style": "plain",
                     "strValue": "three",
                     "value": "three",
+                    "raw": "three",
                     "range": [
                       86,
                       91
@@ -501,6 +510,7 @@
               "style": "plain",
               "strValue": "top4",
               "value": "top4",
+              "raw": "top4",
               "range": [
                 92,
                 96
@@ -569,6 +579,7 @@
                         "style": "plain",
                         "strValue": "key4",
                         "value": "key4",
+                        "raw": "key4",
                         "range": [
                           113,
                           117
@@ -604,6 +615,7 @@
                       "style": "plain",
                       "strValue": "four",
                       "value": "four",
+                      "raw": "four",
                       "range": [
                         119,
                         123
@@ -687,6 +699,7 @@
               "style": "plain",
               "strValue": "top5",
               "value": "top5",
+              "raw": "top5",
               "range": [
                 124,
                 128
@@ -734,6 +747,7 @@
                       "style": "plain",
                       "strValue": "key5",
                       "value": "key5",
+                      "raw": "key5",
                       "range": [
                         141,
                         145
@@ -754,6 +768,7 @@
                       "style": "plain",
                       "strValue": "five",
                       "value": "five",
+                      "raw": "five",
                       "range": [
                         147,
                         151
@@ -837,6 +852,7 @@
               "style": "plain",
               "strValue": "top6",
               "value": "top6",
+              "raw": "top6",
               "range": [
                 152,
                 156
@@ -878,6 +894,7 @@
                 "style": "plain",
                 "strValue": "six",
                 "value": "six",
+                "raw": "six",
                 "range": [
                   166,
                   169
@@ -930,6 +947,7 @@
               "style": "plain",
               "strValue": "top7",
               "value": "top7",
+              "raw": "top7",
               "range": [
                 170,
                 174
@@ -971,6 +989,7 @@
                 "style": "plain",
                 "strValue": "seven",
                 "value": "seven",
+                "raw": "seven",
                 "range": [
                   184,
                   189

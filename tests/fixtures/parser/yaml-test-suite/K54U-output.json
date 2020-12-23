@@ -9,6 +9,7 @@
         "style": "plain",
         "strValue": "scalar",
         "value": "scalar",
+        "raw": "scalar",
         "range": [
           4,
           10

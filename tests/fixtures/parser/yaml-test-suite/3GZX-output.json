@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "First occurrence",
               "value": "First occurrence",
+              "raw": "First occurrence",
               "range": [
                 0,
                 16
@@ -56,6 +57,7 @@
                 "style": "plain",
                 "strValue": "Foo",
                 "value": "Foo",
+                "raw": "Foo",
                 "range": [
                   26,
                   29
@@ -108,6 +110,7 @@
               "style": "plain",
               "strValue": "Second occurrence",
               "value": "Second occurrence",
+              "raw": "Second occurrence",
               "range": [
                 30,
                 47
@@ -163,6 +166,7 @@
               "style": "plain",
               "strValue": "Override anchor",
               "value": "Override anchor",
+              "raw": "Override anchor",
               "range": [
                 57,
                 72
@@ -204,6 +208,7 @@
                 "style": "plain",
                 "strValue": "Bar",
                 "value": "Bar",
+                "raw": "Bar",
                 "range": [
                   82,
                   85
@@ -256,6 +261,7 @@
               "style": "plain",
               "strValue": "Reuse anchor",
               "value": "Reuse anchor",
+              "raw": "Reuse anchor",
               "range": [
                 86,
                 98

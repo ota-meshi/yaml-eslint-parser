@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "a true",
               "value": "a true",
+              "raw": "a\n  true",
               "range": [
                 2,
                 10
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "null d",
               "value": "null d",
+              "raw": "null\n  d",
               "range": [
                 13,
                 21
@@ -72,6 +74,7 @@
               "style": "plain",
               "strValue": "e 42",
               "value": "e 42",
+              "raw": "e\n  42",
               "range": [
                 24,
                 30

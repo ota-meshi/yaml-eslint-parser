@@ -49,6 +49,7 @@
           "style": "plain",
           "strValue": "1 - 3",
           "value": "1 - 3",
+          "raw": "1 - 3",
           "range": [
             44,
             49

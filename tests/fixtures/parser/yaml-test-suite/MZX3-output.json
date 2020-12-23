@@ -13,6 +13,7 @@
             "style": "plain",
             "strValue": "plain",
             "value": "plain",
+            "raw": "plain",
             "range": [
               2,
               7
@@ -96,6 +97,7 @@
             "style": "plain",
             "strValue": "plain again",
             "value": "plain again",
+            "raw": "plain again",
             "range": [
               58,
               69

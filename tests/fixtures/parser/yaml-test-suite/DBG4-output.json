@@ -13,6 +13,7 @@
             "style": "plain",
             "strValue": "::vector",
             "value": "::vector",
+            "raw": "::vector",
             "range": [
               29,
               37
@@ -54,6 +55,7 @@
             "style": "plain",
             "strValue": "Up, up, and away!",
             "value": "Up, up, and away!",
+            "raw": "Up, up, and away!",
             "range": [
               51,
               68
@@ -74,6 +76,7 @@
             "style": "plain",
             "strValue": "-123",
             "value": -123,
+            "raw": "-123",
             "range": [
               71,
               75
@@ -94,6 +97,7 @@
             "style": "plain",
             "strValue": "http://example.com/foo#bar",
             "value": "http://example.com/foo#bar",
+            "raw": "http://example.com/foo#bar",
             "range": [
               78,
               104
@@ -118,6 +122,7 @@
                 "style": "plain",
                 "strValue": "::vector",
                 "value": "::vector",
+                "raw": "::vector",
                 "range": [
                   135,
                   143
@@ -180,6 +185,7 @@
                 "style": "plain",
                 "strValue": "-123",
                 "value": -123,
+                "raw": "-123",
                 "range": [
                   181,
                   185
@@ -200,6 +206,7 @@
                 "style": "plain",
                 "strValue": "http://example.com/foo#bar",
                 "value": "http://example.com/foo#bar",
+                "raw": "http://example.com/foo#bar",
                 "range": [
                   189,
                   215

@@ -17,6 +17,7 @@
                 "style": "plain",
                 "strValue": "one",
                 "value": "one",
+                "raw": "one",
                 "range": [
                   4,
                   7
@@ -37,6 +38,7 @@
                 "style": "plain",
                 "strValue": "two",
                 "value": "two",
+                "raw": "two",
                 "range": [
                   9,
                   12
@@ -77,6 +79,7 @@
                 "style": "plain",
                 "strValue": "three",
                 "value": "three",
+                "raw": "three",
                 "range": [
                   19,
                   24
@@ -97,6 +100,7 @@
                 "style": "plain",
                 "strValue": "four",
                 "value": "four",
+                "raw": "four",
                 "range": [
                   26,
                   30

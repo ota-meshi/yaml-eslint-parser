@@ -47,6 +47,7 @@
           "style": "plain",
           "strValue": "scalar1",
           "value": "scalar1",
+          "raw": "scalar1",
           "range": [
             14,
             21
@@ -138,6 +139,7 @@
           "style": "plain",
           "strValue": "scalar2",
           "value": "scalar2",
+          "raw": "scalar2",
           "range": [
             36,
             43
@@ -229,6 +231,7 @@
           "style": "plain",
           "strValue": "scalar3",
           "value": "scalar3",
+          "raw": "scalar3",
           "range": [
             58,
             65
@@ -364,6 +367,7 @@
                   "style": "plain",
                   "strValue": "key5",
                   "value": "key5",
+                  "raw": "key5",
                   "range": [
                     90,
                     94
@@ -399,6 +403,7 @@
                 "style": "plain",
                 "strValue": "value4",
                 "value": "value4",
+                "raw": "value4",
                 "range": [
                   96,
                   102
@@ -489,6 +494,7 @@
               "style": "plain",
               "strValue": "a6",
               "value": "a6",
+              "raw": "a6",
               "range": [
                 107,
                 109
@@ -509,6 +515,7 @@
               "style": "plain",
               "strValue": "1",
               "value": 1,
+              "raw": "1",
               "range": [
                 111,
                 112
@@ -567,6 +574,7 @@
                 "style": "plain",
                 "strValue": "b6",
                 "value": "b6",
+                "raw": "b6",
                 "range": [
                   122,
                   124
@@ -602,6 +610,7 @@
               "style": "plain",
               "strValue": "2",
               "value": 2,
+              "raw": "2",
               "range": [
                 126,
                 127
@@ -736,6 +745,7 @@
                   "style": "plain",
                   "strValue": "key8",
                   "value": "key8",
+                  "raw": "key8",
                   "range": [
                     148,
                     152
@@ -771,6 +781,7 @@
                 "style": "plain",
                 "strValue": "value7",
                 "value": "value7",
+                "raw": "value7",
                 "range": [
                   154,
                   160
@@ -920,6 +931,7 @@
                   "style": "plain",
                   "strValue": "key10",
                   "value": "key10",
+                  "raw": "key10",
                   "range": [
                     182,
                     187
@@ -955,6 +967,7 @@
                 "style": "plain",
                 "strValue": "value9",
                 "value": "value9",
+                "raw": "value9",
                 "range": [
                   189,
                   195
@@ -1077,6 +1090,7 @@
           "style": "plain",
           "strValue": "value11",
           "value": "value11",
+          "raw": "value11",
           "range": [
             211,
             218

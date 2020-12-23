@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "strip",
               "value": "strip",
+              "raw": "strip",
               "range": [
                 0,
                 5
@@ -73,6 +74,7 @@
               "style": "plain",
               "strValue": "clip",
               "value": "clip",
+              "raw": "clip",
               "range": [
                 17,
                 21
@@ -131,6 +133,7 @@
               "style": "plain",
               "strValue": "keep",
               "value": "keep",
+              "raw": "keep",
               "range": [
                 32,
                 36

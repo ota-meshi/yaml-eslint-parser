@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "escaped slash",
               "value": "escaped slash",
+              "raw": "escaped slash",
               "range": [
                 0,
                 13

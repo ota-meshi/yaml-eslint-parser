@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "a",
               "value": "a",
+              "raw": "a",
               "range": [
                 0,
                 1

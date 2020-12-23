@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "time",
               "value": "time",
+              "raw": "time",
               "range": [
                 4,
                 8
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "20:03:20",
               "value": "20:03:20",
+              "raw": "20:03:20",
               "range": [
                 10,
                 18
@@ -72,6 +74,7 @@
               "style": "plain",
               "strValue": "player",
               "value": "player",
+              "raw": "player",
               "range": [
                 19,
                 25
@@ -92,6 +95,7 @@
               "style": "plain",
               "strValue": "Sammy Sosa",
               "value": "Sammy Sosa",
+              "raw": "Sammy Sosa",
               "range": [
                 27,
                 37
@@ -129,6 +133,7 @@
               "style": "plain",
               "strValue": "action",
               "value": "action",
+              "raw": "action",
               "range": [
                 38,
                 44
@@ -149,6 +154,7 @@
               "style": "plain",
               "strValue": "strike (miss)",
               "value": "strike (miss)",
+              "raw": "strike (miss)",
               "range": [
                 46,
                 59
@@ -224,6 +230,7 @@
               "style": "plain",
               "strValue": "time",
               "value": "time",
+              "raw": "time",
               "range": [
                 68,
                 72
@@ -244,6 +251,7 @@
               "style": "plain",
               "strValue": "20:03:47",
               "value": "20:03:47",
+              "raw": "20:03:47",
               "range": [
                 74,
                 82
@@ -281,6 +289,7 @@
               "style": "plain",
               "strValue": "player",
               "value": "player",
+              "raw": "player",
               "range": [
                 83,
                 89
@@ -301,6 +310,7 @@
               "style": "plain",
               "strValue": "Sammy Sosa",
               "value": "Sammy Sosa",
+              "raw": "Sammy Sosa",
               "range": [
                 91,
                 101
@@ -338,6 +348,7 @@
               "style": "plain",
               "strValue": "action",
               "value": "action",
+              "raw": "action",
               "range": [
                 102,
                 108
@@ -358,6 +369,7 @@
               "style": "plain",
               "strValue": "grand slam",
               "value": "grand slam",
+              "raw": "grand slam",
               "range": [
                 110,
                 120

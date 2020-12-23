@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "hr",
               "value": "hr",
+              "raw": "hr",
               "range": [
                 0,
                 2
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "65",
               "value": 65,
+              "raw": "65",
               "range": [
                 5,
                 7
@@ -72,6 +74,7 @@
               "style": "plain",
               "strValue": "avg",
               "value": "avg",
+              "raw": "avg",
               "range": [
                 23,
                 26
@@ -92,6 +95,7 @@
               "style": "plain",
               "strValue": "0.278",
               "value": 0.278,
+              "raw": "0.278",
               "range": [
                 28,
                 33
@@ -129,6 +133,7 @@
               "style": "plain",
               "strValue": "rbi",
               "value": "rbi",
+              "raw": "rbi",
               "range": [
                 52,
                 55
@@ -149,6 +154,7 @@
               "style": "plain",
               "strValue": "147",
               "value": 147,
+              "raw": "147",
               "range": [
                 57,
                 60

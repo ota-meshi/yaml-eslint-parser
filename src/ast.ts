@@ -140,6 +140,7 @@ export interface YAMLPlainScalar extends BaseYAMLContentNode {
     style: "plain"
     strValue: string
     value: string | number | boolean | null
+    raw: string
 }
 
 export interface YAMLDoubleQuotedScalar extends BaseYAMLContentNode {

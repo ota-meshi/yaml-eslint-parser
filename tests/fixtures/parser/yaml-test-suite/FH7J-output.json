@@ -93,6 +93,7 @@
                   "style": "plain",
                   "strValue": "a",
                   "value": "a",
+                  "raw": "a",
                   "range": [
                     21,
                     22
@@ -130,6 +131,7 @@
                   "style": "plain",
                   "strValue": "b",
                   "value": "b",
+                  "raw": "b",
                   "range": [
                     25,
                     26

@@ -13,6 +13,7 @@
             "style": "plain",
             "strValue": "Mark McGwire",
             "value": "Mark McGwire",
+            "raw": "Mark McGwire",
             "range": [
               2,
               14
@@ -33,6 +34,7 @@
             "style": "plain",
             "strValue": "Sammy Sosa",
             "value": "Sammy Sosa",
+            "raw": "Sammy Sosa",
             "range": [
               17,
               27
@@ -53,6 +55,7 @@
             "style": "plain",
             "strValue": "Ken Griffey",
             "value": "Ken Griffey",
+            "raw": "Ken Griffey",
             "range": [
               30,
               41

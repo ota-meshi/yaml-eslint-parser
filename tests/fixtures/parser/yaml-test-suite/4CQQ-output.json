@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "plain",
               "value": "plain",
+              "raw": "plain",
               "range": [
                 0,
                 5
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "This unquoted scalar spans many lines.",
               "value": "This unquoted scalar spans many lines.",
+              "raw": "This unquoted scalar\n  spans many lines.",
               "range": [
                 9,
                 49
@@ -72,6 +74,7 @@
               "style": "plain",
               "strValue": "quoted",
               "value": "quoted",
+              "raw": "quoted",
               "range": [
                 51,
                 57

@@ -80,6 +80,7 @@
                       "style": "plain",
                       "strValue": "center",
                       "value": "center",
+                      "raw": "center",
                       "range": [
                         126,
                         132
@@ -127,6 +128,7 @@
                               "style": "plain",
                               "strValue": "x",
                               "value": "x",
+                              "raw": "x",
                               "range": [
                                 143,
                                 144
@@ -147,6 +149,7 @@
                               "style": "plain",
                               "strValue": "73",
                               "value": 73,
+                              "raw": "73",
                               "range": [
                                 146,
                                 148
@@ -184,6 +187,7 @@
                               "style": "plain",
                               "strValue": "y",
                               "value": "y",
+                              "raw": "y",
                               "range": [
                                 150,
                                 151
@@ -204,6 +208,7 @@
                               "style": "plain",
                               "strValue": "129",
                               "value": 129,
+                              "raw": "129",
                               "range": [
                                 153,
                                 156
@@ -287,6 +292,7 @@
                       "style": "plain",
                       "strValue": "radius",
                       "value": "radius",
+                      "raw": "radius",
                       "range": [
                         160,
                         166
@@ -307,6 +313,7 @@
                       "style": "plain",
                       "strValue": "7",
                       "value": 7,
+                      "raw": "7",
                       "range": [
                         168,
                         169
@@ -400,6 +407,7 @@
                       "style": "plain",
                       "strValue": "start",
                       "value": "start",
+                      "raw": "start",
                       "range": [
                         180,
                         185
@@ -455,6 +463,7 @@
                       "style": "plain",
                       "strValue": "finish",
                       "value": "finish",
+                      "raw": "finish",
                       "range": [
                         197,
                         203
@@ -481,6 +490,7 @@
                             "style": "plain",
                             "strValue": "x",
                             "value": "x",
+                            "raw": "x",
                             "range": [
                               207,
                               208
@@ -501,6 +511,7 @@
                             "style": "plain",
                             "strValue": "89",
                             "value": 89,
+                            "raw": "89",
                             "range": [
                               210,
                               212
@@ -538,6 +549,7 @@
                             "style": "plain",
                             "strValue": "y",
                             "value": "y",
+                            "raw": "y",
                             "range": [
                               214,
                               215
@@ -558,6 +570,7 @@
                             "style": "plain",
                             "strValue": "102",
                             "value": 102,
+                            "raw": "102",
                             "range": [
                               217,
                               220
@@ -682,6 +695,7 @@
                       "style": "plain",
                       "strValue": "start",
                       "value": "start",
+                      "raw": "start",
                       "range": [
                         234,
                         239
@@ -737,6 +751,7 @@
                       "style": "plain",
                       "strValue": "color",
                       "value": "color",
+                      "raw": "color",
                       "range": [
                         251,
                         256
@@ -757,6 +772,7 @@
                       "style": "plain",
                       "strValue": "0xFFEEBB",
                       "value": 16772795,
+                      "raw": "0xFFEEBB",
                       "range": [
                         258,
                         266
@@ -794,6 +810,7 @@
                       "style": "plain",
                       "strValue": "text",
                       "value": "text",
+                      "raw": "text",
                       "range": [
                         269,
                         273
@@ -814,6 +831,7 @@
                       "style": "plain",
                       "strValue": "Pretty vector drawing.",
                       "value": "Pretty vector drawing.",
+                      "raw": "Pretty vector drawing.",
                       "range": [
                         275,
                         297

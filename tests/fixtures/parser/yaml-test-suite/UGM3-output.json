@@ -36,6 +36,7 @@
                 "style": "plain",
                 "strValue": "invoice",
                 "value": "invoice",
+                "raw": "invoice",
                 "range": [
                   39,
                   46
@@ -56,6 +57,7 @@
                 "style": "plain",
                 "strValue": "34843",
                 "value": 34843,
+                "raw": "34843",
                 "range": [
                   48,
                   53
@@ -93,6 +95,7 @@
                 "style": "plain",
                 "strValue": "date",
                 "value": "date",
+                "raw": "date",
                 "range": [
                   54,
                   58
@@ -113,6 +116,7 @@
                 "style": "plain",
                 "strValue": "2001-01-23",
                 "value": "2001-01-23",
+                "raw": "2001-01-23",
                 "range": [
                   63,
                   73
@@ -150,6 +154,7 @@
                 "style": "plain",
                 "strValue": "bill-to",
                 "value": "bill-to",
+                "raw": "bill-to",
                 "range": [
                   74,
                   81
@@ -197,6 +202,7 @@
                         "style": "plain",
                         "strValue": "given",
                         "value": "given",
+                        "raw": "given",
                         "range": [
                           94,
                           99
@@ -217,6 +223,7 @@
                         "style": "plain",
                         "strValue": "Chris",
                         "value": "Chris",
+                        "raw": "Chris",
                         "range": [
                           103,
                           108
@@ -254,6 +261,7 @@
                         "style": "plain",
                         "strValue": "family",
                         "value": "family",
+                        "raw": "family",
                         "range": [
                           113,
                           119
@@ -274,6 +282,7 @@
                         "style": "plain",
                         "strValue": "Dumars",
                         "value": "Dumars",
+                        "raw": "Dumars",
                         "range": [
                           122,
                           128
@@ -311,6 +320,7 @@
                         "style": "plain",
                         "strValue": "address",
                         "value": "address",
+                        "raw": "address",
                         "range": [
                           133,
                           140
@@ -337,6 +347,7 @@
                               "style": "plain",
                               "strValue": "lines",
                               "value": "lines",
+                              "raw": "lines",
                               "range": [
                                 150,
                                 155
@@ -395,6 +406,7 @@
                               "style": "plain",
                               "strValue": "city",
                               "value": "city",
+                              "raw": "city",
                               "range": [
                                 218,
                                 222
@@ -415,6 +427,7 @@
                               "style": "plain",
                               "strValue": "Royal Oak",
                               "value": "Royal Oak",
+                              "raw": "Royal Oak",
                               "range": [
                                 228,
                                 237
@@ -452,6 +465,7 @@
                               "style": "plain",
                               "strValue": "state",
                               "value": "state",
+                              "raw": "state",
                               "range": [
                                 246,
                                 251
@@ -472,6 +486,7 @@
                               "style": "plain",
                               "strValue": "MI",
                               "value": "MI",
+                              "raw": "MI",
                               "range": [
                                 256,
                                 258
@@ -509,6 +524,7 @@
                               "style": "plain",
                               "strValue": "postal",
                               "value": "postal",
+                              "raw": "postal",
                               "range": [
                                 267,
                                 273
@@ -529,6 +545,7 @@
                               "style": "plain",
                               "strValue": "48046",
                               "value": 48046,
+                              "raw": "48046",
                               "range": [
                                 277,
                                 282
@@ -643,6 +660,7 @@
                 "style": "plain",
                 "strValue": "ship-to",
                 "value": "ship-to",
+                "raw": "ship-to",
                 "range": [
                   283,
                   290
@@ -698,6 +716,7 @@
                 "style": "plain",
                 "strValue": "product",
                 "value": "product",
+                "raw": "product",
                 "range": [
                   299,
                   306
@@ -728,6 +747,7 @@
                           "style": "plain",
                           "strValue": "sku",
                           "value": "sku",
+                          "raw": "sku",
                           "range": [
                             314,
                             317
@@ -748,6 +768,7 @@
                           "style": "plain",
                           "strValue": "BL394D",
                           "value": "BL394D",
+                          "raw": "BL394D",
                           "range": [
                             328,
                             334
@@ -785,6 +806,7 @@
                           "style": "plain",
                           "strValue": "quantity",
                           "value": "quantity",
+                          "raw": "quantity",
                           "range": [
                             341,
                             349
@@ -805,6 +827,7 @@
                           "style": "plain",
                           "strValue": "4",
                           "value": 4,
+                          "raw": "4",
                           "range": [
                             355,
                             356
@@ -842,6 +865,7 @@
                           "style": "plain",
                           "strValue": "description",
                           "value": "description",
+                          "raw": "description",
                           "range": [
                             363,
                             374
@@ -862,6 +886,7 @@
                           "style": "plain",
                           "strValue": "Basketball",
                           "value": "Basketball",
+                          "raw": "Basketball",
                           "range": [
                             377,
                             387
@@ -899,6 +924,7 @@
                           "style": "plain",
                           "strValue": "price",
                           "value": "price",
+                          "raw": "price",
                           "range": [
                             394,
                             399
@@ -919,6 +945,7 @@
                           "style": "plain",
                           "strValue": "450.00",
                           "value": 450,
+                          "raw": "450.00",
                           "range": [
                             408,
                             414
@@ -976,6 +1003,7 @@
                           "style": "plain",
                           "strValue": "sku",
                           "value": "sku",
+                          "raw": "sku",
                           "range": [
                             421,
                             424
@@ -996,6 +1024,7 @@
                           "style": "plain",
                           "strValue": "BL4438H",
                           "value": "BL4438H",
+                          "raw": "BL4438H",
                           "range": [
                             435,
                             442
@@ -1033,6 +1062,7 @@
                           "style": "plain",
                           "strValue": "quantity",
                           "value": "quantity",
+                          "raw": "quantity",
                           "range": [
                             449,
                             457
@@ -1053,6 +1083,7 @@
                           "style": "plain",
                           "strValue": "1",
                           "value": 1,
+                          "raw": "1",
                           "range": [
                             463,
                             464
@@ -1090,6 +1121,7 @@
                           "style": "plain",
                           "strValue": "description",
                           "value": "description",
+                          "raw": "description",
                           "range": [
                             471,
                             482
@@ -1110,6 +1142,7 @@
                           "style": "plain",
                           "strValue": "Super Hoop",
                           "value": "Super Hoop",
+                          "raw": "Super Hoop",
                           "range": [
                             485,
                             495
@@ -1147,6 +1180,7 @@
                           "style": "plain",
                           "strValue": "price",
                           "value": "price",
+                          "raw": "price",
                           "range": [
                             502,
                             507
@@ -1167,6 +1201,7 @@
                           "style": "plain",
                           "strValue": "2392.00",
                           "value": 2392,
+                          "raw": "2392.00",
                           "range": [
                             516,
                             523
@@ -1251,6 +1286,7 @@
                 "style": "plain",
                 "strValue": "tax",
                 "value": "tax",
+                "raw": "tax",
                 "range": [
                   524,
                   527
@@ -1271,6 +1307,7 @@
                 "style": "plain",
                 "strValue": "251.42",
                 "value": 251.42,
+                "raw": "251.42",
                 "range": [
                   531,
                   537
@@ -1308,6 +1345,7 @@
                 "style": "plain",
                 "strValue": "total",
                 "value": "total",
+                "raw": "total",
                 "range": [
                   538,
                   543
@@ -1328,6 +1366,7 @@
                 "style": "plain",
                 "strValue": "4443.52",
                 "value": 4443.52,
+                "raw": "4443.52",
                 "range": [
                   545,
                   552
@@ -1365,6 +1404,7 @@
                 "style": "plain",
                 "strValue": "comments",
                 "value": "comments",
+                "raw": "comments",
                 "range": [
                   553,
                   561
@@ -1385,6 +1425,7 @@
                 "style": "plain",
                 "strValue": "Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338.",
                 "value": "Late afternoon is best. Backup contact is Nancy Billsmer @ 338-4338.",
+                "raw": "Late afternoon is best.\n    Backup contact is Nancy\n    Billsmer @ 338-4338.",
                 "range": [
                   567,
                   643

@@ -13,6 +13,7 @@
             "style": "plain",
             "strValue": "single multiline - sequence entry",
             "value": "single multiline - sequence entry",
+            "raw": "single multiline\n - sequence entry",
             "range": [
               2,
               36

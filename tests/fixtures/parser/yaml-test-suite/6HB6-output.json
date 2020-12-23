@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "Not indented",
               "value": "Not indented",
+              "raw": "Not indented",
               "range": [
                 79,
                 91
@@ -41,6 +42,7 @@
                     "style": "plain",
                     "strValue": "By one space",
                     "value": "By one space",
+                    "raw": "By one space",
                     "range": [
                       94,
                       106
@@ -99,6 +101,7 @@
                     "style": "plain",
                     "strValue": "Flow style",
                     "value": "Flow style",
+                    "raw": "Flow style",
                     "range": [
                       136,
                       146
@@ -123,6 +126,7 @@
                         "style": "plain",
                         "strValue": "By two",
                         "value": "By two",
+                        "raw": "By two",
                         "range": [
                           173,
                           179
@@ -143,6 +147,7 @@
                         "style": "plain",
                         "strValue": "Also by two",
                         "value": "Also by two",
+                        "raw": "Also by two",
                         "range": [
                           206,
                           217
@@ -163,6 +168,7 @@
                         "style": "plain",
                         "strValue": "Still by two",
                         "value": "Still by two",
+                        "raw": "Still by two",
                         "range": [
                           239,
                           251

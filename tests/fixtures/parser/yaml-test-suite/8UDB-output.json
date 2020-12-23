@@ -55,6 +55,7 @@
             "style": "plain",
             "strValue": "plain text",
             "value": "plain text",
+            "raw": "plain\n text",
             "range": [
               48,
               59
@@ -79,6 +80,7 @@
                 "style": "plain",
                 "strValue": "nested",
                 "value": "nested",
+                "raw": "nested",
                 "range": [
                   63,
                   69
@@ -121,6 +123,7 @@
                   "style": "plain",
                   "strValue": "single",
                   "value": "single",
+                  "raw": "single",
                   "range": [
                     73,
                     79
@@ -141,6 +144,7 @@
                   "style": "plain",
                   "strValue": "pair",
                   "value": "pair",
+                  "raw": "pair",
                   "range": [
                     81,
                     85

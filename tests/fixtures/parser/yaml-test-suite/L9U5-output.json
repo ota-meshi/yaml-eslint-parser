@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "implicit block key",
               "value": "implicit block key",
+              "raw": "implicit block key",
               "range": [
                 0,
                 18
@@ -45,6 +46,7 @@
                         "style": "plain",
                         "strValue": "implicit flow key",
                         "value": "implicit flow key",
+                        "raw": "implicit flow key",
                         "range": [
                           25,
                           42
@@ -65,6 +67,7 @@
                         "style": "plain",
                         "strValue": "value",
                         "value": "value",
+                        "raw": "value",
                         "range": [
                           45,
                           50

@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "literal",
               "value": "literal",
+              "raw": "literal",
               "range": [
                 0,
                 7
@@ -73,6 +74,7 @@
               "style": "plain",
               "strValue": "folded",
               "value": "folded",
+              "raw": "folded",
               "range": [
                 20,
                 26

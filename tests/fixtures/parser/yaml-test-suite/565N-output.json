@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "canonical",
               "value": "canonical",
+              "raw": "canonical",
               "range": [
                 0,
                 9
@@ -109,6 +110,7 @@
               "style": "plain",
               "strValue": "generic",
               "value": "generic",
+              "raw": "generic",
               "range": [
                 283,
                 290
@@ -203,6 +205,7 @@
               "style": "plain",
               "strValue": "description",
               "value": "description",
+              "raw": "description",
               "range": [
                 559,
                 570
@@ -223,6 +226,7 @@
               "style": "plain",
               "strValue": "The binary value above is a tiny arrow encoded as a gif image.",
               "value": "The binary value above is a tiny arrow encoded as a gif image.",
+              "raw": "The binary value above is a tiny arrow encoded as a gif image.",
               "range": [
                 573,
                 635

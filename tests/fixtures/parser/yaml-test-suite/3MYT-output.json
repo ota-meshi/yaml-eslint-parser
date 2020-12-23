@@ -9,6 +9,7 @@
         "style": "plain",
         "strValue": "k:#foo &a !t s",
         "value": "k:#foo &a !t s",
+        "raw": "k:#foo\n &a !t s",
         "range": [
           0,
           15

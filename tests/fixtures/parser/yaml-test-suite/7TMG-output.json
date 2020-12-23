@@ -13,6 +13,7 @@
             "style": "plain",
             "strValue": "word1",
             "value": "word1",
+            "raw": "word1",
             "range": [
               6,
               11
@@ -33,6 +34,7 @@
             "style": "plain",
             "strValue": "word2",
             "value": "word2",
+            "raw": "word2",
             "range": [
               24,
               29

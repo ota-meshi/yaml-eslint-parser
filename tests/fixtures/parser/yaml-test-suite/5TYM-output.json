@@ -49,6 +49,7 @@
           "style": "plain",
           "strValue": "fluorescent",
           "value": "fluorescent",
+          "raw": "fluorescent",
           "range": [
             39,
             50
@@ -142,6 +143,7 @@
           "style": "plain",
           "strValue": "green",
           "value": "green",
+          "raw": "green",
           "range": [
             95,
             100

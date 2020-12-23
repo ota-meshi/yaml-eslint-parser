@@ -9,6 +9,7 @@
         "style": "plain",
         "strValue": "Document",
         "value": "Document",
+        "raw": "Document",
         "range": [
           0,
           8
@@ -91,6 +92,7 @@
               "style": "plain",
               "strValue": "matches %",
               "value": "matches %",
+              "raw": "matches %",
               "range": [
                 39,
                 48
@@ -111,6 +113,7 @@
               "style": "plain",
               "strValue": "20",
               "value": 20,
+              "raw": "20",
               "range": [
                 50,
                 52

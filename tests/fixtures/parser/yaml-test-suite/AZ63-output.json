@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "1",
               "value": 1,
+              "raw": "1",
               "range": [
                 0,
                 1
@@ -39,6 +40,7 @@
                   "style": "plain",
                   "strValue": "2",
                   "value": 2,
+                  "raw": "2",
                   "range": [
                     5,
                     6
@@ -59,6 +61,7 @@
                   "style": "plain",
                   "strValue": "3",
                   "value": 3,
+                  "raw": "3",
                   "range": [
                     9,
                     10
@@ -112,6 +115,7 @@
               "style": "plain",
               "strValue": "4",
               "value": 4,
+              "raw": "4",
               "range": [
                 11,
                 12
@@ -132,6 +136,7 @@
               "style": "plain",
               "strValue": "5",
               "value": 5,
+              "raw": "5",
               "range": [
                 14,
                 15

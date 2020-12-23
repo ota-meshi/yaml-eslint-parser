@@ -28,6 +28,7 @@
         "style": "plain",
         "strValue": "text",
         "value": "text",
+        "raw": "text",
         "range": [
           14,
           18

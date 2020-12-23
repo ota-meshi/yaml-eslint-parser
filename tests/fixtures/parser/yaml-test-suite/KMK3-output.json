@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "foo",
               "value": "foo",
+              "raw": "foo",
               "range": [
                 0,
                 3
@@ -41,6 +42,7 @@
                     "style": "plain",
                     "strValue": "bar",
                     "value": "bar",
+                    "raw": "bar",
                     "range": [
                       7,
                       10
@@ -61,6 +63,7 @@
                     "style": "plain",
                     "strValue": "1",
                     "value": 1,
+                    "raw": "1",
                     "range": [
                       12,
                       13
@@ -129,6 +132,7 @@
               "style": "plain",
               "strValue": "baz",
               "value": "baz",
+              "raw": "baz",
               "range": [
                 14,
                 17
@@ -149,6 +153,7 @@
               "style": "plain",
               "strValue": "2",
               "value": 2,
+              "raw": "2",
               "range": [
                 19,
                 20

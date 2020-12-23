@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "plain key",
               "value": "plain key",
+              "raw": "plain key",
               "range": [
                 0,
                 9
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "in-line value",
               "value": "in-line value",
+              "raw": "in-line value",
               "range": [
                 11,
                 24
@@ -116,6 +118,7 @@
                   "style": "plain",
                   "strValue": "entry",
                   "value": "entry",
+                  "raw": "entry",
                   "range": [
                     56,
                     61

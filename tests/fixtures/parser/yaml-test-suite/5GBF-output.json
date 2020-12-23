@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "Folding",
               "value": "Folding",
+              "raw": "Folding",
               "range": [
                 0,
                 7
@@ -73,6 +74,7 @@
               "style": "plain",
               "strValue": "Chomping",
               "value": "Chomping",
+              "raw": "Chomping",
               "range": [
                 46,
                 54

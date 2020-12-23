@@ -19,6 +19,7 @@
                   "style": "plain",
                   "strValue": "flow",
                   "value": "flow",
+                  "raw": "flow",
                   "range": [
                     1,
                     5
@@ -55,6 +56,7 @@
               "style": "plain",
               "strValue": "block",
               "value": "block",
+              "raw": "block",
               "range": [
                 8,
                 13

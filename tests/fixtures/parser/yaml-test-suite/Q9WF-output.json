@@ -21,6 +21,7 @@
                     "style": "plain",
                     "strValue": "first",
                     "value": "first",
+                    "raw": "first",
                     "range": [
                       2,
                       7
@@ -41,6 +42,7 @@
                     "style": "plain",
                     "strValue": "Sammy",
                     "value": "Sammy",
+                    "raw": "Sammy",
                     "range": [
                       9,
                       14
@@ -78,6 +80,7 @@
                     "style": "plain",
                     "strValue": "last",
                     "value": "last",
+                    "raw": "last",
                     "range": [
                       16,
                       20
@@ -98,6 +101,7 @@
                     "style": "plain",
                     "strValue": "Sosa",
                     "value": "Sosa",
+                    "raw": "Sosa",
                     "range": [
                       22,
                       26
@@ -155,6 +159,7 @@
                     "style": "plain",
                     "strValue": "hr",
                     "value": "hr",
+                    "raw": "hr",
                     "range": [
                       46,
                       48
@@ -175,6 +180,7 @@
                     "style": "plain",
                     "strValue": "65",
                     "value": 65,
+                    "raw": "65",
                     "range": [
                       68,
                       70
@@ -212,6 +218,7 @@
                     "style": "plain",
                     "strValue": "avg",
                     "value": "avg",
+                    "raw": "avg",
                     "range": [
                       73,
                       76
@@ -232,6 +239,7 @@
                     "style": "plain",
                     "strValue": "0.278",
                     "value": 0.278,
+                    "raw": "0.278",
                     "range": [
                       91,
                       96

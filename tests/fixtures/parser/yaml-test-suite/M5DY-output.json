@@ -19,6 +19,7 @@
                   "style": "plain",
                   "strValue": "Detroit Tigers",
                   "value": "Detroit Tigers",
+                  "raw": "Detroit Tigers",
                   "range": [
                     4,
                     18
@@ -39,6 +40,7 @@
                   "style": "plain",
                   "strValue": "Chicago cubs",
                   "value": "Chicago cubs",
+                  "raw": "Chicago cubs",
                   "range": [
                     23,
                     35
@@ -79,6 +81,7 @@
                   "style": "plain",
                   "strValue": "2001-07-23",
                   "value": "2001-07-23",
+                  "raw": "2001-07-23",
                   "range": [
                     42,
                     52
@@ -136,6 +139,7 @@
                   "style": "plain",
                   "strValue": "New York Yankees",
                   "value": "New York Yankees",
+                  "raw": "New York Yankees",
                   "range": [
                     58,
                     74
@@ -156,6 +160,7 @@
                   "style": "plain",
                   "strValue": "Atlanta Braves",
                   "value": "Atlanta Braves",
+                  "raw": "Atlanta Braves",
                   "range": [
                     80,
                     94
@@ -196,6 +201,7 @@
                   "style": "plain",
                   "strValue": "2001-07-02",
                   "value": "2001-07-02",
+                  "raw": "2001-07-02",
                   "range": [
                     101,
                     111
@@ -216,6 +222,7 @@
                   "style": "plain",
                   "strValue": "2001-08-12",
                   "value": "2001-08-12",
+                  "raw": "2001-08-12",
                   "range": [
                     113,
                     123
@@ -236,6 +243,7 @@
                   "style": "plain",
                   "strValue": "2001-08-14",
                   "value": "2001-08-14",
+                  "raw": "2001-08-14",
                   "range": [
                     129,
                     139

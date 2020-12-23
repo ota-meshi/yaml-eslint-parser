@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "a",
               "value": "a",
+              "raw": "a",
               "range": [
                 0,
                 1
@@ -41,6 +42,7 @@
                     "style": "plain",
                     "strValue": "b",
                     "value": "b",
+                    "raw": "b",
                     "range": [
                       5,
                       6
@@ -67,6 +69,7 @@
                           "style": "plain",
                           "strValue": "c",
                           "value": "c",
+                          "raw": "c",
                           "range": [
                             12,
                             13
@@ -87,6 +90,7 @@
                           "style": "plain",
                           "strValue": "d",
                           "value": "d",
+                          "raw": "d",
                           "range": [
                             15,
                             16
@@ -155,6 +159,7 @@
                     "style": "plain",
                     "strValue": "e",
                     "value": "e",
+                    "raw": "e",
                     "range": [
                       19,
                       20
@@ -181,6 +186,7 @@
                           "style": "plain",
                           "strValue": "f",
                           "value": "f",
+                          "raw": "f",
                           "range": [
                             26,
                             27
@@ -201,6 +207,7 @@
                           "style": "plain",
                           "strValue": "g",
                           "value": "g",
+                          "raw": "g",
                           "range": [
                             29,
                             30
@@ -300,6 +307,7 @@
               "style": "plain",
               "strValue": "h",
               "value": "h",
+              "raw": "h",
               "range": [
                 31,
                 32
@@ -320,6 +328,7 @@
               "style": "plain",
               "strValue": "i",
               "value": "i",
+              "raw": "i",
               "range": [
                 34,
                 35

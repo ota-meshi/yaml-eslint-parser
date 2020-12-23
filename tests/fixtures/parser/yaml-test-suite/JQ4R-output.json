@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "block sequence",
               "value": "block sequence",
+              "raw": "block sequence",
               "range": [
                 0,
                 14
@@ -39,6 +40,7 @@
                   "style": "plain",
                   "strValue": "one",
                   "value": "one",
+                  "raw": "one",
                   "range": [
                     20,
                     23
@@ -65,6 +67,7 @@
                         "style": "plain",
                         "strValue": "two",
                         "value": "two",
+                        "raw": "two",
                         "range": [
                           28,
                           31
@@ -85,6 +88,7 @@
                         "style": "plain",
                         "strValue": "three",
                         "value": "three",
+                        "raw": "three",
                         "range": [
                           34,
                           39

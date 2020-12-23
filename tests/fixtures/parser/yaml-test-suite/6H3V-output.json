@@ -36,6 +36,7 @@
               "style": "plain",
               "strValue": "baz'",
               "value": "baz'",
+              "raw": "baz'",
               "range": [
                 13,
                 17

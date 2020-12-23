@@ -19,6 +19,7 @@
                   "style": "plain",
                   "strValue": "key",
                   "value": "key",
+                  "raw": "key",
                   "range": [
                     3,
                     6
@@ -39,6 +40,7 @@
                   "style": "plain",
                   "strValue": "value",
                   "value": "value",
+                  "raw": "value",
                   "range": [
                     8,
                     13
@@ -76,6 +78,7 @@
                   "style": "plain",
                   "strValue": "key2",
                   "value": "key2",
+                  "raw": "key2",
                   "range": [
                     17,
                     21
@@ -96,6 +99,7 @@
                   "style": "plain",
                   "strValue": "value2",
                   "value": "value2",
+                  "raw": "value2",
                   "range": [
                     23,
                     29
@@ -153,6 +157,7 @@
                   "style": "plain",
                   "strValue": "key3",
                   "value": "key3",
+                  "raw": "key3",
                   "range": [
                     36,
                     40
@@ -173,6 +178,7 @@
                   "style": "plain",
                   "strValue": "value3",
                   "value": "value3",
+                  "raw": "value3",
                   "range": [
                     42,
                     48

@@ -13,6 +13,7 @@
             "style": "plain",
             "strValue": "foo",
             "value": "foo",
+            "raw": "foo",
             "range": [
               2,
               5
@@ -75,6 +76,7 @@
             "style": "plain",
             "strValue": "42",
             "value": 42,
+            "raw": "42",
             "range": [
               24,
               26
@@ -95,6 +97,7 @@
             "style": "plain",
             "strValue": "true",
             "value": true,
+            "raw": "true",
             "range": [
               29,
               33
@@ -115,6 +118,7 @@
             "style": "plain",
             "strValue": "false",
             "value": false,
+            "raw": "false",
             "range": [
               36,
               41
@@ -135,6 +139,7 @@
             "style": "plain",
             "strValue": "True",
             "value": true,
+            "raw": "True",
             "range": [
               44,
               48
@@ -155,6 +160,7 @@
             "style": "plain",
             "strValue": "False",
             "value": false,
+            "raw": "False",
             "range": [
               51,
               56
@@ -175,6 +181,7 @@
             "style": "plain",
             "strValue": "TRUE",
             "value": true,
+            "raw": "TRUE",
             "range": [
               59,
               63
@@ -195,6 +202,7 @@
             "style": "plain",
             "strValue": "FALSE",
             "value": false,
+            "raw": "FALSE",
             "range": [
               66,
               71
@@ -215,6 +223,7 @@
             "style": "plain",
             "strValue": "yes",
             "value": "yes",
+            "raw": "yes",
             "range": [
               74,
               77
@@ -235,6 +244,7 @@
             "style": "plain",
             "strValue": "no",
             "value": "no",
+            "raw": "no",
             "range": [
               80,
               82
@@ -255,6 +265,7 @@
             "style": "plain",
             "strValue": "on",
             "value": "on",
+            "raw": "on",
             "range": [
               85,
               87
@@ -275,6 +286,7 @@
             "style": "plain",
             "strValue": "off",
             "value": "off",
+            "raw": "off",
             "range": [
               90,
               93
@@ -295,6 +307,7 @@
             "style": "plain",
             "strValue": "null",
             "value": null,
+            "raw": "null",
             "range": [
               96,
               100
@@ -315,6 +328,7 @@
             "style": "plain",
             "strValue": "Null",
             "value": null,
+            "raw": "Null",
             "range": [
               103,
               107
@@ -335,6 +349,7 @@
             "style": "plain",
             "strValue": "NULL",
             "value": null,
+            "raw": "NULL",
             "range": [
               110,
               114
@@ -355,6 +370,7 @@
             "style": "plain",
             "strValue": "~",
             "value": null,
+            "raw": "~",
             "range": [
               117,
               118
@@ -375,6 +391,7 @@
             "style": "plain",
             "strValue": "2020-12-31",
             "value": "2020-12-31",
+            "raw": "2020-12-31",
             "range": [
               121,
               131

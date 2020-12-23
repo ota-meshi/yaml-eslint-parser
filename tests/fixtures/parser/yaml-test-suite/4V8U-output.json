@@ -9,6 +9,7 @@
         "style": "plain",
         "strValue": "plain\\value\\with\\backslashes",
         "value": "plain\\value\\with\\backslashes",
+        "raw": "plain\\value\\with\\backslashes",
         "range": [
           4,
           32

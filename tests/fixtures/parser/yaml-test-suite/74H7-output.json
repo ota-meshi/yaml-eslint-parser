@@ -36,6 +36,7 @@
                 "style": "plain",
                 "strValue": "a",
                 "value": "a",
+                "raw": "a",
                 "range": [
                   6,
                   7
@@ -71,6 +72,7 @@
               "style": "plain",
               "strValue": "b",
               "value": "b",
+              "raw": "b",
               "range": [
                 9,
                 10
@@ -108,6 +110,7 @@
               "style": "plain",
               "strValue": "c",
               "value": "c",
+              "raw": "c",
               "range": [
                 11,
                 12
@@ -149,6 +152,7 @@
                 "style": "plain",
                 "strValue": "42",
                 "value": 42,
+                "raw": "42",
                 "range": [
                   20,
                   22
@@ -201,6 +205,7 @@
               "style": "plain",
               "strValue": "e",
               "value": "e",
+              "raw": "e",
               "range": [
                 23,
                 24
@@ -242,6 +247,7 @@
                 "style": "plain",
                 "strValue": "f",
                 "value": "f",
+                "raw": "f",
                 "range": [
                   32,
                   33
@@ -294,6 +300,7 @@
               "style": "plain",
               "strValue": "g",
               "value": "g",
+              "raw": "g",
               "range": [
                 34,
                 35
@@ -314,6 +321,7 @@
               "style": "plain",
               "strValue": "h",
               "value": "h",
+              "raw": "h",
               "range": [
                 37,
                 38
@@ -372,6 +380,7 @@
                 "style": "plain",
                 "strValue": "23",
                 "value": 23,
+                "raw": "23",
                 "range": [
                   45,
                   47
@@ -428,6 +437,7 @@
                 "style": "plain",
                 "strValue": "false",
                 "value": false,
+                "raw": "false",
                 "range": [
                   56,
                   61

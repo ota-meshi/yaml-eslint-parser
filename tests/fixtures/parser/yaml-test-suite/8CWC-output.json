@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "key ends with two colons::",
               "value": "key ends with two colons::",
+              "raw": "key ends with two colons::",
               "range": [
                 4,
                 30
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "value",
               "value": "value",
+              "raw": "value",
               "range": [
                 32,
                 37

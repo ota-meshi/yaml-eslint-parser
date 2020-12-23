@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "name",
               "value": "name",
+              "raw": "name",
               "range": [
                 0,
                 4
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "Mark McGwire",
               "value": "Mark McGwire",
+              "raw": "Mark McGwire",
               "range": [
                 6,
                 18
@@ -72,6 +74,7 @@
               "style": "plain",
               "strValue": "accomplishment",
               "value": "accomplishment",
+              "raw": "accomplishment",
               "range": [
                 19,
                 33
@@ -130,6 +133,7 @@
               "style": "plain",
               "strValue": "stats",
               "value": "stats",
+              "raw": "stats",
               "range": [
                 90,
                 95

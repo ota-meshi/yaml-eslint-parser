@@ -19,6 +19,7 @@
                   "style": "plain",
                   "strValue": "item",
                   "value": "item",
+                  "raw": "item",
                   "range": [
                     27,
                     31
@@ -39,6 +40,7 @@
                   "style": "plain",
                   "strValue": "Super Hoop",
                   "value": "Super Hoop",
+                  "raw": "Super Hoop",
                   "range": [
                     37,
                     47
@@ -76,6 +78,7 @@
                   "style": "plain",
                   "strValue": "quantity",
                   "value": "quantity",
+                  "raw": "quantity",
                   "range": [
                     50,
                     58
@@ -96,6 +99,7 @@
                   "style": "plain",
                   "strValue": "1",
                   "value": 1,
+                  "raw": "1",
                   "range": [
                     60,
                     61
@@ -153,6 +157,7 @@
                   "style": "plain",
                   "strValue": "item",
                   "value": "item",
+                  "raw": "item",
                   "range": [
                     64,
                     68
@@ -173,6 +178,7 @@
                   "style": "plain",
                   "strValue": "Basketball",
                   "value": "Basketball",
+                  "raw": "Basketball",
                   "range": [
                     74,
                     84
@@ -210,6 +216,7 @@
                   "style": "plain",
                   "strValue": "quantity",
                   "value": "quantity",
+                  "raw": "quantity",
                   "range": [
                     87,
                     95
@@ -230,6 +237,7 @@
                   "style": "plain",
                   "strValue": "4",
                   "value": 4,
+                  "raw": "4",
                   "range": [
                     97,
                     98
@@ -287,6 +295,7 @@
                   "style": "plain",
                   "strValue": "item",
                   "value": "item",
+                  "raw": "item",
                   "range": [
                     101,
                     105
@@ -307,6 +316,7 @@
                   "style": "plain",
                   "strValue": "Big Shoes",
                   "value": "Big Shoes",
+                  "raw": "Big Shoes",
                   "range": [
                     111,
                     120
@@ -344,6 +354,7 @@
                   "style": "plain",
                   "strValue": "quantity",
                   "value": "quantity",
+                  "raw": "quantity",
                   "range": [
                     123,
                     131
@@ -364,6 +375,7 @@
                   "style": "plain",
                   "strValue": "1",
                   "value": 1,
+                  "raw": "1",
                   "range": [
                     133,
                     134

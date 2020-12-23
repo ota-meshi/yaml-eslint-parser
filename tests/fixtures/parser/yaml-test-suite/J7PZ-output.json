@@ -40,6 +40,7 @@
                     "style": "plain",
                     "strValue": "Mark McGwire",
                     "value": "Mark McGwire",
+                    "raw": "Mark McGwire",
                     "range": [
                       108,
                       120
@@ -60,6 +61,7 @@
                     "style": "plain",
                     "strValue": "65",
                     "value": 65,
+                    "raw": "65",
                     "range": [
                       122,
                       124
@@ -117,6 +119,7 @@
                     "style": "plain",
                     "strValue": "Sammy Sosa",
                     "value": "Sammy Sosa",
+                    "raw": "Sammy Sosa",
                     "range": [
                       127,
                       137
@@ -137,6 +140,7 @@
                     "style": "plain",
                     "strValue": "63",
                     "value": 63,
+                    "raw": "63",
                     "range": [
                       139,
                       141
@@ -194,6 +198,7 @@
                     "style": "plain",
                     "strValue": "Ken Griffy",
                     "value": "Ken Griffy",
+                    "raw": "Ken Griffy",
                     "range": [
                       144,
                       154
@@ -214,6 +219,7 @@
                     "style": "plain",
                     "strValue": "58",
                     "value": 58,
+                    "raw": "58",
                     "range": [
                       156,
                       158

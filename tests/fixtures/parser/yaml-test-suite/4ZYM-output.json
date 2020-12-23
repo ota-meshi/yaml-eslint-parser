@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "plain",
               "value": "plain",
+              "raw": "plain",
               "range": [
                 0,
                 5
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "text lines",
               "value": "text lines",
+              "raw": "text\n  lines",
               "range": [
                 7,
                 19
@@ -72,6 +74,7 @@
               "style": "plain",
               "strValue": "quoted",
               "value": "quoted",
+              "raw": "quoted",
               "range": [
                 20,
                 26
@@ -130,6 +133,7 @@
               "style": "plain",
               "strValue": "block",
               "value": "block",
+              "raw": "block",
               "range": [
                 44,
                 49

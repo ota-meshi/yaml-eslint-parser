@@ -67,6 +67,7 @@
                         "style": "plain",
                         "strValue": "value",
                         "value": "value",
+                        "raw": "value",
                         "range": [
                           49,
                           54

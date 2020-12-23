@@ -9,6 +9,7 @@
         "style": "plain",
         "strValue": "a b c d\ne",
         "value": "a b c d\ne",
+        "raw": "a\nb  \n  c\nd\n\ne",
         "range": [
           0,
           14

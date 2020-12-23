@@ -566,6 +566,7 @@ function convertPlain(
             style: "plain",
             strValue,
             value,
+            raw: code.slice(...loc.range),
             parent,
             ...loc,
         }

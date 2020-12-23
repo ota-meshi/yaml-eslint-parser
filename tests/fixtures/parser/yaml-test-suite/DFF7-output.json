@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "explicit",
               "value": "explicit",
+              "raw": "explicit",
               "range": [
                 4,
                 12
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "entry",
               "value": "entry",
+              "raw": "entry",
               "range": [
                 14,
                 19
@@ -72,6 +74,7 @@
               "style": "plain",
               "strValue": "implicit",
               "value": "implicit",
+              "raw": "implicit",
               "range": [
                 21,
                 29
@@ -92,6 +95,7 @@
               "style": "plain",
               "strValue": "entry",
               "value": "entry",
+              "raw": "entry",
               "range": [
                 31,
                 36

@@ -19,6 +19,7 @@
                   "style": "plain",
                   "strValue": "url",
                   "value": "url",
+                  "raw": "url",
                   "range": [
                     4,
                     7
@@ -39,6 +40,7 @@
                   "style": "plain",
                   "strValue": "http://example.org",
                   "value": "http://example.org",
+                  "raw": "http://example.org",
                   "range": [
                     9,
                     27

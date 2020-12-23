@@ -34,6 +34,7 @@
               "style": "plain",
               "strValue": "unicode anchor",
               "value": "unicode anchor",
+              "raw": "unicode anchor",
               "range": [
                 10,
                 24

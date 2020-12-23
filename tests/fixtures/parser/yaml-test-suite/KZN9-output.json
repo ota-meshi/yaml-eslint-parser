@@ -23,6 +23,7 @@
                       "style": "plain",
                       "strValue": "YAML",
                       "value": "YAML",
+                      "raw": "YAML",
                       "range": [
                         4,
                         8
@@ -43,6 +44,7 @@
                       "style": "plain",
                       "strValue": "separate",
                       "value": "separate",
+                      "raw": "separate",
                       "range": [
                         11,
                         19
@@ -121,6 +123,7 @@
                       "style": "plain",
                       "strValue": "empty key entry",
                       "value": "empty key entry",
+                      "raw": "empty key entry",
                       "range": [
                         28,
                         43
@@ -204,6 +207,7 @@
                             "style": "plain",
                             "strValue": "JSON",
                             "value": "JSON",
+                            "raw": "JSON",
                             "range": [
                               51,
                               55
@@ -224,6 +228,7 @@
                             "style": "plain",
                             "strValue": "like",
                             "value": "like",
+                            "raw": "like",
                             "range": [
                               57,
                               61
@@ -275,6 +280,7 @@
                       "style": "plain",
                       "strValue": "adjacent",
                       "value": "adjacent",
+                      "raw": "adjacent",
                       "range": [
                         63,
                         71

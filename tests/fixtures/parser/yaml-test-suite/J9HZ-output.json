@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "hr",
               "value": "hr",
+              "raw": "hr",
               "range": [
                 4,
                 6
@@ -39,6 +40,7 @@
                   "style": "plain",
                   "strValue": "Mark McGwire",
                   "value": "Mark McGwire",
+                  "raw": "Mark McGwire",
                   "range": [
                     30,
                     42
@@ -59,6 +61,7 @@
                   "style": "plain",
                   "strValue": "Sammy Sosa",
                   "value": "Sammy Sosa",
+                  "raw": "Sammy Sosa",
                   "range": [
                     47,
                     57
@@ -112,6 +115,7 @@
               "style": "plain",
               "strValue": "rbi",
               "value": "rbi",
+              "raw": "rbi",
               "range": [
                 58,
                 61
@@ -136,6 +140,7 @@
                   "style": "plain",
                   "strValue": "Sammy Sosa",
                   "value": "Sammy Sosa",
+                  "raw": "Sammy Sosa",
                   "range": [
                     88,
                     98
@@ -156,6 +161,7 @@
                   "style": "plain",
                   "strValue": "Ken Griffey",
                   "value": "Ken Griffey",
+                  "raw": "Ken Griffey",
                   "range": [
                     103,
                     114

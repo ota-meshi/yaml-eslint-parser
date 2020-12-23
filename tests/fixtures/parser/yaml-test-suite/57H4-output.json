@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "sequence",
               "value": "sequence",
+              "raw": "sequence",
               "range": [
                 0,
                 8
@@ -60,6 +61,7 @@
                     "style": "plain",
                     "strValue": "entry",
                     "value": "entry",
+                    "raw": "entry",
                     "range": [
                       18,
                       23
@@ -105,6 +107,7 @@
                           "style": "plain",
                           "strValue": "nested",
                           "value": "nested",
+                          "raw": "nested",
                           "range": [
                             35,
                             41
@@ -204,6 +207,7 @@
               "style": "plain",
               "strValue": "mapping",
               "value": "mapping",
+              "raw": "mapping",
               "range": [
                 42,
                 49
@@ -251,6 +255,7 @@
                       "style": "plain",
                       "strValue": "foo",
                       "value": "foo",
+                      "raw": "foo",
                       "range": [
                         58,
                         61
@@ -271,6 +276,7 @@
                       "style": "plain",
                       "strValue": "bar",
                       "value": "bar",
+                      "raw": "bar",
                       "range": [
                         63,
                         66

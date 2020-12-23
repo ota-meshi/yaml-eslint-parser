@@ -30,6 +30,7 @@
           "style": "plain",
           "strValue": "a",
           "value": "a",
+          "raw": "a",
           "range": [
             2,
             3

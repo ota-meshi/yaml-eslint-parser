@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "seq",
               "value": "seq",
+              "raw": "seq",
               "range": [
                 4,
                 7
@@ -60,6 +61,7 @@
                     "style": "plain",
                     "strValue": "a",
                     "value": "a",
+                    "raw": "a",
                     "range": [
                       20,
                       21
@@ -80,6 +82,7 @@
                     "style": "plain",
                     "strValue": "b",
                     "value": "b",
+                    "raw": "b",
                     "range": [
                       24,
                       25

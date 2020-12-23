@@ -17,6 +17,7 @@
                 "style": "plain",
                 "strValue": "s1_i1",
                 "value": "s1_i1",
+                "raw": "s1_i1",
                 "range": [
                   4,
                   9
@@ -37,6 +38,7 @@
                 "style": "plain",
                 "strValue": "s1_i2",
                 "value": "s1_i2",
+                "raw": "s1_i2",
                 "range": [
                   14,
                   19
@@ -73,6 +75,7 @@
             "style": "plain",
             "strValue": "s2",
             "value": "s2",
+            "raw": "s2",
             "range": [
               22,
               24

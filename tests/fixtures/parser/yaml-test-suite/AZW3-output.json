@@ -19,6 +19,7 @@
                   "style": "plain",
                   "strValue": "bla\"keks",
                   "value": "bla\"keks",
+                  "raw": "bla\"keks",
                   "range": [
                     2,
                     10
@@ -39,6 +40,7 @@
                   "style": "plain",
                   "strValue": "foo",
                   "value": "foo",
+                  "raw": "foo",
                   "range": [
                     12,
                     15
@@ -96,6 +98,7 @@
                   "style": "plain",
                   "strValue": "bla]keks",
                   "value": "bla]keks",
+                  "raw": "bla]keks",
                   "range": [
                     18,
                     26
@@ -116,6 +119,7 @@
                   "style": "plain",
                   "strValue": "foo",
                   "value": "foo",
+                  "raw": "foo",
                   "range": [
                     28,
                     31

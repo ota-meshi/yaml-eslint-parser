@@ -9,6 +9,7 @@
         "style": "plain",
         "strValue": "scalar %YAML 1.2",
         "value": "scalar %YAML 1.2",
+        "raw": "scalar\n%YAML 1.2",
         "range": [
           4,
           20

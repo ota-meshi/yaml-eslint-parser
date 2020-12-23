@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "Mapping",
               "value": "Mapping",
+              "raw": "Mapping",
               "range": [
                 0,
                 7
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "Document",
               "value": "Document",
+              "raw": "Document",
               "range": [
                 9,
                 17
@@ -148,6 +150,7 @@
               "style": "plain",
               "strValue": "matches %",
               "value": "matches %",
+              "raw": "matches %",
               "range": [
                 48,
                 57
@@ -168,6 +171,7 @@
               "style": "plain",
               "strValue": "20",
               "value": 20,
+              "raw": "20",
               "range": [
                 59,
                 61

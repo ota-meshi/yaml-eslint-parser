@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "quoted",
               "value": "quoted",
+              "raw": "quoted",
               "range": [
                 18,
                 24
@@ -73,6 +74,7 @@
               "style": "plain",
               "strValue": "block",
               "value": "block",
+              "raw": "block",
               "range": [
                 37,
                 42

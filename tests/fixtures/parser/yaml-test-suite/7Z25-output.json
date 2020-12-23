@@ -9,6 +9,7 @@
         "style": "plain",
         "strValue": "scalar1",
         "value": "scalar1",
+        "raw": "scalar1",
         "range": [
           4,
           11
@@ -53,6 +54,7 @@
               "style": "plain",
               "strValue": "key",
               "value": "key",
+              "raw": "key",
               "range": [
                 16,
                 19
@@ -73,6 +75,7 @@
               "style": "plain",
               "strValue": "value",
               "value": "value",
+              "raw": "value",
               "range": [
                 21,
                 26

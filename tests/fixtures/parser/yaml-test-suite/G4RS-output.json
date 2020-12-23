@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "unicode",
               "value": "unicode",
+              "raw": "unicode",
               "range": [
                 0,
                 7
@@ -73,6 +74,7 @@
               "style": "plain",
               "strValue": "control",
               "value": "control",
+              "raw": "control",
               "range": [
                 32,
                 39
@@ -131,6 +133,7 @@
               "style": "plain",
               "strValue": "hex esc",
               "value": "hex esc",
+              "raw": "hex esc",
               "range": [
                 64,
                 71
@@ -189,6 +192,7 @@
               "style": "plain",
               "strValue": "single",
               "value": "single",
+              "raw": "single",
               "range": [
                 93,
                 99
@@ -247,6 +251,7 @@
               "style": "plain",
               "strValue": "quoted",
               "value": "quoted",
+              "raw": "quoted",
               "range": [
                 122,
                 128
@@ -305,6 +310,7 @@
               "style": "plain",
               "strValue": "tie-fighter",
               "value": "tie-fighter",
+              "raw": "tie-fighter",
               "range": [
                 154,
                 165

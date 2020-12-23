@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "sequence",
               "value": "sequence",
+              "raw": "sequence",
               "range": [
                 0,
                 8
@@ -39,6 +40,7 @@
                   "style": "plain",
                   "strValue": "one",
                   "value": "one",
+                  "raw": "one",
                   "range": [
                     12,
                     15
@@ -59,6 +61,7 @@
                   "style": "plain",
                   "strValue": "two",
                   "value": "two",
+                  "raw": "two",
                   "range": [
                     18,
                     21
@@ -112,6 +115,7 @@
               "style": "plain",
               "strValue": "mapping",
               "value": "mapping",
+              "raw": "mapping",
               "range": [
                 22,
                 29
@@ -138,6 +142,7 @@
                     "style": "plain",
                     "strValue": "sky",
                     "value": "sky",
+                    "raw": "sky",
                     "range": [
                       35,
                       38
@@ -158,6 +163,7 @@
                     "style": "plain",
                     "strValue": "blue",
                     "value": "blue",
+                    "raw": "blue",
                     "range": [
                       43,
                       47
@@ -195,6 +201,7 @@
                     "style": "plain",
                     "strValue": "sea",
                     "value": "sea",
+                    "raw": "sea",
                     "range": [
                       50,
                       53
@@ -215,6 +222,7 @@
                     "style": "plain",
                     "strValue": "green",
                     "value": "green",
+                    "raw": "green",
                     "range": [
                       56,
                       61

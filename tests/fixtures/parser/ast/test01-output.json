@@ -13,6 +13,7 @@
             "style": "plain",
             "strValue": "Mark McGwire",
             "value": "Mark McGwire",
+            "raw": "Mark McGwire",
             "range": [
               34,
               46
@@ -33,6 +34,7 @@
             "style": "plain",
             "strValue": "Sammy Sosa",
             "value": "Sammy Sosa",
+            "raw": "Sammy Sosa",
             "range": [
               49,
               59
@@ -53,6 +55,7 @@
             "style": "plain",
             "strValue": "Ken Griffey",
             "value": "Ken Griffey",
+            "raw": "Ken Griffey",
             "range": [
               62,
               73
@@ -111,6 +114,7 @@
             "style": "plain",
             "strValue": "Chicago Cubs",
             "value": "Chicago Cubs",
+            "raw": "Chicago Cubs",
             "range": [
               96,
               108
@@ -131,6 +135,7 @@
             "style": "plain",
             "strValue": "St Louis Cardinals",
             "value": "St Louis Cardinals",
+            "raw": "St Louis Cardinals",
             "range": [
               111,
               129

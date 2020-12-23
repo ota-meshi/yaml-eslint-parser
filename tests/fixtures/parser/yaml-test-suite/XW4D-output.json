@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "a",
               "value": "a",
+              "raw": "a",
               "range": [
                 0,
                 1
@@ -73,6 +74,7 @@
               "style": "plain",
               "strValue": "b",
               "value": "b",
+              "raw": "b",
               "range": [
                 28,
                 29
@@ -93,6 +95,7 @@
               "style": "plain",
               "strValue": "plain value",
               "value": "plain value",
+              "raw": "plain\n value",
               "range": [
                 31,
                 43
@@ -130,6 +133,7 @@
               "style": "plain",
               "strValue": "c",
               "value": "c",
+              "raw": "c",
               "range": [
                 52,
                 53
@@ -150,6 +154,7 @@
               "style": "plain",
               "strValue": "d",
               "value": "d",
+              "raw": "d",
               "range": [
                 65,
                 66
@@ -191,6 +196,7 @@
                   "style": "plain",
                   "strValue": "seq1",
                   "value": "seq1",
+                  "raw": "seq1",
                   "range": [
                     79,
                     83
@@ -231,6 +237,7 @@
                   "style": "plain",
                   "strValue": "seq2",
                   "value": "seq2",
+                  "raw": "seq2",
                   "range": [
                     104,
                     108
@@ -284,6 +291,7 @@
               "style": "plain",
               "strValue": "e",
               "value": "e",
+              "raw": "e",
               "range": [
                 109,
                 110
@@ -335,6 +343,7 @@
                           "style": "plain",
                           "strValue": "x",
                           "value": "x",
+                          "raw": "x",
                           "range": [
                             129,
                             130
@@ -355,6 +364,7 @@
                           "style": "plain",
                           "strValue": "y",
                           "value": "y",
+                          "raw": "y",
                           "range": [
                             132,
                             133
@@ -454,6 +464,7 @@
               "style": "plain",
               "strValue": "block",
               "value": "block",
+              "raw": "block",
               "range": [
                 134,
                 139

@@ -15,6 +15,7 @@
               "style": "plain",
               "strValue": "a!\"#$%&'()*+,-./09:;<=>?@AZ[\\]^_`az{|}~",
               "value": "a!\"#$%&'()*+,-./09:;<=>?@AZ[\\]^_`az{|}~",
+              "raw": "a!\"#$%&'()*+,-./09:;<=>?@AZ[\\]^_`az{|}~",
               "range": [
                 0,
                 39
@@ -35,6 +36,7 @@
               "style": "plain",
               "strValue": "safe",
               "value": "safe",
+              "raw": "safe",
               "range": [
                 41,
                 45
@@ -72,6 +74,7 @@
               "style": "plain",
               "strValue": "?foo",
               "value": "?foo",
+              "raw": "?foo",
               "range": [
                 46,
                 50
@@ -92,6 +95,7 @@
               "style": "plain",
               "strValue": "safe question mark",
               "value": "safe question mark",
+              "raw": "safe question mark",
               "range": [
                 52,
                 70
@@ -129,6 +133,7 @@
               "style": "plain",
               "strValue": ":foo",
               "value": ":foo",
+              "raw": ":foo",
               "range": [
                 71,
                 75
@@ -149,6 +154,7 @@
               "style": "plain",
               "strValue": "safe colon",
               "value": "safe colon",
+              "raw": "safe colon",
               "range": [
                 77,
                 87
@@ -186,6 +192,7 @@
               "style": "plain",
               "strValue": "-foo",
               "value": "-foo",
+              "raw": "-foo",
               "range": [
                 88,
                 92
@@ -206,6 +213,7 @@
               "style": "plain",
               "strValue": "safe dash",
               "value": "safe dash",
+              "raw": "safe dash",
               "range": [
                 94,
                 103
@@ -243,6 +251,7 @@
               "style": "plain",
               "strValue": "this is#not",
               "value": "this is#not",
+              "raw": "this is#not",
               "range": [
                 104,
                 115
@@ -263,6 +272,7 @@
               "style": "plain",
               "strValue": "a comment",
               "value": "a comment",
+              "raw": "a comment",
               "range": [
                 117,
                 126
