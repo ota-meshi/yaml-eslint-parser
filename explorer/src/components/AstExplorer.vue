@@ -1,6 +1,6 @@
 <template>
     <div class="ast-explorer-root">
-        <AstOptions v-model="options" />
+        <div class="ast-tools">{{ time }}<AstOptions v-model="options" /></div>
         <div class="ast-explorer">
             <MonacoEditor
                 ref="sourceEditor"
@@ -42,6 +42,7 @@ export default {
 `,
             astJson: {},
             modeEditor: "",
+            time: "",
         }
     },
     watch: {
@@ -57,6 +58,7 @@ export default {
     methods: {
         refresh() {
             let ast
+            const start = Date.now()
             try {
                 ast = yamlEslintParser.parseForESLint(this.yamlValue).ast
             } catch (e) {
@@ -65,6 +67,8 @@ export default {
                     ...e,
                 }
             }
+            const time = Date.now() - start
+            this.time = `${time}ms`
             const json = createAstJson(this.options, ast)
             this.astJson = json
         },
@@ -307,6 +311,9 @@ function isNode(value) {
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+.ast-tools {
+    text-align: right;
 }
 .ast-explorer {
     min-width: 1px;

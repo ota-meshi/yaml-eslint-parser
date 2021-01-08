@@ -33,6 +33,6 @@ export default {
 
 <style scoped>
 .ast-options {
-    text-align: right;
+    padding-left: 16px;
 }
 </style>
