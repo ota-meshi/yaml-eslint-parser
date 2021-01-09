@@ -65,13 +65,15 @@ export function convertRoot(node: Root, code: string): YAMLProgram {
         }
         return c
     })
-    const stripCommentCode = comments.reduce(
-        (text, comment) =>
-            text.slice(0, comment.range[0]) +
-            text.slice(...comment.range).replace(/\S/gu, " ") +
-            text.slice(comment.range[1]),
-        code,
-    )
+    let stripCommentCode = ""
+    let startIndex = 0
+    for (const comment of comments) {
+        stripCommentCode += code.slice(startIndex, comment.range[0])
+        stripCommentCode += code.slice(...comment.range).replace(/\S/gu, " ")
+        startIndex = comment.range[1]
+    }
+    stripCommentCode += code.slice(startIndex)
+
     const tokens: Token[] = []
     const ast: YAMLProgram = {
         type: "Program",
@@ -85,61 +87,54 @@ export function convertRoot(node: Root, code: string): YAMLProgram {
     for (const n of node.children) {
         ast.body.push(convertDocument(n, tokens, stripCommentCode, ast))
     }
-    const stripTokensCode = tokens.reduce(
-        (text, token) =>
-            text.slice(0, token.range[0]) +
-            text.slice(...token.range).replace(/\S/gu, " ") +
-            text.slice(token.range[1]),
-        stripCommentCode,
-    )
+
+    const useRanges = sort(tokens).map((t) => t.range)
+    let range = useRanges.shift()
+
     let line = 1
     let column = 0
-    for (let index = 0; index < stripTokensCode.length; index++) {
-        const c = stripTokensCode[index]
+    const len = stripCommentCode.length
+    for (let index = 0; index < len; index++) {
+        const c = stripCommentCode[index]
         if (c === "\n") {
             line++
             column = 0
             continue
-        } else if (c.trim()) {
-            if (isPunctuator(c)) {
-                addToken(
-                    tokens,
-                    "Punctuator",
-                    {
-                        range: [index, index + 1],
-                        loc: {
-                            start: {
-                                line,
-                                column,
-                            },
-                            end: {
-                                line,
-                                column: column + 1,
-                            },
+        }
+        if (range) {
+            while (range && range[1] <= index) {
+                range = useRanges.shift()
+            }
+            if (range && range[0] <= index) {
+                column++
+                continue
+            }
+        }
+
+        if (isPunctuator(c)) {
+            addToken(
+                tokens,
+                "Punctuator",
+                {
+                    range: [index, index + 1],
+                    loc: {
+                        start: {
+                            line,
+                            column,
+                        },
+                        end: {
+                            line,
+                            column: column + 1,
                         },
                     },
-                    stripTokensCode,
-                )
-            }
+                },
+                stripCommentCode,
+            )
         }
 
         column++
     }
-    tokens.sort((a, b) => {
-        if (a.range[0] > b.range[0]) {
-            return 1
-        }
-        if (a.range[0] < b.range[0]) {
-            return -1
-        }
-        if (a.range[1] > b.range[1]) {
-            return 1
-        }
-        if (a.range[1] < b.range[1]) {
-            return -1
-        }
-        return 0
-    })
+    sort(tokens)
     return ast
 
     /**
@@ -154,7 +149,6 @@ export function convertRoot(node: Root, code: string): YAMLProgram {
             c === "}" ||
             c === "[" ||
             c === "]" ||
-            //
             c === "?"
         )
     }
@@ -1083,5 +1077,26 @@ function addToken(
         type,
         value: code.slice(...loc.range),
         ...loc,
+    })
+}
+
+/**
+ * Sort tokens
+ */
+function sort(tokens: (Token | Comment)[]) {
+    return tokens.sort((a, b) => {
+        if (a.range[0] > b.range[0]) {
+            return 1
+        }
+        if (a.range[0] < b.range[0]) {
+            return -1
+        }
+        if (a.range[1] > b.range[1]) {
+            return 1
+        }
+        if (a.range[1] < b.range[1]) {
+            return -1
+        }
+        return 0
     })
 }
