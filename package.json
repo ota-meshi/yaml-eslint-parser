@@ -36,7 +36,7 @@
     "dependencies": {
         "eslint-visitor-keys": "^2.1.0",
         "lodash": "^4.17.20",
-        "yaml": "^1.10.0"
+        "yaml": "^2.0.0-0"
     },
     "devDependencies": {
         "@ota-meshi/eslint-plugin": "^0.8.0",
