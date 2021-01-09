@@ -1,4 +1,4 @@
-import yaml from "yaml"
+import { parseDocument } from "yaml"
 import type {
     YAMLProgram,
     YAMLContent,
@@ -12,6 +12,7 @@ import type {
     YAMLWithMeta,
     YAMLTag,
 } from "./ast"
+import { tagResolvers } from "./tags"
 
 type YAMLContentValue =
     | string
@@ -172,45 +173,12 @@ function findAnchor(node: YAMLAlias): YAMLAnchor | null {
  * Get tagged value
  */
 function getTaggedValue(tag: YAMLTag, text: string, str: string) {
-    if (tag.tag === "tag:yaml.org,2002:str") {
-        return str
-    } else if (tag.tag === "tag:yaml.org,2002:int") {
-        if (/^(?:[1-9]\d*|0)$/u.test(str)) {
-            return parseInt(str, 10)
-        }
-    } else if (tag.tag === "tag:yaml.org,2002:bool") {
-        if (isTrue(str)) {
-            return true
-        }
-        if (isFalse(str)) {
-            return false
-        }
-    } else if (tag.tag === "tag:yaml.org,2002:null") {
-        if (isNull(str) || str === "") {
-            return null
+    for (const tagResolver of tagResolvers) {
+        if (tagResolver.tag === tag.tag && tagResolver.test(str)) {
+            return tagResolver.resolve(str)
         }
     }
     const tagText = tag.tag.startsWith("!") ? tag.tag : `!<${tag.tag}>`
-    return yaml.parseDocument(`${tagText} ${text}`).toJSON()
-}
-
-/**
- * Checks if the given string is true
- */
-export function isTrue(str: string): boolean {
-    return str === "true" || str === "True" || str === "TRUE"
-}
-
-/**
- * Checks if the given string is false
- */
-export function isFalse(str: string): boolean {
-    return str === "false" || str === "False" || str === "FALSE"
-}
-
-/**
- * Checks if the given string is null
- */
-export function isNull(str: string): boolean {
-    return str === "null" || str === "Null" || str === "NULL" || str === "~"
+    const value = parseDocument(`${tagText} ${text}`).toJSON()
+    return value
 }

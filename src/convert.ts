@@ -1,31 +1,3 @@
-import yaml from "yaml"
-import type {
-    Root,
-    Document,
-    DocumentHead,
-    Directive,
-    DocumentBody,
-    ContentNode,
-    Mapping,
-    MappingItem,
-    MappingKey,
-    MappingValue,
-    Plain,
-    FlowMapping,
-    FlowMappingItem,
-    Sequence,
-    SequenceItem,
-    FlowSequence,
-    FlowSequenceItem,
-    QuoteDouble,
-    QuoteSingle,
-    BlockLiteral,
-    BlockFolded,
-    Alias,
-    Anchor,
-    Tag,
-    YamlUnistNode,
-} from "yaml-unist-parser"
 import type {
     Range,
     Locations,
@@ -51,90 +23,82 @@ import type {
     YAMLWithMeta,
     YAMLSequence,
 } from "./ast"
-import { isFalse, isTrue, isNull } from "./utils"
+import type {
+    ASTDocument,
+    CSTBlankLine,
+    CSTComment,
+    CSTDirective,
+    CSTNode,
+    ASTContentNode,
+    ASTBlockMap,
+    ASTPair,
+    ASTFlowMap,
+    ASTBlockSeq,
+    ASTFlowSeq,
+    ASTPlainValue,
+    ASTQuoteDouble,
+    ASTQuoteSingle,
+    ASTBlockLiteral,
+    ASTBlockFolded,
+    ASTAlias,
+    CSTSeqItem,
+} from "./yaml"
+import { Type, PairType } from "./yaml"
+import { ParseError } from "./errors"
+import type { Context } from "./context"
+import { tagResolvers } from "./tags"
+
+const CHOMPING_MAP = {
+    CLIP: "clip",
+    STRIP: "strip",
+    KEEP: "keep",
+} as const
 
 /**
- * Convert yaml-unist-parser root to YAMLProgram
+ * Convert yaml root to YAMLProgram
  */
-export function convertRoot(node: Root, code: string): YAMLProgram {
-    const comments = node.comments.map((n) => {
-        const c: Comment = {
-            type: "Block",
-            value: n.value,
-            ...getConvertLocation(n),
-        }
-        return c
-    })
-    let stripCommentCode = ""
-    let startIndex = 0
-    for (const comment of comments) {
-        stripCommentCode += code.slice(startIndex, comment.range[0])
-        stripCommentCode += code.slice(...comment.range).replace(/\S/gu, " ")
-        startIndex = comment.range[1]
-    }
-    stripCommentCode += code.slice(startIndex)
-
-    const tokens: Token[] = []
+export function convertRoot(
+    documents: ASTDocument[],
+    ctx: Context,
+): YAMLProgram {
     const ast: YAMLProgram = {
         type: "Program",
         body: [],
-        comments,
+        comments: ctx.comments,
         sourceType: "module",
-        tokens,
+        tokens: ctx.tokens,
         parent: null,
-        ...getConvertLocation(node),
+        ...ctx.getConvertLocation({ range: [0, ctx.code.length] }),
     }
-    for (const n of node.children) {
-        ast.body.push(convertDocument(n, tokens, stripCommentCode, ast))
+    let startIndex = 0
+    for (const n of documents) {
+        const doc = convertDocument(n, ctx, ast, startIndex)
+        ast.body.push(doc)
+        startIndex = doc.range[1]
     }
 
-    const useRanges = sort(tokens).map((t) => t.range)
+    const useRanges = sort([...ctx.tokens, ...ctx.comments]).map((t) => t.range)
     let range = useRanges.shift()
-
-    let line = 1
-    let column = 0
-    const len = stripCommentCode.length
-    for (let index = 0; index < len; index++) {
-        const c = stripCommentCode[index]
-        if (c === "\n") {
-            line++
-            column = 0
+    for (let index = 0; index < ctx.code.length; index++) {
+        while (range && range[1] <= index) {
+            range = useRanges.shift()
+        }
+        if (range && range[0] <= index) {
+            index = range[1] - 1
             continue
         }
-        if (range) {
-            while (range && range[1] <= index) {
-                range = useRanges.shift()
-            }
-            if (range && range[0] <= index) {
-                column++
-                continue
-            }
-        }
-
+        const c = ctx.code[index]
         if (isPunctuator(c)) {
-            addToken(
-                tokens,
-                "Punctuator",
-                {
-                    range: [index, index + 1],
-                    loc: {
-                        start: {
-                            line,
-                            column,
-                        },
-                        end: {
-                            line,
-                            column: column + 1,
-                        },
-                    },
-                },
-                stripCommentCode,
-            )
+            // console.log("*** REM TOKEN ***")
+            ctx.addToken("Punctuator", [index, index + 1])
+        } else if (c.trim()) {
+            // console.log("*** REM TOKEN ***")
+            // unknown
+            ctx.addToken("Identifier", [index, index + 1])
         }
-
-        column++
     }
-    sort(tokens)
+    sort(ctx.comments)
+    sort(ctx.tokens)
     return ast
 
     /**
@@ -149,21 +113,39 @@ export function convertRoot(node: Root, code: string): YAMLProgram {
             c === "}" ||
             c === "[" ||
             c === "]" ||
+            //
             c === "?"
         )
     }
 }
 
 /**
- * Convert yaml-unist-parser Document to YAMLDocument
+ * Convert YAML.Document to YAMLDocument
  */
 function convertDocument(
-    node: Document,
-    tokens: Token[],
-    code: string,
+    node: ASTDocument,
+    ctx: Context,
     parent: YAMLProgram,
+    startIndex: number,
 ): YAMLDocument {
-    const loc = getConvertLocation(node)
+    const cst = node.cstNode!
+    if (cst.error) {
+        const range = cst.range || cst.valueRange!
+        const loc = ctx.getLocFromIndex(range.start)
+        throw new ParseError(
+            cst.error.message,
+            range.start,
+            loc.line,
+            loc.column,
+        )
+    }
+    for (const error of node.errors) {
+        throw error
+    }
+
+    const loc = ctx.getConvertLocation({
+        range: [skipSpaces(ctx.code, startIndex), node.range![1]],
+    })
     const ast: YAMLDocument = {
         type: "YAMLDocument",
         directives: [],
@@ -172,158 +154,149 @@ function convertDocument(
         anchors: {},
         ...loc,
     }
-    ast.directives.push(
-        ...convertDocumentHead(node.children[0], tokens, code, ast),
-    )
-    ast.content = convertDocumentBody(node.children[1], tokens, code, ast)
+    ast.directives.push(...convertDocumentHead(node, ctx, ast))
 
     // Marker
-    if (code[loc.range[1] - 1] === ".") {
-        const range: Range = [loc.range[1] - 3, loc.range[1]]
-        addToken(
-            tokens,
-            "Marker",
-            {
-                range,
-                loc: {
-                    start: {
-                        line: loc.loc.end.line,
-                        column: loc.loc.end.column - 3,
-                    },
-                    end: clone(loc.loc.end),
-                },
-            },
-            code,
-        )
+    // @ts-expect-error -- missing types?
+    const directivesEndMarker = cst.directivesEndMarker
+    if (directivesEndMarker) {
+        const range: Range = [
+            directivesEndMarker.start,
+            directivesEndMarker.end,
+        ]
+        ctx.addToken("Marker", range)
+    }
+
+    ast.content = convertDocumentBody(node, ctx, ast)
+
+    // Marker
+    // @ts-expect-error -- missing types?
+    const documentEndMarker = cst.documentEndMarker
+    if (documentEndMarker) {
+        const range: Range = [documentEndMarker.start, documentEndMarker.end]
+        const markerToken = ctx.addToken("Marker", range)
+        ast.range[1] = markerToken.range[1]
+        ast.loc.end = clone(markerToken.loc.end)
     }
     return ast
 }
 
 /**
- * Convert yaml-unist-parser DocumentHead to YAMLDirective[]
+ * Convert YAML.Document.Parsed to YAMLDirective[]
  */
 function* convertDocumentHead(
-    node: DocumentHead,
-    tokens: Token[],
-    code: string,
+    node: ASTDocument,
+    ctx: Context,
     parent: YAMLDocument,
 ): IterableIterator<YAMLDirective> {
-    for (const n of node.children) {
-        yield convertDirective(n, tokens, code, parent)
-    }
-    const loc = getConvertLocation(node)
-
-    // Marker
-    if (code[loc.range[1] - 1] === "-") {
-        const range: Range = [loc.range[1] - 3, loc.range[1]]
-        addToken(
-            tokens,
-            "Marker",
-            {
-                range,
-                loc: {
-                    start: {
-                        line: loc.loc.end.line,
-                        column: loc.loc.end.column - 3,
-                    },
-                    end: clone(loc.loc.end),
-                },
-            },
-            code,
-        )
+    const cst = node.cstNode!
+    for (const n of cst.directives) {
+        if (processComment(n, ctx)) {
+            yield convertDirective(n, ctx, parent)
+        }
     }
 }
 
 /**
- * Convert yaml-unist-parser Directive to YAMLDirective
+ * Convert CSTDirective to YAMLDirective
  */
 function convertDirective(
-    node: Directive,
-    tokens: Token[],
-    code: string,
+    node: CSTDirective,
+    ctx: Context,
     parent: YAMLDocument,
 ): YAMLDirective {
-    const loc = getConvertLocation(node)
-    const value = code.slice(...loc.range)
+    extractComment(node, ctx)
+    const loc = ctx.getConvertLocation({
+        range: [
+            node.range!.start,
+            lastSkipSpaces(ctx.code, node.range!.start, node.valueRange!.end),
+        ],
+    })
+    const value = ctx.code.slice(...loc.range)
     const ast: YAMLDirective = {
         type: "YAMLDirective",
         value,
         parent,
         ...loc,
     }
-    addToken(tokens, "Directive", clone(loc), code)
+    ctx.addToken("Directive", loc.range)
     return ast
 }
 
 /**
- * Convert yaml-unist-parser DocumentBody to YAMLContent
+ * Convert Document body to YAMLContent
  */
 function convertDocumentBody(
-    node: DocumentBody,
-    tokens: Token[],
-    code: string,
+    node: ASTDocument,
+    ctx: Context,
     parent: YAMLDocument,
 ): YAMLContent | YAMLWithMeta | null {
-    const contentNode = node.children[0]
-    return contentNode
-        ? convertContentNode(contentNode, tokens, code, parent, parent)
-        : null
+    let ast: YAMLContent | YAMLWithMeta | null = null
+    for (const content of node.cstNode!.contents) {
+        if (processComment(content, ctx) && !ast) {
+            ast = convertContentNode(
+                node.contents as ASTContentNode,
+                ctx,
+                parent,
+                parent,
+            )
+        }
+    }
+    return ast
 }
 
 /**
- * Convert yaml-unist-parser ContentNode to YAMLContent
+ * Convert ContentNode to YAMLContent
  */
 function convertContentNode(
-    node: ContentNode,
-    tokens: Token[],
-    code: string,
+    node: ASTContentNode,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLContent | YAMLWithMeta {
-    if (node.type === "mapping") {
-        return convertMapping(node, tokens, code, parent, doc)
+    if (node.type === Type.MAP) {
+        return convertMapping(node, ctx, parent, doc)
     }
-    if (node.type === "flowMapping") {
-        return convertFlowMapping(node, tokens, code, parent, doc)
+    if (node.type === Type.FLOW_MAP) {
+        return convertFlowMapping(node, ctx, parent, doc)
     }
-    if (node.type === "sequence") {
-        return convertSequence(node, tokens, code, parent, doc)
+    if (node.type === Type.SEQ) {
+        return convertSequence(node, ctx, parent, doc)
     }
-    if (node.type === "flowSequence") {
-        return convertFlowSequence(node, tokens, code, parent, doc)
+    if (node.type === Type.FLOW_SEQ) {
+        return convertFlowSequence(node, ctx, parent, doc)
     }
-    if (node.type === "plain") {
-        return convertPlain(node, tokens, code, parent, doc)
+    if (node.type === Type.PLAIN) {
+        return convertPlain(node, ctx, parent, doc)
     }
-    if (node.type === "quoteDouble") {
-        return convertQuoteDouble(node, tokens, code, parent, doc)
+    if (node.type === Type.QUOTE_DOUBLE) {
+        return convertQuoteDouble(node, ctx, parent, doc)
     }
-    if (node.type === "quoteSingle") {
-        return convertQuoteSingle(node, tokens, code, parent, doc)
+    if (node.type === Type.QUOTE_SINGLE) {
+        return convertQuoteSingle(node, ctx, parent, doc)
     }
-    if (node.type === "blockLiteral") {
-        return convertBlockLiteral(node, tokens, code, parent, doc)
+    if (node.type === Type.BLOCK_LITERAL) {
+        return convertBlockLiteral(node, ctx, parent, doc)
     }
-    if (node.type === "blockFolded") {
-        return convertBlockFolded(node, tokens, code, parent, doc)
+    if (node.type === Type.BLOCK_FOLDED) {
+        return convertBlockFolded(node, ctx, parent, doc)
     }
-    if (node.type === "alias") {
-        return convertAlias(node, tokens, code, parent, doc)
+    if (node.type === Type.ALIAS) {
+        return convertAlias(node, ctx, parent, doc)
     }
     throw new Error(`Unsupported node: ${(node as any).type}`)
 }
 
 /**
- * Convert yaml-unist-parser Mapping to YAMLBlockMapping
+ * Convert Map to YAMLBlockMapping
  */
 function convertMapping(
-    node: Mapping,
-    tokens: Token[],
-    code: string,
+    node: ASTBlockMap,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLSequence,
     doc: YAMLDocument,
 ): YAMLBlockMapping | YAMLWithMeta {
-    const loc = getConvertLocation(node)
+    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
     const ast: YAMLBlockMapping = {
         type: "YAMLMapping",
         style: "block",
@@ -331,8 +304,17 @@ function convertMapping(
         parent,
         ...loc,
     }
-    for (const n of node.children) {
-        ast.pairs.push(convertMappingItem(n, tokens, code, ast, doc))
+    const cstPairRanges = processCSTItems(node, ctx)
+    node.items.forEach((n, index) => {
+        ast.pairs.push(
+            convertMappingItem(n, cstPairRanges[index], ctx, ast, doc),
+        )
+    })
+    const first = ast.pairs[0]
+    if (first && ast.range[0] !== first.range[0]) {
+        // adjust location
+        ast.range[0] = first.range[0]
+        ast.loc.start = clone(first.loc.start)
     }
     const last = ast.pairs[ast.pairs.length - 1]
     if (last && ast.range[1] !== last.range[1]) {
@@ -340,20 +322,19 @@ function convertMapping(
         ast.range[1] = last.range[1]
         ast.loc.end = clone(last.loc.end)
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
+    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
 }
 
 /**
- * Convert yaml-unist-parser FlowMapping to YAMLFlowMapping
+ * Convert FlowMap to YAMLFlowMapping
  */
 function convertFlowMapping(
-    node: FlowMapping,
-    tokens: Token[],
-    code: string,
+    node: ASTFlowMap,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLFlowMapping | YAMLWithMeta {
-    const loc = getConvertLocation(node)
+    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
     const ast: YAMLFlowMapping = {
         type: "YAMLMapping",
         style: "flow",
@@ -361,23 +342,26 @@ function convertFlowMapping(
         parent,
         ...loc,
     }
-    for (const n of node.children) {
-        ast.pairs.push(convertMappingItem(n, tokens, code, ast, doc))
-    }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
+    const cstPairRanges = processCSTItems(node, ctx)
+    node.items.forEach((n, index) => {
+        ast.pairs.push(
+            convertMappingItem(n, cstPairRanges[index], ctx, ast, doc),
+        )
+    })
+    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
 }
 
 /**
- * Convert yaml-unist-parser MappingItem to YAMLPair
+ * Convert Pair to YAMLPair
  */
 function convertMappingItem(
-    node: MappingItem | FlowMappingItem,
-    tokens: Token[],
-    code: string,
+    node: ASTPair,
+    cstPairRanges: CSTPairRanges,
+    ctx: Context,
     parent: YAMLBlockMapping | YAMLFlowMapping,
     doc: YAMLDocument,
 ): YAMLPair {
-    const loc = getConvertLocation(node)
+    const loc = ctx.getConvertLocation({ range: cstPairRanges.range })
     const ast: YAMLPair = {
         type: "YAMLPair",
         key: null,
@@ -385,59 +369,71 @@ function convertMappingItem(
         parent,
         ...loc,
     }
-    ast.key = convertMappingKey(node.children[0], tokens, code, ast, doc)
-    ast.value = convertMappingValue(node.children[1], tokens, code, ast, doc)
-    if (ast.value && ast.range[1] !== ast.value.range[1]) {
-        // adjust location
-        ast.range[1] = ast.value.range[1]
-        ast.loc.end = clone(ast.value.loc.end)
+    ast.key = convertMappingKey(node.key, ctx, ast, doc)
+    ast.value = convertMappingValue(node.value, ctx, ast, doc)
+    if (ast.value) {
+        if (ast.range[1] !== ast.value.range[1]) {
+            // adjust location
+            ast.range[1] = ast.value.range[1]
+            ast.loc.end = clone(ast.value.loc.end)
+        }
+    } else if (ast.key) {
+        if (cstPairRanges.value == null && ast.range[1] !== ast.key.range[1]) {
+            // adjust location
+            ast.range[1] = ast.key.range[1]
+            ast.loc.end = clone(ast.key.loc.end)
+        }
+    }
+    if (ast.key) {
+        if (ast.key.range[0] < ast.range[0]) {
+            // adjust location
+            ast.range[0] = ast.key.range[0]
+            ast.loc.start = clone(ast.key.loc.start)
+        }
     }
     return ast
 }
 
 /**
- * Convert yaml-unist-parser MappingKey to YAMLContent
+ * Convert MapKey to YAMLContent
  */
 function convertMappingKey(
-    node: MappingKey,
-    tokens: Token[],
-    code: string,
+    node: ASTContentNode | null,
+    ctx: Context,
     parent: YAMLPair,
     doc: YAMLDocument,
 ): YAMLContent | YAMLWithMeta | null {
-    if (node.children.length) {
-        return convertContentNode(node.children[0], tokens, code, parent, doc)
+    if (node) {
+        return convertContentNode(node, ctx, parent, doc)
     }
     return null
 }
 
 /**
- * Convert yaml-unist-parser MappingValue to YAMLContent
+ * Convert MapValue to YAMLContent
  */
 function convertMappingValue(
-    node: MappingValue,
-    tokens: Token[],
-    code: string,
+    node: ASTContentNode | null,
+    ctx: Context,
     parent: YAMLPair,
     doc: YAMLDocument,
 ): YAMLContent | YAMLWithMeta | null {
-    if (node.children.length) {
-        return convertContentNode(node.children[0], tokens, code, parent, doc)
+    if (node) {
+        return convertContentNode(node, ctx, parent, doc)
     }
     return null
 }
 
 /**
- * Convert yaml-unist-parser Sequence to YAMLBlockSequence
+ * Convert BlockSeq to YAMLBlockSequence
  */
 function convertSequence(
-    node: Sequence,
-    tokens: Token[],
-    code: string,
+    node: ASTBlockSeq,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLBlockSequence | YAMLWithMeta {
-    const loc = getConvertLocation(node)
+    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
     const ast: YAMLBlockSequence = {
         type: "YAMLSequence",
         style: "block",
@@ -445,29 +441,46 @@ function convertSequence(
         parent,
         ...loc,
     }
-    for (const n of node.children) {
-        ast.entries.push(...convertSequenceItem(n, tokens, code, ast, doc))
+    const cstSeqItems: CSTSeqItem[] = []
+    for (const n of node.cstNode!.items) {
+        if (n.type === Type.SEQ_ITEM) {
+            ctx.addToken("Punctuator", [n.range!.start, n.range!.start + 1])
+            extractComment(n, ctx)
+            cstSeqItems.push(n)
+            continue
+        }
+        processComment(n, ctx)
     }
+    node.items.forEach((n, index) => {
+        ast.entries.push(
+            ...convertSequenceItem(
+                n as ASTContentNode | ASTPair | null,
+                cstSeqItems[index],
+                ctx,
+                ast,
+                doc,
+            ),
+        )
+    })
     const last = ast.entries[ast.entries.length - 1]
     if (last && ast.range[1] !== last.range[1]) {
         // adjust location
         ast.range[1] = last.range[1]
         ast.loc.end = clone(last.loc.end)
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
+    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
 }
 
 /**
- * Convert yaml-unist-parser FlowSequence to YAMLFlowSequence
+ * Convert FlowSeq to YAMLFlowSequence
  */
 function convertFlowSequence(
-    node: FlowSequence,
-    tokens: Token[],
-    code: string,
+    node: ASTFlowSeq,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLFlowSequence | YAMLWithMeta {
-    const loc = getConvertLocation(node)
+    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
     const ast: YAMLFlowSequence = {
         type: "YAMLSequence",
         style: "flow",
@@ -475,113 +488,146 @@ function convertFlowSequence(
         parent,
         ...loc,
     }
-    for (const n of node.children) {
-        if (n.type === "flowSequenceItem") {
-            ast.entries.push(
-                ...convertFlowSequenceItem(n, tokens, code, ast, doc),
-            )
-        }
-        if (n.type === "flowMappingItem") {
+
+    const cstPairRanges = processCSTItems(node, ctx)
+    node.items.forEach((n, index) => {
+        if (n.type === PairType.PAIR || n.type === PairType.MERGE_PAIR) {
+            const p = n as ASTPair
+            const cstPairRange = cstPairRanges[index]
             const map: YAMLBlockMapping = {
                 type: "YAMLMapping",
                 style: "block",
                 pairs: [],
                 parent,
-                ...getConvertLocation(n),
+                ...ctx.getConvertLocation({ range: cstPairRange.range }),
             }
-            const pair = convertMappingItem(n, tokens, code, map, doc)
+            const pair = convertMappingItem(p, cstPairRange, ctx, map, doc)
             map.pairs.push(pair)
+            if (pair && map.range[1] !== pair.range[1]) {
+                // adjust location
+                map.range[1] = pair.range[1]
+                map.loc.end = clone(pair.loc.end)
+            }
             ast.entries.push(map)
+        } else {
+            ast.entries.push(
+                ...convertFlowSequenceItem(
+                    n as ASTContentNode | null,
+                    ctx,
+                    ast,
+                    doc,
+                ),
+            )
         }
-    }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
+    })
+    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
 }
 
 /**
- * Convert yaml-unist-parser SequenceItem to YAMLContent
+ * Convert SeqItem to YAMLContent
  */
 function* convertSequenceItem(
-    node: SequenceItem,
-    tokens: Token[],
-    code: string,
+    node: ASTContentNode | ASTPair | null,
+    cst: CSTSeqItem,
+    ctx: Context,
     parent: YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): IterableIterator<YAMLContent | YAMLWithMeta | null> {
-    if (node.children.length) {
-        yield convertContentNode(node.children[0], tokens, code, parent, doc)
+    if (node) {
+        if (node.type === PairType.PAIR || node.type === PairType.MERGE_PAIR) {
+            const cstRange = cst.node!.range!
+            const range: Range = [cstRange.start, cstRange.end]
+            const map: YAMLBlockMapping = {
+                type: "YAMLMapping",
+                style: "block",
+                pairs: [],
+                parent,
+                ...ctx.getConvertLocation({ range }),
+            }
+            // TODO collect : token
+            const pair = convertMappingItem(
+                node,
+                { range } as CSTPairRanges,
+                ctx,
+                map,
+                doc,
+            )
+            map.pairs.push(pair)
+            if (pair && map.range[1] !== pair.range[1]) {
+                // adjust location
+                map.range[1] = pair.range[1]
+                map.loc.end = clone(pair.loc.end)
+            }
+            yield map
+        } else {
+            yield convertContentNode(node as ASTContentNode, ctx, parent, doc)
+        }
     } else {
         yield null
     }
 }
 
 /**
- * Convert yaml-unist-parser FlowSequenceItem to YAMLContent
+ * Convert FlowSeqItem to YAMLContent
  */
 function* convertFlowSequenceItem(
-    node: FlowSequenceItem,
-    tokens: Token[],
-    code: string,
+    node: ASTContentNode | null,
+    ctx: Context,
     parent: YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): IterableIterator<YAMLContent | YAMLWithMeta> {
-    if (node.children.length) {
-        yield convertContentNode(node.children[0], tokens, code, parent, doc)
+    if (node) {
+        yield convertContentNode(node, ctx, parent, doc)
     }
 }
 
 /**
- * Convert yaml-unist-parser Plain to YAMLPlainScalar
+ * Convert PlainValue to YAMLPlainScalar
  */
 function convertPlain(
-    node: Plain,
-    tokens: Token[],
-    code: string,
+    node: ASTPlainValue,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLPlainScalar | YAMLWithMeta {
-    const loc = getConvertLocation(node)
-    if (loc.range[0] < loc.range[1]) {
-        const strValue = node.value
-        let value: string | number | boolean | null
+    const valueRange = node.cstNode!.valueRange!
 
-        if (isTrue(strValue)) {
-            value = true
-        } else if (isFalse(strValue)) {
-            value = false
-        } else if (isNull(strValue)) {
-            value = null
-        } else if (needParse(strValue)) {
-            value = yaml.parse(strValue) || strValue
-        } else {
-            value = strValue
-        }
+    const loc = ctx.getConvertLocation({
+        range: [
+            valueRange.start,
+            lastSkipSpaces(ctx.code, valueRange.start, valueRange.end),
+        ],
+    })
+    if (loc.range[0] < loc.range[1]) {
+        const strValue = node.cstNode!.strValue!
+        const value = parseValueFromText(strValue)
+
         const ast: YAMLPlainScalar = {
             type: "YAMLScalar",
             style: "plain",
             strValue,
             value,
-            raw: code.slice(...loc.range),
+            raw: ctx.code.slice(...loc.range),
             parent,
             ...loc,
         }
 
         const type = typeof value
         if (type === "boolean") {
-            addToken(tokens, "Boolean", clone(loc), code)
+            ctx.addToken("Boolean", loc.range)
         } else if (type === "number" && isFinite(Number(value))) {
-            addToken(tokens, "Numeric", clone(loc), code)
+            ctx.addToken("Numeric", loc.range)
         } else if (value === null) {
-            addToken(tokens, "Null", clone(loc), code)
+            ctx.addToken("Null", loc.range)
         } else {
-            addToken(tokens, "Identifier", clone(loc), code)
+            ctx.addToken("Identifier", loc.range)
         }
-        return convertAnchorAndTag(node, tokens, code, parent, ast, doc, loc)
+        return convertAnchorAndTag(node, ctx, parent, ast, doc, loc)
     }
 
     return convertAnchorAndTag<YAMLPlainScalar>(
         node,
-        tokens,
-        code,
+        ctx,
         parent,
         null,
         doc,
@@ -589,310 +635,220 @@ function convertPlain(
     )
 
     /**
-     * Checks if the given string needs to be parsed
+     * Parse value from text
      */
-    function needParse(str: string) {
-        return (
-            // oct
-            /^0o([0-7]+)$/u.test(str) ||
-            // int
-            /^[-+]?[0-9]+$/u.test(str) ||
-            // hex
-            /^0x([0-9a-fA-F]+)$/u.test(str) ||
-            // nan
-            /^(?:[-+]?\.inf|(\.nan))$/iu.test(str) ||
-            // exp
-            /^[-+]?(?:\.[0-9]+|[0-9]+(?:\.[0-9]*)?)[eE][-+]?[0-9]+$/u.test(
-                str,
-            ) ||
-            // float
-            /^[-+]?(?:\.([0-9]+)|[0-9]+\.([0-9]*))$/u.test(str)
-            // date
-            // || /^\d{4}-\d{2}-\d{2}/u.test(str)
-        )
+    function parseValueFromText(str: string): string | number | boolean | null {
+        for (const tagResolver of tagResolvers) {
+            if (tagResolver.test(str)) {
+                return tagResolver.resolve(str)
+            }
+        }
+        return str
     }
 }
 
 /**
- * Convert yaml-unist-parser QuoteDouble to YAMLDoubleQuotedScalar
+ * Convert QuoteDouble to YAMLDoubleQuotedScalar
  */
 function convertQuoteDouble(
-    node: QuoteDouble,
-    tokens: Token[],
-    code: string,
+    node: ASTQuoteDouble,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLDoubleQuotedScalar | YAMLWithMeta {
-    const loc = getConvertLocation(node)
-    const strValue = node.value
+    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
+
+    const cst = node.cstNode!
+    const strValue =
+        typeof cst.strValue === "object" && cst.strValue
+            ? cst.strValue.str
+            : cst.strValue || ""
     const ast: YAMLDoubleQuotedScalar = {
         type: "YAMLScalar",
         style: "double-quoted",
         strValue,
         value: strValue,
-        raw: code.slice(...loc.range),
+        raw: ctx.code.slice(...loc.range),
         parent,
         ...loc,
     }
-    addToken(tokens, "String", clone(loc), code)
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
+    ctx.addToken("String", loc.range)
+    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
 }
 
 /**
- * Convert yaml-unist-parser QuoteSingle to YAMLSingleQuotedScalar
+ * Convert QuoteSingle to YAMLSingleQuotedScalar
  */
 function convertQuoteSingle(
-    node: QuoteSingle,
-    tokens: Token[],
-    code: string,
+    node: ASTQuoteSingle,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLSingleQuotedScalar | YAMLWithMeta {
-    const loc = getConvertLocation(node)
-    const strValue = node.value
+    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
+    const cst = node.cstNode!
+    const strValue =
+        typeof cst.strValue === "object" && cst.strValue
+            ? cst.strValue.str
+            : cst.strValue || ""
     const ast: YAMLSingleQuotedScalar = {
         type: "YAMLScalar",
         style: "single-quoted",
         strValue,
         value: strValue,
-        raw: code.slice(...loc.range),
+        raw: ctx.code.slice(...loc.range),
         parent,
         ...loc,
     }
-    addToken(tokens, "String", clone(loc), code)
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
+    ctx.addToken("String", loc.range)
+    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
 }
 
 /**
- * Convert yaml-unist-parser BlockLiteral to YAMLBlockLiteral
+ * Convert BlockLiteral to YAMLBlockLiteral
  */
 function convertBlockLiteral(
-    node: BlockLiteral,
-    tokens: Token[],
-    code: string,
+    node: ASTBlockLiteral,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLBlockLiteralScalar | YAMLWithMeta {
-    const loc = getConvertLocation(node)
-    const value = node.value
+    const cst = node.cstNode!
+    const loc = ctx.getConvertLocation({
+        range: [cst.header.start, cst.valueRange!.end],
+    })
+    const value = cst.strValue || ""
+
     const ast: YAMLBlockLiteralScalar = {
         type: "YAMLScalar",
         style: "literal",
-        chomping: node.chomping,
-        indent: node.indent,
+        chomping: CHOMPING_MAP[cst.chomping],
+        indent: getBlockIndent(node),
         value,
         parent,
         ...loc,
     }
-    const text = code.slice(...loc.range)
-    if (text.startsWith("|")) {
-        let line = loc.loc.start.line
-        let column = loc.loc.start.column + 1
-        const offset = loc.range[0]
-        let index = 1
-        while (index < text.length) {
-            const c = text[index]
-            if (!c.trim()) {
-                break
-            }
-            column++
-            index++
-        }
-        const punctuatorLoc: Locations = {
-            range: [offset, offset + index],
-            loc: {
-                start: clone(loc.loc.start),
-                end: {
-                    line,
-                    column,
-                },
-            },
-        }
-        addToken(tokens, "Punctuator", punctuatorLoc, code)
-        let lineFeed = false
-        while (index < text.length) {
-            const c = text[index]
-            if (c.trim()) {
-                break
-            }
-            if (c === "\n") {
-                if (lineFeed) {
-                    break
-                }
-                line++
-                column = 0
-                lineFeed = true
-            } else {
-                column++
-            }
-            index++
-        }
-        const tokenLoc: Locations = {
-            range: [offset + index, loc.range[1]],
-            loc: {
-                start: {
-                    line,
-                    column,
-                },
-                end: clone(loc.loc.end),
-            },
-        }
-        if (tokenLoc.range[0] < tokenLoc.range[1]) {
-            addToken(tokens, "BlockLiteral", tokenLoc, code)
-        }
-    } else {
-        // ??
-        addToken(tokens, "BlockLiteral", clone(loc), code)
+    const punctuatorRange: Range = [cst.header.start, cst.header.end]
+    ctx.addToken("Punctuator", punctuatorRange)
+    const text = ctx.code.slice(cst.valueRange!.start, cst.valueRange!.end)
+    const offset = /^[^\S\r\n]*/.exec(text)![0].length
+    const tokenRange: Range = [
+        cst.valueRange!.start + offset,
+        cst.valueRange!.end,
+    ]
+    if (tokenRange[0] < tokenRange[1]) {
+        ctx.addToken("BlockLiteral", tokenRange)
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
+    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
 }
 
 /**
- * Convert yaml-unist-parser BlockFolded to YAMLBlockFolded
+ * Convert BlockFolded to YAMLBlockFolded
  */
 function convertBlockFolded(
-    node: BlockFolded,
-    tokens: Token[],
-    code: string,
+    node: ASTBlockFolded,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLBlockFoldedScalar | YAMLWithMeta {
-    const loc = getConvertLocation(node)
-    const value = node.value
+    const cst = node.cstNode!
+    const loc = ctx.getConvertLocation({
+        range: [cst.header.start, cst.valueRange!.end],
+    })
+    const value = cst.strValue || ""
     const ast: YAMLBlockFoldedScalar = {
         type: "YAMLScalar",
         style: "folded",
-        chomping: node.chomping,
-        indent: node.indent,
+        chomping: CHOMPING_MAP[cst.chomping],
+        indent: getBlockIndent(node),
         value,
         parent,
         ...loc,
     }
-    const text = code.slice(...loc.range)
-    if (text.startsWith(">")) {
-        let line = loc.loc.start.line
-        let column = loc.loc.start.column + 1
-        const offset = loc.range[0]
-        let index = 1
-        while (index < text.length) {
-            const c = text[index]
-            if (!c.trim()) {
-                break
-            }
-            column++
-            index++
-        }
-        const punctuatorLoc: Locations = {
-            range: [offset, offset + index],
-            loc: {
-                start: clone(loc.loc.start),
-                end: {
-                    line,
-                    column,
-                },
-            },
-        }
-        addToken(tokens, "Punctuator", punctuatorLoc, code)
-        let lineFeed = false
-        while (index < text.length) {
-            const c = text[index]
-            if (c.trim()) {
-                break
-            }
-            if (c === "\n") {
-                if (lineFeed) {
-                    break
-                }
-                line++
-                column = 0
-                lineFeed = true
-            } else {
-                column++
-            }
-            index++
-        }
-        const tokenLoc: Locations = {
-            range: [offset + index, loc.range[1]],
-            loc: {
-                start: {
-                    line,
-                    column,
-                },
-                end: clone(loc.loc.end),
-            },
-        }
-        if (tokenLoc.range[0] < tokenLoc.range[1]) {
-            addToken(tokens, "BlockFolded", tokenLoc, code)
-        }
-    } else {
-        // ??
-        addToken(tokens, "BlockFolded", clone(loc), code)
+    const punctuatorRange: Range = [cst.header.start, cst.header.end]
+    ctx.addToken("Punctuator", punctuatorRange)
+
+    const text = ctx.code.slice(cst.valueRange!.start, cst.valueRange!.end)
+    const offset = /^[^\S\r\n]*/.exec(text)![0].length
+    const tokenRange: Range = [
+        cst.valueRange!.start + offset,
+        cst.valueRange!.end,
+    ]
+    if (tokenRange[0] < tokenRange[1]) {
+        ctx.addToken("BlockFolded", tokenRange)
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
+    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
 }
 
 /**
- * Convert yaml-unist-parser Alias to YAMLAlias
+ * Get block indent from given block
+ */
+function getBlockIndent(node: ASTBlockLiteral | ASTBlockFolded) {
+    const cst = node.cstNode!
+    const numLength = cst.header.end - cst.header.start - 1
+    return numLength - (cst.chomping === "CLIP" ? 0 : 1)
+        ? cst.blockIndent
+        : null
+}
+
+/**
+ * Convert Alias to YAMLAlias
  */
 function convertAlias(
-    node: Alias,
-    tokens: Token[],
-    code: string,
+    node: ASTAlias,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLAlias | YAMLWithMeta {
-    const loc = getConvertLocation(node)
-    const value = node.value
+    const cst = node.cstNode!
+    const range = cst.range!
+    const valueRange = cst.valueRange!
+    const nodeRange: Range = [range.start, valueRange.end]
+
+    if (range.start === valueRange.start) {
+        // adjust
+        nodeRange[0]--
+    }
+    const loc = ctx.getConvertLocation({
+        range: nodeRange,
+    })
     const ast: YAMLAlias = {
         type: "YAMLAlias",
-        name: value,
+        name: cst.rawValue,
         parent,
         ...loc,
     }
-    const text = code.slice(...loc.range)
-    if (text.startsWith("*")) {
-        const punctuatorLoc: Locations = {
-            range: [loc.range[0], loc.range[0] + 1],
-            loc: {
-                start: clone(loc.loc.start),
-                end: {
-                    line: loc.loc.start.line,
-                    column: loc.loc.start.column + 1,
-                },
-            },
-        }
-        addToken(tokens, "Punctuator", punctuatorLoc, code)
-        const tokenLoc: Locations = {
-            range: [punctuatorLoc.range[1], loc.range[1]],
-            loc: {
-                start: clone(punctuatorLoc.loc.end),
-                end: clone(loc.loc.end),
-            },
-        }
-        if (tokenLoc.range[0] < tokenLoc.range[1]) {
-            addToken(tokens, "Identifier", tokenLoc, code)
-        }
-    } else {
-        // ??
-        addToken(tokens, "Identifier", clone(loc), code)
+    const starIndex = nodeRange[0]
+    ctx.addToken("Punctuator", [starIndex, starIndex + 1])
+    const tokenRange: Range = [valueRange.start, valueRange.end]
+    if (tokenRange[0] < tokenRange[1]) {
+        ctx.addToken("Identifier", tokenRange)
     }
-    return convertAnchorAndTag(node, tokens, code, parent, ast, doc, ast)
+    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
 }
 
 /**
- * Convert yaml-unist-parser Anchor and Tag
+ * Convert Anchor and Tag
  */
 function convertAnchorAndTag<V extends YAMLContent>(
-    node: ContentNode,
-    tokens: Token[],
-    code: string,
+    node: ASTContentNode,
+    ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLSequence,
     value: V | null,
     doc: YAMLDocument,
     valueLoc: Locations,
 ): YAMLWithMeta | V {
-    if (node.anchor || node.tag) {
-        const ast: YAMLWithMeta = {
+    const cst = node.cstNode!
+    let meta: YAMLWithMeta | null = null
+
+    /**
+     * Get YAMLWithMeta
+     */
+    function getMetaAst(): YAMLWithMeta {
+        if (meta) {
+            return meta
+        }
+        meta = {
             type: "YAMLWithMeta",
             anchor: null,
             tag: null,
@@ -902,182 +858,391 @@ function convertAnchorAndTag<V extends YAMLContent>(
             loc: clone(valueLoc.loc),
         }
         if (value) {
-            value.parent = ast
+            value.parent = meta
         }
+        return meta
+    }
 
-        if (node.anchor) {
-            const anchor = convertAnchor(node.anchor, tokens, code, ast, doc)
+    for (const range of cst.props) {
+        const startChar = ctx.code[range.start]
+        if (startChar === "&") {
+            const ast = getMetaAst()
+            const anchor = convertAnchor(
+                [range.start, range.end],
+                cst.anchor!,
+                ctx,
+                ast,
+                doc,
+            )
             ast.anchor = anchor
-            ast.range[0] = anchor.range[0]
-            ast.loc.start = clone(anchor.loc.start)
-        }
-        if (node.tag) {
-            const tag = convertTag(node.tag, tokens, code, ast)
+            if (anchor.range[0] < ast.range[0]) {
+                ast.range[0] = anchor.range[0]
+                ast.loc.start = clone(anchor.loc.start)
+            }
+        } else if (startChar === "!") {
+            const ast = getMetaAst()
+            const tag = convertTag(
+                [range.start, range.end],
+                node.tag!,
+                ctx,
+                ast,
+            )
             ast.tag = tag
             if (tag.range[0] < ast.range[0]) {
                 ast.range[0] = tag.range[0]
                 ast.loc.start = clone(tag.loc.start)
             }
+        } else if (startChar === "#") {
+            const comment: Comment = {
+                type: "Block",
+                value: ctx.code.slice(range.start + 1, range.end),
+                ...ctx.getConvertLocationFromCSTRange(range),
+            }
+            ctx.addComment(comment)
         }
-        return ast
     }
-
-    return value as any
+    return meta || (value as never)
 }
 
 /**
- * Convert yaml-unist-parser Anchor to YAMLAnchor
+ * Convert anchor to YAMLAnchor
  */
 function convertAnchor(
-    node: Anchor,
-    tokens: Token[],
-    code: string,
+    range: Range,
+    name: string,
+    ctx: Context,
     parent: YAMLWithMeta,
     doc: YAMLDocument,
 ): YAMLAnchor {
-    const loc = getConvertLocation(node)
-    const value = node.value
+    const loc = ctx.getConvertLocation({ range })
     const ast: YAMLAnchor = {
         type: "YAMLAnchor",
-        name: value,
+        name,
         parent,
         ...loc,
     }
 
-    const anchors = doc.anchors[value] || (doc.anchors[value] = [])
+    const anchors = doc.anchors[name] || (doc.anchors[name] = [])
     anchors.push(ast)
 
-    const text = code.slice(...loc.range)
-    if (text.startsWith("&")) {
-        const punctuatorLoc: Locations = {
-            range: [loc.range[0], loc.range[0] + 1],
-            loc: {
-                start: clone(loc.loc.start),
-                end: {
-                    line: loc.loc.start.line,
-                    column: loc.loc.start.column + 1,
-                },
-            },
-        }
-        addToken(tokens, "Punctuator", punctuatorLoc, code)
-        const tokenLoc: Locations = {
-            range: [punctuatorLoc.range[1], loc.range[1]],
-            loc: {
-                start: clone(punctuatorLoc.loc.end),
-                end: clone(loc.loc.end),
-            },
-        }
-        if (tokenLoc.range[0] < tokenLoc.range[1]) {
-            addToken(tokens, "Identifier", tokenLoc, code)
-        }
-    } else {
-        // ??
-        addToken(tokens, "Identifier", clone(loc), code)
+    const punctuatorRange: Range = [loc.range[0], loc.range[0] + 1]
+    ctx.addToken("Punctuator", punctuatorRange)
+    const tokenRange: Range = [punctuatorRange[1], loc.range[1]]
+    if (tokenRange[0] < tokenRange[1]) {
+        ctx.addToken("Identifier", tokenRange)
     }
     return ast
 }
 
 /**
- * Convert yaml-unist-parser Anchor to YAMLTag
+ * Convert tag to YAMLTag
  */
 function convertTag(
-    node: Tag,
-    tokens: Token[],
-    code: string,
+    range: Range,
+    tag: string,
+    ctx: Context,
     parent: YAMLWithMeta,
 ): YAMLTag {
-    const loc = getConvertLocation(node)
-    const value = node.value
+    const loc = ctx.getConvertLocation({ range })
     const ast: YAMLTag = {
         type: "YAMLTag",
-        tag: value,
+        tag,
         parent,
         ...loc,
     }
-    const text = code.slice(...loc.range)
-    if (text.startsWith("!")) {
-        const offset = text.startsWith("!!") ? 2 : 1
-        const punctuatorLoc: Locations = {
-            range: [loc.range[0], loc.range[0] + offset],
-            loc: {
-                start: clone(loc.loc.start),
-                end: {
-                    line: loc.loc.start.line,
-                    column: loc.loc.start.column + offset,
-                },
-            },
-        }
-        addToken(tokens, "Punctuator", punctuatorLoc, code)
-        const tokenLoc: Locations = {
-            range: [punctuatorLoc.range[1], loc.range[1]],
-            loc: {
-                start: clone(punctuatorLoc.loc.end),
-                end: clone(loc.loc.end),
-            },
-        }
-        if (tokenLoc.range[0] < tokenLoc.range[1]) {
-            addToken(tokens, "Identifier", tokenLoc, code)
-        }
-    } else {
-        // ??
-        addToken(tokens, "Identifier", clone(loc), code)
+    const text = ctx.code.slice(...loc.range)
+    const offset = text.startsWith("!!") ? 2 : 1
+    const punctuatorRange: Range = [loc.range[0], loc.range[0] + offset]
+    ctx.addToken("Punctuator", punctuatorRange)
+    const tokenRange: Range = [punctuatorRange[1], loc.range[1]]
+    if (tokenRange[0] < tokenRange[1]) {
+        ctx.addToken("Identifier", tokenRange)
     }
     return ast
 }
 
 /**
- * Get the location information of the given node.
- * @param node The node.
+ * Process comments
  */
-function getConvertLocation(node: YamlUnistNode): Locations {
-    const { start, end } = node.position
-
-    return {
-        range: [start.offset, end.offset],
-        loc: {
-            start: {
-                line: start.line,
-                column: start.column - 1,
-            },
-            end: {
-                line: end.line,
-                column: end.column - 1,
-            },
-        },
+function processComment<N extends CSTNode>(
+    node: CSTBlankLine | CSTComment | N,
+    ctx: Context,
+): node is N {
+    if (node.type === Type.BLANK_LINE) {
+        return false
     }
+    if (node.type === Type.COMMENT) {
+        const comment: Comment = {
+            type: "Block",
+            value: node.comment,
+            ...ctx.getConvertLocationFromCSTRange(node.range),
+        }
+        ctx.addComment(comment)
+        return false
+    }
+    return true
 }
 
 /**
- * clone the location.
+ * Extract comments from props
  */
-function clone<T>(loc: T): T {
-    if (typeof loc !== "object") {
-        return loc
+function extractComment(cst: CSTNode, ctx: Context): void {
+    for (const range of cst.props) {
+        const startChar = ctx.code[range.start]
+        if (startChar === "#") {
+            const comment: Comment = {
+                type: "Block",
+                value: ctx.code.slice(range.start + 1, range.end),
+                ...ctx.getConvertLocationFromCSTRange(range),
+            }
+            ctx.addComment(comment)
+        }
     }
-    if (Array.isArray(loc)) {
-        return (loc as any).map(clone)
-    }
-    const n: any = {}
-    for (const key in loc) {
-        n[key] = clone(loc[key])
-    }
-    return n
 }
 
+type CSTPairRanges =
+    | {
+          key: Range
+          value: Range
+          range: Range
+      }
+    | {
+          key: null
+          value: Range
+          range: Range
+      }
+    | {
+          key: Range
+          value: null
+          range: Range
+      }
+
 /**
- * Add token to tokens
+ * Process CST items
  */
-function addToken(
-    tokens: Token[],
-    type: Token["type"],
-    loc: Locations,
-    code: string,
-) {
-    tokens.push({
-        type,
-        value: code.slice(...loc.range),
-        ...loc,
-    })
+function processCSTItems(
+    node: ASTBlockMap | ASTFlowMap | ASTFlowSeq,
+    ctx: Context,
+): CSTPairRanges[] {
+    const parsed = [...parseCSTItems(node.cstNode!.items)]
+
+    return parsed
+
+    type CSTItem = Required<
+        ASTBlockMap | ASTFlowMap | ASTFlowSeq
+    >["cstNode"]["items"][number]
+    type CSTPairItem = Exclude<CSTItem, CSTBlankLine | CSTComment>
+
+    /* eslint-disable complexity -- ignore */
+    /**
+     * Parse for cst items
+     */
+    function* parseCSTItems(
+        /* eslint-enable complexity -- ignore */
+        items: CSTItem[],
+    ): IterableIterator<CSTPairRanges> {
+        // eslint-disable-next-line no-shadow -- bug?
+        const enum PairDataState {
+            empty,
+            // ?
+            keyMark,
+            // KEY
+            // ? KEY
+            key,
+            // KEY :
+            // ? KEY :
+            // ? :
+            // :
+            valueMark,
+        }
+        let data: {
+            key: CSTPairItem[]
+            value: CSTPairItem[]
+            state: PairDataState
+        } = {
+            key: [],
+            value: [],
+            state: PairDataState.empty,
+        }
+
+        for (const cstItem of items) {
+            if ("char" in cstItem) {
+                ctx.addToken("Punctuator", [cstItem.offset, cstItem.offset + 1])
+                if (
+                    cstItem.char === "[" ||
+                    cstItem.char === "]" ||
+                    cstItem.char === "{" ||
+                    cstItem.char === "}"
+                ) {
+                    continue
+                }
+                if (cstItem.char === ",") {
+                    if (data.state !== PairDataState.empty) {
+                        yield parseGroup(data)
+                    }
+                    data = { key: [], value: [], state: PairDataState.empty }
+                    continue
+                }
+                if (cstItem.char === "?") {
+                    if (data.state !== PairDataState.empty) {
+                        yield parseGroup(data)
+                        data = {
+                            key: [cstItem],
+                            value: [],
+                            state: PairDataState.keyMark,
+                        }
+                    } else {
+                        data.key.push(cstItem)
+                        data.state = PairDataState.keyMark
+                    }
+                    continue
+                } else if (cstItem.char === ":") {
+                    if (
+                        data.state === PairDataState.empty ||
+                        data.state === PairDataState.keyMark ||
+                        data.state === PairDataState.key
+                    ) {
+                        data.value.push(cstItem)
+                        data.state = PairDataState.valueMark
+                    } else {
+                        yield parseGroup(data)
+                        data = {
+                            key: [],
+                            value: [cstItem],
+                            state: PairDataState.valueMark,
+                        }
+                    }
+                    continue
+                }
+            } else if (!processComment(cstItem, ctx)) {
+                continue
+            } else {
+                if (cstItem.type === Type.MAP_VALUE) {
+                    ctx.addToken("Punctuator", [
+                        cstItem.range!.start,
+                        cstItem.range!.start + 1,
+                    ])
+                    extractComment(cstItem, ctx)
+                    if (
+                        data.state === PairDataState.empty ||
+                        data.state === PairDataState.keyMark ||
+                        data.state === PairDataState.key
+                    ) {
+                        data.value.push(cstItem)
+                        yield parseGroup(data)
+                    } else {
+                        yield parseGroup(data)
+                        yield parseGroup({ key: [], value: [cstItem] })
+                    }
+                    data = { key: [], value: [], state: PairDataState.empty }
+                    continue
+                } else if (cstItem.type === Type.MAP_KEY) {
+                    ctx.addToken("Punctuator", [
+                        cstItem.range!.start,
+                        cstItem.range!.start + 1,
+                    ])
+                    extractComment(cstItem, ctx)
+                    if (data.state !== PairDataState.empty) {
+                        yield parseGroup(data)
+                        data = {
+                            key: [cstItem],
+                            value: [],
+                            state: PairDataState.key,
+                        }
+                    } else {
+                        data.key.push(cstItem)
+                        data.state = PairDataState.key
+                    }
+                    continue
+                } else {
+                    if (
+                        data.state === PairDataState.empty ||
+                        data.state === PairDataState.keyMark
+                    ) {
+                        data.key.push(cstItem)
+                        data.state = PairDataState.key
+                        continue
+                    }
+                    if (data.state === PairDataState.key) {
+                        yield parseGroup(data)
+                        data = {
+                            key: [cstItem],
+                            value: [],
+                            state: PairDataState.key,
+                        }
+                        continue
+                    }
+                    if (data.state === PairDataState.valueMark) {
+                        data.value.push(cstItem)
+                        yield parseGroup(data)
+                        data = {
+                            key: [],
+                            value: [],
+                            state: PairDataState.empty,
+                        }
+                        continue
+                    }
+                }
+            }
+        }
+        if (data.state !== PairDataState.empty) {
+            yield parseGroup(data)
+        }
+    }
+
+    /**
+     * Parse for cst item group
+     */
+    function parseGroup(data: {
+        key: CSTPairItem[]
+        value: CSTPairItem[]
+    }): CSTPairRanges {
+        if (data.key.length && data.value.length) {
+            const key = itemsToRange(data.key)
+            const value = itemsToRange(data.value)
+            return {
+                key,
+                value,
+                range: [key[0], value[1]],
+            }
+        }
+        if (data.key.length) {
+            const key = itemsToRange(data.key)
+            return {
+                key,
+                value: null,
+                range: key,
+            }
+        }
+        if (data.value.length) {
+            const value = itemsToRange(data.value)
+            return {
+                key: null,
+                value,
+                range: value,
+            }
+        }
+        throw new Error("Unexpected state")
+    }
+
+    /** get range */
+    function itemsToRange(items: CSTPairItem[]): Range {
+        const first = itemToRange(items[0])
+        if (items.length === 1) {
+            return first
+        }
+        const last = itemToRange(items[items.length - 1])
+        return [first[0], last[1]]
+    }
+
+    /** get range */
+    function itemToRange(item: CSTPairItem): Range {
+        if ("char" in item) {
+            return [item.offset, item.offset + 1]
+        }
+        const range = item.range || item.valueRange!
+        return [range.start, range.end]
+    }
 }
 
 /**
@@ -1099,4 +1264,46 @@ function sort(tokens: (Token | Comment)[]) {
         }
         return 0
     })
+}
+
+/**
+ * clone the location.
+ */
+function clone<T>(loc: T): T {
+    if (typeof loc !== "object") {
+        return loc
+    }
+    if (Array.isArray(loc)) {
+        return (loc as any).map(clone)
+    }
+    const n: any = {}
+    for (const key in loc) {
+        n[key] = clone(loc[key])
+    }
+    return n
+}
+
+/**
+ * Gets the first index with whitespace skipped.
+ */
+function skipSpaces(str: string, startIndex: number) {
+    const len = str.length
+    for (let index = startIndex; index < len; index++) {
+        if (str[index].trim()) {
+            return index
+        }
+    }
+    return len
+}
+
+/**
+ * Gets the last index with whitespace skipped.
+ */
+function lastSkipSpaces(str: string, startIndex: number, endIndex: number) {
+    for (let index = endIndex - 1; index >= startIndex; index--) {
+        if (str[index].trim()) {
+            return index + 1
+        }
+    }
+    return startIndex
 }
