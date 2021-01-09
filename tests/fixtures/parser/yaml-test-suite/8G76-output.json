@@ -7,7 +7,7 @@
       "content": null,
       "range": [
         2,
-        18
+        11
       ],
       "loc": {
         "start": {
@@ -15,8 +15,8 @@
           "column": 2
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 1,
+          "column": 11
         }
       }
     }

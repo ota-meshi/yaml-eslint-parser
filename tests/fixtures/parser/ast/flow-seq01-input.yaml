@@ -1,0 +1,7 @@
+  [!!str "a",
+  'b',
+  &anchor "c",
+  *anchor,
+  !!str]
+
+# flow-seq01-input.yaml

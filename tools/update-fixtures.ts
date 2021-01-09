@@ -63,7 +63,7 @@ for (const filename of fs
             JSON.stringify(getStaticYAMLValue(ast), valueReplacer, 2),
             "utf8",
         )
-    } catch (e) {
+    } catch (e: any) {
         fs.writeFileSync(
             outputFileName,
             `${e.message}@line:${e.lineNumber},column:${e.column}`,
@@ -89,7 +89,7 @@ for (const filename of fs
             JSON.stringify(getStaticYAMLValue(ast), valueReplacer, 2),
             "utf8",
         )
-    } catch (e) {
+    } catch (e: any) {
         if (typeof e.lineNumber === "number" && typeof e.column === "number") {
             fs.writeFileSync(
                 outputFileName,

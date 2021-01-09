@@ -31,39 +31,58 @@
                 }
               }
             },
-            "value": null,
-            "range": [
-              0,
-              5
-            ],
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 0
-              },
-              "end": {
-                "line": 2,
-                "column": 1
-              }
-            }
-          },
-          {
-            "type": "YAMLPair",
-            "key": null,
             "value": {
-              "type": "YAMLScalar",
-              "style": "plain",
-              "strValue": "b",
-              "value": "b",
-              "raw": "b",
+              "type": "YAMLMapping",
+              "style": "block",
+              "pairs": [
+                {
+                  "type": "YAMLPair",
+                  "key": null,
+                  "value": {
+                    "type": "YAMLScalar",
+                    "style": "plain",
+                    "strValue": "b",
+                    "value": "b",
+                    "raw": "b",
+                    "range": [
+                      8,
+                      9
+                    ],
+                    "loc": {
+                      "start": {
+                        "line": 3,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 3,
+                        "column": 3
+                      }
+                    }
+                  },
+                  "range": [
+                    6,
+                    9
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 3,
+                      "column": 0
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 3
+                    }
+                  }
+                }
+              ],
               "range": [
-                8,
+                6,
                 9
               ],
               "loc": {
                 "start": {
                   "line": 3,
-                  "column": 2
+                  "column": 0
                 },
                 "end": {
                   "line": 3,
@@ -72,12 +91,12 @@
               }
             },
             "range": [
-              6,
+              0,
               9
             ],
             "loc": {
               "start": {
-                "line": 3,
+                "line": 1,
                 "column": 0
               },
               "end": {

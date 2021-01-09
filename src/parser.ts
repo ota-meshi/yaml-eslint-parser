@@ -1,10 +1,10 @@
-import { parseAllDocuments } from "yaml"
 import type { SourceCode } from "eslint"
 import { KEYS } from "./visitor-keys"
 import { convertRoot } from "./convert"
 import type { YAMLProgram } from "./ast"
 import { ParseError } from "./errors"
 import { Context } from "./context"
+import { parseAllDocsToCST } from "./yaml-cst-parse"
 /**
  * Parse source code
  */
@@ -18,11 +18,10 @@ export function parseForESLint(
 } {
     try {
         const ctx = new Context(code)
-        const docs = parseAllDocuments(ctx.code, {
-            merge: false,
-            keepCstNodes: true,
-        })
-        const ast = convertRoot(docs, ctx)
+
+        const docs = parseAllDocsToCST(ctx)
+
+        const ast = convertRoot(docs.cstNodes, docs.nodes, ctx)
 
         if (ctx.hasCR) {
             ctx.remapCR(ast)

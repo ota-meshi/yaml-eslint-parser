@@ -1,1 +1,1 @@
-All collection items must start at the same column@line:1,column:0
+Nested mappings are not allowed in compact mappings@line:2,column:6

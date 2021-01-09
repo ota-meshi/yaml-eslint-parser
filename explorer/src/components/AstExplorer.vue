@@ -25,6 +25,30 @@
 import MonacoEditor from "./MonacoEditor.vue"
 import AstOptions from "./AstOptions.vue"
 import * as yamlEslintParser from "../../.."
+import { LineCounter, Parser, Composer } from "yaml"
+
+/* eslint-disable no-unused-vars -- ignore */
+/** parse CST for test */
+function parseAllDocsToCST(
+    /* eslint-enable no-unused-vars -- ignore */
+    code,
+) {
+    const lineCounter = new LineCounter()
+    const parser = new Parser(lineCounter.addNewLine)
+    const composer = new Composer()
+    const cstNodes = []
+    const nodes = Array.from(
+        composer.compose(
+            (function* () {
+                for (const cst of parser.parse(code)) {
+                    cstNodes.push(cst)
+                    yield cst
+                }
+            })(),
+        ),
+    )
+    return { cstNodes, nodes }
+}
 
 export default {
     name: "AstExplorer",
@@ -61,6 +85,8 @@ export default {
             const start = Date.now()
             try {
                 ast = yamlEslintParser.parseForESLint(this.yamlValue).ast
+                // for test
+                // ast = parseAllDocsToCST(this.yamlValue)
             } catch (e) {
                 ast = {
                     message: e.message,

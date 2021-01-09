@@ -18,6 +18,7 @@ module.exports = {
         "require-jsdoc": "error",
         "no-warning-comments": "warn",
         "no-lonely-if": "off",
+        "one-var": "off",
     },
     overrides: [
         {
@@ -59,6 +60,8 @@ module.exports = {
                 "@typescript-eslint/no-non-null-assertion": "off",
                 "@typescript-eslint/no-use-before-define": "off",
                 "@typescript-eslint/no-explicit-any": "off",
+                "no-invalid-this": "off",
+                "@typescript-eslint/no-invalid-this": ["error"],
             },
         },
         {

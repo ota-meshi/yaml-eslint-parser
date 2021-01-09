@@ -6,14 +6,11 @@ import type {
     Token,
     YAMLProgram,
 } from "./ast"
-import type { ASTNode } from "./yaml"
 import lodash from "lodash"
 import { traverseNodes } from "./traverse"
+import type { CST } from "yaml"
+import { ParseError } from "."
 
-type CSTRangeData = {
-    start: number
-    end: number
-}
 export class Context {
     public readonly code: string
 
@@ -109,12 +106,9 @@ export class Context {
     }
 
     /**
-     * Get the location information of the given node.
-     * @param node The node.
+     * Get the location information of the given range.
      */
-    public getConvertLocation(node: { range: Range } | ASTNode): Locations {
-        const [start, end] = node.range!
-
+    public getConvertLocation(start: number, end: number): Locations {
         return {
             range: [start, end],
             loc: {
@@ -124,16 +118,6 @@ export class Context {
         }
     }
 
-    /**
-     * Get the location information of the given CSTRange.
-     * @param node The node.
-     */
-    public getConvertLocationFromCSTRange(
-        range: CSTRangeData | undefined | null,
-    ): Locations {
-        return this.getConvertLocation({ range: [range!.start, range!.end] })
-    }
-
     public addComment(comment: Comment): void {
         this.comments.push(comment)
     }
@@ -141,14 +125,38 @@ export class Context {
     /**
      * Add token to tokens
      */
-    public addToken(type: Token["type"], range: Range): Token {
+    public addToken(type: Token["type"], range: Readonly<Range>): Token {
         const token = {
             type,
             value: this.code.slice(...range),
-            ...this.getConvertLocation({ range }),
+            ...this.getConvertLocation(...range),
         }
         this.tokens.push(token)
         return token
+    }
+
+    public throwUnexpectedTokenError(cst: CST.Token): ParseError {
+        const token = "source" in cst ? `'${cst.source}'` : cst.type
+        throw this.throwError(`Unexpected token: ${token}`, cst)
+    }
+
+    public throwError(message: string, cst: CST.Token | number): ParseError {
+        const offset = typeof cst === "number" ? cst : cst.offset
+        const loc = this.getLocFromIndex(offset)
+        throw new ParseError(message, offset, loc.line, loc.column)
+    }
+
+    /**
+     * Gets the last index with whitespace skipped.
+     */
+    public lastSkipSpaces(startIndex: number, endIndex: number): number {
+        const str = this.code
+        for (let index = endIndex - 1; index >= startIndex; index--) {
+            if (str[index].trim()) {
+                return index + 1
+            }
+        }
+        return startIndex
     }
 }
 
