@@ -36,7 +36,7 @@
   "dependencies": {
     "eslint-visitor-keys": "^1.3.0",
     "yaml": "^1.10.0",
-    "yaml-unist-parser": "^1.2.1"
+    "yaml-unist-parser": "^1.3.1"
   },
   "devDependencies": {
     "@ota-meshi/eslint-plugin": "^0.0.6",
