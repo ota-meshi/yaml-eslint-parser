@@ -28,6 +28,18 @@ function replacer(key: string, value: any) {
 }
 
 /**
+ * Replacer for NaN and infinity
+ */
+function valueReplacer(_key: string, value: any) {
+    if (typeof value === "number") {
+        if (!isFinite(value)) {
+            return `# ${String(value)} #`
+        }
+    }
+    return value
+}
+
+/**
  * Parse
  */
 function parse(code: string) {
@@ -48,7 +60,7 @@ for (const filename of fs
         fs.writeFileSync(outputFileName, astJson, "utf8")
         fs.writeFileSync(
             valueFileName,
-            JSON.stringify(getStaticYAMLValue(ast), null, 2),
+            JSON.stringify(getStaticYAMLValue(ast), valueReplacer, 2),
             "utf8",
         )
     } catch (e) {
@@ -74,7 +86,7 @@ for (const filename of fs
         fs.writeFileSync(outputFileName, astJson, "utf8")
         fs.writeFileSync(
             valueFileName,
-            JSON.stringify(getStaticYAMLValue(ast), null, 2),
+            JSON.stringify(getStaticYAMLValue(ast), valueReplacer, 2),
             "utf8",
         )
     } catch (e) {

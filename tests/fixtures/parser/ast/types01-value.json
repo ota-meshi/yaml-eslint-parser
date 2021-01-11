@@ -1,0 +1,30 @@
+{
+  "A null": null,
+  "Also a null": null,
+  "Not a null": "",
+  "Booleans": [
+    true,
+    true,
+    false,
+    false
+  ],
+  "Integers": [
+    0,
+    7,
+    58,
+    -19
+  ],
+  "Floats": [
+    0,
+    0,
+    0.5,
+    12000,
+    -200000
+  ],
+  "Also floats": [
+    "# Infinity #",
+    "# -Infinity #",
+    "# Infinity #",
+    "# NaN #"
+  ]
+}
