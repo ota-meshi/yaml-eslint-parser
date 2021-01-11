@@ -94,7 +94,7 @@ export const INFINITY: TagResolver<number> = {
     tag: "tag:yaml.org,2002:float",
     test(str) {
         // see https://yaml.org/spec/1.2/spec.html#id2805071
-        return /^[-+]?(\.inf |\.Inf|\.INF)$/u.test(str)
+        return /^[-+]?(\.inf|\.Inf|\.INF)$/u.test(str)
     },
     resolve(str) {
         return str.startsWith("-") ? -Infinity : Infinity
@@ -105,7 +105,7 @@ export const NAN: TagResolver<number> = {
     tag: "tag:yaml.org,2002:float",
     test(str) {
         // see https://yaml.org/spec/1.2/spec.html#id2805071
-        return str === "NaN" || str === "nan" || str === "NAN"
+        return str === ".NaN" || str === ".nan" || str === ".NAN"
     },
     resolve() {
         return NaN

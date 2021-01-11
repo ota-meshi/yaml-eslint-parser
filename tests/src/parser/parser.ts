@@ -31,6 +31,18 @@ function replacer(key: string, value: any) {
     return value
 }
 
+/**
+ * Replacer for NaN and infinity
+ */
+function valueReplacer(_key: string, value: any) {
+    if (typeof value === "number") {
+        if (!isFinite(value)) {
+            return `# ${String(value)} #`
+        }
+    }
+    return value
+}
+
 function parse(code: string, filePath: string) {
     return parseYAML(code, { filePath })
 }
@@ -71,7 +83,7 @@ describe("Check for AST.", () => {
                 // check getStaticYAMLValue
                 const value = fs.readFileSync(valueFileName, "utf8")
                 assert.strictEqual(
-                    JSON.stringify(getStaticYAMLValue(ast), null, 2),
+                    JSON.stringify(getStaticYAMLValue(ast), valueReplacer, 2),
                     value,
                 )
             })
@@ -156,7 +168,7 @@ describe("yaml-test-suite.", () => {
                 // check getStaticYAMLValue
                 const value = fs.readFileSync(valueFileName, "utf8")
                 assert.strictEqual(
-                    JSON.stringify(getStaticYAMLValue(ast), null, 2),
+                    JSON.stringify(getStaticYAMLValue(ast), valueReplacer, 2),
                     value,
                 )
             })
