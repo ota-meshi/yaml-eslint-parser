@@ -1,0 +1,5 @@
+# comment-and-flow-map01
+{
+  ? foo :,
+  : bar,
+}

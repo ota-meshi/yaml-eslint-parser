@@ -403,7 +403,7 @@ function convertMappingKey(
     parent: YAMLPair,
     doc: YAMLDocument,
 ): YAMLContent | YAMLWithMeta | null {
-    if (node) {
+    if (node && node.type) {
         return convertContentNode(node, ctx, parent, doc)
     }
     return null
