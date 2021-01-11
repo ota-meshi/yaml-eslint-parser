@@ -132,7 +132,7 @@
               "type": "YAMLScalar",
               "style": "plain",
               "strValue": "0",
-              "value": "0",
+              "value": 0,
               "raw": "0",
               "range": [
                 18,
@@ -581,7 +581,7 @@
       }
     },
     {
-      "type": "Identifier",
+      "type": "Numeric",
       "value": "0",
       "range": [
         18,

@@ -1,8 +1,9 @@
-import { parseForESLint, ParseError } from "./parser"
+import { parseForESLint } from "./parser"
 import type * as AST from "./ast"
 import { traverseNodes } from "./traverse"
 import { getStaticYAMLValue } from "./utils"
 import { KEYS } from "./visitor-keys"
+import { ParseError } from "./errors"
 
 export { AST, ParseError }
 
@@ -18,6 +19,6 @@ export { traverseNodes, getStaticYAMLValue }
 /**
  * Parse YAML source code
  */
-export function parseYAML(code: string, _options?: any): AST.YAMLProgram {
-    return parseForESLint(code).ast
+export function parseYAML(code: string, options?: any): AST.YAMLProgram {
+    return parseForESLint(code, options).ast
 }

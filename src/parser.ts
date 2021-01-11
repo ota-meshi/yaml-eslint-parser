@@ -1,9 +1,10 @@
-import type { YAMLSyntaxError } from "yaml-unist-parser"
-import { parse as parseYaml } from "yaml-unist-parser"
+import { parseAllDocuments } from "yaml"
 import type { SourceCode } from "eslint"
 import { KEYS } from "./visitor-keys"
 import { convertRoot } from "./convert"
 import type { YAMLProgram } from "./ast"
+import { ParseError } from "./errors"
+import { Context } from "./context"
 /**
  * Parse source code
  */
@@ -16,8 +17,16 @@ export function parseForESLint(
     services: { isYAML: boolean }
 } {
     try {
-        const rootNode = parseYaml(code)
-        const ast = convertRoot(rootNode, code)
+        const ctx = new Context(code)
+        const docs = parseAllDocuments(ctx.code, {
+            merge: false,
+            keepCstNodes: true,
+        })
+        const ast = convertRoot(docs, ctx)
+
+        if (ctx.hasCR) {
+            ctx.remapCR(ast)
+        }
 
         return {
             ast,
@@ -28,13 +37,28 @@ export function parseForESLint(
         }
     } catch (err) {
         if (isYAMLSyntaxError(err)) {
+            let message = err.message
+            const atIndex = message.lastIndexOf(" at")
+            if (atIndex >= 0) {
+                message = message.slice(0, atIndex)
+            }
             throw new ParseError(
-                err.message,
-                err.position.start.offset,
-                err.position.start.line,
-                err.position.start.column - 1,
+                message,
+                err.range.start,
+                err.linePos.start.line,
+                err.linePos.start.col - 1,
             )
         }
+        if (isYAMLSyntaxErrorForV1(err)) {
+            const message = err.message
+            throw new ParseError(
+                message,
+                err.source.range.start,
+                err.source.rangeAsLinePos.start.line,
+                err.source.rangeAsLinePos.start.col - 1,
+            )
+        }
+
         throw err
     }
 }
@@ -42,46 +66,42 @@ export function parseForESLint(
 /**
  * Type guard for YAMLSyntaxError.
  */
-function isYAMLSyntaxError(error: any): error is YAMLSyntaxError {
+function isYAMLSyntaxError(
+    error: any,
+): error is {
+    message: string
+    range: { start: number }
+    linePos: { start: { line: number; col: number } }
+} {
     return (
-        typeof error.position === "object" &&
-        typeof error.position.start === "object" &&
-        typeof error.position.end === "object" &&
-        typeof error.position.start.line === "number" &&
-        typeof error.position.start.column === "number" &&
-        typeof error.position.start.offset === "number" &&
-        typeof error.position.end.line === "number" &&
-        typeof error.position.end.column === "number" &&
-        typeof error.position.end.offset === "number"
+        error.linePos &&
+        typeof error.linePos === "object" &&
+        error.linePos.start &&
+        typeof error.linePos.start === "object" &&
+        typeof error.linePos.start.line === "number" &&
+        typeof error.linePos.start.col === "number"
     )
 }
 
 /**
- * YAML parse errors.
+ * Type guard for YAMLSyntaxError (yaml@1.10).
  */
-export class ParseError extends SyntaxError {
-    public index: number
-
-    public lineNumber: number
-
-    public column: number
-
-    /**
-     * Initialize this ParseError instance.
-     * @param message The error message.
-     * @param offset The offset number of this error.
-     * @param line The line number of this error.
-     * @param column The column number of this error.
-     */
-    public constructor(
-        message: string,
-        offset: number,
-        line: number,
-        column: number,
-    ) {
-        super(message)
-        this.index = offset
-        this.lineNumber = line
-        this.column = column
+function isYAMLSyntaxErrorForV1(
+    error: any,
+): error is {
+    message: string
+    source: {
+        range: { start: number }
+        rangeAsLinePos: { start: { line: number; col: number } }
     }
+} {
+    return (
+        error.source &&
+        error.source.rangeAsLinePos &&
+        typeof error.source.rangeAsLinePos === "object" &&
+        error.source.rangeAsLinePos.start &&
+        typeof error.source.rangeAsLinePos.start === "object" &&
+        typeof error.source.rangeAsLinePos.start.line === "number" &&
+        typeof error.source.rangeAsLinePos.start.col === "number"
+    )
 }

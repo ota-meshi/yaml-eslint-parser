@@ -2,7 +2,7 @@
 
 A YAML parser that produces output [compatible with ESLint](https://eslint.org/docs/developer-guide/working-with-custom-parsers#all-nodes).
 
-This parser is backed by excellent [yaml](https://github.com/eemeli/yaml) and [yaml-unist-parser](https://github.com/ikatyang/yaml-unist-parser) packages.
+*This parser is backed by excellent [yaml](https://github.com/eemeli/yaml) package and it is heavily inspired by [yaml-unist-parser](https://github.com/ikatyang/yaml-unist-parser) package.*
 
 [![NPM license](https://img.shields.io/npm/l/yaml-eslint-parser.svg)](https://www.npmjs.com/package/yaml-eslint-parser)
 [![NPM version](https://img.shields.io/npm/v/yaml-eslint-parser.svg)](https://www.npmjs.com/package/yaml-eslint-parser)

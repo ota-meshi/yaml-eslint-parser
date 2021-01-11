@@ -31,15 +31,15 @@ function replacer(key: string, value: any) {
     return value
 }
 
-function parse(code: string) {
-    return parseYAML(code)
+function parse(code: string, filePath: string) {
+    return parseYAML(code, { filePath })
 }
 
 describe("Check for AST.", () => {
     for (const filename of fs
         .readdirSync(AST_FIXTURE_ROOT)
         .filter((f) => f.endsWith("input.yaml"))) {
-        it(filename, () => {
+        describe(filename, () => {
             const inputFileName = path.join(AST_FIXTURE_ROOT, filename)
             const outputFileName = inputFileName.replace(
                 /input\.yaml$/u,
@@ -51,22 +51,38 @@ describe("Check for AST.", () => {
             )
 
             const input = fs.readFileSync(inputFileName, "utf8")
-            const ast = parse(input)
-            const astJson = JSON.stringify(ast, replacer, 2)
-            const output = fs.readFileSync(outputFileName, "utf8")
-            assert.strictEqual(astJson, output)
+            let ast: any
 
-            // check tokens
-            checkTokens(ast, input)
+            it("most to generate the expected AST.", () => {
+                ast = parse(input, inputFileName)
+                const astJson = JSON.stringify(ast, replacer, 2)
+                const output = fs.readFileSync(outputFileName, "utf8")
+                assert.strictEqual(astJson, output)
+            })
 
-            checkLoc(ast, inputFileName, input)
+            it("location must be correct.", () => {
+                // check tokens
+                checkTokens(ast, input)
 
-            // check getStaticYAMLValue
-            const value = fs.readFileSync(valueFileName, "utf8")
-            assert.strictEqual(
-                JSON.stringify(getStaticYAMLValue(ast), null, 2),
-                value,
-            )
+                checkLoc(ast, inputFileName, input)
+            })
+
+            it("return value of getStaticYAMLValue must be correct.", () => {
+                // check getStaticYAMLValue
+                const value = fs.readFileSync(valueFileName, "utf8")
+                assert.strictEqual(
+                    JSON.stringify(getStaticYAMLValue(ast), null, 2),
+                    value,
+                )
+            })
+
+            it("even if Win, it must be correct.", () => {
+                const inputForWin = input.replace(/\n/g, "\r\n")
+                // check
+                const astForWin = parse(inputForWin, inputFileName)
+                // check tokens
+                checkTokens(astForWin, inputForWin)
+            })
         })
     }
 })
@@ -75,7 +91,7 @@ describe("yaml-test-suite.", () => {
     for (const filename of fs
         .readdirSync(SUITE_FIXTURE_ROOT)
         .filter((f) => f.endsWith("input.yaml"))) {
-        it(filename, () => {
+        describe(filename, () => {
             const inputFileName = path.join(SUITE_FIXTURE_ROOT, filename)
             const outputFileName = inputFileName.replace(
                 /input\.yaml$/u,
@@ -89,49 +105,70 @@ describe("yaml-test-suite.", () => {
             const input = fs.readFileSync(inputFileName, "utf8")
             const output = fs.readFileSync(outputFileName, "utf8")
 
-            let ast
-            try {
-                ast = parse(input)
-            } catch (e) {
-                if (
-                    typeof e.lineNumber === "number" &&
-                    typeof e.column === "number"
-                ) {
-                    assert.strictEqual(
-                        `${e.message}@line:${e.lineNumber},column:${e.column}`,
-                        output,
-                    )
-                    return
-                }
-                throw e
-            }
-            const astJson = JSON.stringify(ast, replacer, 2)
-            assert.strictEqual(astJson, output)
-
-            // check tokens
-            checkTokens(ast, input)
-
-            // check keys
-            traverseNodes(ast, {
-                enterNode(node) {
-                    const allKeys = KEYS[node.type]
-                    for (const key of getKeys(node, {})) {
-                        assert.ok(allKeys.includes(key), `missing '${key}' key`)
+            let ast: any
+            it("most to generate the expected AST.", () => {
+                try {
+                    ast = parse(input, inputFileName)
+                } catch (e) {
+                    if (
+                        typeof e.lineNumber === "number" &&
+                        typeof e.column === "number"
+                    ) {
+                        assert.strictEqual(
+                            `${e.message}@line:${e.lineNumber},column:${e.column}`,
+                            output,
+                        )
+                        return
                     }
-                },
-                leaveNode() {
-                    // noop
-                },
+                    throw e
+                }
+                const astJson = JSON.stringify(ast, replacer, 2)
+                assert.strictEqual(astJson, output)
             })
 
-            checkLoc(ast, inputFileName, input)
+            it("location must be correct.", () => {
+                if (!ast) return
 
-            // check getStaticYAMLValue
-            const value = fs.readFileSync(valueFileName, "utf8")
-            assert.strictEqual(
-                JSON.stringify(getStaticYAMLValue(ast), null, 2),
-                value,
-            )
+                // check tokens
+                checkTokens(ast, input)
+
+                // check keys
+                traverseNodes(ast, {
+                    enterNode(node) {
+                        const allKeys = KEYS[node.type]
+                        for (const key of getKeys(node, {})) {
+                            assert.ok(
+                                allKeys.includes(key),
+                                `missing '${key}' key`,
+                            )
+                        }
+                    },
+                    leaveNode() {
+                        // noop
+                    },
+                })
+
+                checkLoc(ast, inputFileName, input)
+            })
+
+            it("return value of getStaticYAMLValue must be correct.", () => {
+                if (!ast) return
+                // check getStaticYAMLValue
+                const value = fs.readFileSync(valueFileName, "utf8")
+                assert.strictEqual(
+                    JSON.stringify(getStaticYAMLValue(ast), null, 2),
+                    value,
+                )
+            })
+
+            it("even if Win, it must be correct.", () => {
+                if (!ast) return
+                const inputForWin = input.replace(/\n/g, "\r\n")
+                // check
+                const astForWin = parse(inputForWin, inputFileName)
+                // check tokens
+                checkTokens(astForWin, inputForWin)
+            })
         })
     }
 })
@@ -148,6 +185,16 @@ function checkTokens(ast: YAMLProgram, input: string) {
             .join("")
             .replace(/\s/gu, ""),
     )
+
+    // check loc
+    for (const token of allTokens) {
+        const value = token.type === "Block" ? `#${token.value}` : token.value
+
+        assert.strictEqual(
+            value,
+            input.slice(...token.range).replace(/\r\n/g, "\n"),
+        )
+    }
 }
 
 function checkLoc(ast: YAMLProgram, fileName: string, code: string) {
