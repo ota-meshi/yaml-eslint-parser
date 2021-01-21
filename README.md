@@ -45,11 +45,36 @@ module.exports = {
 - [block-mapping.ts](https://github.com/ota-meshi/eslint-plugin-yml/blob/master/src/rules/block-mapping.ts) is an example.
 - You can see the AST on the [Online DEMO](https://ota-meshi.github.io/yaml-eslint-parser/).
 
+## Usage for Directly
+
+Example:
+
+```ts
+import type { AST } from "yaml-eslint-parser"
+import { parseYAML, getStaticYAMLValue } from "yaml-eslint-parser"
+
+const code = `
+american:
+  - Boston Red Sox
+  - Detroit Tigers
+  - New York Yankees
+national:
+  - New York Mets
+  - Chicago Cubs
+  - Atlanta Braves
+`
+
+const ast: AST.YAMLProgram = parseYAML(code)
+console.log(ast)
+
+const value = getStaticYAMLValue(ast)
+console.log(value)
+```
+
 ## Related Packages
 
 - [eslint-plugin-jsonc](https://github.com/ota-meshi/eslint-plugin-jsonc) ... ESLint plugin for JSON, JSON with comments (JSONC) and JSON5.
 - [eslint-plugin-yml](https://github.com/ota-meshi/eslint-plugin-yml) ... ESLint plugin for YAML.
 - [eslint-plugin-toml](https://github.com/ota-meshi/eslint-plugin-toml) ... ESLint plugin for TOML.
 - [jsonc-eslint-parser](https://github.com/ota-meshi/jsonc-eslint-parser) ... JSON, JSONC and JSON5 parser for use with ESLint plugins.
-<!-- - [yaml-eslint-parser](https://github.com/ota-meshi/yaml-eslint-parser) ... YAML parser for use with ESLint plugins. -->
 - [toml-eslint-parser](https://github.com/ota-meshi/toml-eslint-parser) ... TOML parser for use with ESLint plugins.
