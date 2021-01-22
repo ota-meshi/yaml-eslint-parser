@@ -223,7 +223,7 @@ function checkLoc(ast: YAMLProgram, fileName: string, code: string) {
         )
     }
     traverseNodes(ast, {
-        // eslint-disable-next-line complexity, no-shadow -- test
+        // eslint-disable-next-line complexity -- test
         enterNode(node, parent) {
             if (node.type !== "Program" && node.type !== "YAMLDocument") {
                 assert.ok(
