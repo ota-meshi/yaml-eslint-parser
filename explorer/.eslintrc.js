@@ -1,5 +1,4 @@
 module.exports = {
-    root: true,
     parserOptions: {
         sourceType: "module",
         ecmaVersion: 2020,
@@ -11,5 +10,6 @@ module.exports = {
     ],
     rules: {
         "node/no-unsupported-features/es-syntax": "off",
+        "node/no-missing-import": "off",
     },
 }
