@@ -198,7 +198,9 @@ function getTaggedValue(
         }
     }
     const tagText = tag.tag.startsWith("!") ? tag.tag : `!<${tag.tag}>`
-    const value = parseDocument(`${tagText} ${text}`).toJSON()
+    const value = parseDocument(`${version ? `%YAML ${version}` : ""}
+---
+${tagText} ${text}`).toJSON()
     return value
 }
 
