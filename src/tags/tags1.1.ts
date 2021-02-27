@@ -71,6 +71,17 @@ export const INT_BASE16: TagResolver<number> = {
         return resolveInt(str, 2, 16)
     },
 }
+export const INT_BASE60: TagResolver<number> = {
+    // see https://yaml.org/type/int.html
+    tag: "tag:yaml.org,2002:int",
+    test(str) {
+        // see https://yaml.org/type/int.html
+        return /^[-+]?[1-9][\d_]*(:[0-5]?\d)+$/u.test(str)
+    },
+    resolve(str) {
+        return resolveBase60(str.split(/:/gu), true)
+    },
+}
 export const FLOAT: TagResolver<number> = {
     // see https://yaml.org/type/float.html
     tag: "tag:yaml.org,2002:float",
@@ -86,6 +97,17 @@ export const FLOAT: TagResolver<number> = {
         return parseFloat(str.replace(/_/gu, ""))
     },
 }
+export const FLOAT_BASE60: TagResolver<number> = {
+    // see https://yaml.org/type/float.html
+    tag: "tag:yaml.org,2002:float",
+    test(str) {
+        // see https://yaml.org/type/float.html
+        return /^[-+]?\d[\d_]*(:[0-5]?\d)+\.[\d_]*$/u.test(str)
+    },
+    resolve(str) {
+        return resolveBase60(str.split(/:/gu), false)
+    },
+}
 // see https://yaml.org/type/float.html
 export const INFINITY: TagResolver<number> = Tags1_2.INFINITY
 // see https://yaml.org/type/float.html
@@ -93,8 +115,9 @@ export const NAN: TagResolver<number> = Tags1_2.NAN
 // see https://yaml.org/type/str.html
 export const STR: TagResolver<string> = Tags1_2.STR
 
-// !!Base 60 numbers are not supported
-// see https://yaml.org/type/int.html, https://yaml.org/type/float.html
+// !!Currently, timestamps are not supported as they affect the type definition.
+// If the user needs timestamps, we will consider supporting it in the major version.
+// https://yaml.org/type/timestamp.html
 
 export const tagResolvers = [
     NULL,
@@ -104,7 +127,9 @@ export const tagResolvers = [
     INT,
     INT_BASE2,
     INT_BASE16,
+    INT_BASE60,
     FLOAT,
+    FLOAT_BASE60,
     INFINITY,
     NAN,
     STR,
@@ -121,4 +146,25 @@ function resolveInt(value: string, skip: number, radix: number) {
         )
     }
     return parseInt(value.slice(skip).replace(/_/gu, ""), radix)
+}
+
+/**
+ * Resolve base 60 number value
+ */
+function resolveBase60(values: string[], isInt: boolean) {
+    let first = values.shift()!.replace(/_/gu, "")
+    const last = values.pop()!.replace(/_/gu, "")
+    let minus = false
+    if (first.startsWith("-") || first.startsWith("+")) {
+        minus = first.startsWith("-")
+        first = first.slice(1)
+    }
+    let value = parseInt(first, 10)
+    while (values.length) {
+        value *= 60
+        value += parseInt(values.shift()!.replace(/_/gu, ""), 10)
+    }
+    value *= 60
+    value += isInt ? parseInt(last, 10) : parseFloat(last)
+    return minus ? -value : value
 }

@@ -266,11 +266,70 @@
                     "column": 36
                   }
                 }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "sexagesimal",
+                  "value": "sexagesimal",
+                  "raw": "sexagesimal",
+                  "range": [
+                    118,
+                    129
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 7,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "190:20:30",
+                  "value": 685230,
+                  "raw": "190:20:30",
+                  "range": [
+                    131,
+                    140
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 7,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 24
+                    }
+                  }
+                },
+                "range": [
+                  118,
+                  140
+                ],
+                "loc": {
+                  "start": {
+                    "line": 7,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 24
+                  }
+                }
               }
             ],
             "range": [
               16,
-              115
+              140
             ],
             "loc": {
               "start": {
@@ -278,8 +337,8 @@
                 "column": 2
               },
               "end": {
-                "line": 6,
-                "column": 36
+                "line": 7,
+                "column": 24
               }
             }
           },
@@ -296,8 +355,8 @@
                   "value": "decimal",
                   "raw": "decimal",
                   "range": [
-                    145,
-                    152
+                    143,
+                    150
                   ],
                   "loc": {
                     "start": {
@@ -317,8 +376,8 @@
                   "value": -685230,
                   "raw": "-685_230",
                   "range": [
-                    154,
-                    162
+                    152,
+                    160
                   ],
                   "loc": {
                     "start": {
@@ -332,8 +391,8 @@
                   }
                 },
                 "range": [
-                  145,
-                  162
+                  143,
+                  160
                 ],
                 "loc": {
                   "start": {
@@ -355,8 +414,8 @@
                   "value": "octal",
                   "raw": "octal",
                   "range": [
-                    165,
-                    170
+                    163,
+                    168
                   ],
                   "loc": {
                     "start": {
@@ -376,8 +435,8 @@
                   "value": -685230,
                   "raw": "-02472256",
                   "range": [
-                    172,
-                    181
+                    170,
+                    179
                   ],
                   "loc": {
                     "start": {
@@ -391,8 +450,8 @@
                   }
                 },
                 "range": [
-                  165,
-                  181
+                  163,
+                  179
                 ],
                 "loc": {
                   "start": {
@@ -414,8 +473,8 @@
                   "value": "hexadecimal",
                   "raw": "hexadecimal",
                   "range": [
-                    184,
-                    195
+                    182,
+                    193
                   ],
                   "loc": {
                     "start": {
@@ -435,8 +494,8 @@
                   "value": -685230,
                   "raw": "-0x_0A_74_AE",
                   "range": [
-                    197,
-                    209
+                    195,
+                    207
                   ],
                   "loc": {
                     "start": {
@@ -450,8 +509,8 @@
                   }
                 },
                 "range": [
-                  184,
-                  209
+                  182,
+                  207
                 ],
                 "loc": {
                   "start": {
@@ -473,8 +532,8 @@
                   "value": "binary",
                   "raw": "binary",
                   "range": [
-                    212,
-                    218
+                    210,
+                    216
                   ],
                   "loc": {
                     "start": {
@@ -494,8 +553,8 @@
                   "value": -685230,
                   "raw": "-0b1010_0111_0100_1010_1110",
                   "range": [
-                    220,
-                    247
+                    218,
+                    245
                   ],
                   "loc": {
                     "start": {
@@ -509,8 +568,8 @@
                   }
                 },
                 "range": [
-                  212,
-                  247
+                  210,
+                  245
                 ],
                 "loc": {
                   "start": {
@@ -522,11 +581,70 @@
                     "column": 37
                   }
                 }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "sexagesimal",
+                  "value": "sexagesimal",
+                  "raw": "sexagesimal",
+                  "range": [
+                    248,
+                    259
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 12,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "-190:20:30",
+                  "value": -685230,
+                  "raw": "-190:20:30",
+                  "range": [
+                    261,
+                    271
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 12,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 25
+                    }
+                  }
+                },
+                "range": [
+                  248,
+                  271
+                ],
+                "loc": {
+                  "start": {
+                    "line": 12,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 25
+                  }
+                }
               }
             ],
             "range": [
-              145,
-              247
+              143,
+              271
             ],
             "loc": {
               "start": {
@@ -534,8 +652,8 @@
                 "column": 2
               },
               "end": {
-                "line": 11,
-                "column": 37
+                "line": 12,
+                "column": 25
               }
             }
           },
@@ -552,8 +670,8 @@
                   "value": "exponentioal",
                   "raw": "exponentioal",
                   "range": [
-                    278,
-                    290
+                    274,
+                    286
                   ],
                   "loc": {
                     "start": {
@@ -573,8 +691,8 @@
                   "value": 685230.15,
                   "raw": "685.230_15e+03",
                   "range": [
-                    292,
-                    306
+                    288,
+                    302
                   ],
                   "loc": {
                     "start": {
@@ -588,8 +706,8 @@
                   }
                 },
                 "range": [
-                  278,
-                  306
+                  274,
+                  302
                 ],
                 "loc": {
                   "start": {
@@ -611,8 +729,8 @@
                   "value": "fixed",
                   "raw": "fixed",
                   "range": [
-                    309,
-                    314
+                    305,
+                    310
                   ],
                   "loc": {
                     "start": {
@@ -632,8 +750,8 @@
                   "value": 685230.15,
                   "raw": "685_230.15",
                   "range": [
-                    316,
-                    326
+                    312,
+                    322
                   ],
                   "loc": {
                     "start": {
@@ -647,8 +765,8 @@
                   }
                 },
                 "range": [
-                  309,
-                  326
+                  305,
+                  322
                 ],
                 "loc": {
                   "start": {
@@ -660,11 +778,70 @@
                     "column": 19
                   }
                 }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "sexagesimal",
+                  "value": "sexagesimal",
+                  "raw": "sexagesimal",
+                  "range": [
+                    325,
+                    336
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 15,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "190:20:30.15",
+                  "value": 685230.15,
+                  "raw": "190:20:30.15",
+                  "range": [
+                    338,
+                    350
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 15,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 27
+                    }
+                  }
+                },
+                "range": [
+                  325,
+                  350
+                ],
+                "loc": {
+                  "start": {
+                    "line": 15,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 27
+                  }
+                }
               }
             ],
             "range": [
-              278,
-              326
+              274,
+              350
             ],
             "loc": {
               "start": {
@@ -672,8 +849,8 @@
                 "column": 2
               },
               "end": {
-                "line": 14,
-                "column": 19
+                "line": 15,
+                "column": 27
               }
             }
           },
@@ -690,8 +867,8 @@
                   "value": "exponentioal",
                   "raw": "exponentioal",
                   "range": [
-                    359,
-                    371
+                    353,
+                    365
                   ],
                   "loc": {
                     "start": {
@@ -711,8 +888,8 @@
                   "value": -685230.15,
                   "raw": "-685.230_15e+03",
                   "range": [
-                    373,
-                    388
+                    367,
+                    382
                   ],
                   "loc": {
                     "start": {
@@ -726,8 +903,8 @@
                   }
                 },
                 "range": [
-                  359,
-                  388
+                  353,
+                  382
                 ],
                 "loc": {
                   "start": {
@@ -749,8 +926,8 @@
                   "value": "fixed",
                   "raw": "fixed",
                   "range": [
-                    391,
-                    396
+                    385,
+                    390
                   ],
                   "loc": {
                     "start": {
@@ -770,8 +947,8 @@
                   "value": -685230.15,
                   "raw": "-685_230.15",
                   "range": [
-                    398,
-                    409
+                    392,
+                    403
                   ],
                   "loc": {
                     "start": {
@@ -785,8 +962,8 @@
                   }
                 },
                 "range": [
-                  391,
-                  409
+                  385,
+                  403
                 ],
                 "loc": {
                   "start": {
@@ -798,11 +975,70 @@
                     "column": 20
                   }
                 }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "sexagesimal",
+                  "value": "sexagesimal",
+                  "raw": "sexagesimal",
+                  "range": [
+                    406,
+                    417
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "-190:20:30.15",
+                  "value": -685230.15,
+                  "raw": "-190:20:30.15",
+                  "range": [
+                    419,
+                    432
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 18,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 28
+                    }
+                  }
+                },
+                "range": [
+                  406,
+                  432
+                ],
+                "loc": {
+                  "start": {
+                    "line": 18,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 28
+                  }
+                }
               }
             ],
             "range": [
-              359,
-              409
+              353,
+              432
             ],
             "loc": {
               "start": {
@@ -810,8 +1046,8 @@
                 "column": 2
               },
               "end": {
-                "line": 17,
-                "column": 20
+                "line": 18,
+                "column": 28
               }
             }
           },
@@ -826,8 +1062,8 @@
                 "value": 6852.3,
                 "raw": "685_230e-2",
                 "range": [
-                  444,
-                  454
+                  436,
+                  446
                 ],
                 "loc": {
                   "start": {
@@ -847,8 +1083,8 @@
                 "value": -6852.3,
                 "raw": "-685_230e-2",
                 "range": [
-                  456,
-                  467
+                  448,
+                  459
                 ],
                 "loc": {
                   "start": {
@@ -863,8 +1099,8 @@
               }
             ],
             "range": [
-              443,
-              468
+              435,
+              460
             ],
             "loc": {
               "start": {
@@ -880,7 +1116,7 @@
         ],
         "range": [
           14,
-          468
+          460
         ],
         "loc": {
           "start": {
@@ -895,7 +1131,7 @@
       },
       "range": [
         0,
-        469
+        461
       ],
       "loc": {
         "start": {
@@ -909,80 +1145,7 @@
       }
     }
   ],
-  "comments": [
-    {
-      "type": "Block",
-      "value": " sexagesimal: 190:20:30",
-      "range": [
-        118,
-        142
-      ],
-      "loc": {
-        "start": {
-          "line": 7,
-          "column": 2
-        },
-        "end": {
-          "line": 7,
-          "column": 26
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": " sexagesimal: -190:20:30",
-      "range": [
-        250,
-        275
-      ],
-      "loc": {
-        "start": {
-          "line": 12,
-          "column": 2
-        },
-        "end": {
-          "line": 12,
-          "column": 27
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": " sexagesimal: 190:20:30.15",
-      "range": [
-        329,
-        356
-      ],
-      "loc": {
-        "start": {
-          "line": 15,
-          "column": 2
-        },
-        "end": {
-          "line": 15,
-          "column": 29
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": " sexagesimal: -190:20:30.15",
-      "range": [
-        412,
-        440
-      ],
-      "loc": {
-        "start": {
-          "line": 18,
-          "column": 2
-        },
-        "end": {
-          "line": 18,
-          "column": 30
-        }
-      }
-    }
-  ],
+  "comments": [],
   "sourceType": "module",
   "tokens": [
     {
@@ -1256,11 +1419,65 @@
       }
     },
     {
+      "type": "Identifier",
+      "value": "sexagesimal",
+      "range": [
+        118,
+        129
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 7,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        129,
+        130
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 13
+        },
+        "end": {
+          "line": 7,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Numeric",
+      "value": "190:20:30",
+      "range": [
+        131,
+        140
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 15
+        },
+        "end": {
+          "line": 7,
+          "column": 24
+        }
+      }
+    },
+    {
       "type": "Punctuator",
       "value": "-",
       "range": [
-        143,
-        144
+        141,
+        142
       ],
       "loc": {
         "start": {
@@ -1277,8 +1494,8 @@
       "type": "Identifier",
       "value": "decimal",
       "range": [
-        145,
-        152
+        143,
+        150
       ],
       "loc": {
         "start": {
@@ -1295,8 +1512,8 @@
       "type": "Punctuator",
       "value": ":",
       "range": [
-        152,
-        153
+        150,
+        151
       ],
       "loc": {
         "start": {
@@ -1313,8 +1530,8 @@
       "type": "Numeric",
       "value": "-685_230",
       "range": [
-        154,
-        162
+        152,
+        160
       ],
       "loc": {
         "start": {
@@ -1331,8 +1548,8 @@
       "type": "Identifier",
       "value": "octal",
       "range": [
-        165,
-        170
+        163,
+        168
       ],
       "loc": {
         "start": {
@@ -1349,8 +1566,8 @@
       "type": "Punctuator",
       "value": ":",
       "range": [
-        170,
-        171
+        168,
+        169
       ],
       "loc": {
         "start": {
@@ -1367,8 +1584,8 @@
       "type": "Numeric",
       "value": "-02472256",
       "range": [
-        172,
-        181
+        170,
+        179
       ],
       "loc": {
         "start": {
@@ -1385,8 +1602,8 @@
       "type": "Identifier",
       "value": "hexadecimal",
       "range": [
-        184,
-        195
+        182,
+        193
       ],
       "loc": {
         "start": {
@@ -1403,8 +1620,8 @@
       "type": "Punctuator",
       "value": ":",
       "range": [
-        195,
-        196
+        193,
+        194
       ],
       "loc": {
         "start": {
@@ -1421,8 +1638,8 @@
       "type": "Numeric",
       "value": "-0x_0A_74_AE",
       "range": [
-        197,
-        209
+        195,
+        207
       ],
       "loc": {
         "start": {
@@ -1439,8 +1656,8 @@
       "type": "Identifier",
       "value": "binary",
       "range": [
-        212,
-        218
+        210,
+        216
       ],
       "loc": {
         "start": {
@@ -1457,8 +1674,8 @@
       "type": "Punctuator",
       "value": ":",
       "range": [
-        218,
-        219
+        216,
+        217
       ],
       "loc": {
         "start": {
@@ -1475,8 +1692,8 @@
       "type": "Numeric",
       "value": "-0b1010_0111_0100_1010_1110",
       "range": [
-        220,
-        247
+        218,
+        245
       ],
       "loc": {
         "start": {
@@ -1490,11 +1707,65 @@
       }
     },
     {
+      "type": "Identifier",
+      "value": "sexagesimal",
+      "range": [
+        248,
+        259
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 2
+        },
+        "end": {
+          "line": 12,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        259,
+        260
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 13
+        },
+        "end": {
+          "line": 12,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Numeric",
+      "value": "-190:20:30",
+      "range": [
+        261,
+        271
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 15
+        },
+        "end": {
+          "line": 12,
+          "column": 25
+        }
+      }
+    },
+    {
       "type": "Punctuator",
       "value": "-",
       "range": [
-        276,
-        277
+        272,
+        273
       ],
       "loc": {
         "start": {
@@ -1511,8 +1782,8 @@
       "type": "Identifier",
       "value": "exponentioal",
       "range": [
-        278,
-        290
+        274,
+        286
       ],
       "loc": {
         "start": {
@@ -1529,8 +1800,8 @@
       "type": "Punctuator",
       "value": ":",
       "range": [
-        290,
-        291
+        286,
+        287
       ],
       "loc": {
         "start": {
@@ -1547,8 +1818,8 @@
       "type": "Numeric",
       "value": "685.230_15e+03",
       "range": [
-        292,
-        306
+        288,
+        302
       ],
       "loc": {
         "start": {
@@ -1565,8 +1836,8 @@
       "type": "Identifier",
       "value": "fixed",
       "range": [
-        309,
-        314
+        305,
+        310
       ],
       "loc": {
         "start": {
@@ -1583,8 +1854,8 @@
       "type": "Punctuator",
       "value": ":",
       "range": [
-        314,
-        315
+        310,
+        311
       ],
       "loc": {
         "start": {
@@ -1601,8 +1872,8 @@
       "type": "Numeric",
       "value": "685_230.15",
       "range": [
-        316,
-        326
+        312,
+        322
       ],
       "loc": {
         "start": {
@@ -1616,11 +1887,65 @@
       }
     },
     {
+      "type": "Identifier",
+      "value": "sexagesimal",
+      "range": [
+        325,
+        336
+      ],
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 2
+        },
+        "end": {
+          "line": 15,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        336,
+        337
+      ],
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 13
+        },
+        "end": {
+          "line": 15,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Numeric",
+      "value": "190:20:30.15",
+      "range": [
+        338,
+        350
+      ],
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 15
+        },
+        "end": {
+          "line": 15,
+          "column": 27
+        }
+      }
+    },
+    {
       "type": "Punctuator",
       "value": "-",
       "range": [
-        357,
-        358
+        351,
+        352
       ],
       "loc": {
         "start": {
@@ -1637,8 +1962,8 @@
       "type": "Identifier",
       "value": "exponentioal",
       "range": [
-        359,
-        371
+        353,
+        365
       ],
       "loc": {
         "start": {
@@ -1655,8 +1980,8 @@
       "type": "Punctuator",
       "value": ":",
       "range": [
-        371,
-        372
+        365,
+        366
       ],
       "loc": {
         "start": {
@@ -1673,8 +1998,8 @@
       "type": "Numeric",
       "value": "-685.230_15e+03",
       "range": [
-        373,
-        388
+        367,
+        382
       ],
       "loc": {
         "start": {
@@ -1691,8 +2016,8 @@
       "type": "Identifier",
       "value": "fixed",
       "range": [
-        391,
-        396
+        385,
+        390
       ],
       "loc": {
         "start": {
@@ -1709,8 +2034,8 @@
       "type": "Punctuator",
       "value": ":",
       "range": [
-        396,
-        397
+        390,
+        391
       ],
       "loc": {
         "start": {
@@ -1727,8 +2052,8 @@
       "type": "Numeric",
       "value": "-685_230.15",
       "range": [
-        398,
-        409
+        392,
+        403
       ],
       "loc": {
         "start": {
@@ -1742,11 +2067,65 @@
       }
     },
     {
+      "type": "Identifier",
+      "value": "sexagesimal",
+      "range": [
+        406,
+        417
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 2
+        },
+        "end": {
+          "line": 18,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        417,
+        418
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 13
+        },
+        "end": {
+          "line": 18,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Numeric",
+      "value": "-190:20:30.15",
+      "range": [
+        419,
+        432
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 15
+        },
+        "end": {
+          "line": 18,
+          "column": 28
+        }
+      }
+    },
+    {
       "type": "Punctuator",
       "value": "-",
       "range": [
-        441,
-        442
+        433,
+        434
       ],
       "loc": {
         "start": {
@@ -1763,8 +2142,8 @@
       "type": "Punctuator",
       "value": "[",
       "range": [
-        443,
-        444
+        435,
+        436
       ],
       "loc": {
         "start": {
@@ -1781,8 +2160,8 @@
       "type": "Numeric",
       "value": "685_230e-2",
       "range": [
-        444,
-        454
+        436,
+        446
       ],
       "loc": {
         "start": {
@@ -1799,8 +2178,8 @@
       "type": "Punctuator",
       "value": ",",
       "range": [
-        454,
-        455
+        446,
+        447
       ],
       "loc": {
         "start": {
@@ -1817,8 +2196,8 @@
       "type": "Numeric",
       "value": "-685_230e-2",
       "range": [
-        456,
-        467
+        448,
+        459
       ],
       "loc": {
         "start": {
@@ -1835,8 +2214,8 @@
       "type": "Punctuator",
       "value": "]",
       "range": [
-        467,
-        468
+        459,
+        460
       ],
       "loc": {
         "start": {
@@ -1852,7 +2231,7 @@
   ],
   "range": [
     0,
-    469
+    461
   ],
   "loc": {
     "start": {
