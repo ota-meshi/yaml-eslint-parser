@@ -2,6 +2,7 @@ import assert from "assert"
 import path from "path"
 import fs from "fs"
 
+import YAML from "yaml"
 import { KEYS } from "../../../src/visitor-keys"
 import { traverseNodes, getKeys } from "../../../src/traverse"
 import { getStaticYAMLValue } from "../../../src/utils"
@@ -88,6 +89,31 @@ describe("Check for AST.", () => {
                 )
             })
 
+            if (
+                // multiple documents
+                !inputFileName.endsWith("/docs01-input.yaml") &&
+                !inputFileName.endsWith("/flow01-input.yaml") &&
+                !inputFileName.endsWith("/quoted01-input.yaml") &&
+                !inputFileName.endsWith("/test01-input.yaml") &&
+                // null key
+                !inputFileName.endsWith("/comment-and-flow-map01-input.yaml") &&
+                !inputFileName.endsWith("/comment-and-flow-map02-input.yaml") &&
+                !inputFileName.endsWith("/empty-pair01-input.yaml") &&
+                !inputFileName.endsWith("/empty-pair03-input.yaml") &&
+                !inputFileName.endsWith("/pair-in-block-map01-input.yaml") &&
+                !inputFileName.endsWith("/pair-in-block-map02-input.yaml") &&
+                !inputFileName.endsWith("/pair-in-flow-seq01-input.yaml") &&
+                !inputFileName.endsWith("/pair-in-flow-seq02-input.yaml") &&
+                !inputFileName.endsWith("/pair-in-flow-seq03-input.yaml")
+            ) {
+                it("The result of getStaticYAMLValue() and the result of parsing with the yaml package should be the same.", () => {
+                    assert.deepStrictEqual(
+                        getStaticYAMLValue(ast),
+                        YAML.parse(input),
+                    )
+                })
+            }
+
             it("even if Win, it must be correct.", () => {
                 const inputForWin = input.replace(/\n/g, "\r\n")
                 // check
@@ -173,6 +199,14 @@ describe("yaml-test-suite.", () => {
                 )
             })
 
+            if (ast) {
+                it("The result of getStaticYAMLValue() and the result of parsing with the yaml package should be the same.", () => {
+                    assert.deepStrictEqual(
+                        getStaticYAMLValue(ast),
+                        YAML.parse(input),
+                    )
+                })
+            }
             it("even if Win, it must be correct.", () => {
                 if (!ast) return
                 const inputForWin = input.replace(/\n/g, "\r\n")

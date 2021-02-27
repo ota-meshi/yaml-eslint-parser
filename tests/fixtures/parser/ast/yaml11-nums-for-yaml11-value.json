@@ -1,0 +1,26 @@
+[
+  {
+    "decimal": 685230,
+    "octal": 685230,
+    "hexadecimal": 685230,
+    "binary": 685230
+  },
+  {
+    "decimal": -685230,
+    "octal": -685230,
+    "hexadecimal": -685230,
+    "binary": -685230
+  },
+  {
+    "exponentioal": 685230.15,
+    "fixed": 685230.15
+  },
+  {
+    "exponentioal": -685230.15,
+    "fixed": -685230.15
+  },
+  [
+    6852.3,
+    -6852.3
+  ]
+]
