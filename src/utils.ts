@@ -50,7 +50,17 @@ export function getStaticYAMLValue(
 export function getStaticYAMLValue(
     node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMeta,
 ): YAMLContentValue {
-    return resolver[node.type](node as never)
+    return getValue(node, null)
+}
+
+/**
+ * Gets the static value for the given node with YAML version.
+ */
+function getValue(
+    node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMeta,
+    version: "1.2" | "1.1" | null,
+): YAMLContentValue {
+    return resolver[node.type](node as never, version)
 }
 
 const resolver = {
@@ -64,42 +74,44 @@ const resolver = {
               node.body.map((n) => resolver.YAMLDocument(n))
     },
     YAMLDocument(node: YAMLDocument) {
-        return node.content ? getStaticYAMLValue(node.content) : null
+        return node.content
+            ? getValue(node.content, getYAMLVersion(node))
+            : null
     },
-    YAMLMapping(node: YAMLMapping) {
+    YAMLMapping(node: YAMLMapping, version: "1.2" | "1.1" | null) {
         const result: YAMLMappingValue = {}
         for (const pair of node.pairs) {
-            Object.assign(result, getStaticYAMLValue(pair))
+            Object.assign(result, getValue(pair, version))
         }
         return result
     },
-    YAMLPair(node: YAMLPair) {
+    YAMLPair(node: YAMLPair, version: "1.2" | "1.1" | null) {
         const result: YAMLMappingValue = {}
-        let key = node.key ? getStaticYAMLValue(node.key) : null
+        let key = node.key ? getValue(node.key, version) : null
         if (typeof key !== "string" && typeof key !== "number") {
             key = String(key)
         }
-        result[key] = node.value ? getStaticYAMLValue(node.value) : null
+        result[key] = node.value ? getValue(node.value, version) : null
         return result
     },
-    YAMLSequence(node: YAMLSequence) {
+    YAMLSequence(node: YAMLSequence, version: "1.2" | "1.1" | null) {
         const result: YAMLContentValue[] = []
         for (const entry of node.entries) {
-            result.push(entry ? getStaticYAMLValue(entry) : null)
+            result.push(entry ? getValue(entry, version) : null)
         }
         return result
     },
     YAMLScalar(node: YAMLScalar) {
         return node.value
     },
-    YAMLAlias(node: YAMLAlias) {
+    YAMLAlias(node: YAMLAlias, version: "1.2" | "1.1" | null) {
         const anchor = findAnchor(node)
-        return anchor ? getStaticYAMLValue(anchor.parent) : null
+        return anchor ? getValue(anchor.parent, version) : null
     },
-    YAMLWithMeta(node: YAMLWithMeta) {
+    YAMLWithMeta(node: YAMLWithMeta, version: "1.2" | "1.1" | null) {
         if (node.tag) {
             if (node.value == null) {
-                return getTaggedValue(node.tag, "", "")
+                return getTaggedValue(node.tag, "", "", version)
             }
             if (node.value.type === "YAMLScalar") {
                 if (node.value.style === "plain") {
@@ -107,6 +119,7 @@ const resolver = {
                         node.tag,
                         node.value.strValue,
                         node.value.strValue,
+                        version,
                     )
                 }
                 if (
@@ -117,6 +130,7 @@ const resolver = {
                         node.tag,
                         node.value.raw,
                         node.value.strValue,
+                        version,
                     )
                 }
             }
@@ -124,7 +138,7 @@ const resolver = {
         if (node.value == null) {
             return null
         }
-        return getStaticYAMLValue(node.value)
+        return getValue(node.value, version)
     },
 }
 
@@ -172,13 +186,40 @@ function findAnchor(node: YAMLAlias): YAMLAnchor | null {
 /**
  * Get tagged value
  */
-function getTaggedValue(tag: YAMLTag, text: string, str: string) {
-    for (const tagResolver of tagResolvers) {
+function getTaggedValue(
+    tag: YAMLTag,
+    text: string,
+    str: string,
+    version: "1.2" | "1.1" | null,
+) {
+    for (const tagResolver of tagResolvers[version || "1.2"]) {
         if (tagResolver.tag === tag.tag && tagResolver.test(str)) {
             return tagResolver.resolve(str)
         }
     }
     const tagText = tag.tag.startsWith("!") ? tag.tag : `!<${tag.tag}>`
-    const value = parseDocument(`${tagText} ${text}`).toJSON()
+    const value = parseDocument(`${version ? `%YAML ${version}` : ""}
+---
+${tagText} ${text}`).toJSON()
     return value
+}
+
+/**
+ * Get YAML version from then given document
+ */
+export function getYAMLVersion(document: YAMLDocument): "1.2" | "1.1" {
+    for (const dir of document.directives) {
+        const yamlVer = /^%YAML\s+(\d\.\d)$/.exec(dir.value)?.[1]
+        if (yamlVer) {
+            if (yamlVer === "1.1") {
+                return "1.1"
+            }
+            if (yamlVer === "1.2") {
+                return "1.2"
+            }
+            // Other versions are not supported
+            return "1.2"
+        }
+    }
+    return "1.2"
 }

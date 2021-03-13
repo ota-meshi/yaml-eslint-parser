@@ -1,8 +1,4 @@
-export type TagResolver<T> = {
-    tag: string
-    test: (str: string) => boolean
-    resolve: (str: string) => T
-}
+import type { TagResolver } from "./commons"
 
 export const NULL: TagResolver<null> = {
     // see https://yaml.org/spec/1.2/spec.html#id2803311
