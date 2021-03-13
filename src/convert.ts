@@ -731,7 +731,7 @@ function convertBlockLiteral(
     const punctuatorRange: Range = [cst.header.start, cst.header.end]
     ctx.addToken("Punctuator", punctuatorRange)
     const text = ctx.code.slice(cst.valueRange!.start, cst.valueRange!.end)
-    const offset = /^[^\S\r\n]*/.exec(text)![0].length
+    const offset = /^[^\S\n\r]*/.exec(text)![0].length
     const tokenRange: Range = [
         cst.valueRange!.start + offset,
         cst.valueRange!.end,
@@ -769,7 +769,7 @@ function convertBlockFolded(
     ctx.addToken("Punctuator", punctuatorRange)
 
     const text = ctx.code.slice(cst.valueRange!.start, cst.valueRange!.end)
-    const offset = /^[^\S\r\n]*/.exec(text)![0].length
+    const offset = /^[^\S\n\r]*/.exec(text)![0].length
     const tokenRange: Range = [
         cst.valueRange!.start + offset,
         cst.valueRange!.end,

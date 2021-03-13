@@ -48,7 +48,7 @@ export const INT: TagResolver<number> = {
     tag: "tag:yaml.org,2002:int",
     test(str) {
         // see https://yaml.org/spec/1.2/spec.html#id2805071
-        return /^[-+]?\d+$/u.test(str)
+        return /^[+-]?\d+$/u.test(str)
     },
     resolve(str) {
         return parseInt(str, 10)
@@ -70,7 +70,7 @@ export const INT_BASE16: TagResolver<number> = {
     tag: "tag:yaml.org,2002:int",
     test(str) {
         // see https://yaml.org/spec/1.2/spec.html#id2805071
-        return /^0x[\da-fA-F]+$/u.test(str)
+        return /^0x[\dA-Fa-f]+$/u.test(str)
     },
     resolve(str) {
         return parseInt(str.slice(2), 16)
@@ -81,7 +81,7 @@ export const FLOAT: TagResolver<number> = {
     tag: "tag:yaml.org,2002:float",
     test(str) {
         // see https://yaml.org/spec/1.2/spec.html#id2805071
-        return /^[-+]?(\.\d+|\d+(\.\d*)?)([eE][-+]?\d+)?$/u.test(str)
+        return /^[+-]?(\.\d+|\d+(\.\d*)?)([Ee][+-]?\d+)?$/u.test(str)
     },
     resolve(str) {
         return parseFloat(str)
@@ -92,7 +92,7 @@ export const INFINITY: TagResolver<number> = {
     tag: "tag:yaml.org,2002:float",
     test(str) {
         // see https://yaml.org/spec/1.2/spec.html#id2805071
-        return /^[-+]?(\.inf|\.Inf|\.INF)$/u.test(str)
+        return /^[+-]?(\.inf|\.Inf|\.INF)$/u.test(str)
     },
     resolve(str) {
         return str.startsWith("-") ? -Infinity : Infinity
