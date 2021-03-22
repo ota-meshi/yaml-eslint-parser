@@ -81,7 +81,7 @@ export const FLOAT: TagResolver<number> = {
     tag: "tag:yaml.org,2002:float",
     test(str) {
         // see https://yaml.org/spec/1.2/spec.html#id2805071
-        return /^[+-]?(\.\d+|\d+(\.\d*)?)([Ee][+-]?\d+)?$/u.test(str)
+        return /^[+-]?(?:\.\d+|\d+(?:\.\d*)?)(?:[Ee][+-]?\d+)?$/u.test(str)
     },
     resolve(str) {
         return parseFloat(str)
@@ -92,7 +92,7 @@ export const INFINITY: TagResolver<number> = {
     tag: "tag:yaml.org,2002:float",
     test(str) {
         // see https://yaml.org/spec/1.2/spec.html#id2805071
-        return /^[+-]?(\.inf|\.Inf|\.INF)$/u.test(str)
+        return /^[+-]?(?:\.inf|\.Inf|\.INF)$/u.test(str)
     },
     resolve(str) {
         return str.startsWith("-") ? -Infinity : Infinity
