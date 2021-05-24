@@ -66,9 +66,7 @@ export function parseForESLint(
 /**
  * Type guard for YAMLSyntaxError.
  */
-function isYAMLSyntaxError(
-    error: any,
-): error is {
+function isYAMLSyntaxError(error: any): error is {
     message: string
     range: { start: number }
     linePos: { start: { line: number; col: number } }
@@ -86,9 +84,7 @@ function isYAMLSyntaxError(
 /**
  * Type guard for YAMLSyntaxError (yaml@1.10).
  */
-function isYAMLSyntaxErrorForV1(
-    error: any,
-): error is {
+function isYAMLSyntaxErrorForV1(error: any): error is {
     message: string
     source: {
         range: { start: number }
