@@ -42,6 +42,8 @@ import type {
     ASTBlockFolded,
     ASTAlias,
     CSTSeqItem,
+    CSTBlockFolded,
+    CSTBlockLiteral,
 } from "./yaml"
 import { Type, PairType } from "./yaml"
 import { ParseError } from "./errors"
@@ -714,8 +716,9 @@ function convertBlockLiteral(
     doc: YAMLDocument,
 ): YAMLBlockLiteralScalar | YAMLWithMeta {
     const cst = node.cstNode!
+    const end = getBlockEnd(cst, ctx)
     const loc = ctx.getConvertLocation({
-        range: [cst.header.start, cst.valueRange!.end],
+        range: [cst.header.start, end],
     })
     const value = cst.strValue || ""
 
@@ -730,12 +733,9 @@ function convertBlockLiteral(
     }
     const punctuatorRange: Range = [cst.header.start, cst.header.end]
     ctx.addToken("Punctuator", punctuatorRange)
-    const text = ctx.code.slice(cst.valueRange!.start, cst.valueRange!.end)
+    const text = ctx.code.slice(cst.valueRange!.start, end)
     const offset = /^[^\S\n\r]*/.exec(text)![0].length
-    const tokenRange: Range = [
-        cst.valueRange!.start + offset,
-        cst.valueRange!.end,
-    ]
+    const tokenRange: Range = [cst.valueRange!.start + offset, end]
     if (tokenRange[0] < tokenRange[1]) {
         ctx.addToken("BlockLiteral", tokenRange)
     }
@@ -752,8 +752,9 @@ function convertBlockFolded(
     doc: YAMLDocument,
 ): YAMLBlockFoldedScalar | YAMLWithMeta {
     const cst = node.cstNode!
+    const end = getBlockEnd(cst, ctx)
     const loc = ctx.getConvertLocation({
-        range: [cst.header.start, cst.valueRange!.end],
+        range: [cst.header.start, end],
     })
     const value = cst.strValue || ""
     const ast: YAMLBlockFoldedScalar = {
@@ -768,16 +769,27 @@ function convertBlockFolded(
     const punctuatorRange: Range = [cst.header.start, cst.header.end]
     ctx.addToken("Punctuator", punctuatorRange)
 
-    const text = ctx.code.slice(cst.valueRange!.start, cst.valueRange!.end)
+    const text = ctx.code.slice(cst.valueRange!.start, end)
     const offset = /^[^\S\n\r]*/.exec(text)![0].length
-    const tokenRange: Range = [
-        cst.valueRange!.start + offset,
-        cst.valueRange!.end,
-    ]
+    const tokenRange: Range = [cst.valueRange!.start + offset, end]
     if (tokenRange[0] < tokenRange[1]) {
         ctx.addToken("BlockFolded", tokenRange)
     }
     return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
+}
+
+/**
+ * Get the end index from give block node
+ */
+function getBlockEnd(
+    cst: CSTBlockFolded | CSTBlockLiteral,
+    ctx: Context,
+): number {
+    let index = cst.valueRange!.end
+    while ("\n\r".includes(ctx.code[index - 1]) && index > 1) {
+        index--
+    }
+    return index
 }
 
 /**

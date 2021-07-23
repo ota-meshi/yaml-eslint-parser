@@ -12,7 +12,7 @@
         "value": "Mark McGwire's year was crippled by a knee injury.\n",
         "range": [
           4,
-          63
+          62
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 4
           },
           "end": {
-            "line": 5,
-            "column": 0
+            "line": 4,
+            "column": 19
           }
         }
       },
@@ -82,10 +82,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "Mark McGwire's\n  year was crippled\n  by a knee injury.\n",
+      "value": "Mark McGwire's\n  year was crippled\n  by a knee injury.",
       "range": [
         8,
-        63
+        62
       ],
       "loc": {
         "start": {
@@ -93,8 +93,8 @@
           "column": 2
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 4,
+          "column": 19
         }
       }
     }

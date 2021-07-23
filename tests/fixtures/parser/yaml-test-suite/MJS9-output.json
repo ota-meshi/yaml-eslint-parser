@@ -12,7 +12,7 @@
         "value": "foo \n\n\t bar\n\nbaz\n",
         "range": [
           0,
-          26
+          25
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 0
           },
           "end": {
-            "line": 7,
-            "column": 0
+            "line": 6,
+            "column": 5
           }
         }
       },
@@ -64,10 +64,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "foo \n \n  \t bar\n\n  baz\n",
+      "value": "foo \n \n  \t bar\n\n  baz",
       "range": [
         4,
-        26
+        25
       ],
       "loc": {
         "start": {
@@ -75,8 +75,8 @@
           "column": 2
         },
         "end": {
-          "line": 7,
-          "column": 0
+          "line": 6,
+          "column": 5
         }
       }
     }

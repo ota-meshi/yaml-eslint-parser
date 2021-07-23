@@ -12,7 +12,7 @@
         "value": "\nfolded line\nnext line\n  * bullet\n\n  * list\n  * lines\n\nlast line\n",
         "range": [
           0,
-          77
+          76
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 0
           },
           "end": {
-            "line": 15,
-            "column": 0
+            "line": 14,
+            "column": 5
           }
         }
       },
@@ -83,10 +83,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "\n folded\n line\n\n next\n line\n   * bullet\n\n   * list\n   * lines\n\n last\n line\n",
+      "value": "\n folded\n line\n\n next\n line\n   * bullet\n\n   * list\n   * lines\n\n last\n line",
       "range": [
         2,
-        77
+        76
       ],
       "loc": {
         "start": {
@@ -94,8 +94,8 @@
           "column": 0
         },
         "end": {
-          "line": 15,
-          "column": 0
+          "line": 14,
+          "column": 5
         }
       }
     }

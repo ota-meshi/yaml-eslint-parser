@@ -19,6 +19,8 @@ export type CSTFlowSeq = CST.FlowSeq
 export type CSTMapKey = CST.MapKey
 export type CSTMapValue = CST.MapValue
 export type CSTSeqItem = CST.SeqItem
+export type CSTBlockFolded = CST.BlockFolded
+export type CSTBlockLiteral = CST.BlockLiteral
 
 export type CSTNode =
     | CSTDirective

@@ -157,7 +157,7 @@
               "value": "text\n \tlines\n",
               "range": [
                 51,
-                70
+                69
               ],
               "loc": {
                 "start": {
@@ -165,14 +165,14 @@
                   "column": 7
                 },
                 "end": {
-                  "line": 8,
-                  "column": 0
+                  "line": 7,
+                  "column": 9
                 }
               }
             },
             "range": [
               44,
-              70
+              69
             ],
             "loc": {
               "start": {
@@ -180,15 +180,15 @@
                 "column": 0
               },
               "end": {
-                "line": 8,
-                "column": 0
+                "line": 7,
+                "column": 9
               }
             }
           }
         ],
         "range": [
           0,
-          70
+          69
         ],
         "loc": {
           "start": {
@@ -196,8 +196,8 @@
             "column": 0
           },
           "end": {
-            "line": 8,
-            "column": 0
+            "line": 7,
+            "column": 9
           }
         }
       },
@@ -384,10 +384,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "text\n   \tlines\n",
+      "value": "text\n   \tlines",
       "range": [
         55,
-        70
+        69
       ],
       "loc": {
         "start": {
@@ -395,8 +395,8 @@
           "column": 2
         },
         "end": {
-          "line": 8,
-          "column": 0
+          "line": 7,
+          "column": 9
         }
       }
     }

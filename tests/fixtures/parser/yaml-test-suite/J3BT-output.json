@@ -98,7 +98,7 @@
               "value": "void main() {\n\tprintf(\"Hello, world!\\n\");\n}\n",
               "range": [
                 44,
-                96
+                95
               ],
               "loc": {
                 "start": {
@@ -106,14 +106,14 @@
                   "column": 7
                 },
                 "end": {
-                  "line": 7,
-                  "column": 0
+                  "line": 6,
+                  "column": 3
                 }
               }
             },
             "range": [
               37,
-              96
+              95
             ],
             "loc": {
               "start": {
@@ -121,15 +121,15 @@
                 "column": 0
               },
               "end": {
-                "line": 7,
-                "column": 0
+                "line": 6,
+                "column": 3
               }
             }
           }
         ],
         "range": [
           18,
-          96
+          95
         ],
         "loc": {
           "start": {
@@ -137,8 +137,8 @@
             "column": 0
           },
           "end": {
-            "line": 7,
-            "column": 0
+            "line": 6,
+            "column": 3
           }
         }
       },
@@ -290,10 +290,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "void main() {\n  \tprintf(\"Hello, world!\\n\");\n  }\n",
+      "value": "void main() {\n  \tprintf(\"Hello, world!\\n\");\n  }",
       "range": [
         48,
-        96
+        95
       ],
       "loc": {
         "start": {
@@ -301,8 +301,8 @@
           "column": 2
         },
         "end": {
-          "line": 7,
-          "column": 0
+          "line": 6,
+          "column": 3
         }
       }
     }

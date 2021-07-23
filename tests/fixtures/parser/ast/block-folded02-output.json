@@ -16,7 +16,7 @@
             "value": "literal\n",
             "range": [
               2,
-              29
+              28
             ],
             "loc": {
               "start": {
@@ -24,8 +24,8 @@
                 "column": 2
               },
               "end": {
-                "line": 3,
-                "column": 0
+                "line": 2,
+                "column": 8
               }
             }
           },
@@ -37,7 +37,7 @@
             "value": "·folded\n",
             "range": [
               31,
-              68
+              67
             ],
             "loc": {
               "start": {
@@ -45,8 +45,8 @@
                 "column": 2
               },
               "end": {
-                "line": 5,
-                "column": 0
+                "line": 4,
+                "column": 8
               }
             }
           },
@@ -58,7 +58,7 @@
             "value": "keep\n\n",
             "range": [
               70,
-              102
+              100
             ],
             "loc": {
               "start": {
@@ -66,8 +66,8 @@
                 "column": 2
               },
               "end": {
-                "line": 8,
-                "column": 0
+                "line": 6,
+                "column": 5
               }
             }
           },
@@ -238,10 +238,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "literal\n",
+      "value": "literal",
       "range": [
         21,
-        29
+        28
       ],
       "loc": {
         "start": {
@@ -249,8 +249,8 @@
           "column": 1
         },
         "end": {
-          "line": 3,
-          "column": 0
+          "line": 2,
+          "column": 8
         }
       }
     },
@@ -292,10 +292,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "·folded\n",
+      "value": "·folded",
       "range": [
         60,
-        68
+        67
       ],
       "loc": {
         "start": {
@@ -303,8 +303,8 @@
           "column": 1
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 4,
+          "column": 8
         }
       }
     },
@@ -346,10 +346,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "keep\n\n",
+      "value": "keep",
       "range": [
         96,
-        102
+        100
       ],
       "loc": {
         "start": {
@@ -357,8 +357,8 @@
           "column": 1
         },
         "end": {
-          "line": 8,
-          "column": 0
+          "line": 6,
+          "column": 5
         }
       }
     },

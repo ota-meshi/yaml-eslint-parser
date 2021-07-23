@@ -39,7 +39,7 @@
               "value": "ab\n\ncd\nef\n",
               "range": [
                 3,
-                19
+                18
               ],
               "loc": {
                 "start": {
@@ -47,14 +47,14 @@
                   "column": 3
                 },
                 "end": {
-                  "line": 6,
-                  "column": 0
+                  "line": 5,
+                  "column": 3
                 }
               }
             },
             "range": [
               0,
-              19
+              18
             ],
             "loc": {
               "start": {
@@ -62,15 +62,15 @@
                 "column": 0
               },
               "end": {
-                "line": 6,
-                "column": 0
+                "line": 5,
+                "column": 3
               }
             }
           }
         ],
         "range": [
           0,
-          19
+          18
         ],
         "loc": {
           "start": {
@@ -78,8 +78,8 @@
             "column": 0
           },
           "end": {
-            "line": 6,
-            "column": 0
+            "line": 5,
+            "column": 3
           }
         }
       },
@@ -158,10 +158,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "ab\n \n cd\n ef\n",
+      "value": "ab\n \n cd\n ef",
       "range": [
         6,
-        19
+        18
       ],
       "loc": {
         "start": {
@@ -169,8 +169,8 @@
           "column": 1
         },
         "end": {
-          "line": 6,
-          "column": 0
+          "line": 5,
+          "column": 3
         }
       }
     },

@@ -39,7 +39,7 @@
               "value": "# text",
               "range": [
                 30,
-                42
+                41
               ],
               "loc": {
                 "start": {
@@ -47,14 +47,14 @@
                   "column": 7
                 },
                 "end": {
-                  "line": 5,
-                  "column": 0
+                  "line": 4,
+                  "column": 8
                 }
               }
             },
             "range": [
               23,
-              42
+              41
             ],
             "loc": {
               "start": {
@@ -62,8 +62,8 @@
                 "column": 0
               },
               "end": {
-                "line": 5,
-                "column": 0
+                "line": 4,
+                "column": 8
               }
             }
           },
@@ -98,7 +98,7 @@
               "value": "# text\n",
               "range": [
                 74,
-                85
+                84
               ],
               "loc": {
                 "start": {
@@ -106,14 +106,14 @@
                   "column": 6
                 },
                 "end": {
-                  "line": 11,
-                  "column": 0
+                  "line": 10,
+                  "column": 8
                 }
               }
             },
             "range": [
               68,
-              85
+              84
             ],
             "loc": {
               "start": {
@@ -121,8 +121,8 @@
                 "column": 0
               },
               "end": {
-                "line": 11,
-                "column": 0
+                "line": 10,
+                "column": 8
               }
             }
           },
@@ -157,7 +157,7 @@
               "value": "# text\n\n",
               "range": [
                 116,
-                129
+                127
               ],
               "loc": {
                 "start": {
@@ -165,14 +165,14 @@
                   "column": 6
                 },
                 "end": {
-                  "line": 18,
-                  "column": 0
+                  "line": 16,
+                  "column": 8
                 }
               }
             },
             "range": [
               110,
-              129
+              127
             ],
             "loc": {
               "start": {
@@ -180,15 +180,15 @@
                 "column": 0
               },
               "end": {
-                "line": 18,
-                "column": 0
+                "line": 16,
+                "column": 8
               }
             }
           }
         ],
         "range": [
           23,
-          129
+          127
         ],
         "loc": {
           "start": {
@@ -196,8 +196,8 @@
             "column": 0
           },
           "end": {
-            "line": 18,
-            "column": 0
+            "line": 16,
+            "column": 8
           }
         }
       },
@@ -421,10 +421,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "# text\n",
+      "value": "# text",
       "range": [
         35,
-        42
+        41
       ],
       "loc": {
         "start": {
@@ -432,8 +432,8 @@
           "column": 2
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 4,
+          "column": 8
         }
       }
     },
@@ -493,10 +493,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "# text\n",
+      "value": "# text",
       "range": [
         78,
-        85
+        84
       ],
       "loc": {
         "start": {
@@ -504,8 +504,8 @@
           "column": 2
         },
         "end": {
-          "line": 11,
-          "column": 0
+          "line": 10,
+          "column": 8
         }
       }
     },
@@ -565,10 +565,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "# text\n\n",
+      "value": "# text",
       "range": [
         121,
-        129
+        127
       ],
       "loc": {
         "start": {
@@ -576,8 +576,8 @@
           "column": 2
         },
         "end": {
-          "line": 18,
-          "column": 0
+          "line": 16,
+          "column": 8
         }
       }
     }

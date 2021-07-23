@@ -795,7 +795,7 @@
                         "value": "x = MoreObject(\"345\\n\")\n",
                         "range": [
                           314,
-                          346
+                          345
                         ],
                         "loc": {
                           "start": {
@@ -803,14 +803,14 @@
                             "column": 10
                           },
                           "end": {
-                            "line": 23,
-                            "column": 0
+                            "line": 22,
+                            "column": 29
                           }
                         }
                       },
                       "range": [
                         308,
-                        346
+                        345
                       ],
                       "loc": {
                         "start": {
@@ -818,15 +818,15 @@
                           "column": 4
                         },
                         "end": {
-                          "line": 23,
-                          "column": 0
+                          "line": 22,
+                          "column": 29
                         }
                       }
                     }
                   ],
                   "range": [
                     273,
-                    346
+                    345
                   ],
                   "loc": {
                     "start": {
@@ -834,8 +834,8 @@
                       "column": 4
                     },
                     "end": {
-                      "line": 23,
-                      "column": 0
+                      "line": 22,
+                      "column": 29
                     }
                   }
                 },
@@ -992,7 +992,7 @@
                         "value": "foo = bar",
                         "range": [
                           392,
-                          411
+                          410
                         ],
                         "loc": {
                           "start": {
@@ -1000,14 +1000,14 @@
                             "column": 10
                           },
                           "end": {
-                            "line": 27,
-                            "column": 0
+                            "line": 26,
+                            "column": 15
                           }
                         }
                       },
                       "range": [
                         386,
-                        411
+                        410
                       ],
                       "loc": {
                         "start": {
@@ -1015,15 +1015,15 @@
                           "column": 4
                         },
                         "end": {
-                          "line": 27,
-                          "column": 0
+                          "line": 26,
+                          "column": 15
                         }
                       }
                     }
                   ],
                   "range": [
                     350,
-                    411
+                    410
                   ],
                   "loc": {
                     "start": {
@@ -1031,15 +1031,15 @@
                       "column": 4
                     },
                     "end": {
-                      "line": 27,
-                      "column": 0
+                      "line": 26,
+                      "column": 15
                     }
                   }
                 }
               ],
               "range": [
                 271,
-                411
+                410
               ],
               "loc": {
                 "start": {
@@ -1047,14 +1047,14 @@
                   "column": 2
                 },
                 "end": {
-                  "line": 27,
-                  "column": 0
+                  "line": 26,
+                  "column": 15
                 }
               }
             },
             "range": [
               262,
-              411
+              410
             ],
             "loc": {
               "start": {
@@ -1062,15 +1062,15 @@
                 "column": 0
               },
               "end": {
-                "line": 27,
-                "column": 0
+                "line": 26,
+                "column": 15
               }
             }
           }
         ],
         "range": [
           192,
-          411
+          410
         ],
         "loc": {
           "start": {
@@ -1078,8 +1078,8 @@
             "column": 0
           },
           "end": {
-            "line": 27,
-            "column": 0
+            "line": 26,
+            "column": 15
           }
         }
       },
@@ -1860,10 +1860,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "x = MoreObject(\"345\\n\")\n",
+      "value": "x = MoreObject(\"345\\n\")",
       "range": [
         322,
-        346
+        345
       ],
       "loc": {
         "start": {
@@ -1871,8 +1871,8 @@
           "column": 6
         },
         "end": {
-          "line": 23,
-          "column": 0
+          "line": 22,
+          "column": 29
         }
       }
     },
@@ -2058,10 +2058,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "foo = bar\n",
+      "value": "foo = bar",
       "range": [
         401,
-        411
+        410
       ],
       "loc": {
         "start": {
@@ -2069,8 +2069,8 @@
           "column": 6
         },
         "end": {
-          "line": 27,
-          "column": 0
+          "line": 26,
+          "column": 15
         }
       }
     }

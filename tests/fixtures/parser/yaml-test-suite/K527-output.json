@@ -12,7 +12,7 @@
         "value": "trimmed\n\n\nas space",
         "range": [
           0,
-          32
+          31
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 0
           },
           "end": {
-            "line": 8,
-            "column": 0
+            "line": 7,
+            "column": 7
           }
         }
       },
@@ -64,10 +64,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "trimmed\n  \n \n\n  as\n  space\n",
+      "value": "trimmed\n  \n \n\n  as\n  space",
       "range": [
         5,
-        32
+        31
       ],
       "loc": {
         "start": {
@@ -75,8 +75,8 @@
           "column": 2
         },
         "end": {
-          "line": 8,
-          "column": 0
+          "line": 7,
+          "column": 7
         }
       }
     }

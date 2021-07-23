@@ -37,7 +37,7 @@
             "value": "Block scalar\n",
             "range": [
               22,
-              38
+              37
             ],
             "loc": {
               "start": {
@@ -45,8 +45,8 @@
                 "column": 2
               },
               "end": {
-                "line": 5,
-                "column": 0
+                "line": 4,
+                "column": 13
               }
             }
           },
@@ -293,10 +293,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "Block scalar\n",
+      "value": "Block scalar",
       "range": [
         25,
-        38
+        37
       ],
       "loc": {
         "start": {
@@ -304,8 +304,8 @@
           "column": 1
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 4,
+          "column": 13
         }
       }
     },

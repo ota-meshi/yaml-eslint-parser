@@ -12,7 +12,7 @@
         "value": "ab",
         "range": [
           0,
-          7
+          6
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 0
           },
           "end": {
-            "line": 3,
-            "column": 0
+            "line": 2,
+            "column": 3
           }
         }
       },
@@ -64,10 +64,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "ab\n",
+      "value": "ab",
       "range": [
         4,
-        7
+        6
       ],
       "loc": {
         "start": {
@@ -75,8 +75,8 @@
           "column": 1
         },
         "end": {
-          "line": 3,
-          "column": 0
+          "line": 2,
+          "column": 3
         }
       }
     },

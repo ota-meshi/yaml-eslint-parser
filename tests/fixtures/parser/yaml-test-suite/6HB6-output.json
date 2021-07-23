@@ -66,7 +66,7 @@
                     "value": "By four\n  spaces\n",
                     "range": [
                       108,
-                      135
+                      134
                     ],
                     "loc": {
                       "start": {
@@ -74,14 +74,14 @@
                         "column": 15
                       },
                       "end": {
-                        "line": 8,
-                        "column": 0
+                        "line": 7,
+                        "column": 12
                       }
                     }
                   },
                   "range": [
                     94,
-                    135
+                    134
                   ],
                   "loc": {
                     "start": {
@@ -89,8 +89,8 @@
                       "column": 1
                     },
                     "end": {
-                      "line": 8,
-                      "column": 0
+                      "line": 7,
+                      "column": 12
                     }
                   }
                 },
@@ -500,10 +500,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "By four\n      spaces\n",
+      "value": "By four\n      spaces",
       "range": [
         114,
-        135
+        134
       ],
       "loc": {
         "start": {
@@ -511,8 +511,8 @@
           "column": 4
         },
         "end": {
-          "line": 8,
-          "column": 0
+          "line": 7,
+          "column": 12
         }
       }
     },

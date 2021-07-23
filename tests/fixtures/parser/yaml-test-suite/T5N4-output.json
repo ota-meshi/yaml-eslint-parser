@@ -12,7 +12,7 @@
         "value": "literal\n\ttext\n",
         "range": [
           4,
-          22
+          21
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 4
           },
           "end": {
-            "line": 4,
-            "column": 0
+            "line": 3,
+            "column": 6
           }
         }
       },
@@ -82,10 +82,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "literal\n \ttext\n",
+      "value": "literal\n \ttext",
       "range": [
         7,
-        22
+        21
       ],
       "loc": {
         "start": {
@@ -93,8 +93,8 @@
           "column": 1
         },
         "end": {
-          "line": 4,
-          "column": 0
+          "line": 3,
+          "column": 6
         }
       }
     }
