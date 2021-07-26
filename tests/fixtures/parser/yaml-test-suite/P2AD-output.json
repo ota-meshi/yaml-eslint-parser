@@ -58,7 +58,7 @@
             "value": "keep\n\n",
             "range": [
               70,
-              100
+              101
             ],
             "loc": {
               "start": {
@@ -66,8 +66,8 @@
                 "column": 2
               },
               "end": {
-                "line": 6,
-                "column": 5
+                "line": 7,
+                "column": 0
               }
             }
           },
@@ -346,10 +346,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "keep",
+      "value": "keep\n",
       "range": [
         96,
-        100
+        101
       ],
       "loc": {
         "start": {
@@ -357,8 +357,8 @@
           "column": 1
         },
         "end": {
-          "line": 6,
-          "column": 5
+          "line": 7,
+          "column": 0
         }
       }
     },

@@ -157,7 +157,7 @@
               "value": "\n",
               "range": [
                 26,
-                28
+                29
               ],
               "loc": {
                 "start": {
@@ -165,14 +165,14 @@
                   "column": 6
                 },
                 "end": {
-                  "line": 5,
-                  "column": 8
+                  "line": 6,
+                  "column": 0
                 }
               }
             },
             "range": [
               20,
-              28
+              29
             ],
             "loc": {
               "start": {
@@ -180,15 +180,15 @@
                 "column": 0
               },
               "end": {
-                "line": 5,
-                "column": 8
+                "line": 6,
+                "column": 0
               }
             }
           }
         ],
         "range": [
           0,
-          28
+          29
         ],
         "loc": {
           "start": {
@@ -196,8 +196,8 @@
             "column": 0
           },
           "end": {
-            "line": 5,
-            "column": 8
+            "line": 6,
+            "column": 0
           }
         }
       },

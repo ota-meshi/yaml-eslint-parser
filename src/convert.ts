@@ -786,8 +786,11 @@ function getBlockEnd(
     ctx: Context,
 ): number {
     let index = cst.valueRange!.end
-    while ("\n\r".includes(ctx.code[index - 1]) && index > 1) {
+    if (ctx.code[index - 1] === "\n" && index > 1) {
         index--
+        if (ctx.code[index - 1] === "\r" && index > 1) {
+            index--
+        }
     }
     return index
 }

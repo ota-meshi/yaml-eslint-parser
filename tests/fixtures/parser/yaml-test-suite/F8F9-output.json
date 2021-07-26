@@ -157,7 +157,7 @@
               "value": "# text\n\n",
               "range": [
                 116,
-                127
+                128
               ],
               "loc": {
                 "start": {
@@ -165,14 +165,14 @@
                   "column": 6
                 },
                 "end": {
-                  "line": 16,
-                  "column": 8
+                  "line": 17,
+                  "column": 0
                 }
               }
             },
             "range": [
               110,
-              127
+              128
             ],
             "loc": {
               "start": {
@@ -180,15 +180,15 @@
                 "column": 0
               },
               "end": {
-                "line": 16,
-                "column": 8
+                "line": 17,
+                "column": 0
               }
             }
           }
         ],
         "range": [
           23,
-          127
+          128
         ],
         "loc": {
           "start": {
@@ -196,8 +196,8 @@
             "column": 0
           },
           "end": {
-            "line": 16,
-            "column": 8
+            "line": 17,
+            "column": 0
           }
         }
       },
@@ -565,10 +565,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "# text",
+      "value": "# text\n",
       "range": [
         121,
-        127
+        128
       ],
       "loc": {
         "start": {
@@ -576,8 +576,8 @@
           "column": 2
         },
         "end": {
-          "line": 16,
-          "column": 8
+          "line": 17,
+          "column": 0
         }
       }
     }
