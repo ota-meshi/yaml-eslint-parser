@@ -49,6 +49,7 @@ import { Type, PairType } from "./yaml"
 import { ParseError } from "./errors"
 import type { Context } from "./context"
 import { tagResolvers } from "./tags"
+import { getYAMLVersion } from "./utils"
 
 const CHOMPING_MAP = {
     CLIP: "clip",
@@ -602,7 +603,7 @@ function convertPlain(
     })
     if (loc.range[0] < loc.range[1]) {
         const strValue = node.cstNode!.strValue!
-        const value = parseValueFromText(strValue)
+        const value = parseValueFromText(strValue, getYAMLVersion(doc))
 
         const ast: YAMLPlainScalar = {
             type: "YAMLScalar",
@@ -639,8 +640,11 @@ function convertPlain(
     /**
      * Parse value from text
      */
-    function parseValueFromText(str: string): string | number | boolean | null {
-        for (const tagResolver of tagResolvers) {
+    function parseValueFromText(
+        str: string,
+        version: "1.2" | "1.1",
+    ): string | number | boolean | null {
+        for (const tagResolver of tagResolvers[version]) {
             if (tagResolver.test(str)) {
                 return tagResolver.resolve(str)
             }
