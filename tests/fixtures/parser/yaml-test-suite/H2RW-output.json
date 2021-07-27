@@ -157,7 +157,7 @@
               "value": "a\n  \nb\n\nc\n\nd\n",
               "range": [
                 26,
-                52
+                51
               ],
               "loc": {
                 "start": {
@@ -165,14 +165,14 @@
                   "column": 6
                 },
                 "end": {
-                  "line": 13,
-                  "column": 0
+                  "line": 12,
+                  "column": 3
                 }
               }
             },
             "range": [
               20,
-              52
+              51
             ],
             "loc": {
               "start": {
@@ -180,15 +180,15 @@
                 "column": 0
               },
               "end": {
-                "line": 13,
-                "column": 0
+                "line": 12,
+                "column": 3
               }
             }
           }
         ],
         "range": [
           0,
-          52
+          51
         ],
         "loc": {
           "start": {
@@ -196,8 +196,8 @@
             "column": 0
           },
           "end": {
-            "line": 13,
-            "column": 0
+            "line": 12,
+            "column": 3
           }
         }
       },
@@ -384,10 +384,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "a\n    \n  b\n\n  c\n \n  d\n",
+      "value": "a\n    \n  b\n\n  c\n \n  d",
       "range": [
         30,
-        52
+        51
       ],
       "loc": {
         "start": {
@@ -395,8 +395,8 @@
           "column": 2
         },
         "end": {
-          "line": 13,
-          "column": 0
+          "line": 12,
+          "column": 3
         }
       }
     }

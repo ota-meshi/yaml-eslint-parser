@@ -57,7 +57,7 @@
               "value": "block key\n",
               "range": [
                 31,
-                45
+                44
               ],
               "loc": {
                 "start": {
@@ -65,8 +65,8 @@
                   "column": 2
                 },
                 "end": {
-                  "line": 4,
-                  "column": 0
+                  "line": 3,
+                  "column": 11
                 }
               }
             },
@@ -311,10 +311,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "block key\n",
+      "value": "block key",
       "range": [
         35,
-        45
+        44
       ],
       "loc": {
         "start": {
@@ -322,8 +322,8 @@
           "column": 2
         },
         "end": {
-          "line": 4,
-          "column": 0
+          "line": 3,
+          "column": 11
         }
       }
     },

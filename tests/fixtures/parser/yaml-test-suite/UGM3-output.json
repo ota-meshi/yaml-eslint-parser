@@ -371,7 +371,7 @@
                               "value": "458 Walkman Dr.\nSuite #292\n",
                               "range": [
                                 157,
-                                210
+                                209
                               ],
                               "loc": {
                                 "start": {
@@ -379,14 +379,14 @@
                                   "column": 15
                                 },
                                 "end": {
-                                  "line": 11,
-                                  "column": 0
+                                  "line": 10,
+                                  "column": 22
                                 }
                               }
                             },
                             "range": [
                               150,
-                              210
+                              209
                             ],
                             "loc": {
                               "start": {
@@ -394,8 +394,8 @@
                                 "column": 8
                               },
                               "end": {
-                                "line": 11,
-                                "column": 0
+                                "line": 10,
+                                "column": 22
                               }
                             }
                           },
@@ -1940,10 +1940,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "458 Walkman Dr.\n            Suite #292\n",
+      "value": "458 Walkman Dr.\n            Suite #292",
       "range": [
         171,
-        210
+        209
       ],
       "loc": {
         "start": {
@@ -1951,8 +1951,8 @@
           "column": 12
         },
         "end": {
-          "line": 11,
-          "column": 0
+          "line": 10,
+          "column": 22
         }
       }
     },

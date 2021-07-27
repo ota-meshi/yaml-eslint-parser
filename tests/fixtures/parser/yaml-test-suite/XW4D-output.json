@@ -488,7 +488,7 @@
               "value": "abcde\n",
               "range": [
                 141,
-                158
+                157
               ],
               "loc": {
                 "start": {
@@ -496,14 +496,14 @@
                   "column": 7
                 },
                 "end": {
-                  "line": 17,
-                  "column": 0
+                  "line": 16,
+                  "column": 7
                 }
               }
             },
             "range": [
               134,
-              158
+              157
             ],
             "loc": {
               "start": {
@@ -511,15 +511,15 @@
                 "column": 0
               },
               "end": {
-                "line": 17,
-                "column": 0
+                "line": 16,
+                "column": 7
               }
             }
           }
         ],
         "range": [
           0,
-          158
+          157
         ],
         "loc": {
           "start": {
@@ -527,8 +527,8 @@
             "column": 0
           },
           "end": {
-            "line": 17,
-            "column": 0
+            "line": 16,
+            "column": 7
           }
         }
       },
@@ -1166,10 +1166,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "abcde\n",
+      "value": "abcde",
       "range": [
         152,
-        158
+        157
       ],
       "loc": {
         "start": {
@@ -1177,8 +1177,8 @@
           "column": 2
         },
         "end": {
-          "line": 17,
-          "column": 0
+          "line": 16,
+          "column": 7
         }
       }
     }

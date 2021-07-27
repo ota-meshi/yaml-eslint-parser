@@ -70,7 +70,7 @@
         "value": "%!PS-Adobe-2.0 # Not the first line\n",
         "range": [
           36,
-          74
+          73
         ],
         "loc": {
           "start": {
@@ -78,8 +78,8 @@
             "column": 0
           },
           "end": {
-            "line": 8,
-            "column": 0
+            "line": 7,
+            "column": 35
           }
         }
       },
@@ -195,10 +195,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "%!PS-Adobe-2.0 # Not the first line\n",
+      "value": "%!PS-Adobe-2.0 # Not the first line",
       "range": [
         38,
-        74
+        73
       ],
       "loc": {
         "start": {
@@ -206,8 +206,8 @@
           "column": 0
         },
         "end": {
-          "line": 8,
-          "column": 0
+          "line": 7,
+          "column": 35
         }
       }
     }

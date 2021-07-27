@@ -98,7 +98,7 @@
               "value": "Mark set a major league home run record in 1998.\n",
               "range": [
                 35,
-                90
+                89
               ],
               "loc": {
                 "start": {
@@ -106,14 +106,14 @@
                   "column": 16
                 },
                 "end": {
-                  "line": 5,
-                  "column": 0
+                  "line": 4,
+                  "column": 26
                 }
               }
             },
             "range": [
               19,
-              90
+              89
             ],
             "loc": {
               "start": {
@@ -121,8 +121,8 @@
                 "column": 0
               },
               "end": {
-                "line": 5,
-                "column": 0
+                "line": 4,
+                "column": 26
               }
             }
           },
@@ -157,7 +157,7 @@
               "value": "65 Home Runs\n0.278 Batting Average\n",
               "range": [
                 97,
-                138
+                137
               ],
               "loc": {
                 "start": {
@@ -165,14 +165,14 @@
                   "column": 7
                 },
                 "end": {
-                  "line": 8,
-                  "column": 0
+                  "line": 7,
+                  "column": 23
                 }
               }
             },
             "range": [
               90,
-              138
+              137
             ],
             "loc": {
               "start": {
@@ -180,15 +180,15 @@
                 "column": 0
               },
               "end": {
-                "line": 8,
-                "column": 0
+                "line": 7,
+                "column": 23
               }
             }
           }
         ],
         "range": [
           0,
-          138
+          137
         ],
         "loc": {
           "start": {
@@ -196,8 +196,8 @@
             "column": 0
           },
           "end": {
-            "line": 8,
-            "column": 0
+            "line": 7,
+            "column": 23
           }
         }
       },
@@ -330,10 +330,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "Mark set a major league\n  home run record in 1998.\n",
+      "value": "Mark set a major league\n  home run record in 1998.",
       "range": [
         39,
-        90
+        89
       ],
       "loc": {
         "start": {
@@ -341,8 +341,8 @@
           "column": 2
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 4,
+          "column": 26
         }
       }
     },
@@ -402,10 +402,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "65 Home Runs\n  0.278 Batting Average\n",
+      "value": "65 Home Runs\n  0.278 Batting Average",
       "range": [
         101,
-        138
+        137
       ],
       "loc": {
         "start": {
@@ -413,8 +413,8 @@
           "column": 2
         },
         "end": {
-          "line": 8,
-          "column": 0
+          "line": 7,
+          "column": 23
         }
       }
     }

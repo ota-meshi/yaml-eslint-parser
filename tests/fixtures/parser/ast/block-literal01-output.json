@@ -39,7 +39,7 @@
               "value": "1\n2\n3\n",
               "range": [
                 3,
-                17
+                16
               ],
               "loc": {
                 "start": {
@@ -47,14 +47,14 @@
                   "column": 3
                 },
                 "end": {
-                  "line": 5,
-                  "column": 0
+                  "line": 4,
+                  "column": 3
                 }
               }
             },
             "range": [
               0,
-              17
+              16
             ],
             "loc": {
               "start": {
@@ -62,15 +62,15 @@
                 "column": 0
               },
               "end": {
-                "line": 5,
-                "column": 0
+                "line": 4,
+                "column": 3
               }
             }
           }
         ],
         "range": [
           0,
-          17
+          16
         ],
         "loc": {
           "start": {
@@ -78,8 +78,8 @@
             "column": 0
           },
           "end": {
-            "line": 5,
-            "column": 0
+            "line": 4,
+            "column": 3
           }
         }
       },
@@ -158,10 +158,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "1\n  2\n  3\n",
+      "value": "1\n  2\n  3",
       "range": [
         7,
-        17
+        16
       ],
       "loc": {
         "start": {
@@ -169,8 +169,8 @@
           "column": 2
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 4,
+          "column": 3
         }
       }
     }

@@ -12,7 +12,7 @@
         "value": "ab cd\nef\n\ngh\n",
         "range": [
           0,
-          22
+          21
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 0
           },
           "end": {
-            "line": 9,
-            "column": 0
+            "line": 8,
+            "column": 3
           }
         }
       },
@@ -64,10 +64,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "ab\n cd\n \n ef\n\n\n gh\n",
+      "value": "ab\n cd\n \n ef\n\n\n gh",
       "range": [
         3,
-        22
+        21
       ],
       "loc": {
         "start": {
@@ -75,8 +75,8 @@
           "column": 1
         },
         "end": {
-          "line": 9,
-          "column": 0
+          "line": 8,
+          "column": 3
         }
       }
     }

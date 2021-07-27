@@ -16,7 +16,7 @@
             "value": "explicit indent and chomp",
             "range": [
               2,
-              34
+              33
             ],
             "loc": {
               "start": {
@@ -24,8 +24,8 @@
                 "column": 2
               },
               "end": {
-                "line": 3,
-                "column": 0
+                "line": 2,
+                "column": 27
               }
             }
           },
@@ -37,7 +37,7 @@
             "value": "chomp and explicit indent",
             "range": [
               36,
-              68
+              67
             ],
             "loc": {
               "start": {
@@ -45,15 +45,15 @@
                 "column": 2
               },
               "end": {
-                "line": 5,
-                "column": 0
+                "line": 4,
+                "column": 27
               }
             }
           }
         ],
         "range": [
           0,
-          68
+          67
         ],
         "loc": {
           "start": {
@@ -61,8 +61,8 @@
             "column": 0
           },
           "end": {
-            "line": 5,
-            "column": 0
+            "line": 4,
+            "column": 27
           }
         }
       },
@@ -123,10 +123,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "explicit indent and chomp\n",
+      "value": "explicit indent and chomp",
       "range": [
         8,
-        34
+        33
       ],
       "loc": {
         "start": {
@@ -134,8 +134,8 @@
           "column": 2
         },
         "end": {
-          "line": 3,
-          "column": 0
+          "line": 2,
+          "column": 27
         }
       }
     },
@@ -177,10 +177,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "chomp and explicit indent\n",
+      "value": "chomp and explicit indent",
       "range": [
         42,
-        68
+        67
       ],
       "loc": {
         "start": {
@@ -188,8 +188,8 @@
           "column": 2
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 4,
+          "column": 27
         }
       }
     }

@@ -12,7 +12,7 @@
         "value": "line1 line2 line3\n",
         "range": [
           4,
-          24
+          23
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 4
           },
           "end": {
-            "line": 5,
-            "column": 0
+            "line": 4,
+            "column": 5
           }
         }
       },
@@ -82,10 +82,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "line1\nline2\nline3\n",
+      "value": "line1\nline2\nline3",
       "range": [
         6,
-        24
+        23
       ],
       "loc": {
         "start": {
@@ -93,8 +93,8 @@
           "column": 0
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 4,
+          "column": 5
         }
       }
     }

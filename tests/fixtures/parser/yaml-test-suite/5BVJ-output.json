@@ -39,7 +39,7 @@
               "value": "some\ntext\n",
               "range": [
                 9,
-                25
+                24
               ],
               "loc": {
                 "start": {
@@ -47,14 +47,14 @@
                   "column": 9
                 },
                 "end": {
-                  "line": 4,
-                  "column": 0
+                  "line": 3,
+                  "column": 6
                 }
               }
             },
             "range": [
               0,
-              25
+              24
             ],
             "loc": {
               "start": {
@@ -62,8 +62,8 @@
                 "column": 0
               },
               "end": {
-                "line": 4,
-                "column": 0
+                "line": 3,
+                "column": 6
               }
             }
           },
@@ -98,7 +98,7 @@
               "value": "some text\n",
               "range": [
                 33,
-                49
+                48
               ],
               "loc": {
                 "start": {
@@ -106,14 +106,14 @@
                   "column": 8
                 },
                 "end": {
-                  "line": 7,
-                  "column": 0
+                  "line": 6,
+                  "column": 6
                 }
               }
             },
             "range": [
               25,
-              49
+              48
             ],
             "loc": {
               "start": {
@@ -121,15 +121,15 @@
                 "column": 0
               },
               "end": {
-                "line": 7,
-                "column": 0
+                "line": 6,
+                "column": 6
               }
             }
           }
         ],
         "range": [
           0,
-          49
+          48
         ],
         "loc": {
           "start": {
@@ -137,8 +137,8 @@
             "column": 0
           },
           "end": {
-            "line": 7,
-            "column": 0
+            "line": 6,
+            "column": 6
           }
         }
       },
@@ -217,10 +217,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "some\n  text\n",
+      "value": "some\n  text",
       "range": [
         13,
-        25
+        24
       ],
       "loc": {
         "start": {
@@ -228,8 +228,8 @@
           "column": 2
         },
         "end": {
-          "line": 4,
-          "column": 0
+          "line": 3,
+          "column": 6
         }
       }
     },
@@ -289,10 +289,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "some\n  text\n",
+      "value": "some\n  text",
       "range": [
         37,
-        49
+        48
       ],
       "loc": {
         "start": {
@@ -300,8 +300,8 @@
           "column": 2
         },
         "end": {
-          "line": 7,
-          "column": 0
+          "line": 6,
+          "column": 6
         }
       }
     }

@@ -12,7 +12,7 @@
         "value": "\\//||\\/||\n// ||  ||__\n",
         "range": [
           16,
-          44
+          43
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 4
           },
           "end": {
-            "line": 5,
-            "column": 0
+            "line": 4,
+            "column": 13
           }
         }
       },
@@ -101,10 +101,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "\\//||\\/||\n  // ||  ||__\n",
+      "value": "\\//||\\/||\n  // ||  ||__",
       "range": [
         20,
-        44
+        43
       ],
       "loc": {
         "start": {
@@ -112,8 +112,8 @@
           "column": 2
         },
         "end": {
-          "line": 5,
-          "column": 0
+          "line": 4,
+          "column": 13
         }
       }
     }

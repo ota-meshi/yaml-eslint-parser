@@ -79,7 +79,7 @@
             "value": "block\n",
             "range": [
               46,
-              56
+              55
             ],
             "loc": {
               "start": {
@@ -87,8 +87,8 @@
                 "column": 2
               },
               "end": {
-                "line": 6,
-                "column": 0
+                "line": 5,
+                "column": 7
               }
             }
           },
@@ -294,10 +294,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "block\n",
+      "value": "block",
       "range": [
         50,
-        56
+        55
       ],
       "loc": {
         "start": {
@@ -305,8 +305,8 @@
           "column": 2
         },
         "end": {
-          "line": 6,
-          "column": 0
+          "line": 5,
+          "column": 7
         }
       }
     },

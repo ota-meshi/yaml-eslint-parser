@@ -12,7 +12,7 @@
         "value": "folded text\n",
         "range": [
           0,
-          16
+          15
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 0
           },
           "end": {
-            "line": 4,
-            "column": 0
+            "line": 3,
+            "column": 5
           }
         }
       },
@@ -64,10 +64,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "folded\n text\n",
+      "value": "folded\n text",
       "range": [
         3,
-        16
+        15
       ],
       "loc": {
         "start": {
@@ -75,8 +75,8 @@
           "column": 1
         },
         "end": {
-          "line": 4,
-          "column": 0
+          "line": 3,
+          "column": 5
         }
       }
     }

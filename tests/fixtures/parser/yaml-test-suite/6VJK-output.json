@@ -12,7 +12,7 @@
         "value": "Sammy Sosa completed another fine season with great stats.\n\n  63 Home Runs\n  0.288 Batting Average\n\nWhat a year!\n",
         "range": [
           0,
-          120
+          119
         ],
         "loc": {
           "start": {
@@ -20,8 +20,8 @@
             "column": 0
           },
           "end": {
-            "line": 9,
-            "column": 0
+            "line": 8,
+            "column": 13
           }
         }
       },
@@ -64,10 +64,10 @@
     },
     {
       "type": "BlockFolded",
-      "value": "Sammy Sosa completed another\n fine season with great stats.\n\n   63 Home Runs\n   0.288 Batting Average\n\n What a year!\n",
+      "value": "Sammy Sosa completed another\n fine season with great stats.\n\n   63 Home Runs\n   0.288 Batting Average\n\n What a year!",
       "range": [
         3,
-        120
+        119
       ],
       "loc": {
         "start": {
@@ -75,8 +75,8 @@
           "column": 1
         },
         "end": {
-          "line": 9,
-          "column": 0
+          "line": 8,
+          "column": 13
         }
       }
     }

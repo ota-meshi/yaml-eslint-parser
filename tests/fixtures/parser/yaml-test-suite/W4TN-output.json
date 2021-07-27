@@ -31,7 +31,7 @@
         "value": "%!PS-Adobe-2.0\n",
         "range": [
           14,
-          31
+          30
         ],
         "loc": {
           "start": {
@@ -39,8 +39,8 @@
             "column": 4
           },
           "end": {
-            "line": 4,
-            "column": 0
+            "line": 3,
+            "column": 14
           }
         }
       },
@@ -176,10 +176,10 @@
     },
     {
       "type": "BlockLiteral",
-      "value": "%!PS-Adobe-2.0\n",
+      "value": "%!PS-Adobe-2.0",
       "range": [
         16,
-        31
+        30
       ],
       "loc": {
         "start": {
@@ -187,8 +187,8 @@
           "column": 0
         },
         "end": {
-          "line": 4,
-          "column": 0
+          "line": 3,
+          "column": 14
         }
       }
     },
