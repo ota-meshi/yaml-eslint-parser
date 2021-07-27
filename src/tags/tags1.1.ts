@@ -10,7 +10,7 @@ export const TRUE: TagResolver<true> = {
     tag: "tag:yaml.org,2002:bool",
     test(str) {
         // see https://yaml.org/type/bool.html
-        return /^(y|Y|yes|Yes|YES|true|True|TRUE|on|On|ON)$/u.test(str)
+        return /^(?:y|Y|yes|Yes|YES|true|True|TRUE|on|On|ON)$/u.test(str)
     },
     resolve() {
         return true
@@ -21,7 +21,7 @@ export const FALSE: TagResolver<false> = {
     tag: "tag:yaml.org,2002:bool",
     test(str) {
         // see https://yaml.org/type/bool.html
-        return /^(n|N|no|No|NO|false|False|FALSE|off|Off|OFF)$/u.test(str)
+        return /^(?:n|N|no|No|NO|false|False|FALSE|off|Off|OFF)$/u.test(str)
     },
     resolve() {
         return false
@@ -32,7 +32,7 @@ export const INT: TagResolver<number> = {
     tag: "tag:yaml.org,2002:int",
     test(str) {
         // see https://yaml.org/type/int.html
-        return /^[-+]?(0|[1-9][\d_]*)$/u.test(str)
+        return /^[+-]?(?:0|[1-9][\d_]*)$/u.test(str)
     },
     resolve(str) {
         return resolveInt(str, 0, 10)
@@ -43,7 +43,7 @@ export const INT_BASE2: TagResolver<number> = {
     tag: "tag:yaml.org,2002:int",
     test(str) {
         // see https://yaml.org/type/int.html
-        return /^[-+]?0b[0-1_]+$/u.test(str)
+        return /^[+-]?0b[01_]+$/u.test(str)
     },
     resolve(str) {
         return resolveInt(str, 2, 2)
@@ -54,7 +54,7 @@ export const INT_BASE8: TagResolver<number> = {
     tag: "tag:yaml.org,2002:int",
     test(str) {
         // see https://yaml.org/type/int.html
-        return /^[-+]?0[0-7_]+$/u.test(str)
+        return /^[+-]?0[0-7_]+$/u.test(str)
     },
     resolve(str) {
         return resolveInt(str, 1, 8)
@@ -65,7 +65,7 @@ export const INT_BASE16: TagResolver<number> = {
     tag: "tag:yaml.org,2002:int",
     test(str) {
         // see https://yaml.org/type/int.html
-        return /^[-+]?0x[\da-fA-F_]+$/u.test(str)
+        return /^[+-]?0x[\dA-F_a-f]+$/u.test(str)
     },
     resolve(str) {
         return resolveInt(str, 2, 16)
@@ -76,7 +76,7 @@ export const INT_BASE60: TagResolver<number> = {
     tag: "tag:yaml.org,2002:int",
     test(str) {
         // see https://yaml.org/type/int.html
-        return /^[-+]?[1-9][\d_]*(:[0-5]?\d)+$/u.test(str)
+        return /^[+-]?[1-9][\d_]*(?::[0-5]?\d)+$/u.test(str)
     },
     resolve(str) {
         return resolveBase60(str.split(/:/gu), true)
@@ -88,9 +88,9 @@ export const FLOAT: TagResolver<number> = {
     test(str) {
         // see https://yaml.org/type/float.html
         return (
-            /^[-+]?(\d[\d_]*)?\.[\d_]*([eE][-+]\d+)?$/u.test(str) ||
+            /^[+-]?(?:\d[\d_]*)?\.[\d_]*(?:[Ee][+-]\d+)?$/u.test(str) ||
             // The previous regexp cannot handle "e" without dot. spec bug?
-            /^[-+]?(\d[\d_]*)?([eE][-+]\d+)?$/u.test(str)
+            /^[+-]?(?:\d[\d_]*)?(?:[Ee][+-]\d+)?$/u.test(str)
         )
     },
     resolve(str) {
@@ -102,7 +102,7 @@ export const FLOAT_BASE60: TagResolver<number> = {
     tag: "tag:yaml.org,2002:float",
     test(str) {
         // see https://yaml.org/type/float.html
-        return /^[-+]?\d[\d_]*(:[0-5]?\d)+\.[\d_]*$/u.test(str)
+        return /^[+-]?\d[\d_]*(?::[0-5]?\d)+\.[\d_]*$/u.test(str)
     },
     resolve(str) {
         return resolveBase60(str.split(/:/gu), false)
