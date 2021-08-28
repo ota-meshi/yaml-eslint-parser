@@ -147,7 +147,7 @@ describe("yaml-test-suite.", () => {
             it("most to generate the expected AST.", () => {
                 try {
                     ast = parse(input, inputFileName)
-                } catch (e) {
+                } catch (e: any) {
                     if (
                         typeof e.lineNumber === "number" &&
                         typeof e.column === "number"
