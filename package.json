@@ -6,6 +6,9 @@
     "files": [
         "lib"
     ],
+    "engines": {
+        "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+    },
     "scripts": {
         "prebuild": "npm run -s clean",
         "build": "tsc --project ./tsconfig.build.json",
@@ -34,9 +37,9 @@
     },
     "homepage": "https://github.com/ota-meshi/yaml-eslint-parser#readme",
     "dependencies": {
-        "eslint-visitor-keys": "^2.1.0",
-        "lodash": "^4.17.20",
-        "yaml": "^1.10.0"
+        "eslint-visitor-keys": "^3.0.0",
+        "lodash": "^4.17.21",
+        "yaml": "^1.10.2"
     },
     "devDependencies": {
         "@ota-meshi/eslint-plugin": "^0.10.0",
