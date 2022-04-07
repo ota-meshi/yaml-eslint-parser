@@ -19,7 +19,8 @@
         "cover": "nyc --reporter=lcov npm run test",
         "debug": "mocha --require ts-node/register/transpile-only \"tests/src/**/*.ts\" --reporter dot",
         "preversion": "npm run lint && npm test",
-        "update-fixtures": "ts-node ./tools/update-fixtures.ts"
+        "update-fixtures": "ts-node ./tools/update-fixtures.ts",
+        "benchmark": "ts-node --transpile-only benchmark/index.ts"
     },
     "repository": {
         "type": "git",
@@ -44,6 +45,7 @@
     },
     "devDependencies": {
         "@ota-meshi/eslint-plugin": "^0.10.0",
+        "@types/benchmark": "^2.1.1",
         "@types/eslint": "^8.0.0",
         "@types/eslint-visitor-keys": "^1.0.0",
         "@types/lodash": "^4.14.167",
@@ -51,6 +53,7 @@
         "@types/node": "^16.0.0",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "@typescript-eslint/parser": "^5.0.0",
+        "benchmark": "^2.1.4",
         "eslint": "^8.0.0",
         "eslint-config-prettier": "^8.0.0",
         "eslint-plugin-eslint-comments": "^3.2.0",
