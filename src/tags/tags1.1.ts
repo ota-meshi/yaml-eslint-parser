@@ -79,7 +79,7 @@ export const INT_BASE60: TagResolver<number> = {
         return /^[+-]?[1-9][\d_]*(?::[0-5]?\d)+$/u.test(str)
     },
     resolve(str) {
-        return resolveBase60(str.split(/:/gu), true)
+        return resolveBase60(str.split(/:/u), true)
     },
 }
 export const FLOAT: TagResolver<number> = {
@@ -105,7 +105,7 @@ export const FLOAT_BASE60: TagResolver<number> = {
         return /^[+-]?\d[\d_]*(?::[0-5]?\d)+\.[\d_]*$/u.test(str)
     },
     resolve(str) {
-        return resolveBase60(str.split(/:/gu), false)
+        return resolveBase60(str.split(/:/u), false)
     },
 }
 // see https://yaml.org/type/float.html
