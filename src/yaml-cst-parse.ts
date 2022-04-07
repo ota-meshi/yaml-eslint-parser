@@ -15,17 +15,16 @@ export function parseAllDocsToCST(ctx: Context): {
         // prettyErrors: false,
     })
     const cstNodes: CST.Token[] = []
-    const nodes = Array.from(
-        composer.compose(
-            (function* () {
-                for (const cst of parser.parse(ctx.code)) {
-                    cstNodes.push(cst)
-                    yield cst
-                }
-            })(),
-        ),
-    )
-    for (const doc of nodes) {
+    const nodes: Document.Parsed[] = []
+
+    for (const doc of composer.compose(
+        (function* () {
+            for (const cst of parser.parse(ctx.code)) {
+                cstNodes.push(cst)
+                yield cst
+            }
+        })(),
+    )) {
         for (const error of doc.errors) {
             throw ctx.throwError(error.message, error.pos[0])
         }
@@ -33,6 +32,7 @@ export function parseAllDocsToCST(ctx: Context): {
         // for (const error of doc.warnings) {
         //     throw ctx.throwError(error.message, error.pos[0])
         // }
+        nodes.push(doc)
     }
 
     return { cstNodes, nodes }
