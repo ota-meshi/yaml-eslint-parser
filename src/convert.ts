@@ -23,6 +23,8 @@ import type {
     YAMLWithMeta,
     YAMLSequence,
     YAMLNode,
+    Position,
+    SourceLocation,
 } from "./ast"
 import type { Context } from "./context"
 import { tagResolvers } from "./tags"
@@ -1469,8 +1471,8 @@ function convertAnchorAndTag<V extends YAMLContent>(
             parent,
             ...(valueLoc
                 ? {
-                      range: clone(valueLoc.range),
-                      loc: clone(valueLoc.loc),
+                      range: [...valueLoc.range],
+                      loc: cloneLoc(valueLoc.loc),
                   }
                 : ctx.getConvertLocation(...toRange(cst))),
         }
@@ -1653,18 +1655,21 @@ function sort(tokens: (Token | Comment)[]) {
 /**
  * clone the location.
  */
-function clone<T>(loc: T): T {
-    if (typeof loc !== "object") {
-        return loc
+function clonePos(loc: Position): Position {
+    return {
+        line: loc.line,
+        column: loc.column,
     }
-    if (Array.isArray(loc)) {
-        return (loc as any).map(clone)
+}
+
+/**
+ * clone the location.
+ */
+function cloneLoc(loc: SourceLocation): SourceLocation {
+    return {
+        start: clonePos(loc.start),
+        end: clonePos(loc.end),
     }
-    const n: any = {}
-    for (const key in loc) {
-        n[key] = clone(loc[key])
-    }
-    return n
 }
 
 /**
@@ -1692,7 +1697,7 @@ function adjustStartLoc(ast: YAMLNode, first: Locations | null | undefined) {
     if (first && first.range[0] < ast.range[0]) {
         // adjust location
         ast.range[0] = first.range[0]
-        ast.loc.start = clone(first.loc.start)
+        ast.loc.start = clonePos(first.loc.start)
     }
 }
 
@@ -1701,6 +1706,6 @@ function adjustEndLoc(ast: YAMLNode, last: Locations | null | undefined) {
     if (last && ast.range[1] < last.range[1]) {
         // adjust location
         ast.range[1] = last.range[1]
-        ast.loc.end = clone(last.loc.end)
+        ast.loc.end = clonePos(last.loc.end)
     }
 }
