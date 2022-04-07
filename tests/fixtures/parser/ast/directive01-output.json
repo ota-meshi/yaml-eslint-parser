@@ -7,6 +7,8 @@
         {
           "type": "YAMLDirective",
           "value": "%YAML 1.2",
+          "kind": "YAML",
+          "version": "1.2",
           "range": [
             0,
             9
@@ -29,6 +31,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:str",
+          "raw": "!!str",
           "range": [
             14,
             19

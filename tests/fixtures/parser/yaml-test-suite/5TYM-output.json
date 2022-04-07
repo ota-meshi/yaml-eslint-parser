@@ -7,6 +7,9 @@
         {
           "type": "YAMLDirective",
           "value": "%TAG !m! !my-",
+          "kind": "TAG",
+          "handle": "!m!",
+          "prefix": "!my-",
           "range": [
             0,
             13
@@ -29,6 +32,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "!my-light",
+          "raw": "!m!light",
           "range": [
             30,
             38
@@ -101,6 +105,9 @@
         {
           "type": "YAMLDirective",
           "value": "%TAG !m! !my-",
+          "kind": "TAG",
+          "handle": "!m!",
+          "prefix": "!my-",
           "range": [
             55,
             68
@@ -123,6 +130,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "!my-light",
+          "raw": "!m!light",
           "range": [
             86,
             94

@@ -54,6 +54,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:map",
+                "raw": "!!map",
                 "range": [
                   14,
                   19

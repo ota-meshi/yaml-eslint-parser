@@ -10,6 +10,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:str",
+          "raw": "!",
           "range": [
             4,
             5

@@ -54,6 +54,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "!local",
+                "raw": "!local",
                 "range": [
                   10,
                   16

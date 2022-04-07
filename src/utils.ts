@@ -211,15 +211,14 @@ ${tagText} ${text}`).toJSON()
  */
 export function getYAMLVersion(document: YAMLDocument): YAMLVersion {
     for (const dir of document.directives) {
-        const yamlVer = /^%YAML\s+(\d\.\d)$/.exec(dir.value)?.[1]
-        if (yamlVer) {
-            if (yamlVer === "1.1") {
+        if (dir.kind === "YAML") {
+            if (dir.version === "1.1") {
                 return "1.1"
             }
-            if (yamlVer === "1.2") {
+            if (dir.version === "1.2") {
                 return "1.2"
             }
-            if (yamlVer === "1.3") {
+            if (dir.version === "1.3") {
                 return "1.3"
             }
             // Other versions are not supported

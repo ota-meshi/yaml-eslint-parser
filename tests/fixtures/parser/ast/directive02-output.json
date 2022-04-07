@@ -6,13 +6,13 @@
       "directives": [
         {
           "type": "YAMLDirective",
-          "value": "%TAG !e! tag:example.com,2000:app/",
+          "value": "%TAG !yaml! tag:yaml.org,2002:",
           "kind": "TAG",
-          "handle": "!e!",
-          "prefix": "tag:example.com,2000:app/",
+          "handle": "!yaml!",
+          "prefix": "tag:yaml.org,2002:",
           "range": [
             0,
-            34
+            30
           ],
           "loc": {
             "start": {
@@ -21,7 +21,7 @@
             },
             "end": {
               "line": 1,
-              "column": 34
+              "column": 30
             }
           }
         }
@@ -31,11 +31,11 @@
         "anchor": null,
         "tag": {
           "type": "YAMLTag",
-          "tag": "tag:example.com,2000:app/foo",
-          "raw": "!e!foo",
+          "tag": "tag:yaml.org,2002:str",
+          "raw": "!yaml!str",
           "range": [
-            39,
-            45
+            35,
+            44
           ],
           "loc": {
             "start": {
@@ -44,34 +44,34 @@
             },
             "end": {
               "line": 3,
-              "column": 6
+              "column": 9
             }
           }
         },
         "value": {
           "type": "YAMLScalar",
-          "style": "double-quoted",
-          "strValue": "bar",
-          "value": "bar",
-          "raw": "\"bar\"",
+          "style": "plain",
+          "strValue": "123",
+          "value": 123,
+          "raw": "123",
           "range": [
-            46,
-            51
+            45,
+            48
           ],
           "loc": {
             "start": {
               "line": 3,
-              "column": 7
+              "column": 10
             },
             "end": {
               "line": 3,
-              "column": 12
+              "column": 13
             }
           }
         },
         "range": [
-          39,
-          51
+          35,
+          48
         ],
         "loc": {
           "start": {
@@ -80,13 +80,13 @@
           },
           "end": {
             "line": 3,
-            "column": 12
+            "column": 13
           }
         }
       },
       "range": [
         0,
-        52
+        49
       ],
       "loc": {
         "start": {
@@ -105,10 +105,10 @@
   "tokens": [
     {
       "type": "Directive",
-      "value": "%TAG !e! tag:example.com,2000:app/",
+      "value": "%TAG !yaml! tag:yaml.org,2002:",
       "range": [
         0,
-        34
+        30
       ],
       "loc": {
         "start": {
@@ -117,7 +117,7 @@
         },
         "end": {
           "line": 1,
-          "column": 34
+          "column": 30
         }
       }
     },
@@ -125,8 +125,8 @@
       "type": "Marker",
       "value": "---",
       "range": [
-        35,
-        38
+        31,
+        34
       ],
       "loc": {
         "start": {
@@ -143,8 +143,8 @@
       "type": "Punctuator",
       "value": "!",
       "range": [
-        39,
-        40
+        35,
+        36
       ],
       "loc": {
         "start": {
@@ -159,10 +159,10 @@
     },
     {
       "type": "Identifier",
-      "value": "e!foo",
+      "value": "yaml!str",
       "range": [
-        40,
-        45
+        36,
+        44
       ],
       "loc": {
         "start": {
@@ -171,32 +171,32 @@
         },
         "end": {
           "line": 3,
-          "column": 6
+          "column": 9
         }
       }
     },
     {
-      "type": "String",
-      "value": "\"bar\"",
+      "type": "Numeric",
+      "value": "123",
       "range": [
-        46,
-        51
+        45,
+        48
       ],
       "loc": {
         "start": {
           "line": 3,
-          "column": 7
+          "column": 10
         },
         "end": {
           "line": 3,
-          "column": 12
+          "column": 13
         }
       }
     }
   ],
   "range": [
     0,
-    52
+    49
   ],
   "loc": {
     "start": {

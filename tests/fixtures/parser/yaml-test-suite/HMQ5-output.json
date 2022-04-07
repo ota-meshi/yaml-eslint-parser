@@ -33,6 +33,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:str",
+                "raw": "!!str",
                 "range": [
                   0,
                   5
@@ -90,6 +91,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:str",
+                "raw": "!!str",
                 "range": [
                   19,
                   24

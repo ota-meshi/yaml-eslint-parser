@@ -14,6 +14,7 @@
             "tag": {
               "type": "YAMLTag",
               "tag": "tag:yaml.org,2002:foo",
+              "raw": "!!foo",
               "range": [
                 2,
                 7
@@ -71,6 +72,7 @@
             "tag": {
               "type": "YAMLTag",
               "tag": "!bar",
+              "raw": "!bar",
               "range": [
                 14,
                 18

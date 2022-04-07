@@ -96,6 +96,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "!foo",
+                "raw": "!foo",
                 "range": [
                   31,
                   35

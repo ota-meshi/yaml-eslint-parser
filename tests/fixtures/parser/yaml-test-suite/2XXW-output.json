@@ -10,6 +10,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:set",
+          "raw": "!!set",
           "range": [
             91,
             96

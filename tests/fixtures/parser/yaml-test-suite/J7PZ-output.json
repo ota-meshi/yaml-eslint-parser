@@ -10,6 +10,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:omap",
+          "raw": "!!omap",
           "range": [
             99,
             105

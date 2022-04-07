@@ -37,6 +37,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:seq",
+                "raw": "!!seq",
                 "range": [
                   10,
                   15
@@ -83,6 +84,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:seq",
+                      "raw": "!!seq",
                       "range": [
                         26,
                         31
@@ -229,6 +231,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:map",
+                "raw": "!!map",
                 "range": [
                   51,
                   56

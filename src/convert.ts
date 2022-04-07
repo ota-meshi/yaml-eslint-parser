@@ -38,10 +38,17 @@ import type {
     YAMLMap,
     YAMLSeq,
 } from "yaml"
-import { isDocument } from "yaml"
-import { isPair as isBasePair, isAlias, isScalar, isSeq, isMap } from "yaml"
+import {
+    isDocument,
+    isPair as isBasePair,
+    isAlias,
+    isScalar,
+    isSeq,
+    isMap,
+} from "yaml"
 
 type PairParsed = BasePair<ParsedNode, ParsedNode | null>
+type Directives = Document.Parsed["directives"]
 
 const isPair = isBasePair as (node: any) => node is PairParsed
 
@@ -225,7 +232,9 @@ function convertDocument(
         ...loc,
     }
 
-    ast.directives.push(...convertDocumentHead(directives, ctx, ast))
+    ast.directives.push(
+        ...convertDocumentHead(node.directives, directives, ctx, ast),
+    )
     let last: Locations | undefined = ast.directives[ast.directives.length - 1]
 
     const startTokens = [...doc.start]
@@ -275,12 +284,13 @@ function convertDocument(
  * Convert YAML.Document.Parsed to YAMLDirective[]
  */
 function* convertDocumentHead(
+    node: Directives,
     directives: CST.Directive[],
     ctx: Context,
     parent: YAMLDocument,
 ): IterableIterator<YAMLDirective> {
     for (const n of directives) {
-        yield convertDirective(n, ctx, parent)
+        yield convertDirective(node, n, ctx, parent)
     }
 }
 
@@ -288,17 +298,47 @@ function* convertDocumentHead(
  * Convert CSTDirective to YAMLDirective
  */
 function convertDirective(
-    node: CST.Directive,
+    node: Directives,
+    cst: CST.Directive,
     ctx: Context,
     parent: YAMLDocument,
 ): YAMLDirective {
-    const loc = ctx.getConvertLocation(...toRange(node))
+    const loc = ctx.getConvertLocation(...toRange(cst))
+
     const value = ctx.code.slice(...loc.range)
-    const ast: YAMLDirective = {
-        type: "YAMLDirective",
-        value,
-        parent,
-        ...loc,
+
+    const parts = cst.source.trim().split(/[\t ]+/)
+    const name = parts.shift()
+
+    let ast: YAMLDirective
+    if (name === "%YAML") {
+        ast = {
+            type: "YAMLDirective",
+            value,
+            kind: "YAML",
+            version: node.yaml.version,
+            parent,
+            ...loc,
+        }
+    } else if (name === "%TAG") {
+        const [handle, prefix] = parts
+        ast = {
+            type: "YAMLDirective",
+            value,
+            kind: "TAG",
+            handle,
+            prefix,
+            parent,
+            ...loc,
+        }
+    } else {
+        ast = {
+            type: "YAMLDirective",
+            value,
+            kind: null,
+            parent,
+            ...loc,
+        }
     }
     ctx.addToken("Directive", loc.range)
     return ast
@@ -1489,6 +1529,7 @@ function convertTag(
     const ast: YAMLTag = {
         type: "YAMLTag",
         tag: resolvedTag,
+        raw: cst.source,
         parent,
         ...loc,
     }

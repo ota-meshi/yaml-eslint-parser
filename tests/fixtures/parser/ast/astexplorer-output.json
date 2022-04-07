@@ -64,6 +64,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:map",
+                      "raw": "!!map",
                       "range": [
                         308,
                         313
@@ -335,6 +336,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:map",
+                      "raw": "!!map",
                       "range": [
                         387,
                         392
@@ -664,6 +666,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:omap",
+                      "raw": "!!omap",
                       "range": [
                         589,
                         595
@@ -995,6 +998,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:omap",
+                      "raw": "!!omap",
                       "range": [
                         795,
                         801
@@ -1384,6 +1388,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:pairs",
+                      "raw": "!!pairs",
                       "range": [
                         965,
                         972
@@ -1794,6 +1799,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:pairs",
+                      "raw": "!!pairs",
                       "range": [
                         1087,
                         1094
@@ -2104,6 +2110,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:set",
+                      "raw": "!!set",
                       "range": [
                         1272,
                         1277
@@ -2315,6 +2322,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:set",
+                      "raw": "!!set",
                       "range": [
                         1365,
                         1370
@@ -2584,6 +2592,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:seq",
+                      "raw": "!!seq",
                       "range": [
                         1557,
                         1562
@@ -2867,6 +2876,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:seq",
+                      "raw": "!!seq",
                       "range": [
                         1891,
                         1896
@@ -6554,6 +6564,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:js/regexp",
+                      "raw": "!!js/regexp",
                       "range": [
                         4356,
                         4367
@@ -6649,6 +6660,7 @@
                     "tag": {
                       "type": "YAMLTag",
                       "tag": "tag:yaml.org,2002:js/regexp",
+                      "raw": "!!js/regexp",
                       "range": [
                         4393,
                         4404
@@ -6775,6 +6787,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:js/undefined",
+                "raw": "!!js/undefined",
                 "range": [
                   4512,
                   4526
@@ -6870,6 +6883,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:js/function",
+                "raw": "!!js/function",
                 "range": [
                   4621,
                   4634
@@ -6965,6 +6979,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "!sexy",
+                "raw": "!sexy",
                 "range": [
                   5356,
                   5361
