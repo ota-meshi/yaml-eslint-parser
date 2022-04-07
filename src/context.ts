@@ -1,13 +1,5 @@
-import type {
-    Comment,
-    Locations,
-    Position,
-    Range,
-    Token,
-    YAMLProgram,
-} from "./ast"
+import type { Comment, Locations, Position, Range, Token } from "./ast"
 import lodash from "lodash"
-import { traverseNodes } from "./traverse"
 import type { CST } from "yaml"
 import { ParseError } from "."
 
@@ -18,79 +10,27 @@ export class Context {
 
     public readonly comments: Comment[] = []
 
-    public hasCR = false
-
     private readonly locs: LinesAndColumns
 
     private readonly locsMap = new Map<number, Position>()
 
-    private readonly crs: number[]
-
     public constructor(origCode: string) {
         const len = origCode.length
         const lineStartIndices = [0]
-        const crs: number[] = []
-        let code = ""
         for (let index = 0; index < len; ) {
             const c = origCode[index++]
             if (c === "\r") {
-                const next = origCode[index++] || ""
+                const next = origCode[index]
                 if (next === "\n") {
-                    code += next
-                    crs.push(index - 2)
-                } else {
-                    code += `\n${next}`
+                    index++
                 }
-                lineStartIndices.push(code.length)
-            } else {
-                code += c
-                if (c === "\n") {
-                    lineStartIndices.push(code.length)
-                }
+                lineStartIndices.push(index)
+            } else if (c === "\n") {
+                lineStartIndices.push(index)
             }
         }
-        this.code = code
+        this.code = origCode
         this.locs = new LinesAndColumns(lineStartIndices)
-        this.hasCR = Boolean(crs.length)
-        this.crs = crs
-    }
-
-    public remapCR(ast: YAMLProgram): void {
-        const cache: Record<number, number> = {}
-        const remapIndex = (index: number): number => {
-            let result = cache[index]
-            if (result != null) {
-                return result
-            }
-            result = index
-            for (const cr of this.crs) {
-                if (cr < result) {
-                    result++
-                } else {
-                    break
-                }
-            }
-            return (cache[index] = result)
-        }
-        // eslint-disable-next-line func-style -- ignore
-        const remapRange = (range: [number, number]): [number, number] => {
-            return [remapIndex(range[0]), remapIndex(range[1])]
-        }
-
-        traverseNodes(ast, {
-            enterNode(node) {
-                node.range = remapRange(node.range)
-            },
-            leaveNode() {
-                // ignore
-            },
-        })
-        for (const token of ast.tokens) {
-            token.range = remapRange(token.range)
-        }
-        for (const comment of ast.comments) {
-            comment.range = remapRange(comment.range)
-        }
     }
 
     public getLocFromIndex(index: number): { line: number; column: number } {

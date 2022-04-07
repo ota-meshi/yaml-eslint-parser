@@ -23,10 +23,6 @@ export function parseForESLint(
 
         const ast = convertRoot(docs.cstNodes, docs.nodes, ctx)
 
-        if (ctx.hasCR) {
-            ctx.remapCR(ast)
-        }
-
         return {
             ast,
             visitorKeys: KEYS,

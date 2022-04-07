@@ -232,6 +232,22 @@ describe("yaml-test-suite.", () => {
                 const astForWin = parse(inputForWin, inputFileName)
                 // check tokens
                 checkTokens(astForWin, inputForWin)
+
+                // const astJson = JSON.stringify(astForWin, replacerForWin, 2)
+                // assert.strictEqual(
+                //     astJson,
+                //     JSON.stringify(JSON.parse(output), replacerForWin, 2),
+                // )
+
+                // const value = fs.readFileSync(valueFileName, "utf8")
+                // assert.strictEqual(
+                //     JSON.stringify(
+                //         getStaticYAMLValue(astForWin),
+                //         valueReplacer,
+                //         2,
+                //     ),
+                //     value,
+                // )
             })
         })
     }
@@ -254,10 +270,7 @@ function checkTokens(ast: YAMLProgram, input: string) {
     for (const token of allTokens) {
         const value = token.type === "Block" ? `#${token.value}` : token.value
 
-        assert.strictEqual(
-            value,
-            input.slice(...token.range).replace(/\r\n/g, "\n"),
-        )
+        assert.strictEqual(value, input.slice(...token.range))
     }
 }
 
