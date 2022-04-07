@@ -26,6 +26,7 @@ import type {
 } from "./ast"
 import type { Context } from "./context"
 import { tagResolvers } from "./tags"
+import type { YAMLVersion } from "./utils"
 import { getYAMLVersion } from "./utils"
 import type {
     Alias,
@@ -1152,7 +1153,7 @@ function convertPlain(
      */
     function parseValueFromText(
         str: string,
-        version: "1.2" | "1.1",
+        version: YAMLVersion,
     ): string | number | boolean | null {
         for (const tagResolver of tagResolvers[version]) {
             if (tagResolver.test(str)) {

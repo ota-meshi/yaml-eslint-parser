@@ -11,8 +11,6 @@ export function parseAllDocsToCST(ctx: Context): {
     const parser = new Parser(lineCounter.addNewLine)
     const composer = new Composer({
         keepSourceTokens: true,
-        // lineCounter,
-        // prettyErrors: false,
     })
     const cstNodes: CST.Token[] = []
     const nodes: Document.Parsed[] = []
