@@ -93,7 +93,7 @@ class PreTokens {
         this.index--
     }
 
-    public forEach(callback: (cst: NormalSourceToken) => void) {
+    public each(callback: (cst: NormalSourceToken) => void) {
         let cst
         while ((cst = this.consume())) {
             callback(cst)
@@ -396,7 +396,11 @@ function convertDocumentBody(
     if (cst) {
         return convertContentNode(preTokens, cst, node, ctx, parent, parent)
     }
-    preTokens.forEach((t) => processAnyToken(t, ctx))
+    const token = preTokens.first()
+    /* istanbul ignore if */
+    if (token) {
+        throw ctx.throwUnexpectedTokenError(token)
+    }
     return null
 }
 
@@ -1482,7 +1486,7 @@ function convertAnchorAndTag<V extends YAMLContent>(
         return meta
     }
 
-    preTokens.forEach((cst) => {
+    preTokens.each((cst) => {
         if (isAnchorCST(cst)) {
             const ast = getMetaAst(cst)
             const anchor = convertAnchor(cst, ctx, ast, doc)
@@ -1500,7 +1504,7 @@ function convertAnchorAndTag<V extends YAMLContent>(
             throw ctx.throwUnexpectedTokenError(cst)
         }
     })
-    return meta || (value as never)
+    return meta || value!
 }
 
 /**
