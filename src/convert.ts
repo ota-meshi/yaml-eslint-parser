@@ -52,6 +52,53 @@ type Directives = Document.Parsed["directives"]
 
 const isPair = isBasePair as (node: any) => node is PairParsed
 
+class PreTokens {
+    private readonly ctx: Context
+
+    private readonly array: (
+        | CommentOrSpaceOrErrorSourceToken
+        | NormalSourceToken
+    )[]
+
+    private index = 0
+
+    public constructor(array: CST.SourceToken[], ctx: Context) {
+        this.array = array
+        this.ctx = ctx
+    }
+
+    public first(): NormalSourceToken | null {
+        let cst
+        while ((cst = this.array[this.index])) {
+            if (processCommentOrSpace(cst, this.ctx)) {
+                this.index++
+                continue
+            }
+            return cst
+        }
+        return null
+    }
+
+    public consume(): NormalSourceToken | null {
+        const cst = this.first()
+        if (cst) {
+            this.index++
+        }
+        return cst
+    }
+
+    public back() {
+        this.index--
+    }
+
+    public forEach(callback: (cst: NormalSourceToken) => void) {
+        let cst
+        while ((cst = this.consume())) {
+            callback(cst)
+        }
+    }
+}
+
 /** Checks whether the give cst node is plain scaler */
 function isPlainScalarCST(
     cst: CST.FlowScalar,
@@ -237,22 +284,16 @@ function convertDocument(
     )
     let last: Locations | undefined = ast.directives[ast.directives.length - 1]
 
-    const startTokens = [...doc.start]
-    if (startTokens.some((t) => t.type === "doc-start")) {
-        let token
-        while ((token = startTokens.shift())) {
-            /* istanbul ignore if */
-            if (processCommentOrSpace(token, ctx)) {
-                continue
-            }
-            if (token.type === "doc-start") {
-                last = ctx.addToken("Marker", toRange(token))
-                break
-            }
-            /* istanbul ignore next */
-            startTokens.unshift(token)
-            break
+    const startTokens = new PreTokens(doc.start, ctx)
+
+    let t
+    while ((t = startTokens.consume())) {
+        if (t.type === "doc-start") {
+            last = ctx.addToken("Marker", toRange(t))
+            continue
         }
+        startTokens.back()
+        break
     }
 
     ast.content = convertDocumentBody(
@@ -264,12 +305,8 @@ function convertDocument(
     )
     last = ast.content || last
 
-    for (const token of doc.end || []) {
-        if (processCommentOrSpace(token, ctx)) {
-            continue
-        }
-        /* istanbul ignore next */
-        throw ctx.throwUnexpectedTokenError(token)
+    if (doc.end) {
+        doc.end.forEach((token) => processAnyToken(token, ctx))
     }
 
     // Marker
@@ -348,7 +385,7 @@ function convertDirective(
  * Convert Document body to YAMLContent
  */
 function convertDocumentBody(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.Token | null,
     node: ParsedNode | null,
     ctx: Context,
@@ -367,7 +404,7 @@ function convertDocumentBody(
  */
 function convertContentNode(
     /* eslint-enable complexity -- X */
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.Token,
     node: ParsedNode | null,
     ctx: Context,
@@ -487,7 +524,7 @@ function convertContentNode(
  */
 function convertMapping(
     /* eslint-enable complexity -- X */
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.BlockMap,
     node: YAMLMap.Parsed | PairParsed,
     ctx: Context,
@@ -523,13 +560,10 @@ function convertMapping(
     let firstKeyInd
     let lastKeyInd
     for (const item of cst.items) {
-        const startTokens = [...item.start]
+        const startTokens = new PreTokens(item.start, ctx)
         let token
         let keyInd: Token | null = null
-        while ((token = startTokens.shift())) {
-            if (processCommentOrSpace(token, ctx)) {
-                continue
-            }
+        while ((token = startTokens.consume())) {
             if (token.type === "explicit-key-ind") {
                 /* istanbul ignore if */
                 if (keyInd) {
@@ -537,15 +571,15 @@ function convertMapping(
                 }
                 lastKeyInd = keyInd = ctx.addToken("Punctuator", toRange(token))
                 firstKeyInd ??= keyInd
-                break
+                continue
             }
-            startTokens.unshift(token)
+            startTokens.back()
             break
         }
         const pair = items.shift()
         if (!pair) {
             const t =
-                startTokens[0] ||
+                startTokens.first() ||
                 keyInd ||
                 item.key ||
                 item.sep?.[0] ||
@@ -574,7 +608,7 @@ function convertMapping(
  * Convert FlowCollection to YAMLFlowMapping
  */
 function convertFlowCollection(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.FlowCollection,
     node: ParsedNode,
     ctx: Context,
@@ -635,7 +669,7 @@ function convertFlowCollection(
  */
 function convertFlowMapping(
     /* eslint-enable complexity -- X */
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     startToken: Token,
     cst: CST.FlowCollection,
     node: YAMLMap.Parsed,
@@ -654,13 +688,10 @@ function convertFlowMapping(
     const items = [...node.items]
     let lastToken
     for (const item of cst.items) {
-        const startTokens = [...item.start]
+        const startTokens = new PreTokens(item.start, ctx)
         let token
         let keyInd: Token | null = null
-        while ((token = startTokens.shift())) {
-            if (processCommentOrSpace(token, ctx)) {
-                continue
-            }
+        while ((token = startTokens.consume())) {
             if (token.type === "comma") {
                 lastToken = ctx.addToken("Punctuator", toRange(token))
                 continue
@@ -671,15 +702,15 @@ function convertFlowMapping(
                     throw ctx.throwUnexpectedTokenError(token)
                 }
                 lastToken = keyInd = ctx.addToken("Punctuator", toRange(token))
-                break
+                continue
             }
-            startTokens.unshift(token)
+            startTokens.back()
             break
         }
         const pair = items.shift()
         if (!pair) {
             const t =
-                startTokens[0] ||
+                startTokens.first() ||
                 keyInd ||
                 item.key ||
                 item.sep?.[0] ||
@@ -720,7 +751,7 @@ function convertFlowMapping(
  */
 function convertFlowSequence(
     /* eslint-enable complexity -- X */
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     startToken: Token,
     cst: CST.FlowCollection,
     node: YAMLSeq.Parsed<ParsedNode | PairParsed>,
@@ -739,21 +770,19 @@ function convertFlowSequence(
     let lastToken
     const items = [...node.items]
     for (const item of cst.items) {
-        const startTokens = [...item.start]
+        const startTokens = new PreTokens(item.start, ctx)
         let token
-        while ((token = startTokens.shift())) {
-            if (processCommentOrSpace(token, ctx)) {
-                continue
-            }
+        while ((token = startTokens.consume())) {
             if (token.type === "comma") {
                 lastToken = ctx.addToken("Punctuator", toRange(token))
                 continue
             }
-            startTokens.unshift(token)
+            startTokens.back()
             break
         }
         if (items.length === 0) {
-            const t = startTokens[0] || item.key || item.sep?.[0] || item.value
+            const t =
+                startTokens.first() || item.key || item.sep?.[0] || item.value
             if (!t) {
                 // trailing spaces or comma
                 break
@@ -803,17 +832,14 @@ function convertFlowSequence(
 
     /** Convert CollectionItem to YAMLBlockMapping */
     function convertMap(
-        pairPreTokens: CST.SourceToken[],
+        pairPreTokens: PreTokens,
         pairCst: CST.CollectionItem,
         entry: YAMLMap.Parsed | PairParsed,
     ): YAMLBlockMapping {
-        const startTokens = [...pairPreTokens]
-        let token
+        const startTokens = pairPreTokens
         let keyInd: Token | null = null
-        while ((token = startTokens.shift())) {
-            if (processCommentOrSpace(token, ctx)) {
-                continue
-            }
+        let token
+        while ((token = startTokens.consume())) {
             if (token.type === "comma") {
                 ctx.addToken("Punctuator", toRange(token))
                 continue
@@ -824,9 +850,9 @@ function convertFlowSequence(
                     throw ctx.throwUnexpectedTokenError(token)
                 }
                 keyInd = ctx.addToken("Punctuator", toRange(token))
-                break
+                continue
             }
-            startTokens.unshift(token)
+            startTokens.back()
             break
         }
         const pairStartToken = pairCst.key ?? pairCst.sep![0]
@@ -863,7 +889,7 @@ function convertFlowSequence(
  */
 function convertMappingItem(
     keyInd: Token | null,
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.BlockMap["items"][number] | CST.CollectionItem,
     node: PairParsed,
     ctx: Context,
@@ -872,7 +898,7 @@ function convertMappingItem(
 ): YAMLPair {
     const start =
         keyInd?.range[0] ??
-        preTokens[0]?.offset ??
+        preTokens.first()?.offset ??
         cst.key?.offset ??
         cst.sep?.[0]?.offset ??
         cst.value?.offset ??
@@ -894,21 +920,19 @@ function convertMappingItem(
         doc,
         start,
     )
-    const valueStartTokens = [...(cst.sep || [])]
-    let token, valueInd
-    while ((token = valueStartTokens.shift())) {
-        if (processCommentOrSpace(token, ctx)) {
-            continue
-        }
+    const valueStartTokens = new PreTokens(cst.sep || [], ctx)
+    let valueInd
+    let token
+    while ((token = valueStartTokens.consume())) {
         if (token.type === "map-value-ind") {
             /* istanbul ignore if */
             if (valueInd) {
                 throw ctx.throwUnexpectedTokenError(token)
             }
             valueInd = ctx.addToken("Punctuator", toRange(token))
-            break
+            continue
         }
-        valueStartTokens.unshift(token)
+        valueStartTokens.back()
         break
     }
 
@@ -929,7 +953,7 @@ function convertMappingItem(
  * Convert MapKey to YAMLContent
  */
 function convertMappingKey(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.Token | null,
     node: ParsedNode,
     ctx: Context,
@@ -946,7 +970,7 @@ function convertMappingKey(
             `unknown error: AST is not Scalar and null (${getNodeType(
                 node,
             )}). Unable to process empty map key CST.`,
-            preTokens[0] ?? indexForError,
+            preTokens.first() ?? indexForError,
         )
     }
     return convertAnchorAndTag<YAMLContent>(
@@ -964,7 +988,7 @@ function convertMappingKey(
  * Convert MapValue to YAMLContent
  */
 function convertMappingValue(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.Token | null,
     node: ParsedNode | null,
     ctx: Context,
@@ -982,7 +1006,7 @@ function convertMappingValue(
             `unknown error: AST is not Scalar and null (${getNodeType(
                 node,
             )}). Unable to process empty map value CST.`,
-            preTokens[0] ?? indexForError,
+            preTokens.first() ?? indexForError,
         )
     }
     return convertAnchorAndTag<YAMLContent>(
@@ -1000,7 +1024,7 @@ function convertMappingValue(
  * Convert BlockSeq to YAMLBlockSequence
  */
 function convertSequence(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.BlockSequence,
     node: YAMLSeq.Parsed,
     ctx: Context,
@@ -1018,26 +1042,25 @@ function convertSequence(
     const items = [...node.items]
     let lastSeqInd
     for (const item of cst.items) {
-        const startTokens = [...item.start]
-        let token, seqInd
-        while ((token = startTokens.shift())) {
-            if (processCommentOrSpace(token, ctx)) {
-                continue
-            }
+        const startTokens = new PreTokens(item.start, ctx)
+        let seqInd
+        let token
+        while ((token = startTokens.consume())) {
             if (token.type === "seq-item-ind") {
                 /* istanbul ignore if */
                 if (seqInd) {
                     throw ctx.throwUnexpectedTokenError(token)
                 }
                 lastSeqInd = seqInd = ctx.addToken("Punctuator", toRange(token))
-                break
+                continue
             }
-            startTokens.unshift(token)
+            startTokens.back()
             break
         }
 
         if (items.length === 0) {
-            const t = startTokens[0] || item.key || item.sep?.[0] || item.value
+            const t =
+                startTokens.first() || item.key || item.sep?.[0] || item.value
             if (!t) {
                 // trailing spaces or comma
                 break
@@ -1066,7 +1089,7 @@ function convertSequence(
  * Convert SeqItem to YAMLContent
  */
 function convertSequenceItem(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.BlockSequence["items"][number],
     node: ParsedNode | PairParsed | null,
     ctx: Context,
@@ -1100,7 +1123,7 @@ function convertSequenceItem(
             `unknown error: AST is not Scalar and null (${getNodeType(
                 node,
             )}). Unable to process empty seq item CST.`,
-            preTokens[0] ?? indexForError,
+            preTokens.first() ?? indexForError,
         )
     }
     return convertAnchorAndTag<YAMLContent>(
@@ -1118,7 +1141,7 @@ function convertSequenceItem(
  * Convert FlowSeqItem to YAMLContent
  */
 function convertFlowSequenceItem(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.Token | null,
     node: ParsedNode | null,
     ctx: Context,
@@ -1136,7 +1159,7 @@ function convertFlowSequenceItem(
             `unknown error: AST is not Scalar and null (${getNodeType(
                 node,
             )}). Unable to process empty seq item CST.`,
-            preTokens[0] ?? indexForError,
+            preTokens.first() ?? indexForError,
         )
     }
     return convertAnchorAndTag<YAMLContent>(
@@ -1154,7 +1177,7 @@ function convertFlowSequenceItem(
  * Convert PlainValue to YAMLPlainScalar
  */
 function convertPlain(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.FlowScalar & { type: "scalar" },
     node: Scalar,
     ctx: Context,
@@ -1225,7 +1248,7 @@ function convertPlain(
  * Convert QuoteDouble to YAMLDoubleQuotedScalar
  */
 function convertQuoteDouble(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.FlowScalar & { type: "double-quoted-scalar" },
     node: Scalar,
     ctx: Context,
@@ -1252,7 +1275,7 @@ function convertQuoteDouble(
  * Convert QuoteSingle to YAMLSingleQuotedScalar
  */
 function convertQuoteSingle(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.FlowScalar & { type: "single-quoted-scalar" },
     node: Scalar,
     ctx: Context,
@@ -1279,7 +1302,7 @@ function convertQuoteSingle(
  * Convert BlockLiteral to YAMLBlockLiteral
  */
 function convertBlockScalar(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.BlockScalar,
     node: Scalar.Parsed,
     ctx: Context,
@@ -1385,7 +1408,7 @@ function getBlockEnd(end: number, ctx: Context): number {
  * Convert Alias to YAMLAlias
  */
 function convertAlias(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     cst: CST.FlowScalar & { type: "alias" },
     node: Alias.Parsed,
     ctx: Context,
@@ -1416,7 +1439,7 @@ function convertAlias(
  * Convert Anchor and Tag
  */
 function convertAnchorAndTag<V extends YAMLContent>(
-    preTokens: CST.SourceToken[],
+    preTokens: PreTokens,
     node:
         | Scalar
         | YAMLMap.Parsed
@@ -1457,10 +1480,7 @@ function convertAnchorAndTag<V extends YAMLContent>(
         return meta
     }
 
-    for (const cst of preTokens) {
-        if (processCommentOrSpace(cst, ctx)) {
-            continue
-        }
+    preTokens.forEach((cst) => {
         if (isAnchorCST(cst)) {
             const ast = getMetaAst(cst)
             const anchor = convertAnchor(cst, ctx, ast, doc)
@@ -1477,7 +1497,7 @@ function convertAnchorAndTag<V extends YAMLContent>(
             /* istanbul ignore next */
             throw ctx.throwUnexpectedTokenError(cst)
         }
-    }
+    })
     return meta || (value as never)
 }
 

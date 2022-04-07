@@ -1,5 +1,5 @@
 import type { CST, Document } from "yaml"
-import { Composer, LineCounter, Parser } from "yaml"
+import { Composer, Parser } from "yaml"
 import type { Context } from "./context"
 
 /** Parse yaml to CST */
@@ -7,8 +7,7 @@ export function parseAllDocsToCST(ctx: Context): {
     cstNodes: CST.Token[]
     nodes: Document.Parsed[]
 } {
-    const lineCounter = new LineCounter()
-    const parser = new Parser(lineCounter.addNewLine)
+    const parser = new Parser()
     const composer = new Composer({
         keepSourceTokens: true,
     })

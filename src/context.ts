@@ -76,13 +76,21 @@ export class Context {
     }
 
     /* istanbul ignore next */
-    public throwUnexpectedTokenError(cst: CST.Token): ParseError {
+    public throwUnexpectedTokenError(cst: CST.Token | Token): ParseError {
         const token = "source" in cst ? `'${cst.source}'` : cst.type
         throw this.throwError(`Unexpected token: ${token}`, cst)
     }
 
-    public throwError(message: string, cst: CST.Token | number): ParseError {
-        const offset = typeof cst === "number" ? cst : cst.offset
+    public throwError(
+        message: string,
+        cst: CST.Token | Token | number,
+    ): ParseError {
+        const offset =
+            typeof cst === "number"
+                ? cst
+                : "offset" in cst
+                ? cst.offset
+                : cst.range[0]
         const loc = this.getLocFromIndex(offset)
         throw new ParseError(message, offset, loc.line, loc.column)
     }
