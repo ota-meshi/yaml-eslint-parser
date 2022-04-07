@@ -75,6 +75,7 @@ export class Context {
         return token
     }
 
+    /* istanbul ignore next */
     public throwUnexpectedTokenError(cst: CST.Token): ParseError {
         const token = "source" in cst ? `'${cst.source}'` : cst.type
         throw this.throwError(`Unexpected token: ${token}`, cst)

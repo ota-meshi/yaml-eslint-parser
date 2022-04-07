@@ -921,6 +921,7 @@ function convertMappingValue(
         return convertContentNode(preTokens, cst, node, ctx, parent, doc)
     }
 
+    /* istanbul ignore if */
     if (!isScalarOrNull(node)) {
         throw ctx.throwError(
             `unknown error: AST is not Scalar and null (${getNodeType(
@@ -1039,6 +1040,7 @@ function convertSequenceItem(
         }
         return convertContentNode(preTokens, cst.value, node, ctx, parent, doc)
     }
+    /* istanbul ignore if */
     if (!isScalarOrNull(node)) {
         throw ctx.throwError(
             `unknown error: AST is not Scalar and null (${getNodeType(
@@ -1074,6 +1076,7 @@ function convertFlowSequenceItem(
         return convertContentNode(preTokens, cst, node, ctx, parent, doc)
     }
 
+    /* istanbul ignore if */
     if (!isScalarOrNull(node)) {
         throw ctx.throwError(
             `unknown error: AST is not Scalar and null (${getNodeType(
