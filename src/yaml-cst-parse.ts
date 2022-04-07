@@ -9,7 +9,11 @@ export function parseAllDocsToCST(ctx: Context): {
 } {
     const lineCounter = new LineCounter()
     const parser = new Parser(lineCounter.addNewLine)
-    const composer = new Composer()
+    const composer = new Composer({
+        keepSourceTokens: true,
+        // lineCounter,
+        // prettyErrors: false,
+    })
     const cstNodes: CST.Token[] = []
     const nodes = Array.from(
         composer.compose(

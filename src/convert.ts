@@ -31,14 +31,18 @@ import type {
     Alias,
     CST,
     Document,
-    Pair,
+    Pair as BasePair,
     ParsedNode,
     Scalar,
     YAMLMap,
     YAMLSeq,
 } from "yaml"
 import { isDocument } from "yaml"
-import { isPair, isAlias, isScalar, isSeq, isMap } from "yaml"
+import { isPair as isBasePair, isAlias, isScalar, isSeq, isMap } from "yaml"
+
+type PairParsed = BasePair<ParsedNode, ParsedNode | null>
+
+const isPair = isBasePair as (node: any) => node is PairParsed
 
 /** Get node type name */
 function getNodeType(node: any) {
@@ -294,6 +298,13 @@ function convertContentNode(
             cst,
         )
     }
+    /* istanbul ignore if */
+    if (node.srcToken !== cst) {
+        throw ctx.throwError(
+            `unknown error: CST is mismatched. Unable to process content CST (${cst.type}: ${node.srcToken?.type}).`,
+            cst,
+        )
+    }
     if (cst.type === "scalar") {
         /* istanbul ignore if */
         if (!isScalar(node)) {
@@ -377,7 +388,7 @@ function convertContentNode(
     }
     if (cst.type === "block-map") {
         /* istanbul ignore if */
-        if (!isMapOrPair(node)) {
+        if (!isMap(node)) {
             throw ctx.throwError(
                 `unknown error: AST is not Map and Pair (${getNodeType(
                     node,
@@ -414,17 +425,36 @@ function convertContentNode(
     throw new Error(`Unsupported node: ${cst.type}`)
 }
 
+/* eslint-disable complexity -- X */
 /**
  * Convert Map to YAMLBlockMapping
  */
 function convertMapping(
+    /* eslint-enable complexity -- X */
     preTokens: CST.SourceToken[],
     cst: CST.BlockMap,
-    node: YAMLMap.Parsed | Pair,
+    node: YAMLMap.Parsed | PairParsed,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLSequence,
     doc: YAMLDocument,
 ): YAMLBlockMapping | YAMLWithMeta {
+    if (isPair(node)) {
+        /* istanbul ignore if */
+        if (node.srcToken !== cst.items[0]) {
+            throw ctx.throwError(
+                `unknown error: CST is mismatched. Unable to process content CST (${cst.type}: "CollectionItem").`,
+                cst,
+            )
+        }
+    } else {
+        /* istanbul ignore if */
+        if (node.srcToken !== cst) {
+            throw ctx.throwError(
+                `unknown error: CST is mismatched. Unable to process content CST (${cst.type}: ${node.srcToken?.type}).`,
+                cst,
+            )
+        }
+    }
     const loc = ctx.getConvertLocation(cst.offset, cst.offset)
     const ast: YAMLBlockMapping = {
         type: "YAMLMapping",
@@ -498,7 +528,7 @@ function convertFlowCollection(
     if (cst.start.type === "flow-map-start") {
         const startToken = ctx.addToken("Punctuator", toRange(cst.start))
         /* istanbul ignore if */
-        if (!isMapOrPair(node)) {
+        if (!isMap(node)) {
             throw ctx.throwError(
                 `unknown error: AST is not Map and Pair (${getNodeType(
                     node,
@@ -521,9 +551,9 @@ function convertFlowCollection(
         const startToken = ctx.addToken("Punctuator", toRange(cst.start))
 
         /* istanbul ignore if */
-        if (!isSeq(node)) {
+        if (!isSeq(node) || !node.flow) {
             throw ctx.throwError(
-                `unknown error: AST is not Seq (${getNodeType(
+                `unknown error: AST is not flow Seq (${getNodeType(
                     node,
                 )}). Unable to process flow seq CST.`,
                 cst,
@@ -552,7 +582,7 @@ function convertFlowMapping(
     preTokens: CST.SourceToken[],
     startToken: Token,
     cst: CST.FlowCollection,
-    node: YAMLMap.Parsed | Pair,
+    node: YAMLMap.Parsed,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
@@ -565,7 +595,7 @@ function convertFlowMapping(
         parent,
         ...loc,
     }
-    const items = getPairs(node)
+    const items = [...node.items]
     let lastToken
     for (const item of cst.items) {
         const startTokens = [...item.start]
@@ -637,7 +667,7 @@ function convertFlowSequence(
     preTokens: CST.SourceToken[],
     startToken: Token,
     cst: CST.FlowCollection,
-    node: YAMLSeq.Parsed,
+    node: YAMLSeq.Parsed<ParsedNode | PairParsed>,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
@@ -676,8 +706,8 @@ function convertFlowSequence(
             throw ctx.throwUnexpectedTokenError(t)
         }
         const entry = items.shift()
-        if (item.key || item.sep) {
-            ast.entries.push(convertMap(startTokens, item, entry!))
+        if (isPair(entry) || ((item.key || item.sep) && isMap(entry))) {
+            ast.entries.push(convertMap(startTokens, item, entry))
         } else {
             ast.entries.push(
                 convertFlowSequenceItem(
@@ -719,17 +749,8 @@ function convertFlowSequence(
     function convertMap(
         pairPreTokens: CST.SourceToken[],
         pairCst: CST.CollectionItem,
-        entry: ParsedNode,
+        entry: YAMLMap.Parsed | PairParsed,
     ): YAMLBlockMapping {
-        /* istanbul ignore if */
-        if (!isMapOrPair(entry)) {
-            throw ctx.throwError(
-                `unknown error: AST is not Map and Pair (${getNodeType(
-                    node,
-                )}). Unable to process Pair CST.`,
-                pairCst.key ?? pairCst.sep![0],
-            )
-        }
         const startTokens = [...pairPreTokens]
         let token
         let keyInd: Token | null = null
@@ -788,7 +809,7 @@ function convertMappingItem(
     keyInd: Token | null,
     preTokens: CST.SourceToken[],
     cst: CST.BlockMap["items"][number] | CST.CollectionItem,
-    node: Pair,
+    node: PairParsed,
     ctx: Context,
     parent: YAMLBlockMapping | YAMLFlowMapping,
     doc: YAMLDocument,
@@ -854,21 +875,14 @@ function convertMappingItem(
 function convertMappingKey(
     preTokens: CST.SourceToken[],
     cst: CST.Token | null,
-    node: unknown,
+    node: ParsedNode,
     ctx: Context,
     parent: YAMLPair,
     doc: YAMLDocument,
     indexForError: number,
 ): YAMLContent | YAMLWithMeta | null {
     if (cst) {
-        return convertContentNode(
-            preTokens,
-            cst,
-            node as ParsedNode | null,
-            ctx,
-            parent,
-            doc,
-        )
+        return convertContentNode(preTokens, cst, node, ctx, parent, doc)
     }
     /* istanbul ignore if */
     if (!isScalarOrNull(node)) {
@@ -896,21 +910,14 @@ function convertMappingKey(
 function convertMappingValue(
     preTokens: CST.SourceToken[],
     cst: CST.Token | null,
-    node: unknown,
+    node: ParsedNode | null,
     ctx: Context,
     parent: YAMLPair,
     doc: YAMLDocument,
     indexForError: number,
 ): YAMLContent | YAMLWithMeta | null {
     if (cst) {
-        return convertContentNode(
-            preTokens,
-            cst,
-            node as ParsedNode | null,
-            ctx,
-            parent,
-            doc,
-        )
+        return convertContentNode(preTokens, cst, node, ctx, parent, doc)
     }
 
     if (!isScalarOrNull(node)) {
@@ -986,7 +993,7 @@ function convertSequence(
             convertSequenceItem(
                 startTokens,
                 item,
-                items.shift(),
+                items.shift() || null,
                 ctx,
                 ast,
                 doc,
@@ -1004,7 +1011,7 @@ function convertSequence(
 function convertSequenceItem(
     preTokens: CST.SourceToken[],
     cst: CST.BlockSequence["items"][number],
-    node: unknown,
+    node: ParsedNode | PairParsed | null,
     ctx: Context,
     parent: YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
@@ -1019,14 +1026,17 @@ function convertSequenceItem(
         throw ctx.throwUnexpectedTokenError(cst.sep)
     }
     if (cst.value) {
-        return convertContentNode(
-            preTokens,
-            cst.value,
-            node as ParsedNode | null,
-            ctx,
-            parent,
-            doc,
-        )
+        if (isPair(node)) {
+            return convertMapping(
+                preTokens,
+                cst.value as CST.BlockMap,
+                node,
+                ctx,
+                parent,
+                doc,
+            )
+        }
+        return convertContentNode(preTokens, cst.value, node, ctx, parent, doc)
     }
     if (!isScalarOrNull(node)) {
         throw ctx.throwError(
@@ -1349,7 +1359,12 @@ function convertAlias(
  */
 function convertAnchorAndTag<V extends YAMLContent>(
     preTokens: CST.SourceToken[],
-    node: Scalar | YAMLMap.Parsed | YAMLSeq.Parsed | Alias.Parsed | null,
+    node:
+        | Scalar
+        | YAMLMap.Parsed
+        | YAMLSeq.Parsed<ParsedNode | PairParsed>
+        | Alias.Parsed
+        | null,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLSequence,
     value: V | null,
@@ -1483,13 +1498,8 @@ function isScalarOrNull(node: unknown): node is Scalar.Parsed | null {
     return isScalar(node) || node == null
 }
 
-/** Checks whether the give node is map or pair */
-function isMapOrPair(node: unknown): node is YAMLMap.Parsed | Pair {
-    return isMap(node) || isPair(node)
-}
-
 /** Get the pairs from the give node */
-function getPairs(node: YAMLMap | Pair): Pair[] {
+function getPairs(node: YAMLMap.Parsed | PairParsed): PairParsed[] {
     return isMap(node) ? [...node.items] : [node]
 }
 
