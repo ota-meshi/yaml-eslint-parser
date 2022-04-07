@@ -45,6 +45,48 @@ type PairParsed = BasePair<ParsedNode, ParsedNode | null>
 
 const isPair = isBasePair as (node: any) => node is PairParsed
 
+/** Checks whether the give cst node is plain scaler */
+function isPlainScalarCST(
+    cst: CST.FlowScalar,
+): cst is CST.FlowScalar & { type: "scalar" } {
+    return cst.type === "scalar"
+}
+
+/** Checks whether the give cst node is double-quoted-scalar */
+function isDoubleQuotedScalarCST(
+    cst: CST.FlowScalar,
+): cst is CST.FlowScalar & { type: "double-quoted-scalar" } {
+    return cst.type === "double-quoted-scalar"
+}
+
+/** Checks whether the give cst node is single-quoted-scalar */
+function isSingleQuotedScalarCST(
+    cst: CST.FlowScalar,
+): cst is CST.FlowScalar & { type: "single-quoted-scalar" } {
+    return cst.type === "single-quoted-scalar"
+}
+
+/** Checks whether the give cst node is alias scalar */
+function isAliasScalarCST(
+    cst: CST.FlowScalar,
+): cst is CST.FlowScalar & { type: "alias" } {
+    return cst.type === "alias"
+}
+
+/** Checks whether the give cst node is anchor */
+function isAnchorCST(
+    cst: CST.SourceToken,
+): cst is CST.SourceToken & { type: "anchor" } {
+    return cst.type === "anchor"
+}
+
+/** Checks whether the give cst node is tag */
+function isTagCST(
+    cst: CST.SourceToken,
+): cst is CST.SourceToken & { type: "tag" } {
+    return cst.type === "tag"
+}
+
 /** Get node type name */
 function getNodeType(node: any) {
     /* istanbul ignore next */
@@ -306,63 +348,7 @@ function convertContentNode(
             cst,
         )
     }
-    if (cst.type === "scalar") {
-        /* istanbul ignore if */
-        if (!isScalar(node)) {
-            throw ctx.throwError(
-                `unknown error: AST is not Scalar (${getNodeType(
-                    node,
-                )}). Unable to process Scalar CST.`,
-                cst,
-            )
-        }
-        return convertPlain(
-            preTokens,
-            cst as CST.FlowScalar & { type: "scalar" },
-            node,
-            ctx,
-            parent,
-            doc,
-        )
-    }
-    if (cst.type === "double-quoted-scalar") {
-        /* istanbul ignore if */
-        if (!isScalar(node)) {
-            throw ctx.throwError(
-                `unknown error: AST is not Scalar (${getNodeType(
-                    node,
-                )}). Unable to process Scalar CST.`,
-                cst,
-            )
-        }
-        return convertQuoteDouble(
-            preTokens,
-            cst as CST.FlowScalar & { type: "double-quoted-scalar" },
-            node,
-            ctx,
-            parent,
-            doc,
-        )
-    }
-    if (cst.type === "single-quoted-scalar") {
-        /* istanbul ignore if */
-        if (!isScalar(node)) {
-            throw ctx.throwError(
-                `unknown error: AST is not Scalar (${getNodeType(
-                    node,
-                )}). Unable to process Scalar CST.`,
-                cst,
-            )
-        }
-        return convertQuoteSingle(
-            preTokens,
-            cst as CST.FlowScalar & { type: "single-quoted-scalar" },
-            node,
-            ctx,
-            parent,
-            doc,
-        )
-    }
+
     if (cst.type === "block-scalar") {
         /* istanbul ignore if */
         if (!isScalar(node)) {
@@ -402,7 +388,43 @@ function convertContentNode(
     if (cst.type === "flow-collection") {
         return convertFlowCollection(preTokens, cst, node, ctx, parent, doc)
     }
-    if (cst.type === "alias") {
+    if (isPlainScalarCST(cst)) {
+        /* istanbul ignore if */
+        if (!isScalar(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Scalar (${getNodeType(
+                    node,
+                )}). Unable to process Scalar CST.`,
+                cst,
+            )
+        }
+        return convertPlain(preTokens, cst, node, ctx, parent, doc)
+    }
+    if (isDoubleQuotedScalarCST(cst)) {
+        /* istanbul ignore if */
+        if (!isScalar(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Scalar (${getNodeType(
+                    node,
+                )}). Unable to process Scalar CST.`,
+                cst,
+            )
+        }
+        return convertQuoteDouble(preTokens, cst, node, ctx, parent, doc)
+    }
+    if (isSingleQuotedScalarCST(cst)) {
+        /* istanbul ignore if */
+        if (!isScalar(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Scalar (${getNodeType(
+                    node,
+                )}). Unable to process Scalar CST.`,
+                cst,
+            )
+        }
+        return convertQuoteSingle(preTokens, cst, node, ctx, parent, doc)
+    }
+    if (isAliasScalarCST(cst)) {
         /* istanbul ignore if */
         if (!isAlias(node)) {
             throw ctx.throwError(
@@ -412,14 +434,7 @@ function convertContentNode(
                 cst,
             )
         }
-        return convertAlias(
-            preTokens,
-            cst as CST.FlowScalar & { type: "alias" },
-            node,
-            ctx,
-            parent,
-            doc,
-        )
+        return convertAlias(preTokens, cst, node, ctx, parent, doc)
     }
 
     /* istanbul ignore next */
@@ -443,7 +458,7 @@ function convertMapping(
         /* istanbul ignore if */
         if (node.srcToken !== cst.items[0]) {
             throw ctx.throwError(
-                `unknown error: CST is mismatched. Unable to process content CST (${cst.type}: "CollectionItem").`,
+                `unknown error: CST is mismatched. Unable to process mapping CST (${cst.type}: "CollectionItem").`,
                 cst,
             )
         }
@@ -451,7 +466,7 @@ function convertMapping(
         /* istanbul ignore if */
         if (node.srcToken !== cst) {
             throw ctx.throwError(
-                `unknown error: CST is mismatched. Unable to process content CST (${cst.type}: ${node.srcToken?.type}).`,
+                `unknown error: CST is mismatched. Unable to process mapping CST (${cst.type}: ${node.srcToken?.type}).`,
                 cst,
             )
         }
@@ -1029,14 +1044,13 @@ function convertSequenceItem(
     }
     if (cst.value) {
         if (isPair(node)) {
-            return convertMapping(
-                preTokens,
-                cst.value as CST.BlockMap,
-                node,
-                ctx,
-                parent,
-                doc,
-            )
+            if (cst.value.type !== "block-map") {
+                throw ctx.throwError(
+                    `unknown error: CST is not block map (${cst.value.type}). Unable to process Pair AST.`,
+                    cst.value,
+                )
+            }
+            return convertMapping(preTokens, cst.value, node, ctx, parent, doc)
         }
         return convertContentNode(preTokens, cst.value, node, ctx, parent, doc)
     }
@@ -1407,25 +1421,15 @@ function convertAnchorAndTag<V extends YAMLContent>(
         if (processCommentOrSpace(cst, ctx)) {
             continue
         }
-        if (cst.type === "anchor") {
+        if (isAnchorCST(cst)) {
             const ast = getMetaAst(cst)
-            const anchor = convertAnchor(
-                cst as CST.SourceToken & { type: "anchor" },
-                ctx,
-                ast,
-                doc,
-            )
+            const anchor = convertAnchor(cst, ctx, ast, doc)
             ast.anchor = anchor
             adjustStartLoc(ast, anchor)
             adjustEndLoc(ast, anchor)
-        } else if (cst.type === "tag") {
+        } else if (isTagCST(cst)) {
             const ast = getMetaAst(cst)
-            const tag = convertTag(
-                cst as CST.SourceToken & { type: "tag" },
-                node?.tag ?? null,
-                ctx,
-                ast,
-            )
+            const tag = convertTag(cst, node?.tag ?? null, ctx, ast)
             ast.tag = tag
             adjustStartLoc(ast, tag)
             adjustEndLoc(ast, tag)
