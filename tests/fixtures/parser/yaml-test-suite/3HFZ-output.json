@@ -1,1 +1,1 @@
-Document end marker line cannot have a non-comment suffix@line:1,column:3
+Unexpected scalar at node end@line:3,column:4

@@ -67,11 +67,30 @@ export interface YAMLDocument extends BaseYAMLNode {
     anchors: { [key: string]: YAMLAnchor[] }
 }
 
-export interface YAMLDirective extends BaseYAMLNode {
+interface BaseYAMLDirective extends BaseYAMLNode {
     type: "YAMLDirective"
     value: string
+    kind: "YAML" | "TAG" | null
     parent: YAMLDocument
 }
+export interface YAMLDirectiveForYAML extends BaseYAMLDirective {
+    kind: "YAML"
+    version: string
+}
+export interface YAMLDirectiveForTAG extends BaseYAMLDirective {
+    kind: "TAG"
+    handle: string
+    prefix: string
+}
+
+export interface YAMLDirectiveForUnknown extends BaseYAMLDirective {
+    kind: null
+}
+
+export type YAMLDirective =
+    | YAMLDirectiveForYAML
+    | YAMLDirectiveForTAG
+    | YAMLDirectiveForUnknown
 
 export interface YAMLWithMeta extends BaseYAMLNode {
     type: "YAMLWithMeta"
@@ -90,6 +109,7 @@ export interface YAMLAnchor extends BaseYAMLNode {
 export interface YAMLTag extends BaseYAMLNode {
     type: "YAMLTag"
     tag: string
+    raw: string
     parent: YAMLWithMeta
 }
 

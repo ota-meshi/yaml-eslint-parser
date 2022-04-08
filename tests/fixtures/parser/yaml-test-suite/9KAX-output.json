@@ -27,6 +27,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:str",
+          "raw": "!!str",
           "range": [
             8,
             13
@@ -119,6 +120,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:str",
+          "raw": "!!str",
           "range": [
             26,
             31
@@ -211,6 +213,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:str",
+          "raw": "!!str",
           "range": [
             52,
             57
@@ -303,6 +306,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:map",
+          "raw": "!!map",
           "range": [
             74,
             79
@@ -347,6 +351,7 @@
                 "tag": {
                   "type": "YAMLTag",
                   "tag": "tag:yaml.org,2002:str",
+                  "raw": "!!str",
                   "range": [
                     84,
                     89
@@ -681,6 +686,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:map",
+          "raw": "!!map",
           "range": [
             132,
             137
@@ -725,6 +731,7 @@
                 "tag": {
                   "type": "YAMLTag",
                   "tag": "tag:yaml.org,2002:str",
+                  "raw": "!!str",
                   "range": [
                     142,
                     147
@@ -867,6 +874,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:map",
+          "raw": "!!map",
           "range": [
             165,
             170
@@ -911,6 +919,7 @@
                 "tag": {
                   "type": "YAMLTag",
                   "tag": "tag:yaml.org,2002:str",
+                  "raw": "!!str",
                   "range": [
                     171,
                     176
@@ -1070,6 +1079,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:str",
+          "raw": "!!str",
           "range": [
             200,
             205

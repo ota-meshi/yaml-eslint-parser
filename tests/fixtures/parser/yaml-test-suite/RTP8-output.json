@@ -7,6 +7,8 @@
         {
           "type": "YAMLDirective",
           "value": "%YAML 1.2",
+          "kind": "YAML",
+          "version": "1.2",
           "range": [
             0,
             9
@@ -46,7 +48,7 @@
       },
       "range": [
         0,
-        26
+        35
       ],
       "loc": {
         "start": {
@@ -55,7 +57,7 @@
         },
         "end": {
           "line": 4,
-          "column": 3
+          "column": 12
         }
       }
     }

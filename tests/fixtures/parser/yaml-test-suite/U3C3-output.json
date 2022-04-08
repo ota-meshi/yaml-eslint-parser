@@ -7,6 +7,9 @@
         {
           "type": "YAMLDirective",
           "value": "%TAG !yaml! tag:yaml.org,2002:",
+          "kind": "TAG",
+          "handle": "!yaml!",
+          "prefix": "tag:yaml.org,2002:",
           "range": [
             0,
             30
@@ -29,6 +32,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:yaml.org,2002:str",
+          "raw": "!yaml!str",
           "range": [
             35,
             44

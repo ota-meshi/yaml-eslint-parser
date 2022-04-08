@@ -1,1 +1,1 @@
-A PLAIN node cannot be resolved as a mapping@line:2,column:0
+All mapping items must start at the same column@line:1,column:7

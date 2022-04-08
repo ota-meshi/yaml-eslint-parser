@@ -22,46 +22,156 @@ import type {
     YAMLTag,
     YAMLWithMeta,
     YAMLSequence,
+    YAMLNode,
+    Position,
+    SourceLocation,
 } from "./ast"
-import type {
-    ASTDocument,
-    CSTBlankLine,
-    CSTComment,
-    CSTDirective,
-    CSTNode,
-    ASTContentNode,
-    ASTBlockMap,
-    ASTPair,
-    ASTFlowMap,
-    ASTBlockSeq,
-    ASTFlowSeq,
-    ASTPlainValue,
-    ASTQuoteDouble,
-    ASTQuoteSingle,
-    ASTBlockLiteral,
-    ASTBlockFolded,
-    ASTAlias,
-    CSTSeqItem,
-    CSTBlockFolded,
-    CSTBlockLiteral,
-} from "./yaml"
-import { Type, PairType } from "./yaml"
-import { ParseError } from "./errors"
 import type { Context } from "./context"
 import { tagResolvers } from "./tags"
+import type { YAMLVersion } from "./utils"
 import { getYAMLVersion } from "./utils"
+import type {
+    Alias,
+    CST,
+    Document,
+    Pair as BasePair,
+    ParsedNode,
+    Scalar,
+    YAMLMap,
+    YAMLSeq,
+} from "yaml"
+import {
+    isDocument,
+    isPair as isBasePair,
+    isAlias,
+    isScalar,
+    isSeq,
+    isMap,
+} from "yaml"
 
-const CHOMPING_MAP = {
-    CLIP: "clip",
-    STRIP: "strip",
-    KEEP: "keep",
-} as const
+type PairParsed = BasePair<ParsedNode, ParsedNode | null>
+type Directives = Document.Parsed["directives"]
 
+const isPair = isBasePair as (node: any) => node is PairParsed
+
+class PreTokens {
+    private readonly ctx: Context
+
+    private readonly array: (
+        | CommentOrSpaceOrErrorSourceToken
+        | NormalSourceToken
+    )[]
+
+    private index = 0
+
+    public constructor(array: CST.SourceToken[], ctx: Context) {
+        this.array = array
+        this.ctx = ctx
+    }
+
+    public first(): NormalSourceToken | null {
+        let cst
+        while ((cst = this.array[this.index])) {
+            if (processCommentOrSpace(cst, this.ctx)) {
+                this.index++
+                continue
+            }
+            return cst
+        }
+        return null
+    }
+
+    public consume(): NormalSourceToken | null {
+        const cst = this.first()
+        if (cst) {
+            this.index++
+        }
+        return cst
+    }
+
+    public back() {
+        this.index--
+    }
+
+    public each(callback: (cst: NormalSourceToken) => void) {
+        let cst
+        while ((cst = this.consume())) {
+            callback(cst)
+        }
+    }
+}
+
+/** Checks whether the give cst node is plain scaler */
+function isPlainScalarCST(
+    cst: CST.FlowScalar,
+): cst is CST.FlowScalar & { type: "scalar" } {
+    return cst.type === "scalar"
+}
+
+/** Checks whether the give cst node is double-quoted-scalar */
+function isDoubleQuotedScalarCST(
+    cst: CST.FlowScalar,
+): cst is CST.FlowScalar & { type: "double-quoted-scalar" } {
+    return cst.type === "double-quoted-scalar"
+}
+
+/** Checks whether the give cst node is single-quoted-scalar */
+function isSingleQuotedScalarCST(
+    cst: CST.FlowScalar,
+): cst is CST.FlowScalar & { type: "single-quoted-scalar" } {
+    return cst.type === "single-quoted-scalar"
+}
+
+/** Checks whether the give cst node is alias scalar */
+function isAliasScalarCST(
+    cst: CST.FlowScalar,
+): cst is CST.FlowScalar & { type: "alias" } {
+    return cst.type === "alias"
+}
+
+/** Checks whether the give cst node is anchor */
+function isAnchorCST(
+    cst: CST.SourceToken,
+): cst is CST.SourceToken & { type: "anchor" } {
+    return cst.type === "anchor"
+}
+
+/** Checks whether the give cst node is tag */
+function isTagCST(
+    cst: CST.SourceToken,
+): cst is CST.SourceToken & { type: "tag" } {
+    return cst.type === "tag"
+}
+
+/** Get node type name */
+function getNodeType(node: any) {
+    /* istanbul ignore next */
+    return isMap(node)
+        ? "MAP"
+        : isSeq(node)
+        ? "SEQ"
+        : isScalar(node)
+        ? "SCALAR"
+        : isAlias(node)
+        ? "ALIAS"
+        : isPair(node)
+        ? "PAIR"
+        : isDocument(node)
+        ? "DOCUMENT"
+        : "unknown"
+}
+
+type CSTDoc = {
+    doc: CST.Document
+    directives: CST.Directive[]
+    docEnd?: CST.DocumentEnd
+}
 /**
  * Convert yaml root to YAMLProgram
  */
 export function convertRoot(
-    documents: ASTDocument[],
+    cstNodes: CST.Token[],
+    nodes: Document.Parsed[],
     ctx: Context,
 ): YAMLProgram {
     const ast: YAMLProgram = {
@@ -71,84 +181,97 @@ export function convertRoot(
         sourceType: "module",
         tokens: ctx.tokens,
         parent: null,
-        ...ctx.getConvertLocation({ range: [0, ctx.code.length] }),
+        ...ctx.getConvertLocation(0, ctx.code.length),
     }
-    let startIndex = 0
-    for (const n of documents) {
-        const doc = convertDocument(n, ctx, ast, startIndex)
-        ast.body.push(doc)
-        startIndex = doc.range[1]
-    }
-
-    const useRanges = sort([...ctx.tokens, ...ctx.comments]).map((t) => t.range)
-    let range = useRanges.shift()
-    for (let index = 0; index < ctx.code.length; index++) {
-        while (range && range[1] <= index) {
-            range = useRanges.shift()
-        }
-        if (range && range[0] <= index) {
-            index = range[1] - 1
+    let directives: CST.Directive[] = []
+    let bufferDoc: CSTDoc | null = null
+    const cstDocs: CSTDoc[] = []
+    for (const n of cstNodes) {
+        if (processCommentOrSpace(n, ctx)) {
             continue
         }
-        const c = ctx.code[index]
-        if (isPunctuator(c)) {
-            // console.log("*** REM TOKEN ***")
-            ctx.addToken("Punctuator", [index, index + 1])
-        } else if (c.trim()) {
-            // console.log("*** REM TOKEN ***")
-            // unknown
-            ctx.addToken("Identifier", [index, index + 1])
+        if (n.type === "doc-end") {
+            /* istanbul ignore if */
+            if (!bufferDoc) {
+                throw ctx.throwUnexpectedTokenError(n)
+            }
+            bufferDoc.docEnd = n
+            cstDocs.push(bufferDoc)
+            bufferDoc = null
+            n.end?.forEach((t) => processAnyToken(t, ctx))
+            continue
         }
+        if (bufferDoc) {
+            cstDocs.push(bufferDoc)
+            bufferDoc = null
+        }
+        if (n.type === "directive") {
+            directives.push(n)
+            continue
+        }
+        if (n.type === "document") {
+            bufferDoc = {
+                doc: n,
+                directives,
+            }
+            directives = []
+            continue
+        }
+        /* istanbul ignore next */
+        throw ctx.throwUnexpectedTokenError(n)
+    }
+    if (bufferDoc) {
+        cstDocs.push(bufferDoc)
+        bufferDoc = null
+    }
+    if (cstDocs.length > 0) {
+        let startIndex = 0
+        ast.body = cstDocs.map((doc, index) => {
+            const result = convertDocument(
+                doc,
+                nodes[index],
+                ctx,
+                ast,
+                startIndex,
+            )
+            startIndex = result.range[1]
+            return result
+        })
+    } else {
+        const index = skipSpaces(ctx.code, 0)
+        ast.body.push({
+            type: "YAMLDocument",
+            directives: [],
+            content: null,
+            parent: ast,
+            anchors: {},
+            ...ctx.getConvertLocation(index, index),
+        })
     }
     sort(ctx.comments)
     sort(ctx.tokens)
-    return ast
 
-    /**
-     * Checks if the given char is punctuator
-     */
-    function isPunctuator(c: string) {
-        return (
-            c === ":" ||
-            c === "-" ||
-            c === "," ||
-            c === "{" ||
-            c === "}" ||
-            c === "[" ||
-            c === "]" ||
-            //
-            c === "?"
-        )
+    const lastBody = ast.body[ast.body.length - 1]
+    if (lastBody) {
+        adjustEndLoc(lastBody, ctx.comments[ctx.comments.length - 1])
     }
+    return ast
 }
 
 /**
  * Convert YAML.Document to YAMLDocument
  */
 function convertDocument(
-    node: ASTDocument,
+    { directives, doc, docEnd }: CSTDoc,
+    node: Document.Parsed,
     ctx: Context,
     parent: YAMLProgram,
     startIndex: number,
 ): YAMLDocument {
-    const cst = node.cstNode!
-    if (cst.error) {
-        const range = cst.range || cst.valueRange!
-        const loc = ctx.getLocFromIndex(range.start)
-        throw new ParseError(
-            cst.error.message,
-            range.start,
-            loc.line,
-            loc.column,
-        )
-    }
-    for (const error of node.errors) {
-        throw error
-    }
-
-    const loc = ctx.getConvertLocation({
-        range: [skipSpaces(ctx.code, startIndex), node.range![1]],
-    })
+    const loc = ctx.getConvertLocation(
+        skipSpaces(ctx.code, startIndex),
+        node.range[1],
+    )
     const ast: YAMLDocument = {
         type: "YAMLDocument",
         directives: [],
@@ -157,30 +280,42 @@ function convertDocument(
         anchors: {},
         ...loc,
     }
-    ast.directives.push(...convertDocumentHead(node, ctx, ast))
 
-    // Marker
-    // @ts-expect-error -- missing types?
-    const directivesEndMarker = cst.directivesEndMarker
-    if (directivesEndMarker) {
-        const range: Range = [
-            directivesEndMarker.start,
-            directivesEndMarker.end,
-        ]
-        ctx.addToken("Marker", range)
+    ast.directives.push(
+        ...convertDocumentHead(node.directives, directives, ctx, ast),
+    )
+    let last: Locations | undefined = ast.directives[ast.directives.length - 1]
+
+    const startTokens = new PreTokens(doc.start, ctx)
+
+    let t
+    while ((t = startTokens.consume())) {
+        if (t.type === "doc-start") {
+            last = ctx.addToken("Marker", toRange(t))
+            continue
+        }
+        startTokens.back()
+        break
     }
 
-    ast.content = convertDocumentBody(node, ctx, ast)
+    ast.content = convertDocumentBody(
+        startTokens,
+        doc.value || null,
+        node.contents,
+        ctx,
+        ast,
+    )
+    last = ast.content || last
+
+    if (doc.end) {
+        doc.end.forEach((token) => processAnyToken(token, ctx))
+    }
 
     // Marker
-    // @ts-expect-error -- missing types?
-    const documentEndMarker = cst.documentEndMarker
-    if (documentEndMarker) {
-        const range: Range = [documentEndMarker.start, documentEndMarker.end]
-        const markerToken = ctx.addToken("Marker", range)
-        ast.range[1] = markerToken.range[1]
-        ast.loc.end = clone(markerToken.loc.end)
+    if (docEnd) {
+        last = ctx.addToken("Marker", toRange(docEnd))
     }
+    adjustEndLoc(ast, last)
     return ast
 }
 
@@ -188,15 +323,13 @@ function convertDocument(
  * Convert YAML.Document.Parsed to YAMLDirective[]
  */
 function* convertDocumentHead(
-    node: ASTDocument,
+    node: Directives,
+    directives: CST.Directive[],
     ctx: Context,
     parent: YAMLDocument,
 ): IterableIterator<YAMLDirective> {
-    const cst = node.cstNode!
-    for (const n of cst.directives) {
-        if (processComment(n, ctx)) {
-            yield convertDirective(n, ctx, parent)
-        }
+    for (const n of directives) {
+        yield convertDirective(node, n, ctx, parent)
     }
 }
 
@@ -204,23 +337,47 @@ function* convertDocumentHead(
  * Convert CSTDirective to YAMLDirective
  */
 function convertDirective(
-    node: CSTDirective,
+    node: Directives,
+    cst: CST.Directive,
     ctx: Context,
     parent: YAMLDocument,
 ): YAMLDirective {
-    extractComment(node, ctx)
-    const loc = ctx.getConvertLocation({
-        range: [
-            node.range!.start,
-            lastSkipSpaces(ctx.code, node.range!.start, node.valueRange!.end),
-        ],
-    })
+    const loc = ctx.getConvertLocation(...toRange(cst))
+
     const value = ctx.code.slice(...loc.range)
-    const ast: YAMLDirective = {
-        type: "YAMLDirective",
-        value,
-        parent,
-        ...loc,
+
+    const parts = cst.source.trim().split(/[\t ]+/)
+    const name = parts.shift()
+
+    let ast: YAMLDirective
+    if (name === "%YAML") {
+        ast = {
+            type: "YAMLDirective",
+            value,
+            kind: "YAML",
+            version: node.yaml.version,
+            parent,
+            ...loc,
+        }
+    } else if (name === "%TAG") {
+        const [handle, prefix] = parts
+        ast = {
+            type: "YAMLDirective",
+            value,
+            kind: "TAG",
+            handle,
+            prefix,
+            parent,
+            ...loc,
+        }
+    } else {
+        ast = {
+            type: "YAMLDirective",
+            value,
+            kind: null,
+            parent,
+            ...loc,
+        }
     }
     ctx.addToken("Directive", loc.range)
     return ast
@@ -230,76 +387,174 @@ function convertDirective(
  * Convert Document body to YAMLContent
  */
 function convertDocumentBody(
-    node: ASTDocument,
+    preTokens: PreTokens,
+    cst: CST.Token | null,
+    node: ParsedNode | null,
     ctx: Context,
     parent: YAMLDocument,
 ): YAMLContent | YAMLWithMeta | null {
-    let ast: YAMLContent | YAMLWithMeta | null = null
-    for (const content of node.cstNode!.contents) {
-        if (processComment(content, ctx) && !ast) {
-            ast = convertContentNode(
-                node.contents as ASTContentNode,
-                ctx,
-                parent,
-                parent,
-            )
-        }
+    if (cst) {
+        return convertContentNode(preTokens, cst, node, ctx, parent, parent)
     }
-    return ast
+    const token = preTokens.first()
+    /* istanbul ignore if */
+    if (token) {
+        throw ctx.throwUnexpectedTokenError(token)
+    }
+    return null
 }
 
+/* eslint-disable complexity -- X */
 /**
  * Convert ContentNode to YAMLContent
  */
 function convertContentNode(
-    node: ASTContentNode,
+    /* eslint-enable complexity -- X */
+    preTokens: PreTokens,
+    cst: CST.Token,
+    node: ParsedNode | null,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLContent | YAMLWithMeta {
-    if (node.type === Type.MAP) {
-        return convertMapping(node, ctx, parent, doc)
+    /* istanbul ignore if */
+    if (!node) {
+        throw ctx.throwError(
+            `unknown error: AST is null. Unable to process content CST (${cst.type}).`,
+            cst,
+        )
     }
-    if (node.type === Type.FLOW_MAP) {
-        return convertFlowMapping(node, ctx, parent, doc)
+    /* istanbul ignore if */
+    if (node.srcToken !== cst) {
+        throw ctx.throwError(
+            `unknown error: CST is mismatched. Unable to process content CST (${cst.type}: ${node.srcToken?.type}).`,
+            cst,
+        )
     }
-    if (node.type === Type.SEQ) {
-        return convertSequence(node, ctx, parent, doc)
+
+    if (cst.type === "block-scalar") {
+        /* istanbul ignore if */
+        if (!isScalar(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Scalar (${getNodeType(
+                    node,
+                )}). Unable to process Scalar CST.`,
+                cst,
+            )
+        }
+        return convertBlockScalar(preTokens, cst, node, ctx, parent, doc)
     }
-    if (node.type === Type.FLOW_SEQ) {
-        return convertFlowSequence(node, ctx, parent, doc)
+    if (cst.type === "block-seq") {
+        /* istanbul ignore if */
+        if (!isSeq(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Seq (${getNodeType(
+                    node,
+                )}). Unable to process Seq CST.`,
+                cst,
+            )
+        }
+        return convertSequence(preTokens, cst, node, ctx, parent, doc)
     }
-    if (node.type === Type.PLAIN) {
-        return convertPlain(node, ctx, parent, doc)
+    if (cst.type === "block-map") {
+        /* istanbul ignore if */
+        if (!isMap(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Map and Pair (${getNodeType(
+                    node,
+                )}). Unable to process Map CST.`,
+                cst,
+            )
+        }
+        return convertMapping(preTokens, cst, node, ctx, parent, doc)
     }
-    if (node.type === Type.QUOTE_DOUBLE) {
-        return convertQuoteDouble(node, ctx, parent, doc)
+    if (cst.type === "flow-collection") {
+        return convertFlowCollection(preTokens, cst, node, ctx, parent, doc)
     }
-    if (node.type === Type.QUOTE_SINGLE) {
-        return convertQuoteSingle(node, ctx, parent, doc)
+    if (isPlainScalarCST(cst)) {
+        /* istanbul ignore if */
+        if (!isScalar(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Scalar (${getNodeType(
+                    node,
+                )}). Unable to process Scalar CST.`,
+                cst,
+            )
+        }
+        return convertPlain(preTokens, cst, node, ctx, parent, doc)
     }
-    if (node.type === Type.BLOCK_LITERAL) {
-        return convertBlockLiteral(node, ctx, parent, doc)
+    if (isDoubleQuotedScalarCST(cst)) {
+        /* istanbul ignore if */
+        if (!isScalar(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Scalar (${getNodeType(
+                    node,
+                )}). Unable to process Scalar CST.`,
+                cst,
+            )
+        }
+        return convertQuoteDouble(preTokens, cst, node, ctx, parent, doc)
     }
-    if (node.type === Type.BLOCK_FOLDED) {
-        return convertBlockFolded(node, ctx, parent, doc)
+    if (isSingleQuotedScalarCST(cst)) {
+        /* istanbul ignore if */
+        if (!isScalar(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Scalar (${getNodeType(
+                    node,
+                )}). Unable to process Scalar CST.`,
+                cst,
+            )
+        }
+        return convertQuoteSingle(preTokens, cst, node, ctx, parent, doc)
     }
-    if (node.type === Type.ALIAS) {
-        return convertAlias(node, ctx, parent, doc)
+    if (isAliasScalarCST(cst)) {
+        /* istanbul ignore if */
+        if (!isAlias(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Alias (${getNodeType(
+                    node,
+                )}). Unable to process Alias CST.`,
+                cst,
+            )
+        }
+        return convertAlias(preTokens, cst, node, ctx, parent, doc)
     }
-    throw new Error(`Unsupported node: ${(node as any).type}`)
+
+    /* istanbul ignore next */
+    throw new Error(`Unsupported node: ${cst.type}`)
 }
 
+/* eslint-disable complexity -- X */
 /**
  * Convert Map to YAMLBlockMapping
  */
 function convertMapping(
-    node: ASTBlockMap,
+    /* eslint-enable complexity -- X */
+    preTokens: PreTokens,
+    cst: CST.BlockMap,
+    node: YAMLMap.Parsed | PairParsed,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLSequence,
     doc: YAMLDocument,
 ): YAMLBlockMapping | YAMLWithMeta {
-    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
+    if (isPair(node)) {
+        /* istanbul ignore if */
+        if (node.srcToken !== cst.items[0]) {
+            throw ctx.throwError(
+                `unknown error: CST is mismatched. Unable to process mapping CST (${cst.type}: "CollectionItem").`,
+                cst,
+            )
+        }
+    } else {
+        /* istanbul ignore if */
+        if (node.srcToken !== cst) {
+            throw ctx.throwError(
+                `unknown error: CST is mismatched. Unable to process mapping CST (${cst.type}: ${node.srcToken?.type}).`,
+                cst,
+            )
+        }
+    }
+    const loc = ctx.getConvertLocation(cst.offset, cst.offset)
     const ast: YAMLBlockMapping = {
         type: "YAMLMapping",
         style: "block",
@@ -307,37 +562,128 @@ function convertMapping(
         parent,
         ...loc,
     }
-    const cstPairRanges = processCSTItems(node, ctx)
-    node.items.forEach((n, index) => {
+    const items = getPairs(node)
+    let firstKeyInd
+    let lastKeyInd
+    for (const item of cst.items) {
+        const startTokens = new PreTokens(item.start, ctx)
+        let token
+        let keyInd: Token | null = null
+        while ((token = startTokens.consume())) {
+            if (token.type === "explicit-key-ind") {
+                /* istanbul ignore if */
+                if (keyInd) {
+                    throw ctx.throwUnexpectedTokenError(token)
+                }
+                lastKeyInd = keyInd = ctx.addToken("Punctuator", toRange(token))
+                firstKeyInd ??= keyInd
+                continue
+            }
+            startTokens.back()
+            break
+        }
+        const pair = items.shift()
+        if (!pair) {
+            const t =
+                startTokens.first() ||
+                keyInd ||
+                item.key ||
+                item.sep?.[0] ||
+                item.value
+            if (!t) {
+                // trailing spaces
+                break
+            }
+            /* istanbul ignore next */
+            throw ctx.throwUnexpectedTokenError(t)
+        }
         ast.pairs.push(
-            convertMappingItem(n, cstPairRanges[index], ctx, ast, doc),
+            convertMappingItem(keyInd, startTokens, item, pair, ctx, ast, doc),
         )
-    })
-    const first = ast.pairs[0]
-    if (first && ast.range[0] !== first.range[0]) {
-        // adjust location
-        ast.range[0] = first.range[0]
-        ast.loc.start = clone(first.loc.start)
     }
-    const last = ast.pairs[ast.pairs.length - 1]
-    if (last && ast.range[1] !== last.range[1]) {
-        // adjust location
-        ast.range[1] = last.range[1]
-        ast.loc.end = clone(last.loc.end)
+    adjustStartLoc(ast, firstKeyInd)
+    adjustStartLoc(ast, ast.pairs[0])
+    adjustEndLoc(ast, ast.pairs[ast.pairs.length - 1] || lastKeyInd)
+    if (!isMap(node)) {
+        return ast
     }
-    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
+    return convertAnchorAndTag(preTokens, node, ctx, parent, ast, doc, ast)
 }
 
+/**
+ * Convert FlowCollection to YAMLFlowMapping
+ */
+function convertFlowCollection(
+    preTokens: PreTokens,
+    cst: CST.FlowCollection,
+    node: ParsedNode,
+    ctx: Context,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
+    doc: YAMLDocument,
+): YAMLFlowMapping | YAMLFlowSequence | YAMLWithMeta {
+    if (cst.start.type === "flow-map-start") {
+        const startToken = ctx.addToken("Punctuator", toRange(cst.start))
+        /* istanbul ignore if */
+        if (!isMap(node)) {
+            throw ctx.throwError(
+                `unknown error: AST is not Map and Pair (${getNodeType(
+                    node,
+                )}). Unable to process flow map CST.`,
+                cst,
+            )
+        }
+        return convertFlowMapping(
+            preTokens,
+            startToken,
+            cst,
+            node,
+            ctx,
+            parent,
+            doc,
+        )
+    }
+
+    if (cst.start.type === "flow-seq-start") {
+        const startToken = ctx.addToken("Punctuator", toRange(cst.start))
+
+        /* istanbul ignore if */
+        if (!isSeq(node) || !node.flow) {
+            throw ctx.throwError(
+                `unknown error: AST is not flow Seq (${getNodeType(
+                    node,
+                )}). Unable to process flow seq CST.`,
+                cst,
+            )
+        }
+        return convertFlowSequence(
+            preTokens,
+            startToken,
+            cst,
+            node,
+            ctx,
+            parent,
+            doc,
+        )
+    }
+    /* istanbul ignore next */
+    throw ctx.throwUnexpectedTokenError(cst.start)
+}
+
+/* eslint-disable complexity -- X */
 /**
  * Convert FlowMap to YAMLFlowMapping
  */
 function convertFlowMapping(
-    node: ASTFlowMap,
+    /* eslint-enable complexity -- X */
+    preTokens: PreTokens,
+    startToken: Token,
+    cst: CST.FlowCollection,
+    node: YAMLMap.Parsed,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLFlowMapping | YAMLWithMeta {
-    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
+    const loc = ctx.getConvertLocation(startToken.range[0], cst.offset)
     const ast: YAMLFlowMapping = {
         type: "YAMLMapping",
         style: "flow",
@@ -345,145 +691,81 @@ function convertFlowMapping(
         parent,
         ...loc,
     }
-    const cstPairRanges = processCSTItems(node, ctx)
-    node.items.forEach((n, index) => {
+    const items = [...node.items]
+    let lastToken
+    for (const item of cst.items) {
+        const startTokens = new PreTokens(item.start, ctx)
+        let token
+        let keyInd: Token | null = null
+        while ((token = startTokens.consume())) {
+            if (token.type === "comma") {
+                lastToken = ctx.addToken("Punctuator", toRange(token))
+                continue
+            }
+            if (token.type === "explicit-key-ind") {
+                /* istanbul ignore if */
+                if (keyInd) {
+                    throw ctx.throwUnexpectedTokenError(token)
+                }
+                lastToken = keyInd = ctx.addToken("Punctuator", toRange(token))
+                continue
+            }
+            startTokens.back()
+            break
+        }
+        const pair = items.shift()
+        if (!pair) {
+            const t =
+                startTokens.first() ||
+                keyInd ||
+                item.key ||
+                item.sep?.[0] ||
+                item.value
+            if (!t) {
+                // trailing spaces
+                break
+            }
+            /* istanbul ignore next */
+            throw ctx.throwUnexpectedTokenError(t)
+        }
         ast.pairs.push(
-            convertMappingItem(n, cstPairRanges[index], ctx, ast, doc),
+            convertMappingItem(keyInd, startTokens, item, pair, ctx, ast, doc),
         )
-    })
-    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
-}
-
-/**
- * Convert Pair to YAMLPair
- */
-function convertMappingItem(
-    node: ASTPair,
-    cstPairRanges: CSTPairRanges,
-    ctx: Context,
-    parent: YAMLBlockMapping | YAMLFlowMapping,
-    doc: YAMLDocument,
-): YAMLPair {
-    const loc = ctx.getConvertLocation({ range: cstPairRanges.range })
-    const ast: YAMLPair = {
-        type: "YAMLPair",
-        key: null,
-        value: null,
-        parent,
-        ...loc,
     }
-    ast.key = convertMappingKey(node.key, ctx, ast, doc)
-    ast.value = convertMappingValue(node.value, ctx, ast, doc)
-    if (ast.value) {
-        if (ast.range[1] !== ast.value.range[1]) {
-            // adjust location
-            ast.range[1] = ast.value.range[1]
-            ast.loc.end = clone(ast.value.loc.end)
-        }
-    } else if (ast.key) {
-        if (cstPairRanges.value == null && ast.range[1] !== ast.key.range[1]) {
-            // adjust location
-            ast.range[1] = ast.key.range[1]
-            ast.loc.end = clone(ast.key.loc.end)
-        }
-    }
-    if (ast.key) {
-        if (ast.key.range[0] < ast.range[0]) {
-            // adjust location
-            ast.range[0] = ast.key.range[0]
-            ast.loc.start = clone(ast.key.loc.start)
-        }
-    }
-    return ast
-}
-
-/**
- * Convert MapKey to YAMLContent
- */
-function convertMappingKey(
-    node: ASTContentNode | null,
-    ctx: Context,
-    parent: YAMLPair,
-    doc: YAMLDocument,
-): YAMLContent | YAMLWithMeta | null {
-    if (node && node.type) {
-        return convertContentNode(node, ctx, parent, doc)
-    }
-    return null
-}
-
-/**
- * Convert MapValue to YAMLContent
- */
-function convertMappingValue(
-    node: ASTContentNode | null,
-    ctx: Context,
-    parent: YAMLPair,
-    doc: YAMLDocument,
-): YAMLContent | YAMLWithMeta | null {
-    if (node) {
-        return convertContentNode(node, ctx, parent, doc)
-    }
-    return null
-}
-
-/**
- * Convert BlockSeq to YAMLBlockSequence
- */
-function convertSequence(
-    node: ASTBlockSeq,
-    ctx: Context,
-    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
-    doc: YAMLDocument,
-): YAMLBlockSequence | YAMLWithMeta {
-    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
-    const ast: YAMLBlockSequence = {
-        type: "YAMLSequence",
-        style: "block",
-        entries: [],
-        parent,
-        ...loc,
-    }
-    const cstSeqItems: CSTSeqItem[] = []
-    for (const n of node.cstNode!.items) {
-        if (n.type === Type.SEQ_ITEM) {
-            ctx.addToken("Punctuator", [n.range!.start, n.range!.start + 1])
-            extractComment(n, ctx)
-            cstSeqItems.push(n)
+    let mapEnd
+    for (const token of cst.end) {
+        if (processCommentOrSpace(token, ctx)) {
             continue
         }
-        processComment(n, ctx)
+        if (token.type === "flow-map-end") {
+            mapEnd = ctx.addToken("Punctuator", toRange(token))
+            continue
+        }
+        /* istanbul ignore next */
+        throw ctx.throwUnexpectedTokenError(token)
     }
-    node.items.forEach((n, index) => {
-        ast.entries.push(
-            ...convertSequenceItem(
-                n as ASTContentNode | ASTPair | null,
-                cstSeqItems[index],
-                ctx,
-                ast,
-                doc,
-            ),
-        )
-    })
-    const last = ast.entries[ast.entries.length - 1]
-    if (last && ast.range[1] !== last.range[1]) {
-        // adjust location
-        ast.range[1] = last.range[1]
-        ast.loc.end = clone(last.loc.end)
+    adjustEndLoc(ast, mapEnd || ast.pairs[ast.pairs.length - 1] || lastToken)
+    if (!isMap(node)) {
+        return ast
     }
-    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
+    return convertAnchorAndTag(preTokens, node, ctx, parent, ast, doc, ast)
 }
 
+/* eslint-disable complexity -- X */
 /**
  * Convert FlowSeq to YAMLFlowSequence
  */
 function convertFlowSequence(
-    node: ASTFlowSeq,
+    /* eslint-enable complexity -- X */
+    preTokens: PreTokens,
+    startToken: Token,
+    cst: CST.FlowCollection,
+    node: YAMLSeq.Parsed<ParsedNode | PairParsed>,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLFlowSequence | YAMLWithMeta {
-    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
+    const loc = ctx.getConvertLocation(startToken.range[0], cst.offset)
     const ast: YAMLFlowSequence = {
         type: "YAMLSequence",
         style: "flow",
@@ -491,121 +773,431 @@ function convertFlowSequence(
         parent,
         ...loc,
     }
-
-    const cstPairRanges = processCSTItems(node, ctx)
-    node.items.forEach((n, index) => {
-        if (n.type === PairType.PAIR || n.type === PairType.MERGE_PAIR) {
-            const p = n as ASTPair
-            const cstPairRange = cstPairRanges[index]
-            const map: YAMLBlockMapping = {
-                type: "YAMLMapping",
-                style: "block",
-                pairs: [],
-                parent,
-                ...ctx.getConvertLocation({ range: cstPairRange.range }),
+    let lastToken
+    const items = [...node.items]
+    for (const item of cst.items) {
+        const startTokens = new PreTokens(item.start, ctx)
+        let token
+        while ((token = startTokens.consume())) {
+            if (token.type === "comma") {
+                lastToken = ctx.addToken("Punctuator", toRange(token))
+                continue
             }
-            const pair = convertMappingItem(p, cstPairRange, ctx, map, doc)
-            map.pairs.push(pair)
-            if (pair && map.range[1] !== pair.range[1]) {
-                // adjust location
-                map.range[1] = pair.range[1]
-                map.loc.end = clone(pair.loc.end)
+            startTokens.back()
+            break
+        }
+        if (items.length === 0) {
+            const t =
+                startTokens.first() || item.key || item.sep?.[0] || item.value
+            if (!t) {
+                // trailing spaces or comma
+                break
             }
-            ast.entries.push(map)
+            /* istanbul ignore next */
+            throw ctx.throwUnexpectedTokenError(t)
+        }
+        const entry = items.shift()
+        if (isPair(entry) || ((item.key || item.sep) && isMap(entry))) {
+            ast.entries.push(convertMap(startTokens, item, entry))
         } else {
             ast.entries.push(
-                ...convertFlowSequenceItem(
-                    n as ASTContentNode | null,
+                convertFlowSequenceItem(
+                    startTokens,
+                    item.value || null,
+                    entry || null,
                     ctx,
                     ast,
                     doc,
+                    (
+                        ast.entries[ast.entries.length - 1] ||
+                        lastToken ||
+                        startToken
+                    ).range[1],
                 ),
             )
         }
-    })
-    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
+    }
+    let seqEnd
+    for (const token of cst.end) {
+        if (processCommentOrSpace(token, ctx)) {
+            continue
+        }
+        if (token.type === "flow-seq-end") {
+            seqEnd = ctx.addToken("Punctuator", toRange(token))
+            continue
+        }
+        /* istanbul ignore next */
+        throw ctx.throwUnexpectedTokenError(token)
+    }
+    adjustEndLoc(
+        ast,
+        seqEnd || ast.entries[ast.entries.length - 1] || lastToken,
+    )
+
+    return convertAnchorAndTag(preTokens, node, ctx, parent, ast, doc, ast)
+
+    /** Convert CollectionItem to YAMLBlockMapping */
+    function convertMap(
+        pairPreTokens: PreTokens,
+        pairCst: CST.CollectionItem,
+        entry: YAMLMap.Parsed | PairParsed,
+    ): YAMLBlockMapping {
+        const startTokens = pairPreTokens
+        let keyInd: Token | null = null
+        let token
+        while ((token = startTokens.consume())) {
+            if (token.type === "comma") {
+                ctx.addToken("Punctuator", toRange(token))
+                continue
+            }
+            if (token.type === "explicit-key-ind") {
+                /* istanbul ignore if */
+                if (keyInd) {
+                    throw ctx.throwUnexpectedTokenError(token)
+                }
+                keyInd = ctx.addToken("Punctuator", toRange(token))
+                continue
+            }
+            startTokens.back()
+            break
+        }
+        const pairStartToken = pairCst.key ?? pairCst.sep![0]
+        const mapAst: YAMLBlockMapping = {
+            type: "YAMLMapping",
+            style: "block",
+            pairs: [],
+            parent: ast,
+            ...ctx.getConvertLocation(
+                keyInd?.range[0] ?? pairStartToken.offset,
+                keyInd?.range[1] ?? pairStartToken.offset,
+            ),
+        }
+
+        const pair = convertMappingItem(
+            keyInd,
+            startTokens,
+            pairCst,
+            getPairs(entry)[0],
+            ctx,
+            mapAst,
+            doc,
+        )
+        mapAst.pairs.push(pair)
+
+        adjustStartLoc(mapAst, keyInd || pair)
+        adjustEndLoc(mapAst, pair || keyInd)
+        return mapAst
+    }
+}
+
+/**
+ * Convert Pair to YAMLPair
+ */
+function convertMappingItem(
+    keyInd: Token | null,
+    preTokens: PreTokens,
+    cst: CST.BlockMap["items"][number] | CST.CollectionItem,
+    node: PairParsed,
+    ctx: Context,
+    parent: YAMLBlockMapping | YAMLFlowMapping,
+    doc: YAMLDocument,
+): YAMLPair {
+    const start =
+        keyInd?.range[0] ??
+        preTokens.first()?.offset ??
+        cst.key?.offset ??
+        cst.sep?.[0]?.offset ??
+        cst.value?.offset ??
+        -1
+    const loc = ctx.getConvertLocation(start, start)
+    const ast: YAMLPair = {
+        type: "YAMLPair",
+        key: null,
+        value: null,
+        parent,
+        ...loc,
+    }
+    ast.key = convertMappingKey(
+        preTokens,
+        cst.key || null,
+        node.key,
+        ctx,
+        ast,
+        doc,
+        start,
+    )
+    const valueStartTokens = new PreTokens(cst.sep || [], ctx)
+    let valueInd
+    let token
+    while ((token = valueStartTokens.consume())) {
+        if (token.type === "map-value-ind") {
+            /* istanbul ignore if */
+            if (valueInd) {
+                throw ctx.throwUnexpectedTokenError(token)
+            }
+            valueInd = ctx.addToken("Punctuator", toRange(token))
+            continue
+        }
+        valueStartTokens.back()
+        break
+    }
+
+    ast.value = convertMappingValue(
+        valueStartTokens,
+        cst.value || null,
+        node.value,
+        ctx,
+        ast,
+        doc,
+        start,
+    )
+    adjustEndLoc(ast, ast.value || valueInd || ast.key || keyInd)
+    return ast
+}
+
+/**
+ * Convert MapKey to YAMLContent
+ */
+function convertMappingKey(
+    preTokens: PreTokens,
+    cst: CST.Token | null,
+    node: ParsedNode,
+    ctx: Context,
+    parent: YAMLPair,
+    doc: YAMLDocument,
+    indexForError: number,
+): YAMLContent | YAMLWithMeta | null {
+    if (cst) {
+        return convertContentNode(preTokens, cst, node, ctx, parent, doc)
+    }
+    /* istanbul ignore if */
+    if (!isScalarOrNull(node)) {
+        throw ctx.throwError(
+            `unknown error: AST is not Scalar and null (${getNodeType(
+                node,
+            )}). Unable to process empty map key CST.`,
+            preTokens.first() ?? indexForError,
+        )
+    }
+    return convertAnchorAndTag<YAMLContent>(
+        preTokens,
+        node,
+        ctx,
+        parent,
+        null,
+        doc,
+        null,
+    )
+}
+
+/**
+ * Convert MapValue to YAMLContent
+ */
+function convertMappingValue(
+    preTokens: PreTokens,
+    cst: CST.Token | null,
+    node: ParsedNode | null,
+    ctx: Context,
+    parent: YAMLPair,
+    doc: YAMLDocument,
+    indexForError: number,
+): YAMLContent | YAMLWithMeta | null {
+    if (cst) {
+        return convertContentNode(preTokens, cst, node, ctx, parent, doc)
+    }
+
+    /* istanbul ignore if */
+    if (!isScalarOrNull(node)) {
+        throw ctx.throwError(
+            `unknown error: AST is not Scalar and null (${getNodeType(
+                node,
+            )}). Unable to process empty map value CST.`,
+            preTokens.first() ?? indexForError,
+        )
+    }
+    return convertAnchorAndTag<YAMLContent>(
+        preTokens,
+        node,
+        ctx,
+        parent,
+        null,
+        doc,
+        null,
+    )
+}
+
+/**
+ * Convert BlockSeq to YAMLBlockSequence
+ */
+function convertSequence(
+    preTokens: PreTokens,
+    cst: CST.BlockSequence,
+    node: YAMLSeq.Parsed,
+    ctx: Context,
+    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
+    doc: YAMLDocument,
+): YAMLBlockSequence | YAMLWithMeta {
+    const loc = ctx.getConvertLocation(cst.offset, cst.offset)
+    const ast: YAMLBlockSequence = {
+        type: "YAMLSequence",
+        style: "block",
+        entries: [],
+        parent,
+        ...loc,
+    }
+    const items = [...node.items]
+    let lastSeqInd
+    for (const item of cst.items) {
+        const startTokens = new PreTokens(item.start, ctx)
+        let seqInd
+        let token
+        while ((token = startTokens.consume())) {
+            if (token.type === "seq-item-ind") {
+                /* istanbul ignore if */
+                if (seqInd) {
+                    throw ctx.throwUnexpectedTokenError(token)
+                }
+                lastSeqInd = seqInd = ctx.addToken("Punctuator", toRange(token))
+                continue
+            }
+            startTokens.back()
+            break
+        }
+
+        if (items.length === 0) {
+            const t =
+                startTokens.first() || item.key || item.sep?.[0] || item.value
+            if (!t) {
+                // trailing spaces or comma
+                break
+            }
+            /* istanbul ignore next */
+            throw ctx.throwUnexpectedTokenError(t)
+        }
+
+        ast.entries.push(
+            convertSequenceItem(
+                startTokens,
+                item,
+                items.shift() || null,
+                ctx,
+                ast,
+                doc,
+                (ast.entries[ast.entries.length - 1] || ast).range[1],
+            ),
+        )
+    }
+    adjustEndLoc(ast, ast.entries[ast.entries.length - 1] || lastSeqInd)
+    return convertAnchorAndTag(preTokens, node, ctx, parent, ast, doc, ast)
 }
 
 /**
  * Convert SeqItem to YAMLContent
  */
-function* convertSequenceItem(
-    node: ASTContentNode | ASTPair | null,
-    cst: CSTSeqItem,
+function convertSequenceItem(
+    preTokens: PreTokens,
+    cst: CST.BlockSequence["items"][number],
+    node: ParsedNode | PairParsed | null,
     ctx: Context,
     parent: YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): IterableIterator<YAMLContent | YAMLWithMeta | null> {
-    if (node) {
-        if (node.type === PairType.PAIR || node.type === PairType.MERGE_PAIR) {
-            const cstRange = cst.node!.range!
-            const range: Range = [cstRange.start, cstRange.end]
-            const map: YAMLBlockMapping = {
-                type: "YAMLMapping",
-                style: "block",
-                pairs: [],
-                parent,
-                ...ctx.getConvertLocation({ range }),
-            }
-            // TODO collect : token
-            const pair = convertMappingItem(
-                node,
-                { range } as CSTPairRanges,
-                ctx,
-                map,
-                doc,
-            )
-            map.pairs.push(pair)
-            if (pair && map.range[1] !== pair.range[1]) {
-                // adjust location
-                map.range[1] = pair.range[1]
-                map.loc.end = clone(pair.loc.end)
-            }
-            yield map
-        } else {
-            yield convertContentNode(node as ASTContentNode, ctx, parent, doc)
-        }
-    } else {
-        yield null
+    indexForError: number,
+): YAMLContent | YAMLWithMeta {
+    /* istanbul ignore if */
+    if (cst.key) {
+        throw ctx.throwUnexpectedTokenError(cst.key)
     }
+    /* istanbul ignore if */
+    if (cst.sep) {
+        throw ctx.throwUnexpectedTokenError(cst.sep)
+    }
+    if (cst.value) {
+        if (isPair(node)) {
+            if (cst.value.type !== "block-map") {
+                throw ctx.throwError(
+                    `unknown error: CST is not block map (${cst.value.type}). Unable to process Pair AST.`,
+                    cst.value,
+                )
+            }
+            return convertMapping(preTokens, cst.value, node, ctx, parent, doc)
+        }
+        return convertContentNode(preTokens, cst.value, node, ctx, parent, doc)
+    }
+    /* istanbul ignore if */
+    if (!isScalarOrNull(node)) {
+        throw ctx.throwError(
+            `unknown error: AST is not Scalar and null (${getNodeType(
+                node,
+            )}). Unable to process empty seq item CST.`,
+            preTokens.first() ?? indexForError,
+        )
+    }
+    return convertAnchorAndTag<YAMLContent>(
+        preTokens,
+        node,
+        ctx,
+        parent,
+        null,
+        doc,
+        null,
+    )
 }
 
 /**
  * Convert FlowSeqItem to YAMLContent
  */
-function* convertFlowSequenceItem(
-    node: ASTContentNode | null,
+function convertFlowSequenceItem(
+    preTokens: PreTokens,
+    cst: CST.Token | null,
+    node: ParsedNode | null,
     ctx: Context,
     parent: YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): IterableIterator<YAMLContent | YAMLWithMeta> {
-    if (node) {
-        yield convertContentNode(node, ctx, parent, doc)
+    indexForError: number,
+): YAMLContent | YAMLWithMeta {
+    if (cst) {
+        return convertContentNode(preTokens, cst, node, ctx, parent, doc)
     }
+
+    /* istanbul ignore if */
+    if (!isScalarOrNull(node)) {
+        throw ctx.throwError(
+            `unknown error: AST is not Scalar and null (${getNodeType(
+                node,
+            )}). Unable to process empty seq item CST.`,
+            preTokens.first() ?? indexForError,
+        )
+    }
+    return convertAnchorAndTag<YAMLContent>(
+        preTokens,
+        node,
+        ctx,
+        parent,
+        null,
+        doc,
+        null,
+    )
 }
 
 /**
  * Convert PlainValue to YAMLPlainScalar
  */
 function convertPlain(
-    node: ASTPlainValue,
+    preTokens: PreTokens,
+    cst: CST.FlowScalar & { type: "scalar" },
+    node: Scalar,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLPlainScalar | YAMLWithMeta {
-    const valueRange = node.cstNode!.valueRange!
+    const loc = ctx.getConvertLocation(...toRange(cst))
 
-    const loc = ctx.getConvertLocation({
-        range: [
-            valueRange.start,
-            lastSkipSpaces(ctx.code, valueRange.start, valueRange.end),
-        ],
-    })
+    let ast: YAMLPlainScalar | YAMLWithMeta
     if (loc.range[0] < loc.range[1]) {
-        const strValue = node.cstNode!.strValue!
+        const strValue = node.source || cst.source
         const value = parseValueFromText(strValue, getYAMLVersion(doc))
 
-        const ast: YAMLPlainScalar = {
+        ast = {
             type: "YAMLScalar",
             style: "plain",
             strValue,
@@ -625,24 +1217,29 @@ function convertPlain(
         } else {
             ctx.addToken("Identifier", loc.range)
         }
-        return convertAnchorAndTag(node, ctx, parent, ast, doc, loc)
+        ast = convertAnchorAndTag(preTokens, node, ctx, parent, ast, doc, loc)
+    } else {
+        ast = convertAnchorAndTag<YAMLPlainScalar>(
+            preTokens,
+            node,
+            ctx,
+            parent,
+            null,
+            doc,
+            loc,
+        )
     }
 
-    return convertAnchorAndTag<YAMLPlainScalar>(
-        node,
-        ctx,
-        parent,
-        null,
-        doc,
-        loc,
-    )
+    cst.end?.forEach((t) => processAnyToken(t, ctx))
+
+    return ast
 
     /**
      * Parse value from text
      */
     function parseValueFromText(
         str: string,
-        version: "1.2" | "1.1",
+        version: YAMLVersion,
     ): string | number | boolean | null {
         for (const tagResolver of tagResolvers[version]) {
             if (tagResolver.test(str)) {
@@ -657,18 +1254,15 @@ function convertPlain(
  * Convert QuoteDouble to YAMLDoubleQuotedScalar
  */
 function convertQuoteDouble(
-    node: ASTQuoteDouble,
+    preTokens: PreTokens,
+    cst: CST.FlowScalar & { type: "double-quoted-scalar" },
+    node: Scalar,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLDoubleQuotedScalar | YAMLWithMeta {
-    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
-
-    const cst = node.cstNode!
-    const strValue =
-        typeof cst.strValue === "object" && cst.strValue
-            ? cst.strValue.str
-            : cst.strValue || ""
+    const loc = ctx.getConvertLocation(...toRange(cst))
+    const strValue = node.source!
     const ast: YAMLDoubleQuotedScalar = {
         type: "YAMLScalar",
         style: "double-quoted",
@@ -679,24 +1273,23 @@ function convertQuoteDouble(
         ...loc,
     }
     ctx.addToken("String", loc.range)
-    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
+    cst.end?.forEach((t) => processAnyToken(t, ctx))
+    return convertAnchorAndTag(preTokens, node, ctx, parent, ast, doc, ast)
 }
 
 /**
  * Convert QuoteSingle to YAMLSingleQuotedScalar
  */
 function convertQuoteSingle(
-    node: ASTQuoteSingle,
+    preTokens: PreTokens,
+    cst: CST.FlowScalar & { type: "single-quoted-scalar" },
+    node: Scalar,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLSingleQuotedScalar | YAMLWithMeta {
-    const loc = ctx.getConvertLocationFromCSTRange(node.cstNode!.valueRange)
-    const cst = node.cstNode!
-    const strValue =
-        typeof cst.strValue === "object" && cst.strValue
-            ? cst.strValue.str
-            : cst.strValue || ""
+    const loc = ctx.getConvertLocation(...toRange(cst))
+    const strValue = node.source!
     const ast: YAMLSingleQuotedScalar = {
         type: "YAMLScalar",
         style: "single-quoted",
@@ -707,89 +1300,107 @@ function convertQuoteSingle(
         ...loc,
     }
     ctx.addToken("String", loc.range)
-    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
+    cst.end?.forEach((t) => processAnyToken(t, ctx))
+    return convertAnchorAndTag(preTokens, node, ctx, parent, ast, doc, ast)
 }
 
 /**
  * Convert BlockLiteral to YAMLBlockLiteral
  */
-function convertBlockLiteral(
-    node: ASTBlockLiteral,
+function convertBlockScalar(
+    preTokens: PreTokens,
+    cst: CST.BlockScalar,
+    node: Scalar.Parsed,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
-): YAMLBlockLiteralScalar | YAMLWithMeta {
-    const cst = node.cstNode!
-    const end = getBlockEnd(cst, ctx)
-    const loc = ctx.getConvertLocation({
-        range: [cst.header.start, end],
-    })
-    const value = cst.strValue || ""
+): YAMLBlockLiteralScalar | YAMLBlockFoldedScalar | YAMLWithMeta {
+    let headerToken: Token, ast: YAMLBlockFoldedScalar | YAMLBlockLiteralScalar
+    let blockStart = cst.offset
+    for (const token of cst.props) {
+        if (processCommentOrSpace(token, ctx)) {
+            blockStart = token.offset + token.source.length
+            continue
+        }
+        if (token.type === "block-scalar-header") {
+            headerToken = ctx.addToken("Punctuator", toRange(token))
+            blockStart = headerToken.range[0]
+            continue
+        }
+        /* istanbul ignore next */
+        throw ctx.throwUnexpectedTokenError(token)
+    }
+    const headerValue = headerToken!.value
+    const end = node.source
+        ? getBlockEnd(blockStart + cst.source.length, ctx)
+        : ctx.lastSkipSpaces(cst.offset, blockStart + cst.source.length)
+    const loc = ctx.getConvertLocation(headerToken!.range[0], end)
 
-    const ast: YAMLBlockLiteralScalar = {
-        type: "YAMLScalar",
-        style: "literal",
-        chomping: CHOMPING_MAP[cst.chomping],
-        indent: getBlockIndent(node),
-        value,
-        parent,
-        ...loc,
+    if (headerValue.startsWith(">")) {
+        ast = {
+            type: "YAMLScalar",
+            style: "folded",
+            ...parseHeader(headerValue),
+            value: node.source,
+            parent,
+            ...loc,
+        }
+
+        const text = ctx.code.slice(blockStart, end)
+        const offset = /^[^\S\n\r]*/.exec(text)![0].length
+        const tokenRange: Range = [blockStart + offset, end]
+        if (tokenRange[0] < tokenRange[1]) {
+            ctx.addToken("BlockFolded", tokenRange)
+        }
+    } else {
+        ast = {
+            type: "YAMLScalar",
+            style: "literal",
+            ...parseHeader(headerValue),
+            value: node.source,
+            parent,
+            ...loc,
+        }
+        const text = ctx.code.slice(blockStart, end)
+        const offset = /^[^\S\n\r]*/.exec(text)![0].length
+        const tokenRange: Range = [blockStart + offset, end]
+        if (tokenRange[0] < tokenRange[1]) {
+            ctx.addToken("BlockLiteral", tokenRange)
+        }
     }
-    const punctuatorRange: Range = [cst.header.start, cst.header.end]
-    ctx.addToken("Punctuator", punctuatorRange)
-    const text = ctx.code.slice(cst.valueRange!.start, end)
-    const offset = /^[^\S\n\r]*/.exec(text)![0].length
-    const tokenRange: Range = [cst.valueRange!.start + offset, end]
-    if (tokenRange[0] < tokenRange[1]) {
-        ctx.addToken("BlockLiteral", tokenRange)
+    return convertAnchorAndTag(preTokens, node, ctx, parent, ast, doc, ast)
+
+    /** Get chomping kind */
+    function parseHeader(header: string): {
+        indent: number | null
+        chomping: "clip" | "keep" | "strip"
+    } {
+        const parsed = /([+-]?)(\d*)([+-]?)$/u.exec(header)
+        let indent: number | null = null
+        let chomping: "clip" | "keep" | "strip" = "clip"
+        if (parsed) {
+            indent = parsed[2] ? Number(parsed[2]) : null
+            const chompingStr = parsed[3] || parsed[1]
+            chomping =
+                chompingStr === "+"
+                    ? "keep"
+                    : chompingStr === "-"
+                    ? "strip"
+                    : "clip"
+        }
+
+        return {
+            chomping,
+            indent,
+        }
     }
-    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
 }
 
 /**
- * Convert BlockFolded to YAMLBlockFolded
+ * Get the end index from give block end
  */
-function convertBlockFolded(
-    node: ASTBlockFolded,
-    ctx: Context,
-    parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
-    doc: YAMLDocument,
-): YAMLBlockFoldedScalar | YAMLWithMeta {
-    const cst = node.cstNode!
-    const end = getBlockEnd(cst, ctx)
-    const loc = ctx.getConvertLocation({
-        range: [cst.header.start, end],
-    })
-    const value = cst.strValue || ""
-    const ast: YAMLBlockFoldedScalar = {
-        type: "YAMLScalar",
-        style: "folded",
-        chomping: CHOMPING_MAP[cst.chomping],
-        indent: getBlockIndent(node),
-        value,
-        parent,
-        ...loc,
-    }
-    const punctuatorRange: Range = [cst.header.start, cst.header.end]
-    ctx.addToken("Punctuator", punctuatorRange)
-
-    const text = ctx.code.slice(cst.valueRange!.start, end)
-    const offset = /^[^\S\n\r]*/.exec(text)![0].length
-    const tokenRange: Range = [cst.valueRange!.start + offset, end]
-    if (tokenRange[0] < tokenRange[1]) {
-        ctx.addToken("BlockFolded", tokenRange)
-    }
-    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
-}
-
-/**
- * Get the end index from give block node
- */
-function getBlockEnd(
-    cst: CSTBlockFolded | CSTBlockLiteral,
-    ctx: Context,
-): number {
-    let index = cst.valueRange!.end
+function getBlockEnd(end: number, ctx: Context): number {
+    let index = end
     if (ctx.code[index - 1] === "\n" && index > 1) {
         index--
         if (ctx.code[index - 1] === "\r" && index > 1) {
@@ -800,70 +1411,59 @@ function getBlockEnd(
 }
 
 /**
- * Get block indent from given block
- */
-function getBlockIndent(node: ASTBlockLiteral | ASTBlockFolded) {
-    const cst = node.cstNode!
-    const numLength = cst.header.end - cst.header.start - 1
-    return numLength - (cst.chomping === "CLIP" ? 0 : 1)
-        ? cst.blockIndent
-        : null
-}
-
-/**
  * Convert Alias to YAMLAlias
  */
 function convertAlias(
-    node: ASTAlias,
+    preTokens: PreTokens,
+    cst: CST.FlowScalar & { type: "alias" },
+    node: Alias.Parsed,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
 ): YAMLAlias | YAMLWithMeta {
-    const cst = node.cstNode!
-    const range = cst.range!
-    const valueRange = cst.valueRange!
-    const nodeRange: Range = [range.start, valueRange.end]
-
-    if (range.start === valueRange.start) {
-        // adjust
-        nodeRange[0]--
-    }
-    const loc = ctx.getConvertLocation({
-        range: nodeRange,
-    })
-    const ast: YAMLAlias = {
+    const [start, end] = toRange(cst)
+    const loc = ctx.getConvertLocation(start, ctx.lastSkipSpaces(start, end))
+    let ast: YAMLAlias | YAMLWithMeta = {
         type: "YAMLAlias",
-        name: cst.rawValue,
+        name: cst.source.slice(1),
         parent,
         ...loc,
     }
-    const starIndex = nodeRange[0]
-    ctx.addToken("Punctuator", [starIndex, starIndex + 1])
-    const tokenRange: Range = [valueRange.start, valueRange.end]
+    ctx.addToken("Punctuator", [loc.range[0], loc.range[0] + 1])
+    const tokenRange: Range = [loc.range[0] + 1, loc.range[1]]
     if (tokenRange[0] < tokenRange[1]) {
         ctx.addToken("Identifier", tokenRange)
     }
-    return convertAnchorAndTag(node, ctx, parent, ast, doc, ast)
+    ast = convertAnchorAndTag(preTokens, node, ctx, parent, ast, doc, ast)
+
+    cst.end?.forEach((t) => processAnyToken(t, ctx))
+
+    return ast
 }
 
 /**
  * Convert Anchor and Tag
  */
 function convertAnchorAndTag<V extends YAMLContent>(
-    node: ASTContentNode,
+    preTokens: PreTokens,
+    node:
+        | Scalar
+        | YAMLMap.Parsed
+        | YAMLSeq.Parsed<ParsedNode | PairParsed>
+        | Alias.Parsed
+        | null,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLSequence,
     value: V | null,
     doc: YAMLDocument,
-    valueLoc: Locations,
+    valueLoc: Locations | null,
 ): YAMLWithMeta | V {
-    const cst = node.cstNode!
     let meta: YAMLWithMeta | null = null
 
     /**
      * Get YAMLWithMeta
      */
-    function getMetaAst(): YAMLWithMeta {
+    function getMetaAst(cst: CST.SourceToken): YAMLWithMeta {
         if (meta) {
             return meta
         }
@@ -873,8 +1473,12 @@ function convertAnchorAndTag<V extends YAMLContent>(
             tag: null,
             value,
             parent,
-            range: clone(valueLoc.range),
-            loc: clone(valueLoc.loc),
+            ...(valueLoc
+                ? {
+                      range: [...valueLoc.range],
+                      loc: cloneLoc(valueLoc.loc),
+                  }
+                : ctx.getConvertLocation(...toRange(cst))),
         }
         if (value) {
             value.parent = meta
@@ -882,58 +1486,38 @@ function convertAnchorAndTag<V extends YAMLContent>(
         return meta
     }
 
-    for (const range of cst.props) {
-        const startChar = ctx.code[range.start]
-        if (startChar === "&") {
-            const ast = getMetaAst()
-            const anchor = convertAnchor(
-                [range.start, range.end],
-                cst.anchor!,
-                ctx,
-                ast,
-                doc,
-            )
+    preTokens.each((cst) => {
+        if (isAnchorCST(cst)) {
+            const ast = getMetaAst(cst)
+            const anchor = convertAnchor(cst, ctx, ast, doc)
             ast.anchor = anchor
-            if (anchor.range[0] < ast.range[0]) {
-                ast.range[0] = anchor.range[0]
-                ast.loc.start = clone(anchor.loc.start)
-            }
-        } else if (startChar === "!") {
-            const ast = getMetaAst()
-            const tag = convertTag(
-                [range.start, range.end],
-                node.tag!,
-                ctx,
-                ast,
-            )
+            adjustStartLoc(ast, anchor)
+            adjustEndLoc(ast, anchor)
+        } else if (isTagCST(cst)) {
+            const ast = getMetaAst(cst)
+            const tag = convertTag(cst, node?.tag ?? null, ctx, ast)
             ast.tag = tag
-            if (tag.range[0] < ast.range[0]) {
-                ast.range[0] = tag.range[0]
-                ast.loc.start = clone(tag.loc.start)
-            }
-        } else if (startChar === "#") {
-            const comment: Comment = {
-                type: "Block",
-                value: ctx.code.slice(range.start + 1, range.end),
-                ...ctx.getConvertLocationFromCSTRange(range),
-            }
-            ctx.addComment(comment)
+            adjustStartLoc(ast, tag)
+            adjustEndLoc(ast, tag)
+        } else {
+            /* istanbul ignore next */
+            throw ctx.throwUnexpectedTokenError(cst)
         }
-    }
-    return meta || (value as never)
+    })
+    return meta || value!
 }
 
 /**
  * Convert anchor to YAMLAnchor
  */
 function convertAnchor(
-    range: Range,
-    name: string,
+    cst: CST.SourceToken & { type: "anchor" },
     ctx: Context,
     parent: YAMLWithMeta,
     doc: YAMLDocument,
 ): YAMLAnchor {
-    const loc = ctx.getConvertLocation({ range })
+    const name = cst.source.slice(1)
+    const loc = ctx.getConvertLocation(...toRange(cst))
     const ast: YAMLAnchor = {
         type: "YAMLAnchor",
         name,
@@ -957,20 +1541,24 @@ function convertAnchor(
  * Convert tag to YAMLTag
  */
 function convertTag(
-    range: Range,
-    tag: string,
+    cst: CST.SourceToken & { type: "tag" },
+    tag: string | null,
     ctx: Context,
     parent: YAMLWithMeta,
 ): YAMLTag {
-    const loc = ctx.getConvertLocation({ range })
+    const offset = cst.source.startsWith("!!") ? 2 : 1
+    let resolvedTag = tag ?? cst.source.slice(offset)
+    if (resolvedTag === "!") {
+        resolvedTag = "tag:yaml.org,2002:str"
+    }
+    const loc = ctx.getConvertLocation(...toRange(cst))
     const ast: YAMLTag = {
         type: "YAMLTag",
-        tag,
+        tag: resolvedTag,
+        raw: cst.source,
         parent,
         ...loc,
     }
-    const text = ctx.code.slice(...loc.range)
-    const offset = text.startsWith("!!") ? 2 : 1
     const punctuatorRange: Range = [loc.range[0], loc.range[0] + offset]
     ctx.addToken("Punctuator", punctuatorRange)
     const tokenRange: Range = [punctuatorRange[1], loc.range[1]]
@@ -980,287 +1568,70 @@ function convertTag(
     return ast
 }
 
-/**
- * Process comments
- */
-function processComment<N extends CSTNode>(
-    node: CSTBlankLine | CSTComment | N,
+/** Checks whether the give node is scaler or null */
+function isScalarOrNull(node: unknown): node is Scalar.Parsed | null {
+    return isScalar(node) || node == null
+}
+
+/** Get the pairs from the give node */
+function getPairs(node: YAMLMap.Parsed | PairParsed): PairParsed[] {
+    return isMap(node) ? [...node.items] : [node]
+}
+
+type CommentOrSpaceOrErrorSourceToken = CST.SourceToken & {
+    type: "space" | "newline" | "flow-error-end" | "comment"
+}
+type NormalSourceToken = CST.SourceToken & {
+    type: Exclude<
+        CST.SourceToken["type"],
+        CommentOrSpaceOrErrorSourceToken["type"]
+    >
+}
+type CommentOrSpaceOrErrorToken =
+    | CommentOrSpaceOrErrorSourceToken
+    | CST.ErrorToken
+type NormalToken = CST.Token & {
+    type: Exclude<CST.Token["type"], CommentOrSpaceOrErrorToken["type"]>
+}
+
+function processCommentOrSpace(
+    node: CommentOrSpaceOrErrorSourceToken | NormalSourceToken,
     ctx: Context,
-): node is N {
-    if (node.type === Type.BLANK_LINE) {
-        return false
+): node is CommentOrSpaceOrErrorSourceToken
+function processCommentOrSpace(
+    node: CommentOrSpaceOrErrorToken | NormalToken,
+    ctx: Context,
+): node is CommentOrSpaceOrErrorToken
+/**
+ * Process comments or spaces
+ */
+function processCommentOrSpace(node: CST.Token, ctx: Context): boolean {
+    if (node.type === "space" || node.type === "newline") {
+        return true
     }
-    if (node.type === Type.COMMENT) {
+    /* istanbul ignore if */
+    if (node.type === "flow-error-end" || node.type === "error") {
+        throw ctx.throwUnexpectedTokenError(node)
+    }
+    if (node.type === "comment") {
         const comment: Comment = {
             type: "Block",
-            value: node.comment,
-            ...ctx.getConvertLocationFromCSTRange(node.range),
+            value: node.source.slice(1),
+            ...ctx.getConvertLocation(...toRange(node)),
         }
         ctx.addComment(comment)
-        return false
+        return true
     }
-    return true
+    return false
 }
 
 /**
- * Extract comments from props
+ * Process any token
  */
-function extractComment(cst: CSTNode, ctx: Context): void {
-    for (const range of cst.props) {
-        const startChar = ctx.code[range.start]
-        if (startChar === "#") {
-            const comment: Comment = {
-                type: "Block",
-                value: ctx.code.slice(range.start + 1, range.end),
-                ...ctx.getConvertLocationFromCSTRange(range),
-            }
-            ctx.addComment(comment)
-        }
-    }
-}
-
-type CSTPairRanges =
-    | {
-          key: Range
-          value: Range
-          range: Range
-      }
-    | {
-          key: null
-          value: Range
-          range: Range
-      }
-    | {
-          key: Range
-          value: null
-          range: Range
-      }
-
-/**
- * Process CST items
- */
-function processCSTItems(
-    node: ASTBlockMap | ASTFlowMap | ASTFlowSeq,
-    ctx: Context,
-): CSTPairRanges[] {
-    const parsed = [...parseCSTItems(node.cstNode!.items)]
-
-    return parsed
-
-    type CSTItem = Required<
-        ASTBlockMap | ASTFlowMap | ASTFlowSeq
-    >["cstNode"]["items"][number]
-    type CSTPairItem = Exclude<CSTItem, CSTBlankLine | CSTComment>
-
-    /* eslint-disable complexity -- ignore */
-    /**
-     * Parse for cst items
-     */
-    function* parseCSTItems(
-        /* eslint-enable complexity -- ignore */
-        items: CSTItem[],
-    ): IterableIterator<CSTPairRanges> {
-        // eslint-disable-next-line no-shadow -- bug?
-        const enum PairDataState {
-            empty,
-            // ?
-            keyMark,
-            // KEY
-            // ? KEY
-            key,
-            // KEY :
-            // ? KEY :
-            // ? :
-            // :
-            valueMark,
-        }
-        let data: {
-            key: CSTPairItem[]
-            value: CSTPairItem[]
-            state: PairDataState
-        } = {
-            key: [],
-            value: [],
-            state: PairDataState.empty,
-        }
-
-        for (const cstItem of items) {
-            if ("char" in cstItem) {
-                ctx.addToken("Punctuator", [cstItem.offset, cstItem.offset + 1])
-                if (
-                    cstItem.char === "[" ||
-                    cstItem.char === "]" ||
-                    cstItem.char === "{" ||
-                    cstItem.char === "}"
-                ) {
-                    continue
-                }
-                if (cstItem.char === ",") {
-                    if (data.state !== PairDataState.empty) {
-                        yield parseGroup(data)
-                    }
-                    data = { key: [], value: [], state: PairDataState.empty }
-                    continue
-                }
-                if (cstItem.char === "?") {
-                    if (data.state !== PairDataState.empty) {
-                        yield parseGroup(data)
-                        data = {
-                            key: [cstItem],
-                            value: [],
-                            state: PairDataState.keyMark,
-                        }
-                    } else {
-                        data.key.push(cstItem)
-                        data.state = PairDataState.keyMark
-                    }
-                    continue
-                } else if (cstItem.char === ":") {
-                    if (
-                        data.state === PairDataState.empty ||
-                        data.state === PairDataState.keyMark ||
-                        data.state === PairDataState.key
-                    ) {
-                        data.value.push(cstItem)
-                        data.state = PairDataState.valueMark
-                    } else {
-                        yield parseGroup(data)
-                        data = {
-                            key: [],
-                            value: [cstItem],
-                            state: PairDataState.valueMark,
-                        }
-                    }
-                    continue
-                }
-            } else if (!processComment(cstItem, ctx)) {
-                continue
-            } else {
-                if (cstItem.type === Type.MAP_VALUE) {
-                    ctx.addToken("Punctuator", [
-                        cstItem.range!.start,
-                        cstItem.range!.start + 1,
-                    ])
-                    extractComment(cstItem, ctx)
-                    if (
-                        data.state === PairDataState.empty ||
-                        data.state === PairDataState.keyMark ||
-                        data.state === PairDataState.key
-                    ) {
-                        data.value.push(cstItem)
-                        yield parseGroup(data)
-                    } else {
-                        yield parseGroup(data)
-                        yield parseGroup({ key: [], value: [cstItem] })
-                    }
-                    data = { key: [], value: [], state: PairDataState.empty }
-                    continue
-                } else if (cstItem.type === Type.MAP_KEY) {
-                    ctx.addToken("Punctuator", [
-                        cstItem.range!.start,
-                        cstItem.range!.start + 1,
-                    ])
-                    extractComment(cstItem, ctx)
-                    if (data.state !== PairDataState.empty) {
-                        yield parseGroup(data)
-                        data = {
-                            key: [cstItem],
-                            value: [],
-                            state: PairDataState.key,
-                        }
-                    } else {
-                        data.key.push(cstItem)
-                        data.state = PairDataState.key
-                    }
-                    continue
-                } else {
-                    if (
-                        data.state === PairDataState.empty ||
-                        data.state === PairDataState.keyMark
-                    ) {
-                        data.key.push(cstItem)
-                        data.state = PairDataState.key
-                        continue
-                    }
-                    if (data.state === PairDataState.key) {
-                        yield parseGroup(data)
-                        data = {
-                            key: [cstItem],
-                            value: [],
-                            state: PairDataState.key,
-                        }
-                        continue
-                    }
-                    if (data.state === PairDataState.valueMark) {
-                        data.value.push(cstItem)
-                        yield parseGroup(data)
-                        data = {
-                            key: [],
-                            value: [],
-                            state: PairDataState.empty,
-                        }
-                        continue
-                    }
-                }
-            }
-        }
-        if (data.state !== PairDataState.empty) {
-            yield parseGroup(data)
-        }
-    }
-
-    /**
-     * Parse for cst item group
-     */
-    function parseGroup(data: {
-        key: CSTPairItem[]
-        value: CSTPairItem[]
-    }): CSTPairRanges {
-        if (data.key.length && data.value.length) {
-            const key = itemsToRange(data.key)
-            const value = itemsToRange(data.value)
-            return {
-                key,
-                value,
-                range: [key[0], value[1]],
-            }
-        }
-        if (data.key.length) {
-            const key = itemsToRange(data.key)
-            return {
-                key,
-                value: null,
-                range: key,
-            }
-        }
-        if (data.value.length) {
-            const value = itemsToRange(data.value)
-            return {
-                key: null,
-                value,
-                range: value,
-            }
-        }
-        throw new Error("Unexpected state")
-    }
-
-    /** get range */
-    function itemsToRange(items: CSTPairItem[]): Range {
-        const first = itemToRange(items[0])
-        if (items.length === 1) {
-            return first
-        }
-        const last = itemToRange(items[items.length - 1])
-        return [first[0], last[1]]
-    }
-
-    /** get range */
-    function itemToRange(item: CSTPairItem): Range {
-        if ("char" in item) {
-            return [item.offset, item.offset + 1]
-        }
-        const range = item.range || item.valueRange!
-        return [range.start, range.end]
+function processAnyToken(node: CST.Token, ctx: Context): void {
+    /* istanbul ignore if */
+    if (!processCommentOrSpace(node, ctx)) {
+        throw ctx.throwUnexpectedTokenError(node)
     }
 }
 
@@ -1288,18 +1659,21 @@ function sort(tokens: (Token | Comment)[]) {
 /**
  * clone the location.
  */
-function clone<T>(loc: T): T {
-    if (typeof loc !== "object") {
-        return loc
+function clonePos(loc: Position): Position {
+    return {
+        line: loc.line,
+        column: loc.column,
     }
-    if (Array.isArray(loc)) {
-        return (loc as any).map(clone)
+}
+
+/**
+ * clone the location.
+ */
+function cloneLoc(loc: SourceLocation): SourceLocation {
+    return {
+        start: clonePos(loc.start),
+        end: clonePos(loc.end),
     }
-    const n: any = {}
-    for (const key in loc) {
-        n[key] = clone(loc[key])
-    }
-    return n
 }
 
 /**
@@ -1315,14 +1689,27 @@ function skipSpaces(str: string, startIndex: number) {
     return len
 }
 
-/**
- * Gets the last index with whitespace skipped.
- */
-function lastSkipSpaces(str: string, startIndex: number, endIndex: number) {
-    for (let index = endIndex - 1; index >= startIndex; index--) {
-        if (str[index].trim()) {
-            return index + 1
-        }
+/** SourceToken to location range */
+function toRange(
+    token: CST.SourceToken | CST.Directive | CST.DocumentEnd | CST.FlowScalar,
+): readonly [number, number] {
+    return [token.offset, token.offset + token.source.length]
+}
+
+/** Adjust start location */
+function adjustStartLoc(ast: YAMLNode, first: Locations | null | undefined) {
+    if (first && first.range[0] < ast.range[0]) {
+        // adjust location
+        ast.range[0] = first.range[0]
+        ast.loc.start = clonePos(first.loc.start)
     }
-    return startIndex
+}
+
+/** Adjust end location */
+function adjustEndLoc(ast: YAMLNode, last: Locations | null | undefined) {
+    if (last && ast.range[1] < last.range[1]) {
+        // adjust location
+        ast.range[1] = last.range[1]
+        ast.loc.end = clonePos(last.loc.end)
+    }
 }

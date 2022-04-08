@@ -123,6 +123,8 @@
         {
           "type": "YAMLDirective",
           "value": "%YAML 1.2",
+          "kind": "YAML",
+          "version": "1.2",
           "range": [
             34,
             43

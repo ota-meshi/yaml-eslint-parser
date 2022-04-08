@@ -7,6 +7,9 @@
         {
           "type": "YAMLDirective",
           "value": "%TAG !! tag:example.com,2000:app/",
+          "kind": "TAG",
+          "handle": "!!",
+          "prefix": "tag:example.com,2000:app/",
           "range": [
             0,
             33
@@ -29,6 +32,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:example.com,2000:app/int",
+          "raw": "!!int",
           "range": [
             38,
             43

@@ -7,7 +7,7 @@
         "lib"
     ],
     "engines": {
-        "node": "^12.22.0 || ^14.17.0 || >=16.0.0"
+        "node": "^14.17.0 || >=16.0.0"
     },
     "scripts": {
         "prebuild": "npm run -s clean",
@@ -17,9 +17,10 @@
         "eslint-fix": "npm run lint -- --fix",
         "test": "mocha --require ts-node/register \"tests/src/**/*.ts\" --reporter dot --timeout 60000",
         "cover": "nyc --reporter=lcov npm run test",
-        "debug": "mocha --require ts-node/register/transpile-only --inspect \"tests/src/**/*.ts\" --reporter dot",
+        "debug": "mocha --require ts-node/register/transpile-only \"tests/src/**/*.ts\" --reporter dot",
         "preversion": "npm run lint && npm test",
-        "update-fixtures": "ts-node ./tools/update-fixtures.ts"
+        "update-fixtures": "ts-node ./tools/update-fixtures.ts",
+        "benchmark": "ts-node --transpile-only benchmark/index.ts"
     },
     "repository": {
         "type": "git",
@@ -40,10 +41,11 @@
     "dependencies": {
         "eslint-visitor-keys": "^3.0.0",
         "lodash": "^4.17.21",
-        "yaml": "^1.10.2"
+        "yaml": "^2.0.0"
     },
     "devDependencies": {
         "@ota-meshi/eslint-plugin": "^0.10.0",
+        "@types/benchmark": "^2.1.1",
         "@types/eslint": "^8.0.0",
         "@types/eslint-visitor-keys": "^1.0.0",
         "@types/lodash": "^4.14.167",
@@ -51,6 +53,7 @@
         "@types/node": "^16.0.0",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
         "@typescript-eslint/parser": "^5.0.0",
+        "benchmark": "^2.1.4",
         "eslint": "^8.0.0",
         "eslint-config-prettier": "^8.0.0",
         "eslint-plugin-eslint-comments": "^3.2.0",

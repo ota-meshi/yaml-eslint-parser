@@ -1,1 +1,1 @@
-Document contains trailing content not separated by a ... or --- line@line:2,column:12
+Unexpected flow-seq-end token in YAML stream: "]"@line:2,column:12

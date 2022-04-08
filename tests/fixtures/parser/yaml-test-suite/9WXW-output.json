@@ -10,6 +10,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "!foo",
+          "raw": "!foo",
           "range": [
             10,
             14
@@ -82,6 +83,9 @@
         {
           "type": "YAMLDirective",
           "value": "%TAG ! tag:example.com,2000:app/",
+          "kind": "TAG",
+          "handle": "!",
+          "prefix": "tag:example.com,2000:app/",
           "range": [
             34,
             66
@@ -104,6 +108,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:example.com,2000:app/foo",
+          "raw": "!foo",
           "range": [
             71,
             75

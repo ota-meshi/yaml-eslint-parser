@@ -10,6 +10,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:clarkevans.com,2002:invoice",
+          "raw": "!<tag:clarkevans.com,2002:invoice>",
           "range": [
             4,
             38

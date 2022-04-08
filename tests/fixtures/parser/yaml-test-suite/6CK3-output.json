@@ -7,6 +7,9 @@
         {
           "type": "YAMLDirective",
           "value": "%TAG !e! tag:example.com,2000:app/",
+          "kind": "TAG",
+          "handle": "!e!",
+          "prefix": "tag:example.com,2000:app/",
           "range": [
             0,
             34
@@ -33,6 +36,7 @@
             "tag": {
               "type": "YAMLTag",
               "tag": "!local",
+              "raw": "!local",
               "range": [
                 41,
                 47
@@ -90,6 +94,7 @@
             "tag": {
               "type": "YAMLTag",
               "tag": "tag:yaml.org,2002:str",
+              "raw": "!!str",
               "range": [
                 54,
                 59
@@ -147,6 +152,7 @@
             "tag": {
               "type": "YAMLTag",
               "tag": "tag:example.com,2000:app/tag!",
+              "raw": "!e!tag%21",
               "range": [
                 66,
                 75

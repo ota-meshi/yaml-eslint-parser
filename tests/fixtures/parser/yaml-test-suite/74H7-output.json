@@ -16,6 +16,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:str",
+                "raw": "!!str",
                 "range": [
                   0,
                   5
@@ -132,6 +133,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:int",
+                "raw": "!!int",
                 "range": [
                   14,
                   19
@@ -227,6 +229,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:str",
+                "raw": "!!str",
                 "range": [
                   26,
                   31
@@ -360,6 +363,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:int",
+                "raw": "!!int",
                 "range": [
                   39,
                   44
@@ -417,6 +421,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:yaml.org,2002:bool",
+                "raw": "!!bool",
                 "range": [
                   49,
                   55

@@ -7,6 +7,9 @@
         {
           "type": "YAMLDirective",
           "value": "%TAG ! tag:clarkevans.com,2002:",
+          "kind": "TAG",
+          "handle": "!",
+          "prefix": "tag:clarkevans.com,2002:",
           "range": [
             0,
             31
@@ -29,6 +32,7 @@
         "tag": {
           "type": "YAMLTag",
           "tag": "tag:clarkevans.com,2002:shape",
+          "raw": "!shape",
           "range": [
             36,
             42
@@ -54,6 +58,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:clarkevans.com,2002:circle",
+                "raw": "!circle",
                 "range": [
                   116,
                   123
@@ -381,6 +386,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:clarkevans.com,2002:line",
+                "raw": "!line",
                 "range": [
                   172,
                   177
@@ -669,6 +675,7 @@
               "tag": {
                 "type": "YAMLTag",
                 "tag": "tag:clarkevans.com,2002:label",
+                "raw": "!label",
                 "range": [
                   225,
                   231

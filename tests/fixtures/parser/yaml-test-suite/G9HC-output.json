@@ -1,1 +1,1 @@
-A collection cannot be both a mapping and a sequence@line:2,column:0
+A block sequence may not be used as an implicit map key@line:2,column:4

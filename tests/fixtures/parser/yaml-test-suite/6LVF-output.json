@@ -7,6 +7,7 @@
         {
           "type": "YAMLDirective",
           "value": "%FOO  bar baz",
+          "kind": null,
           "range": [
             0,
             13
