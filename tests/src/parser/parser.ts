@@ -126,8 +126,31 @@ describe("Check for AST.", () => {
                 it("The result of getStaticYAMLValue() and the result of parsing with the yaml package should be the same.", () => {
                     assert.deepStrictEqual(
                         getStaticYAMLValue(ast),
-                        YAML.parse(input, { logLevel: "silent" }),
+                        normalize(YAML.parse(input, { logLevel: "silent" })),
                     )
+
+                    function normalize(value: any): any {
+                        if (value instanceof Map) {
+                            return Object.fromEntries(
+                                [...value].map(([k, v]) => [k, normalize(v)]),
+                            )
+                        }
+                        if (value instanceof Set) {
+                            return normalize([...value])
+                        }
+                        if (Array.isArray(value)) {
+                            return value.map(normalize)
+                        }
+                        if (value && typeof value === "object") {
+                            return Object.fromEntries(
+                                Object.entries(value).map(([k, v]) => [
+                                    k,
+                                    normalize(v),
+                                ]),
+                            )
+                        }
+                        return value
+                    }
                 })
             }
 

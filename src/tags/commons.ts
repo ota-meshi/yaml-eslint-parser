@@ -1,5 +1,13 @@
+import type { YAMLAlias, YAMLContent } from "../ast"
+
 export type TagResolver<T> = {
     tag: string
-    test: (str: string) => boolean
-    resolve: (str: string) => T
+    testString: (str: string) => boolean
+    resolveString: (str: string) => T
+}
+
+export type TagNodeResolver<T> = {
+    tag: string
+    testNode: (node: Exclude<YAMLContent, YAMLAlias>) => boolean
+    resolveNode: (node: Exclude<YAMLContent, YAMLAlias>) => T
 }
