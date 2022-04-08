@@ -3,7 +3,7 @@
         "tag": "next"
     },
     "name": "yaml-eslint-parser",
-    "version": "0.5.0",
+    "version": "1.0.0-beta.0",
     "description": "A YAML parser that produces output compatible with ESLint",
     "main": "lib/index.js",
     "files": [
