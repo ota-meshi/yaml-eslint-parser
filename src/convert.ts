@@ -616,7 +616,7 @@ function convertMapping(
 function convertFlowCollection(
     preTokens: PreTokens,
     cst: CST.FlowCollection,
-    node: ParsedNode,
+    node: ParsedNode | PairParsed,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
@@ -624,7 +624,7 @@ function convertFlowCollection(
     if (cst.start.type === "flow-map-start") {
         const startToken = ctx.addToken("Punctuator", toRange(cst.start))
         /* istanbul ignore if */
-        if (!isMap(node)) {
+        if (!isMap(node) && !isPair(node)) {
             throw ctx.throwError(
                 `unknown error: AST is not Map and Pair (${getNodeType(
                     node,
@@ -678,7 +678,7 @@ function convertFlowMapping(
     preTokens: PreTokens,
     startToken: Token,
     cst: CST.FlowCollection,
-    node: YAMLMap.Parsed,
+    node: YAMLMap.Parsed | PairParsed,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
     doc: YAMLDocument,
@@ -691,7 +691,7 @@ function convertFlowMapping(
         parent,
         ...loc,
     }
-    const items = [...node.items]
+    const items = getPairs(node)
     let lastToken
     for (const item of cst.items) {
         const startTokens = new PreTokens(item.start, ctx)
@@ -979,15 +979,7 @@ function convertMappingKey(
             preTokens.first() ?? indexForError,
         )
     }
-    return convertAnchorAndTag<YAMLContent>(
-        preTokens,
-        node,
-        ctx,
-        parent,
-        null,
-        doc,
-        null,
-    )
+    return convertAnchorAndTag(preTokens, node, ctx, parent, null, doc, null)
 }
 
 /**
@@ -1015,15 +1007,7 @@ function convertMappingValue(
             preTokens.first() ?? indexForError,
         )
     }
-    return convertAnchorAndTag<YAMLContent>(
-        preTokens,
-        node,
-        ctx,
-        parent,
-        null,
-        doc,
-        null,
-    )
+    return convertAnchorAndTag(preTokens, node, ctx, parent, null, doc, null)
 }
 
 /**
@@ -1113,13 +1097,30 @@ function convertSequenceItem(
     }
     if (cst.value) {
         if (isPair(node)) {
-            if (cst.value.type !== "block-map") {
-                throw ctx.throwError(
-                    `unknown error: CST is not block map (${cst.value.type}). Unable to process Pair AST.`,
+            if (cst.value.type === "block-map") {
+                return convertMapping(
+                    preTokens,
                     cst.value,
+                    node,
+                    ctx,
+                    parent,
+                    doc,
                 )
             }
-            return convertMapping(preTokens, cst.value, node, ctx, parent, doc)
+            if (cst.value.type === "flow-collection") {
+                return convertFlowCollection(
+                    preTokens,
+                    cst.value,
+                    node,
+                    ctx,
+                    parent,
+                    doc,
+                )
+            }
+            throw ctx.throwError(
+                `unknown error: CST is not block-map and flow-collection (${cst.value.type}). Unable to process Pair AST.`,
+                cst.value,
+            )
         }
         return convertContentNode(preTokens, cst.value, node, ctx, parent, doc)
     }
@@ -1132,15 +1133,7 @@ function convertSequenceItem(
             preTokens.first() ?? indexForError,
         )
     }
-    return convertAnchorAndTag<YAMLContent>(
-        preTokens,
-        node,
-        ctx,
-        parent,
-        null,
-        doc,
-        null,
-    )
+    return convertAnchorAndTag(preTokens, node, ctx, parent, null, doc, null)
 }
 
 /**
@@ -1168,15 +1161,7 @@ function convertFlowSequenceItem(
             preTokens.first() ?? indexForError,
         )
     }
-    return convertAnchorAndTag<YAMLContent>(
-        preTokens,
-        node,
-        ctx,
-        parent,
-        null,
-        doc,
-        null,
-    )
+    return convertAnchorAndTag(preTokens, node, ctx, parent, null, doc, null)
 }
 
 /**
@@ -1242,8 +1227,8 @@ function convertPlain(
         version: YAMLVersion,
     ): string | number | boolean | null {
         for (const tagResolver of tagResolvers[version]) {
-            if (tagResolver.test(str)) {
-                return tagResolver.resolve(str)
+            if (tagResolver.testString(str)) {
+                return tagResolver.resolveString(str)
             }
         }
         return str
@@ -1416,14 +1401,14 @@ function getBlockEnd(end: number, ctx: Context): number {
 function convertAlias(
     preTokens: PreTokens,
     cst: CST.FlowScalar & { type: "alias" },
-    node: Alias.Parsed,
+    _node: Alias.Parsed,
     ctx: Context,
     parent: YAMLDocument | YAMLPair | YAMLBlockSequence | YAMLFlowSequence,
-    doc: YAMLDocument,
+    _doc: YAMLDocument,
 ): YAMLAlias | YAMLWithMeta {
     const [start, end] = toRange(cst)
     const loc = ctx.getConvertLocation(start, ctx.lastSkipSpaces(start, end))
-    let ast: YAMLAlias | YAMLWithMeta = {
+    const ast: YAMLAlias | YAMLWithMeta = {
         type: "YAMLAlias",
         name: cst.source.slice(1),
         parent,
@@ -1434,7 +1419,11 @@ function convertAlias(
     if (tokenRange[0] < tokenRange[1]) {
         ctx.addToken("Identifier", tokenRange)
     }
-    ast = convertAnchorAndTag(preTokens, node, ctx, parent, ast, doc, ast)
+    const token = preTokens.first()
+    /* istanbul ignore if */
+    if (token) {
+        throw ctx.throwUnexpectedTokenError(token)
+    }
 
     cst.end?.forEach((t) => processAnyToken(t, ctx))
 
@@ -1444,7 +1433,7 @@ function convertAlias(
 /**
  * Convert Anchor and Tag
  */
-function convertAnchorAndTag<V extends YAMLContent>(
+function convertAnchorAndTag<V extends NonNullable<YAMLWithMeta["value"]>>(
     preTokens: PreTokens,
     node:
         | Scalar

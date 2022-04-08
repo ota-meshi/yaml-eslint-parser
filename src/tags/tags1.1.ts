@@ -1,4 +1,6 @@
 import type { TagResolver } from "./commons"
+import { OMAP } from "./omap"
+import { SET } from "./set"
 import * as Tags1_2 from "./tags1.2"
 
 // https://yaml.org/type/
@@ -8,84 +10,84 @@ export const NULL: TagResolver<null> = Tags1_2.NULL
 export const TRUE: TagResolver<true> = {
     // see https://yaml.org/type/bool.html
     tag: "tag:yaml.org,2002:bool",
-    test(str) {
+    testString(str) {
         // see https://yaml.org/type/bool.html
         return /^(?:y|Y|yes|Yes|YES|true|True|TRUE|on|On|ON)$/u.test(str)
     },
-    resolve() {
+    resolveString() {
         return true
     },
 }
 export const FALSE: TagResolver<false> = {
     // see https://yaml.org/type/bool.html
     tag: "tag:yaml.org,2002:bool",
-    test(str) {
+    testString(str) {
         // see https://yaml.org/type/bool.html
         return /^(?:n|N|no|No|NO|false|False|FALSE|off|Off|OFF)$/u.test(str)
     },
-    resolve() {
+    resolveString() {
         return false
     },
 }
 export const INT: TagResolver<number> = {
     // see https://yaml.org/type/int.html
     tag: "tag:yaml.org,2002:int",
-    test(str) {
+    testString(str) {
         // see https://yaml.org/type/int.html
         return /^[+-]?(?:0|[1-9][\d_]*)$/u.test(str)
     },
-    resolve(str) {
+    resolveString(str) {
         return resolveInt(str, 0, 10)
     },
 }
 export const INT_BASE2: TagResolver<number> = {
     // see https://yaml.org/type/int.html
     tag: "tag:yaml.org,2002:int",
-    test(str) {
+    testString(str) {
         // see https://yaml.org/type/int.html
         return /^[+-]?0b[01_]+$/u.test(str)
     },
-    resolve(str) {
+    resolveString(str) {
         return resolveInt(str, 2, 2)
     },
 }
 export const INT_BASE8: TagResolver<number> = {
     // see https://yaml.org/type/int.html
     tag: "tag:yaml.org,2002:int",
-    test(str) {
+    testString(str) {
         // see https://yaml.org/type/int.html
         return /^[+-]?0[0-7_]+$/u.test(str)
     },
-    resolve(str) {
+    resolveString(str) {
         return resolveInt(str, 1, 8)
     },
 }
 export const INT_BASE16: TagResolver<number> = {
     // see https://yaml.org/type/int.html
     tag: "tag:yaml.org,2002:int",
-    test(str) {
+    testString(str) {
         // see https://yaml.org/type/int.html
         return /^[+-]?0x[\dA-F_a-f]+$/u.test(str)
     },
-    resolve(str) {
+    resolveString(str) {
         return resolveInt(str, 2, 16)
     },
 }
 export const INT_BASE60: TagResolver<number> = {
     // see https://yaml.org/type/int.html
     tag: "tag:yaml.org,2002:int",
-    test(str) {
+    testString(str) {
         // see https://yaml.org/type/int.html
         return /^[+-]?[1-9][\d_]*(?::[0-5]?\d)+$/u.test(str)
     },
-    resolve(str) {
+    resolveString(str) {
         return resolveBase60(str.split(/:/u), true)
     },
 }
 export const FLOAT: TagResolver<number> = {
     // see https://yaml.org/type/float.html
     tag: "tag:yaml.org,2002:float",
-    test(str) {
+    testString(str) {
         // see https://yaml.org/type/float.html
         return (
             /^[+-]?(?:\d[\d_]*)?\.[\d_]*(?:[Ee][+-]\d+)?$/u.test(str) ||
@@ -93,18 +95,18 @@ export const FLOAT: TagResolver<number> = {
             /^[+-]?(?:\d[\d_]*)?(?:[Ee][+-]\d+)?$/u.test(str)
         )
     },
-    resolve(str) {
+    resolveString(str) {
         return parseFloat(str.replace(/_/gu, ""))
     },
 }
 export const FLOAT_BASE60: TagResolver<number> = {
     // see https://yaml.org/type/float.html
     tag: "tag:yaml.org,2002:float",
-    test(str) {
+    testString(str) {
         // see https://yaml.org/type/float.html
         return /^[+-]?\d[\d_]*(?::[0-5]?\d)+\.[\d_]*$/u.test(str)
     },
-    resolve(str) {
+    resolveString(str) {
         return resolveBase60(str.split(/:/u), false)
     },
 }
@@ -134,6 +136,8 @@ export const tagResolvers = [
     NAN,
     STR,
 ]
+
+export const tagNodeResolvers = [OMAP, SET]
 
 /**
  * Resolve int value

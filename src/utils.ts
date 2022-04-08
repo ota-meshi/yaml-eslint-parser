@@ -12,7 +12,7 @@ import type {
     YAMLWithMeta,
     YAMLTag,
 } from "./ast"
-import { tagResolvers } from "./tags"
+import { tagNodeResolvers, tagResolvers } from "./tags"
 
 export type YAMLVersion = "1.3" | "1.2" | "1.1"
 
@@ -112,28 +112,38 @@ const resolver = {
     },
     YAMLWithMeta(node: YAMLWithMeta, version: YAMLVersion | null) {
         if (node.tag) {
-            if (node.value == null) {
+            const value = node.value
+            if (value == null) {
                 return getTaggedValue(node.tag, "", "", version)
             }
-            if (node.value.type === "YAMLScalar") {
-                if (node.value.style === "plain") {
+            if (value.type === "YAMLScalar") {
+                if (value.style === "plain") {
                     return getTaggedValue(
                         node.tag,
-                        node.value.strValue,
-                        node.value.strValue,
+                        value.strValue,
+                        value.strValue,
                         version,
                     )
                 }
                 if (
-                    node.value.style === "double-quoted" ||
-                    node.value.style === "single-quoted"
+                    value.style === "double-quoted" ||
+                    value.style === "single-quoted"
                 ) {
                     return getTaggedValue(
                         node.tag,
-                        node.value.raw,
-                        node.value.strValue,
+                        value.raw,
+                        value.strValue,
                         version,
                     )
+                }
+            }
+
+            for (const tagResolver of tagNodeResolvers[version || "1.2"]) {
+                if (
+                    tagResolver.tag === node.tag.tag &&
+                    tagResolver.testNode(value)
+                ) {
+                    return tagResolver.resolveNode(value)
                 }
             }
         }
@@ -195,8 +205,8 @@ function getTaggedValue(
     version: YAMLVersion | null,
 ) {
     for (const tagResolver of tagResolvers[version || "1.2"]) {
-        if (tagResolver.tag === tag.tag && tagResolver.test(str)) {
-            return tagResolver.resolve(str)
+        if (tagResolver.tag === tag.tag && tagResolver.testString(str)) {
+            return tagResolver.resolveString(str)
         }
     }
     const tagText = tag.tag.startsWith("!") ? tag.tag : `!<${tag.tag}>`

@@ -96,7 +96,7 @@ export interface YAMLWithMeta extends BaseYAMLNode {
     type: "YAMLWithMeta"
     anchor: YAMLAnchor | null
     tag: YAMLTag | null
-    value: YAMLContent | null
+    value: Exclude<YAMLContent, YAMLAlias> | null
     parent: YAMLDocument | YAMLPair | YAMLSequence
 }
 
