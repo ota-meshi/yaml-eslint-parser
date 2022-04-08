@@ -4,7 +4,9 @@ import * as Benchmark from "benchmark"
 import fs from "fs"
 import path from "path"
 import { parseForESLint } from ".."
+import { parseAllDocuments } from "yaml"
 import { parseForESLint as parseOld } from "../node_modules/yaml-eslint-parser"
+import { parseAllDocuments as parseAllDocumentsOld } from "../node_modules/yaml-eslint-parser/node_modules/yaml"
 
 const contents = `${fs.readFileSync(
     path.resolve(
@@ -64,6 +66,11 @@ for (const no of [1, 2, 3]) {
             eslintScopeManager: true,
         })
     })
+    suite.add(`${no} new   yaml`, function () {
+        parseAllDocuments(contents, {
+            keepSourceTokens: true,
+        })
+    })
     suite.add(`${no} old   yaml-eslint-parser`, function () {
         parseOld(contents, {
             loc: true,
@@ -73,6 +80,11 @@ for (const no of [1, 2, 3]) {
             comment: true,
             eslintVisitorKeys: true,
             eslintScopeManager: true,
+        })
+    })
+    suite.add(`${no} old   yaml`, function () {
+        parseAllDocumentsOld(contents, {
+            keepCstNodes: true,
         })
     })
 }

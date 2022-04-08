@@ -14,23 +14,29 @@ export function parseAllDocsToCST(ctx: Context): {
     const cstNodes: CST.Token[] = []
     const nodes: Document.Parsed[] = []
 
-    for (const doc of composer.compose(
-        (function* () {
-            for (const cst of parser.parse(ctx.code)) {
-                cstNodes.push(cst)
-                yield cst
-            }
-        })(),
-    )) {
-        for (const error of doc.errors) {
+    /**
+     * Process for Document
+     */
+    function processDoc(node: Document.Parsed) {
+        for (const error of node.errors) {
             throw ctx.throwError(error.message, error.pos[0])
         }
         // ignore warns
         // for (const error of doc.warnings) {
         //     throw ctx.throwError(error.message, error.pos[0])
         // }
-        nodes.push(doc)
+        nodes.push(node)
     }
 
-    return { cstNodes, nodes }
+    for (const cst of parser.parse(ctx.code)) {
+        cstNodes.push(cst)
+        for (const doc of composer.next(cst)) {
+            processDoc(doc)
+        }
+    }
+    for (const doc of composer.end()) {
+        processDoc(doc)
+    }
+
+    return { nodes, cstNodes }
 }
