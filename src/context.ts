@@ -1,10 +1,13 @@
 import type { Comment, Locations, Position, Range, Token } from "./ast"
 import lodash from "lodash"
-import type { CST } from "yaml"
+import type { CST, DocumentOptions } from "yaml"
 import { ParseError } from "."
+import { parserOptionsToYAMLOption } from "./options"
 
 export class Context {
     public readonly code: string
+
+    public readonly options: DocumentOptions
 
     public readonly tokens: Token[] = []
 
@@ -14,7 +17,8 @@ export class Context {
 
     private readonly locsMap = new Map<number, Position>()
 
-    public constructor(origCode: string) {
+    public constructor(origCode: string, parserOptions: any) {
+        this.options = parserOptionsToYAMLOption(parserOptions)
         const len = origCode.length
         const lineStartIndices = [0]
         for (let index = 0; index < len; ) {

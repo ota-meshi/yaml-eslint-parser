@@ -25,6 +25,7 @@
           }
         }
       },
+      "version": "1.2",
       "range": [
         0,
         17
@@ -44,6 +45,7 @@
       "type": "YAMLDocument",
       "directives": [],
       "content": null,
+      "version": "1.2",
       "range": [
         18,
         35
@@ -83,6 +85,7 @@
           }
         }
       },
+      "version": "1.2",
       "range": [
         36,
         74

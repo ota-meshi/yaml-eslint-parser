@@ -9,6 +9,8 @@ import { traverseNodes, getKeys } from "../../../src/traverse"
 import { getStaticYAMLValue } from "../../../src/utils"
 import type { YAMLProgram } from "../../../src/ast"
 import { parseYAML } from "../../../src"
+import { astToJson, listupFixtures, valueToJson } from "../test-utils"
+import { parserOptionsToYAMLOption } from "../../../src/options"
 
 const AST_FIXTURE_ROOT = path.resolve(__dirname, "../../fixtures/parser/ast")
 const SUITE_FIXTURE_ROOT = path.resolve(
@@ -16,60 +18,26 @@ const SUITE_FIXTURE_ROOT = path.resolve(
     "../../fixtures/parser/yaml-test-suite",
 )
 
-/**
- * Remove `parent` properties from the given AST.
- */
-function replacer(key: string, value: any) {
-    if (key === "parent" || key === "anchors") {
-        return undefined
-    }
-    if (value instanceof RegExp) {
-        return String(value)
-    }
-    if (typeof value === "bigint") {
-        return null // Make it null so it can be checked on node8.
-        // return `${String(value)}n`
-    }
-    return value
-}
-
-/**
- * Replacer for NaN and infinity
- */
-function valueReplacer(_key: string, value: any) {
-    if (typeof value === "number") {
-        if (!isFinite(value)) {
-            return `# ${String(value)} #`
-        }
-    }
-    return value
-}
-
-function parse(code: string, filePath: string) {
-    return parseYAML(code, { filePath })
+function parse(code: string, parserOptions: any, filePath: string) {
+    return parseYAML(code, { ...(parserOptions || {}), filePath })
 }
 
 describe("Check for AST.", () => {
-    for (const filename of fs
-        .readdirSync(AST_FIXTURE_ROOT)
-        .filter((f) => f.endsWith("input.yaml"))) {
-        describe(filename, () => {
-            const inputFileName = path.join(AST_FIXTURE_ROOT, filename)
-            const outputFileName = inputFileName.replace(
-                /input\.yaml$/u,
-                "output.json",
-            )
-            const valueFileName = inputFileName.replace(
-                /input\.yaml$/u,
-                "value.json",
-            )
+    for (const fixture of listupFixtures(AST_FIXTURE_ROOT)) {
+        describe(fixture.filename, () => {
+            const {
+                input,
+                inputFileName,
+                parserOptions,
+                outputFileName,
+                valueFileName,
+            } = fixture
 
-            const input = fs.readFileSync(inputFileName, "utf8")
             let ast: any
 
             it("most to generate the expected AST.", () => {
                 try {
-                    ast = parse(input, inputFileName)
+                    ast = parse(input, parserOptions, inputFileName)
                 } catch (e: any) {
                     if (
                         typeof e.lineNumber === "number" &&
@@ -98,10 +66,7 @@ describe("Check for AST.", () => {
                 if (!ast) return
                 // check getStaticYAMLValue
                 const value = fs.readFileSync(valueFileName, "utf8")
-                assert.strictEqual(
-                    JSON.stringify(getStaticYAMLValue(ast), valueReplacer, 2),
-                    value,
-                )
+                assert.strictEqual(valueToJson(getStaticYAMLValue(ast)), value)
             })
 
             if (
@@ -126,7 +91,12 @@ describe("Check for AST.", () => {
                 it("The result of getStaticYAMLValue() and the result of parsing with the yaml package should be the same.", () => {
                     assert.deepStrictEqual(
                         getStaticYAMLValue(ast),
-                        normalize(YAML.parse(input, { logLevel: "silent" })),
+                        normalize(
+                            YAML.parse(input, {
+                                logLevel: "silent",
+                                ...parserOptionsToYAMLOption(parserOptions),
+                            }),
+                        ),
                     )
 
                     function normalize(value: any): any {
@@ -158,7 +128,11 @@ describe("Check for AST.", () => {
                 if (!ast) return
                 const inputForWin = input.replace(/\n/g, "\r\n")
                 // check
-                const astForWin = parse(inputForWin, inputFileName)
+                const astForWin = parse(
+                    inputForWin,
+                    parserOptions,
+                    inputFileName,
+                )
                 // check tokens
                 checkTokens(astForWin, inputForWin)
             })
@@ -167,27 +141,22 @@ describe("Check for AST.", () => {
 })
 
 describe("yaml-test-suite.", () => {
-    for (const filename of fs
-        .readdirSync(SUITE_FIXTURE_ROOT)
-        .filter((f) => f.endsWith("input.yaml"))) {
-        describe(filename, () => {
-            const inputFileName = path.join(SUITE_FIXTURE_ROOT, filename)
-            const outputFileName = inputFileName.replace(
-                /input\.yaml$/u,
-                "output.json",
-            )
-            const valueFileName = inputFileName.replace(
-                /input\.yaml$/u,
-                "value.json",
-            )
+    for (const fixture of listupFixtures(SUITE_FIXTURE_ROOT)) {
+        describe(fixture.filename, () => {
+            const {
+                input,
+                inputFileName,
+                parserOptions,
+                outputFileName,
+                valueFileName,
+            } = fixture
 
-            const input = fs.readFileSync(inputFileName, "utf8")
             const output = fs.readFileSync(outputFileName, "utf8")
 
             let ast: any
             it("most to generate the expected AST.", () => {
                 try {
-                    ast = parse(input, inputFileName)
+                    ast = parse(input, parserOptions, inputFileName)
                 } catch (e: any) {
                     if (
                         typeof e.lineNumber === "number" &&
@@ -201,7 +170,7 @@ describe("yaml-test-suite.", () => {
                     }
                     throw e
                 }
-                const astJson = JSON.stringify(ast, replacer, 2)
+                const astJson = astToJson(ast)
                 assert.strictEqual(astJson, output)
             })
 
@@ -234,17 +203,17 @@ describe("yaml-test-suite.", () => {
                 if (!ast) return
                 // check getStaticYAMLValue
                 const value = fs.readFileSync(valueFileName, "utf8")
-                assert.strictEqual(
-                    JSON.stringify(getStaticYAMLValue(ast), valueReplacer, 2),
-                    value,
-                )
+                assert.strictEqual(valueToJson(getStaticYAMLValue(ast)), value)
             })
 
             if (ast) {
                 it("The result of getStaticYAMLValue() and the result of parsing with the yaml package should be the same.", () => {
                     assert.deepStrictEqual(
                         getStaticYAMLValue(ast),
-                        YAML.parse(input),
+                        YAML.parse(input, {
+                            logLevel: "silent",
+                            ...parserOptionsToYAMLOption(parserOptions),
+                        }),
                     )
                 })
             }
@@ -252,7 +221,11 @@ describe("yaml-test-suite.", () => {
                 if (!ast) return
                 const inputForWin = input.replace(/\n/g, "\r\n")
                 // check
-                const astForWin = parse(inputForWin, inputFileName)
+                const astForWin = parse(
+                    inputForWin,
+                    parserOptions,
+                    inputFileName,
+                )
                 // check tokens
                 checkTokens(astForWin, inputForWin)
 

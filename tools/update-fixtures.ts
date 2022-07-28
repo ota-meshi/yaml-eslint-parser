@@ -3,6 +3,7 @@ import fs from "fs"
 
 import { parseForESLint } from "../src/parser"
 import { getStaticYAMLValue } from "../src/utils"
+import { astToJson, listupFixtures, valueToJson } from "../tests/src/test-utils"
 
 const AST_FIXTURE_ROOT = path.resolve(__dirname, "../tests/fixtures/parser/ast")
 const SUITE_FIXTURE_ROOT = path.resolve(
@@ -11,56 +12,28 @@ const SUITE_FIXTURE_ROOT = path.resolve(
 )
 
 /**
- * Remove `parent` properties from the given AST.
- */
-function replacer(key: string, value: any) {
-    if (key === "parent" || key === "anchors") {
-        return undefined
-    }
-    if (value instanceof RegExp) {
-        return String(value)
-    }
-    if (typeof value === "bigint") {
-        return null // Make it null so it can be checked on node8.
-        // return `${String(value)}n`
-    }
-    return value
-}
-
-/**
- * Replacer for NaN and infinity
- */
-function valueReplacer(_key: string, value: any) {
-    if (typeof value === "number") {
-        if (!isFinite(value)) {
-            return `# ${String(value)} #`
-        }
-    }
-    return value
-}
-
-/**
  * Parse
  */
-function parse(code: string) {
-    return parseForESLint(code, {})
+function parse(code: string, parserOptions: any) {
+    return parseForESLint(code, parserOptions)
 }
 
-for (const filename of fs
-    .readdirSync(AST_FIXTURE_ROOT)
-    .filter((f) => f.endsWith("input.yaml"))) {
-    const inputFileName = path.join(AST_FIXTURE_ROOT, filename)
-    const outputFileName = inputFileName.replace(/input\.yaml$/u, "output.json")
-    const valueFileName = inputFileName.replace(/input\.yaml$/u, "value.json")
-
-    const input = fs.readFileSync(inputFileName, "utf8")
+for (const fixture of listupFixtures(AST_FIXTURE_ROOT)) {
+    const {
+        input,
+        inputFileName,
+        parserOptions,
+        outputFileName,
+        valueFileName,
+    } = fixture
+    console.log(inputFileName)
     try {
-        const ast = parse(input).ast
-        const astJson = JSON.stringify(ast, replacer, 2)
+        const ast = parse(input, parserOptions).ast
+        const astJson = astToJson(ast)
         fs.writeFileSync(outputFileName, astJson, "utf8")
         fs.writeFileSync(
             valueFileName,
-            JSON.stringify(getStaticYAMLValue(ast), valueReplacer, 2),
+            valueToJson(getStaticYAMLValue(ast)),
             "utf8",
         )
     } catch (e: any) {
@@ -72,21 +45,23 @@ for (const filename of fs
     }
 }
 
-for (const filename of fs
-    .readdirSync(SUITE_FIXTURE_ROOT)
-    .filter((f) => f.endsWith("input.yaml"))) {
-    const inputFileName = path.join(SUITE_FIXTURE_ROOT, filename)
-    const outputFileName = inputFileName.replace(/input\.yaml$/u, "output.json")
-    const valueFileName = inputFileName.replace(/input\.yaml$/u, "value.json")
-
-    const input = fs.readFileSync(inputFileName, "utf8")
+for (const fixture of listupFixtures(SUITE_FIXTURE_ROOT)) {
+    const {
+        input,
+        inputFileName,
+        parserOptions,
+        outputFileName,
+        valueFileName,
+    } = fixture
+    // eslint-disable-next-line no-console -- update log
+    console.log(inputFileName)
     try {
-        const ast = parse(input).ast
-        const astJson = JSON.stringify(ast, replacer, 2)
+        const ast = parse(input, parserOptions).ast
+        const astJson = astToJson(ast)
         fs.writeFileSync(outputFileName, astJson, "utf8")
         fs.writeFileSync(
             valueFileName,
-            JSON.stringify(getStaticYAMLValue(ast), valueReplacer, 2),
+            valueToJson(getStaticYAMLValue(ast)),
             "utf8",
         )
     } catch (e: any) {

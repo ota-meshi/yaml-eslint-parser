@@ -46,6 +46,7 @@
           }
         }
       },
+      "version": "1.2",
       "range": [
         0,
         34
@@ -85,6 +86,7 @@
         }
       ],
       "content": null,
+      "version": "1.2",
       "range": [
         35,
         59

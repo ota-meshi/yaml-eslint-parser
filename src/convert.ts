@@ -29,7 +29,6 @@ import type {
 import type { Context } from "./context"
 import { tagResolvers } from "./tags"
 import type { YAMLVersion } from "./utils"
-import { getYAMLVersion } from "./utils"
 import type {
     Alias,
     CST,
@@ -48,6 +47,7 @@ import {
     isSeq,
     isMap,
 } from "yaml"
+import type { ParsedCSTDocs } from "./yaml-cst-parse"
 
 type PairParsed = BasePair<ParsedNode, ParsedNode | null>
 type Directives = Document.Parsed["directives"]
@@ -169,11 +169,8 @@ type CSTDoc = {
 /**
  * Convert yaml root to YAMLProgram
  */
-export function convertRoot(
-    cstNodes: CST.Token[],
-    nodes: Document.Parsed[],
-    ctx: Context,
-): YAMLProgram {
+export function convertRoot(docs: ParsedCSTDocs, ctx: Context): YAMLProgram {
+    const { cstNodes, nodes } = docs
     const ast: YAMLProgram = {
         type: "Program",
         body: [],
@@ -245,6 +242,7 @@ export function convertRoot(
             content: null,
             parent: ast,
             anchors: {},
+            version: docs.streamInfo.directives.yaml.version,
             ...ctx.getConvertLocation(index, index),
         })
     }
@@ -278,6 +276,7 @@ function convertDocument(
         content: null,
         parent,
         anchors: {},
+        version: node.directives.yaml.version,
         ...loc,
     }
 
@@ -1180,7 +1179,7 @@ function convertPlain(
     let ast: YAMLPlainScalar | YAMLWithMeta
     if (loc.range[0] < loc.range[1]) {
         const strValue = node.source || cst.source
-        const value = parseValueFromText(strValue, getYAMLVersion(doc))
+        const value = parseValueFromText(strValue, doc.version || "1.2")
 
         ast = {
             type: "YAMLScalar",

@@ -1,0 +1,3275 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "YAMLDocument",
+      "directives": [
+        {
+          "type": "YAMLDirective",
+          "value": "%YAML 0.123",
+          "kind": "YAML",
+          "version": "1.2",
+          "range": [
+            0,
+            11
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "content": {
+        "type": "YAMLSequence",
+        "style": "block",
+        "entries": [
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "no",
+            "value": "no",
+            "raw": "no",
+            "range": [
+              18,
+              20
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 2
+              },
+              "end": {
+                "line": 3,
+                "column": 4
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "No",
+            "value": "No",
+            "raw": "No",
+            "range": [
+              23,
+              25
+            ],
+            "loc": {
+              "start": {
+                "line": 4,
+                "column": 2
+              },
+              "end": {
+                "line": 4,
+                "column": 4
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "NO",
+            "value": "NO",
+            "raw": "NO",
+            "range": [
+              28,
+              30
+            ],
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 2
+              },
+              "end": {
+                "line": 5,
+                "column": 4
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "off",
+            "value": "off",
+            "raw": "off",
+            "range": [
+              33,
+              36
+            ],
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 2
+              },
+              "end": {
+                "line": 6,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "Off",
+            "value": "Off",
+            "raw": "Off",
+            "range": [
+              39,
+              42
+            ],
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 2
+              },
+              "end": {
+                "line": 7,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "OFF",
+            "value": "OFF",
+            "raw": "OFF",
+            "range": [
+              45,
+              48
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 2
+              },
+              "end": {
+                "line": 8,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "n",
+            "value": "n",
+            "raw": "n",
+            "range": [
+              51,
+              52
+            ],
+            "loc": {
+              "start": {
+                "line": 9,
+                "column": 2
+              },
+              "end": {
+                "line": 9,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "N",
+            "value": "N",
+            "raw": "N",
+            "range": [
+              55,
+              56
+            ],
+            "loc": {
+              "start": {
+                "line": 10,
+                "column": 2
+              },
+              "end": {
+                "line": 10,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "yes",
+            "value": "yes",
+            "raw": "yes",
+            "range": [
+              59,
+              62
+            ],
+            "loc": {
+              "start": {
+                "line": 11,
+                "column": 2
+              },
+              "end": {
+                "line": 11,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "Yes",
+            "value": "Yes",
+            "raw": "Yes",
+            "range": [
+              65,
+              68
+            ],
+            "loc": {
+              "start": {
+                "line": 12,
+                "column": 2
+              },
+              "end": {
+                "line": 12,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "YES",
+            "value": "YES",
+            "raw": "YES",
+            "range": [
+              71,
+              74
+            ],
+            "loc": {
+              "start": {
+                "line": 13,
+                "column": 2
+              },
+              "end": {
+                "line": 13,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "yEs",
+            "value": "yEs",
+            "raw": "yEs",
+            "range": [
+              77,
+              80
+            ],
+            "loc": {
+              "start": {
+                "line": 14,
+                "column": 2
+              },
+              "end": {
+                "line": 14,
+                "column": 5
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "Y",
+            "value": "Y",
+            "raw": "Y",
+            "range": [
+              83,
+              84
+            ],
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 2
+              },
+              "end": {
+                "line": 15,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "y",
+            "value": "y",
+            "raw": "y",
+            "range": [
+              87,
+              88
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 2
+              },
+              "end": {
+                "line": 16,
+                "column": 3
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "on",
+            "value": "on",
+            "raw": "on",
+            "range": [
+              91,
+              93
+            ],
+            "loc": {
+              "start": {
+                "line": 17,
+                "column": 2
+              },
+              "end": {
+                "line": 17,
+                "column": 4
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "On",
+            "value": "On",
+            "raw": "On",
+            "range": [
+              96,
+              98
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 2
+              },
+              "end": {
+                "line": 18,
+                "column": 4
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "On",
+            "value": "On",
+            "raw": "On",
+            "range": [
+              101,
+              103
+            ],
+            "loc": {
+              "start": {
+                "line": 19,
+                "column": 2
+              },
+              "end": {
+                "line": 19,
+                "column": 4
+              }
+            }
+          },
+          {
+            "type": "YAMLScalar",
+            "style": "plain",
+            "strValue": "oN",
+            "value": "oN",
+            "raw": "oN",
+            "range": [
+              106,
+              108
+            ],
+            "loc": {
+              "start": {
+                "line": 20,
+                "column": 2
+              },
+              "end": {
+                "line": 20,
+                "column": 4
+              }
+            }
+          },
+          {
+            "type": "YAMLMapping",
+            "style": "block",
+            "pairs": [
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "decimal",
+                  "value": "decimal",
+                  "raw": "decimal",
+                  "range": [
+                    111,
+                    118
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 21,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 9
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "+685_230",
+                  "value": "+685_230",
+                  "raw": "+685_230",
+                  "range": [
+                    120,
+                    128
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 21,
+                      "column": 11
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 19
+                    }
+                  }
+                },
+                "range": [
+                  111,
+                  128
+                ],
+                "loc": {
+                  "start": {
+                    "line": 21,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 19
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "octal",
+                  "value": "octal",
+                  "raw": "octal",
+                  "range": [
+                    131,
+                    136
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 22,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 7
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "02472256",
+                  "value": 2472256,
+                  "raw": "02472256",
+                  "range": [
+                    138,
+                    146
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 22,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 17
+                    }
+                  }
+                },
+                "range": [
+                  131,
+                  146
+                ],
+                "loc": {
+                  "start": {
+                    "line": 22,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 17
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "hexadecimal",
+                  "value": "hexadecimal",
+                  "raw": "hexadecimal",
+                  "range": [
+                    149,
+                    160
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 23,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "0x_0A_74_AE",
+                  "value": "0x_0A_74_AE",
+                  "raw": "0x_0A_74_AE",
+                  "range": [
+                    162,
+                    173
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 23,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 26
+                    }
+                  }
+                },
+                "range": [
+                  149,
+                  173
+                ],
+                "loc": {
+                  "start": {
+                    "line": 23,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 26
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "binary",
+                  "value": "binary",
+                  "raw": "binary",
+                  "range": [
+                    176,
+                    182
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 24,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 8
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "0b1010_0111_0100_1010_1110",
+                  "value": "0b1010_0111_0100_1010_1110",
+                  "raw": "0b1010_0111_0100_1010_1110",
+                  "range": [
+                    184,
+                    210
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 24,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 36
+                    }
+                  }
+                },
+                "range": [
+                  176,
+                  210
+                ],
+                "loc": {
+                  "start": {
+                    "line": 24,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 36
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "sexagesimal",
+                  "value": "sexagesimal",
+                  "raw": "sexagesimal",
+                  "range": [
+                    213,
+                    224
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 25,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "190:20:30",
+                  "value": "190:20:30",
+                  "raw": "190:20:30",
+                  "range": [
+                    226,
+                    235
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 25,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 24
+                    }
+                  }
+                },
+                "range": [
+                  213,
+                  235
+                ],
+                "loc": {
+                  "start": {
+                    "line": 25,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 24
+                  }
+                }
+              }
+            ],
+            "range": [
+              111,
+              235
+            ],
+            "loc": {
+              "start": {
+                "line": 21,
+                "column": 2
+              },
+              "end": {
+                "line": 25,
+                "column": 24
+              }
+            }
+          },
+          {
+            "type": "YAMLMapping",
+            "style": "block",
+            "pairs": [
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "decimal",
+                  "value": "decimal",
+                  "raw": "decimal",
+                  "range": [
+                    238,
+                    245
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 26,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 9
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "-685_230",
+                  "value": "-685_230",
+                  "raw": "-685_230",
+                  "range": [
+                    247,
+                    255
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 26,
+                      "column": 11
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 19
+                    }
+                  }
+                },
+                "range": [
+                  238,
+                  255
+                ],
+                "loc": {
+                  "start": {
+                    "line": 26,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 19
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "octal",
+                  "value": "octal",
+                  "raw": "octal",
+                  "range": [
+                    258,
+                    263
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 27,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 7
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "-02472256",
+                  "value": -2472256,
+                  "raw": "-02472256",
+                  "range": [
+                    265,
+                    274
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 27,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 18
+                    }
+                  }
+                },
+                "range": [
+                  258,
+                  274
+                ],
+                "loc": {
+                  "start": {
+                    "line": 27,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 18
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "hexadecimal",
+                  "value": "hexadecimal",
+                  "raw": "hexadecimal",
+                  "range": [
+                    277,
+                    288
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 28,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 28,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "-0x_0A_74_AE",
+                  "value": "-0x_0A_74_AE",
+                  "raw": "-0x_0A_74_AE",
+                  "range": [
+                    290,
+                    302
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 28,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 28,
+                      "column": 27
+                    }
+                  }
+                },
+                "range": [
+                  277,
+                  302
+                ],
+                "loc": {
+                  "start": {
+                    "line": 28,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 28,
+                    "column": 27
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "binary",
+                  "value": "binary",
+                  "raw": "binary",
+                  "range": [
+                    305,
+                    311
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 29,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 29,
+                      "column": 8
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "-0b1010_0111_0100_1010_1110",
+                  "value": "-0b1010_0111_0100_1010_1110",
+                  "raw": "-0b1010_0111_0100_1010_1110",
+                  "range": [
+                    313,
+                    340
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 29,
+                      "column": 10
+                    },
+                    "end": {
+                      "line": 29,
+                      "column": 37
+                    }
+                  }
+                },
+                "range": [
+                  305,
+                  340
+                ],
+                "loc": {
+                  "start": {
+                    "line": 29,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 29,
+                    "column": 37
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "sexagesimal",
+                  "value": "sexagesimal",
+                  "raw": "sexagesimal",
+                  "range": [
+                    343,
+                    354
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 30,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 30,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "-190:20:30",
+                  "value": "-190:20:30",
+                  "raw": "-190:20:30",
+                  "range": [
+                    356,
+                    366
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 30,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 30,
+                      "column": 25
+                    }
+                  }
+                },
+                "range": [
+                  343,
+                  366
+                ],
+                "loc": {
+                  "start": {
+                    "line": 30,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 30,
+                    "column": 25
+                  }
+                }
+              }
+            ],
+            "range": [
+              238,
+              366
+            ],
+            "loc": {
+              "start": {
+                "line": 26,
+                "column": 2
+              },
+              "end": {
+                "line": 30,
+                "column": 25
+              }
+            }
+          },
+          {
+            "type": "YAMLMapping",
+            "style": "block",
+            "pairs": [
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "exponentioal",
+                  "value": "exponentioal",
+                  "raw": "exponentioal",
+                  "range": [
+                    369,
+                    381
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 31,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 31,
+                      "column": 14
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "685.230_15e+03",
+                  "value": "685.230_15e+03",
+                  "raw": "685.230_15e+03",
+                  "range": [
+                    383,
+                    397
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 31,
+                      "column": 16
+                    },
+                    "end": {
+                      "line": 31,
+                      "column": 30
+                    }
+                  }
+                },
+                "range": [
+                  369,
+                  397
+                ],
+                "loc": {
+                  "start": {
+                    "line": 31,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 31,
+                    "column": 30
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "fixed",
+                  "value": "fixed",
+                  "raw": "fixed",
+                  "range": [
+                    400,
+                    405
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 32,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 32,
+                      "column": 7
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "685_230.15",
+                  "value": "685_230.15",
+                  "raw": "685_230.15",
+                  "range": [
+                    407,
+                    417
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 32,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 32,
+                      "column": 19
+                    }
+                  }
+                },
+                "range": [
+                  400,
+                  417
+                ],
+                "loc": {
+                  "start": {
+                    "line": 32,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 32,
+                    "column": 19
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "sexagesimal",
+                  "value": "sexagesimal",
+                  "raw": "sexagesimal",
+                  "range": [
+                    420,
+                    431
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 33,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 33,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "190:20:30.15",
+                  "value": "190:20:30.15",
+                  "raw": "190:20:30.15",
+                  "range": [
+                    433,
+                    445
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 33,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 33,
+                      "column": 27
+                    }
+                  }
+                },
+                "range": [
+                  420,
+                  445
+                ],
+                "loc": {
+                  "start": {
+                    "line": 33,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 33,
+                    "column": 27
+                  }
+                }
+              }
+            ],
+            "range": [
+              369,
+              445
+            ],
+            "loc": {
+              "start": {
+                "line": 31,
+                "column": 2
+              },
+              "end": {
+                "line": 33,
+                "column": 27
+              }
+            }
+          },
+          {
+            "type": "YAMLMapping",
+            "style": "block",
+            "pairs": [
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "exponentioal",
+                  "value": "exponentioal",
+                  "raw": "exponentioal",
+                  "range": [
+                    448,
+                    460
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 34,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 14
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "-685.230_15e+03",
+                  "value": "-685.230_15e+03",
+                  "raw": "-685.230_15e+03",
+                  "range": [
+                    462,
+                    477
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 34,
+                      "column": 16
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 31
+                    }
+                  }
+                },
+                "range": [
+                  448,
+                  477
+                ],
+                "loc": {
+                  "start": {
+                    "line": 34,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 34,
+                    "column": 31
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "fixed",
+                  "value": "fixed",
+                  "raw": "fixed",
+                  "range": [
+                    480,
+                    485
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 35,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 35,
+                      "column": 7
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "-685_230.15",
+                  "value": "-685_230.15",
+                  "raw": "-685_230.15",
+                  "range": [
+                    487,
+                    498
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 35,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 35,
+                      "column": 20
+                    }
+                  }
+                },
+                "range": [
+                  480,
+                  498
+                ],
+                "loc": {
+                  "start": {
+                    "line": 35,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 35,
+                    "column": 20
+                  }
+                }
+              },
+              {
+                "type": "YAMLPair",
+                "key": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "sexagesimal",
+                  "value": "sexagesimal",
+                  "raw": "sexagesimal",
+                  "range": [
+                    501,
+                    512
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 36,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 36,
+                      "column": 13
+                    }
+                  }
+                },
+                "value": {
+                  "type": "YAMLScalar",
+                  "style": "plain",
+                  "strValue": "-190:20:30.15",
+                  "value": "-190:20:30.15",
+                  "raw": "-190:20:30.15",
+                  "range": [
+                    514,
+                    527
+                  ],
+                  "loc": {
+                    "start": {
+                      "line": 36,
+                      "column": 15
+                    },
+                    "end": {
+                      "line": 36,
+                      "column": 28
+                    }
+                  }
+                },
+                "range": [
+                  501,
+                  527
+                ],
+                "loc": {
+                  "start": {
+                    "line": 36,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 36,
+                    "column": 28
+                  }
+                }
+              }
+            ],
+            "range": [
+              448,
+              527
+            ],
+            "loc": {
+              "start": {
+                "line": 34,
+                "column": 2
+              },
+              "end": {
+                "line": 36,
+                "column": 28
+              }
+            }
+          },
+          {
+            "type": "YAMLSequence",
+            "style": "flow",
+            "entries": [
+              {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "685_230e-2",
+                "value": "685_230e-2",
+                "raw": "685_230e-2",
+                "range": [
+                  531,
+                  541
+                ],
+                "loc": {
+                  "start": {
+                    "line": 37,
+                    "column": 3
+                  },
+                  "end": {
+                    "line": 37,
+                    "column": 13
+                  }
+                }
+              },
+              {
+                "type": "YAMLScalar",
+                "style": "plain",
+                "strValue": "-685_230e-2",
+                "value": "-685_230e-2",
+                "raw": "-685_230e-2",
+                "range": [
+                  543,
+                  554
+                ],
+                "loc": {
+                  "start": {
+                    "line": 37,
+                    "column": 15
+                  },
+                  "end": {
+                    "line": 37,
+                    "column": 26
+                  }
+                }
+              }
+            ],
+            "range": [
+              530,
+              555
+            ],
+            "loc": {
+              "start": {
+                "line": 37,
+                "column": 2
+              },
+              "end": {
+                "line": 37,
+                "column": 27
+              }
+            }
+          }
+        ],
+        "range": [
+          16,
+          555
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 37,
+            "column": 27
+          }
+        }
+      },
+      "version": "1.2",
+      "range": [
+        0,
+        556
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 38,
+          "column": 0
+        }
+      }
+    }
+  ],
+  "comments": [],
+  "sourceType": "module",
+  "tokens": [
+    {
+      "type": "Directive",
+      "value": "%YAML 0.123",
+      "range": [
+        0,
+        11
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "Marker",
+      "value": "---",
+      "range": [
+        12,
+        15
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        16,
+        17
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "no",
+      "range": [
+        18,
+        20
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 2
+        },
+        "end": {
+          "line": 3,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        21,
+        22
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 0
+        },
+        "end": {
+          "line": 4,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "No",
+      "range": [
+        23,
+        25
+      ],
+      "loc": {
+        "start": {
+          "line": 4,
+          "column": 2
+        },
+        "end": {
+          "line": 4,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        26,
+        27
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "NO",
+      "range": [
+        28,
+        30
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 2
+        },
+        "end": {
+          "line": 5,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        31,
+        32
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "off",
+      "range": [
+        33,
+        36
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 2
+        },
+        "end": {
+          "line": 6,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        37,
+        38
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 0
+        },
+        "end": {
+          "line": 7,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "Off",
+      "range": [
+        39,
+        42
+      ],
+      "loc": {
+        "start": {
+          "line": 7,
+          "column": 2
+        },
+        "end": {
+          "line": 7,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        43,
+        44
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "OFF",
+      "range": [
+        45,
+        48
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 2
+        },
+        "end": {
+          "line": 8,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        49,
+        50
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 0
+        },
+        "end": {
+          "line": 9,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "n",
+      "range": [
+        51,
+        52
+      ],
+      "loc": {
+        "start": {
+          "line": 9,
+          "column": 2
+        },
+        "end": {
+          "line": 9,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        53,
+        54
+      ],
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "N",
+      "range": [
+        55,
+        56
+      ],
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 2
+        },
+        "end": {
+          "line": 10,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        57,
+        58
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 0
+        },
+        "end": {
+          "line": 11,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "yes",
+      "range": [
+        59,
+        62
+      ],
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 2
+        },
+        "end": {
+          "line": 11,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        63,
+        64
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "line": 12,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "Yes",
+      "range": [
+        65,
+        68
+      ],
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 2
+        },
+        "end": {
+          "line": 12,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        69,
+        70
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 13,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "YES",
+      "range": [
+        71,
+        74
+      ],
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 2
+        },
+        "end": {
+          "line": 13,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        75,
+        76
+      ],
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 0
+        },
+        "end": {
+          "line": 14,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "yEs",
+      "range": [
+        77,
+        80
+      ],
+      "loc": {
+        "start": {
+          "line": 14,
+          "column": 2
+        },
+        "end": {
+          "line": 14,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        81,
+        82
+      ],
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "Y",
+      "range": [
+        83,
+        84
+      ],
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 2
+        },
+        "end": {
+          "line": 15,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        85,
+        86
+      ],
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 0
+        },
+        "end": {
+          "line": 16,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "y",
+      "range": [
+        87,
+        88
+      ],
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 2
+        },
+        "end": {
+          "line": 16,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        89,
+        90
+      ],
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 17,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "on",
+      "range": [
+        91,
+        93
+      ],
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 2
+        },
+        "end": {
+          "line": 17,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        94,
+        95
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 0
+        },
+        "end": {
+          "line": 18,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "On",
+      "range": [
+        96,
+        98
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 2
+        },
+        "end": {
+          "line": 18,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        99,
+        100
+      ],
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 0
+        },
+        "end": {
+          "line": 19,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "On",
+      "range": [
+        101,
+        103
+      ],
+      "loc": {
+        "start": {
+          "line": 19,
+          "column": 2
+        },
+        "end": {
+          "line": 19,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        104,
+        105
+      ],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 0
+        },
+        "end": {
+          "line": 20,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "oN",
+      "range": [
+        106,
+        108
+      ],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 2
+        },
+        "end": {
+          "line": 20,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        109,
+        110
+      ],
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 0
+        },
+        "end": {
+          "line": 21,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "decimal",
+      "range": [
+        111,
+        118
+      ],
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 2
+        },
+        "end": {
+          "line": 21,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        118,
+        119
+      ],
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 9
+        },
+        "end": {
+          "line": 21,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "+685_230",
+      "range": [
+        120,
+        128
+      ],
+      "loc": {
+        "start": {
+          "line": 21,
+          "column": 11
+        },
+        "end": {
+          "line": 21,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "octal",
+      "range": [
+        131,
+        136
+      ],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 2
+        },
+        "end": {
+          "line": 22,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        136,
+        137
+      ],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 7
+        },
+        "end": {
+          "line": 22,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "Numeric",
+      "value": "02472256",
+      "range": [
+        138,
+        146
+      ],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 9
+        },
+        "end": {
+          "line": 22,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "hexadecimal",
+      "range": [
+        149,
+        160
+      ],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 2
+        },
+        "end": {
+          "line": 23,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        160,
+        161
+      ],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 13
+        },
+        "end": {
+          "line": 23,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "0x_0A_74_AE",
+      "range": [
+        162,
+        173
+      ],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 15
+        },
+        "end": {
+          "line": 23,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "binary",
+      "range": [
+        176,
+        182
+      ],
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 2
+        },
+        "end": {
+          "line": 24,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        182,
+        183
+      ],
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 8
+        },
+        "end": {
+          "line": 24,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "0b1010_0111_0100_1010_1110",
+      "range": [
+        184,
+        210
+      ],
+      "loc": {
+        "start": {
+          "line": 24,
+          "column": 10
+        },
+        "end": {
+          "line": 24,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "sexagesimal",
+      "range": [
+        213,
+        224
+      ],
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 2
+        },
+        "end": {
+          "line": 25,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        224,
+        225
+      ],
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 13
+        },
+        "end": {
+          "line": 25,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "190:20:30",
+      "range": [
+        226,
+        235
+      ],
+      "loc": {
+        "start": {
+          "line": 25,
+          "column": 15
+        },
+        "end": {
+          "line": 25,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        236,
+        237
+      ],
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 0
+        },
+        "end": {
+          "line": 26,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "decimal",
+      "range": [
+        238,
+        245
+      ],
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 2
+        },
+        "end": {
+          "line": 26,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        245,
+        246
+      ],
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 9
+        },
+        "end": {
+          "line": 26,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "-685_230",
+      "range": [
+        247,
+        255
+      ],
+      "loc": {
+        "start": {
+          "line": 26,
+          "column": 11
+        },
+        "end": {
+          "line": 26,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "octal",
+      "range": [
+        258,
+        263
+      ],
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 2
+        },
+        "end": {
+          "line": 27,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        263,
+        264
+      ],
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 7
+        },
+        "end": {
+          "line": 27,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "Numeric",
+      "value": "-02472256",
+      "range": [
+        265,
+        274
+      ],
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 9
+        },
+        "end": {
+          "line": 27,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "hexadecimal",
+      "range": [
+        277,
+        288
+      ],
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 2
+        },
+        "end": {
+          "line": 28,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        288,
+        289
+      ],
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 13
+        },
+        "end": {
+          "line": 28,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "-0x_0A_74_AE",
+      "range": [
+        290,
+        302
+      ],
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 15
+        },
+        "end": {
+          "line": 28,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "binary",
+      "range": [
+        305,
+        311
+      ],
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 2
+        },
+        "end": {
+          "line": 29,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        311,
+        312
+      ],
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 8
+        },
+        "end": {
+          "line": 29,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "-0b1010_0111_0100_1010_1110",
+      "range": [
+        313,
+        340
+      ],
+      "loc": {
+        "start": {
+          "line": 29,
+          "column": 10
+        },
+        "end": {
+          "line": 29,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "sexagesimal",
+      "range": [
+        343,
+        354
+      ],
+      "loc": {
+        "start": {
+          "line": 30,
+          "column": 2
+        },
+        "end": {
+          "line": 30,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        354,
+        355
+      ],
+      "loc": {
+        "start": {
+          "line": 30,
+          "column": 13
+        },
+        "end": {
+          "line": 30,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "-190:20:30",
+      "range": [
+        356,
+        366
+      ],
+      "loc": {
+        "start": {
+          "line": 30,
+          "column": 15
+        },
+        "end": {
+          "line": 30,
+          "column": 25
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        367,
+        368
+      ],
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 0
+        },
+        "end": {
+          "line": 31,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "exponentioal",
+      "range": [
+        369,
+        381
+      ],
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 2
+        },
+        "end": {
+          "line": 31,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        381,
+        382
+      ],
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 14
+        },
+        "end": {
+          "line": 31,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "685.230_15e+03",
+      "range": [
+        383,
+        397
+      ],
+      "loc": {
+        "start": {
+          "line": 31,
+          "column": 16
+        },
+        "end": {
+          "line": 31,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "fixed",
+      "range": [
+        400,
+        405
+      ],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 2
+        },
+        "end": {
+          "line": 32,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        405,
+        406
+      ],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 7
+        },
+        "end": {
+          "line": 32,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "685_230.15",
+      "range": [
+        407,
+        417
+      ],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 9
+        },
+        "end": {
+          "line": 32,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "sexagesimal",
+      "range": [
+        420,
+        431
+      ],
+      "loc": {
+        "start": {
+          "line": 33,
+          "column": 2
+        },
+        "end": {
+          "line": 33,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        431,
+        432
+      ],
+      "loc": {
+        "start": {
+          "line": 33,
+          "column": 13
+        },
+        "end": {
+          "line": 33,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "190:20:30.15",
+      "range": [
+        433,
+        445
+      ],
+      "loc": {
+        "start": {
+          "line": 33,
+          "column": 15
+        },
+        "end": {
+          "line": 33,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        446,
+        447
+      ],
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 0
+        },
+        "end": {
+          "line": 34,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "exponentioal",
+      "range": [
+        448,
+        460
+      ],
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 2
+        },
+        "end": {
+          "line": 34,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        460,
+        461
+      ],
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 14
+        },
+        "end": {
+          "line": 34,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "-685.230_15e+03",
+      "range": [
+        462,
+        477
+      ],
+      "loc": {
+        "start": {
+          "line": 34,
+          "column": 16
+        },
+        "end": {
+          "line": 34,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "fixed",
+      "range": [
+        480,
+        485
+      ],
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 2
+        },
+        "end": {
+          "line": 35,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        485,
+        486
+      ],
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 7
+        },
+        "end": {
+          "line": 35,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "-685_230.15",
+      "range": [
+        487,
+        498
+      ],
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 9
+        },
+        "end": {
+          "line": 35,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "sexagesimal",
+      "range": [
+        501,
+        512
+      ],
+      "loc": {
+        "start": {
+          "line": 36,
+          "column": 2
+        },
+        "end": {
+          "line": 36,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        512,
+        513
+      ],
+      "loc": {
+        "start": {
+          "line": 36,
+          "column": 13
+        },
+        "end": {
+          "line": 36,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "-190:20:30.15",
+      "range": [
+        514,
+        527
+      ],
+      "loc": {
+        "start": {
+          "line": 36,
+          "column": 15
+        },
+        "end": {
+          "line": 36,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "-",
+      "range": [
+        528,
+        529
+      ],
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 0
+        },
+        "end": {
+          "line": 37,
+          "column": 1
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "[",
+      "range": [
+        530,
+        531
+      ],
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 2
+        },
+        "end": {
+          "line": 37,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "685_230e-2",
+      "range": [
+        531,
+        541
+      ],
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 3
+        },
+        "end": {
+          "line": 37,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ",",
+      "range": [
+        541,
+        542
+      ],
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 13
+        },
+        "end": {
+          "line": 37,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "-685_230e-2",
+      "range": [
+        543,
+        554
+      ],
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 15
+        },
+        "end": {
+          "line": 37,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "]",
+      "range": [
+        554,
+        555
+      ],
+      "loc": {
+        "start": {
+          "line": 37,
+          "column": 26
+        },
+        "end": {
+          "line": 37,
+          "column": 27
+        }
+      }
+    }
+  ],
+  "range": [
+    0,
+    557
+  ],
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 39,
+      "column": 0
+    }
+  }
+}

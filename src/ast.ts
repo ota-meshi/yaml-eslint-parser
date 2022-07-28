@@ -1,3 +1,5 @@
+import type { YAMLVersion } from "./utils"
+
 export type Range = [number, number]
 
 export interface Locations {
@@ -65,6 +67,8 @@ export interface YAMLDocument extends BaseYAMLNode {
     content: YAMLContent | YAMLWithMeta | null
     parent: YAMLProgram
     anchors: { [key: string]: YAMLAnchor[] }
+    // YAML version
+    version: YAMLVersion
 }
 
 interface BaseYAMLDirective extends BaseYAMLNode {
