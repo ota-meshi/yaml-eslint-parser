@@ -2,7 +2,7 @@
 
 A YAML parser that produces output [compatible with ESLint](https://eslint.org/docs/developer-guide/working-with-custom-parsers#all-nodes).
 
-*This parser is backed by excellent [yaml](https://github.com/eemeli/yaml) package and it is heavily inspired by [yaml-unist-parser](https://github.com/ikatyang/yaml-unist-parser) package.*
+_This parser is backed by excellent [yaml](https://github.com/eemeli/yaml) package and it is heavily inspired by [yaml-unist-parser](https://github.com/ikatyang/yaml-unist-parser) package._
 
 [![NPM license](https://img.shields.io/npm/l/yaml-eslint-parser.svg)](https://www.npmjs.com/package/yaml-eslint-parser)
 [![NPM version](https://img.shields.io/npm/v/yaml-eslint-parser.svg)](https://www.npmjs.com/package/yaml-eslint-parser)
@@ -30,13 +30,13 @@ Example **.eslintrc.js**:
 
 ```js
 module.exports = {
-    "overrides": [
-        {
-            "files": ["*.yaml", "*.yml"],
-            "parser": "yaml-eslint-parser",
-        }
-    ]
-}
+  overrides: [
+    {
+      files: ["*.yaml", "*.yml"],
+      parser: "yaml-eslint-parser",
+    },
+  ],
+};
 ```
 
 ### Advanced Configuration
@@ -77,8 +77,8 @@ See <https://eemeli.org/yaml/#document-options> for details.
 Example:
 
 ```ts
-import type { AST } from "yaml-eslint-parser"
-import { parseYAML, getStaticYAMLValue } from "yaml-eslint-parser"
+import type { AST } from "yaml-eslint-parser";
+import { parseYAML, getStaticYAMLValue } from "yaml-eslint-parser";
 
 const code = `
 american:
@@ -89,13 +89,13 @@ national:
   - New York Mets
   - Chicago Cubs
   - Atlanta Braves
-`
+`;
 
-const ast: AST.YAMLProgram = parseYAML(code)
-console.log(ast)
+const ast: AST.YAMLProgram = parseYAML(code);
+console.log(ast);
 
-const value = getStaticYAMLValue(ast)
-console.log(value)
+const value = getStaticYAMLValue(ast);
+console.log(value);
 ```
 
 ## Related Packages
