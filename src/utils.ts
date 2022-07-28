@@ -1,4 +1,5 @@
 import { parseDocument } from "yaml"
+import type { Directives } from "yaml/dist/doc/directives"
 import type {
     YAMLProgram,
     YAMLContent,
@@ -14,9 +15,9 @@ import type {
 } from "./ast"
 import { tagNodeResolvers, tagResolvers } from "./tags"
 
-export type YAMLVersion = "1.3" | "1.2" | "1.1"
+export type YAMLVersion = Directives["yaml"]["version"]
 
-type YAMLContentValue =
+export type YAMLContentValue =
     | string
     | number
     | boolean
@@ -24,7 +25,7 @@ type YAMLContentValue =
     | YAMLContentValue[]
     | YAMLMappingValue
 
-type YAMLMappingValue = {
+export type YAMLMappingValue = {
     [key: string]: YAMLContentValue
     [key: number]: YAMLContentValue
 }
@@ -76,9 +77,7 @@ const resolver = {
               node.body.map((n) => resolver.YAMLDocument(n))
     },
     YAMLDocument(node: YAMLDocument) {
-        return node.content
-            ? getValue(node.content, getYAMLVersion(node))
-            : null
+        return node.content ? getValue(node.content, node.version) : null
     },
     YAMLMapping(node: YAMLMapping, version: YAMLVersion | null) {
         const result: YAMLMappingValue = {}
@@ -214,26 +213,4 @@ function getTaggedValue(
 ---
 ${tagText} ${text}`).toJSON()
     return value
-}
-
-/**
- * Get YAML version from then given document
- */
-export function getYAMLVersion(document: YAMLDocument): YAMLVersion {
-    for (const dir of document.directives) {
-        if (dir.kind === "YAML") {
-            if (dir.version === "1.1") {
-                return "1.1"
-            }
-            if (dir.version === "1.2") {
-                return "1.2"
-            }
-            if (dir.version === "1.3") {
-                return "1.3"
-            }
-            // Other versions are not supported
-            return "1.2"
-        }
-    }
-    return "1.2"
 }

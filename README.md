@@ -33,11 +33,38 @@ module.exports = {
     "overrides": [
         {
             "files": ["*.yaml", "*.yml"],
-            "parser": "yaml-eslint-parser"
+            "parser": "yaml-eslint-parser",
         }
     ]
 }
 ```
+
+### Advanced Configuration
+
+The following additional configuration options are available by specifying them in [parserOptions](https://eslint.org/docs/latest/user-guide/configuring/language-options#specifying-parser-options) in your ESLint configuration file.
+
+Example **.eslintrc.js**:
+
+```json5
+module.exports = {
+    "overrides": [
+        {
+            "files": ["*.yaml", "*.yml"],
+            "parser": "yaml-eslint-parser",
+            // Additional configuration options
+            "parserOptions": {
+              "defaultYAMLVersion": "1.2"
+            }
+        }
+    ]
+}
+```
+
+#### `parserOptions.defaultYAMLVersion`
+
+Set to `"1.2"` or `"1.1"`. Select the YAML version used by documents without a `%YAML` directive.  
+If not specified, If not specified, the [yaml](https://eemeli.org/yaml/)'s default `version` option (`"1.2"`) is used.  
+See <https://eemeli.org/yaml/#document-options> for details.
 
 ## Usage for Custom Rules / Plugins
 

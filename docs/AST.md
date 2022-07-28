@@ -219,6 +219,8 @@ interface YAMLDocument extends Node {
     content: YAMLMapping | YAMLSequence | YAMLScalar | YAMLAlias | YAMLWithMeta | null
     parent: YAMLProgram
     anchors: { [key: string]: YAMLAnchor[] }
+    // YAML version
+    version: string
 }
 ```
 

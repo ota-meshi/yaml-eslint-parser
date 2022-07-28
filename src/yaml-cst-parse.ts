@@ -2,13 +2,17 @@ import type { CST, Document } from "yaml"
 import { Composer, Parser } from "yaml"
 import type { Context } from "./context"
 
-/** Parse yaml to CST */
-export function parseAllDocsToCST(ctx: Context): {
+export type ParsedCSTDocs = {
     cstNodes: CST.Token[]
     nodes: Document.Parsed[]
-} {
+    streamInfo: ReturnType<Composer["streamInfo"]>
+}
+
+/** Parse yaml to CST */
+export function parseAllDocsToCST(ctx: Context): ParsedCSTDocs {
     const parser = new Parser()
     const composer = new Composer({
+        ...ctx.options,
         keepSourceTokens: true,
     })
     const cstNodes: CST.Token[] = []
@@ -38,5 +42,5 @@ export function parseAllDocsToCST(ctx: Context): {
         processDoc(doc)
     }
 
-    return { nodes, cstNodes }
+    return { nodes, cstNodes, streamInfo: composer.streamInfo() }
 }

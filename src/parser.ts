@@ -9,17 +9,17 @@ import { parseAllDocsToCST } from "./yaml-cst-parse"
  */
 export function parseForESLint(
     code: string,
-    _options?: any,
+    options?: any,
 ): {
     ast: YAMLProgram
     visitorKeys: SourceCode.VisitorKeys
     services: { isYAML: boolean }
 } {
-    const ctx = new Context(code)
+    const ctx = new Context(code, options)
 
     const docs = parseAllDocsToCST(ctx)
 
-    const ast = convertRoot(docs.cstNodes, docs.nodes, ctx)
+    const ast = convertRoot(docs, ctx)
 
     return {
         ast,

@@ -8,12 +8,12 @@ import {
 } from "./tags1.1"
 
 export const tagResolvers = {
-    "1.3": tagResolversFor1_2,
+    next: tagResolversFor1_2,
     "1.2": tagResolversFor1_2,
     "1.1": tagResolversFor1_1,
 }
 export const tagNodeResolvers = {
-    "1.3": tagNodeResolversFor1_2,
+    next: tagNodeResolversFor1_2,
     "1.2": tagNodeResolversFor1_2,
     "1.1": tagNodeResolversFor1_1,
 }
