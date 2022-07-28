@@ -45,19 +45,19 @@ The following additional configuration options are available by specifying them 
 
 Example **.eslintrc.js**:
 
-```json5
+```js
 module.exports = {
-    "overrides": [
-        {
-            "files": ["*.yaml", "*.yml"],
-            "parser": "yaml-eslint-parser",
-            // Additional configuration options
-            "parserOptions": {
-              "defaultYAMLVersion": "1.2"
-            }
-        }
-    ]
-}
+  overrides: [
+    {
+      files: ["*.yaml", "*.yml"],
+      parser: "yaml-eslint-parser",
+      // Additional configuration options
+      parserOptions: {
+        defaultYAMLVersion: "1.2",
+      },
+    },
+  ],
+};
 ```
 
 #### `parserOptions.defaultYAMLVersion`
