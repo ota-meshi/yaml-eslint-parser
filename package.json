@@ -44,7 +44,7 @@
     "yaml": "^2.0.0"
   },
   "devDependencies": {
-    "@ota-meshi/eslint-plugin": "^0.12.0",
+    "@ota-meshi/eslint-plugin": "^0.13.0",
     "@types/benchmark": "^2.1.1",
     "@types/eslint": "^8.0.0",
     "@types/eslint-visitor-keys": "^1.0.0",
