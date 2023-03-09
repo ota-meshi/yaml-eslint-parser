@@ -7,6 +7,8 @@ import { ParseError } from "./errors";
 
 export { AST, ParseError };
 
+export const name = "yaml-eslint-parser";
+
 // parser
 export { parseForESLint };
 // Keys
