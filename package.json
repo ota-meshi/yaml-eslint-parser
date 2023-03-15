@@ -20,7 +20,9 @@
     "debug": "mocha --require ts-node/register/transpile-only \"tests/src/**/*.ts\" --reporter dot",
     "preversion": "npm run lint && npm test",
     "update-fixtures": "ts-node ./tools/update-fixtures.ts",
-    "benchmark": "ts-node --transpile-only benchmark/index.ts"
+    "benchmark": "ts-node --transpile-only benchmark/index.ts",
+    "prerelease": "npm run clean && npm run build",
+    "release": "changeset publish"
   },
   "repository": {
     "type": "git",
@@ -44,6 +46,8 @@
     "yaml": "^2.0.0"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^0.4.6",
+    "@changesets/cli": "^2.24.2",
     "@ota-meshi/eslint-plugin": "^0.13.0",
     "@types/benchmark": "^2.1.1",
     "@types/eslint": "^8.0.0",
