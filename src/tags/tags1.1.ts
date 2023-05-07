@@ -90,9 +90,9 @@ export const FLOAT: TagResolver<number> = {
   testString(str) {
     // see https://yaml.org/type/float.html
     return (
-      /^[+-]?(?:\d[\d_]*)?\.[\d_]*(?:[Ee][+-]\d+)?$/u.test(str) ||
+      /^[+-]?(?:\d[\d_]*)?\.[\d_]*(?:[Ee][+-]?\d+)?$/u.test(str) ||
       // The previous regexp cannot handle "e" without dot. spec bug?
-      /^[+-]?(?:\d[\d_]*)?(?:[Ee][+-]\d+)?$/u.test(str)
+      /^[+-]?(?:\d[\d_]*)?(?:[Ee][+-]?\d+)?$/u.test(str)
     );
   },
   resolveString(str) {
@@ -143,7 +143,7 @@ export const tagNodeResolvers = [OMAP, SET];
  * Resolve int value
  */
 function resolveInt(value: string, skip: number, radix: number) {
-  if ((skip > 0 && value.startsWith("-")) || value.startsWith("+")) {
+  if (value.startsWith("-") || value.startsWith("+")) {
     return parseInt(value[0] + value.slice(skip + 1).replace(/_/gu, ""), radix);
   }
   return parseInt(value.slice(skip).replace(/_/gu, ""), radix);
