@@ -1,5 +1,11 @@
 # yaml-eslint-parser
 
+## 1.2.2
+
+### Patch Changes
+
+- [#140](https://github.com/ota-meshi/yaml-eslint-parser/pull/140) [`99bd0ec`](https://github.com/ota-meshi/yaml-eslint-parser/commit/99bd0ec03a015dce6dfbcf9972d2c7c92efad4ad) Thanks [@ota-meshi](https://github.com/ota-meshi)! - feat: export meta object
+
 ## 1.2.1
 
 ### Patch Changes
