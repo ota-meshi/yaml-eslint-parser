@@ -4,10 +4,10 @@ import { traverseNodes } from "./traverse";
 import { getStaticYAMLValue } from "./utils";
 import { KEYS } from "./visitor-keys";
 import { ParseError } from "./errors";
+export * as meta from "./meta";
+export { name } from "./meta";
 
 export { AST, ParseError };
-
-export const name = "yaml-eslint-parser";
 
 // parser
 export { parseForESLint };
