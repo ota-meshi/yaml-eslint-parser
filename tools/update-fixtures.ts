@@ -11,11 +11,11 @@ import {
 
 const AST_FIXTURE_ROOT = path.resolve(
   __dirname,
-  "../tests/fixtures/parser/ast"
+  "../tests/fixtures/parser/ast",
 );
 const SUITE_FIXTURE_ROOT = path.resolve(
   __dirname,
-  "../tests/fixtures/parser/yaml-test-suite"
+  "../tests/fixtures/parser/yaml-test-suite",
 );
 
 /**
@@ -36,13 +36,13 @@ for (const fixture of listupFixtures(AST_FIXTURE_ROOT)) {
     fs.writeFileSync(
       valueFileName,
       valueToJson(getStaticYAMLValue(ast)),
-      "utf8"
+      "utf8",
     );
   } catch (e: any) {
     fs.writeFileSync(
       outputFileName,
       `${e.message}@line:${e.lineNumber},column:${e.column}`,
-      "utf8"
+      "utf8",
     );
   }
 }
@@ -59,14 +59,14 @@ for (const fixture of listupFixtures(SUITE_FIXTURE_ROOT)) {
     fs.writeFileSync(
       valueFileName,
       valueToJson(getStaticYAMLValue(ast)),
-      "utf8"
+      "utf8",
     );
   } catch (e: any) {
     if (typeof e.lineNumber === "number" && typeof e.column === "number") {
       fs.writeFileSync(
         outputFileName,
         `${e.message}@line:${e.lineNumber},column:${e.column}`,
-        "utf8"
+        "utf8",
       );
     } else {
       throw e;

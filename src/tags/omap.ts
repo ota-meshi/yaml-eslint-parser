@@ -9,7 +9,7 @@ export const OMAP: TagNodeResolver<Record<any, any>> = {
     return (
       node.type === "YAMLSequence" &&
       node.entries.every(
-        (e) => e?.type === "YAMLMapping" && e.pairs.length === 1
+        (e) => e?.type === "YAMLMapping" && e.pairs.length === 1,
       )
     );
   },

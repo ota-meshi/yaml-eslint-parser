@@ -31,11 +31,11 @@ export type YAMLMappingValue = {
 };
 
 export function getStaticYAMLValue(
-  node: YAMLMapping | YAMLPair
+  node: YAMLMapping | YAMLPair,
 ): YAMLMappingValue;
 export function getStaticYAMLValue(node: YAMLSequence): YAMLContentValue[];
 export function getStaticYAMLValue(
-  node: YAMLScalar
+  node: YAMLScalar,
 ): string | number | boolean | null;
 export function getStaticYAMLValue(
   node:
@@ -44,14 +44,14 @@ export function getStaticYAMLValue(
     | YAMLDocument
     | YAMLContent
     | YAMLPair
-    | YAMLWithMeta
+    | YAMLWithMeta,
 ): YAMLContentValue;
 
 /**
  * Gets the static value for the given node.
  */
 export function getStaticYAMLValue(
-  node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMeta
+  node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMeta,
 ): YAMLContentValue {
   return getValue(node, null);
 }
@@ -61,7 +61,7 @@ export function getStaticYAMLValue(
  */
 function getValue(
   node: YAMLProgram | YAMLDocument | YAMLContent | YAMLPair | YAMLWithMeta,
-  version: YAMLVersion | null
+  version: YAMLVersion | null,
 ): YAMLContentValue {
   return resolver[node.type](node as never, version);
 }
@@ -121,7 +121,7 @@ const resolver = {
             node.tag,
             value.strValue,
             value.strValue,
-            version
+            version,
           );
         }
         if (
@@ -193,7 +193,7 @@ function getTaggedValue(
   tag: YAMLTag,
   text: string,
   str: string,
-  version: YAMLVersion | null
+  version: YAMLVersion | null,
 ) {
   for (const tagResolver of tagResolvers[version || "1.2"]) {
     if (tagResolver.tag === tag.tag && tagResolver.testString(str)) {
