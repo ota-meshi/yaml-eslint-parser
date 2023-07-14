@@ -87,7 +87,7 @@ export class Context {
 
   public throwError(
     message: string,
-    cst: CST.Token | Token | number
+    cst: CST.Token | Token | number,
   ): ParseError {
     const offset =
       typeof cst === "number"

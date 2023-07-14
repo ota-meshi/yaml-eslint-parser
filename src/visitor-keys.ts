@@ -20,5 +20,5 @@ const yamlKeys: { [key in YAMLNode["type"]]: string[] } = {
 };
 
 export const KEYS: SourceCode.VisitorKeys = unionWith(
-  yamlKeys
+  yamlKeys,
 ) as SourceCode.VisitorKeys;

@@ -37,22 +37,22 @@ function* listupFixturesImpl(dir: string): IterableIterator<{
     if (filename.endsWith("input.yaml")) {
       const optionsFileName = inputFileName.replace(
         /input\.yaml$/u,
-        "options.json"
+        "options.json",
       );
       const parserOptions = fs.existsSync(optionsFileName)
         ? JSON.parse(fs.readFileSync(optionsFileName, "utf-8"))
         : dirParserOptions;
       const outputFileName = inputFileName.replace(
         /input\.yaml$/u,
-        "output.json"
+        "output.json",
       );
       const valueFileName = inputFileName.replace(
         /input\.yaml$/u,
-        "value.json"
+        "value.json",
       );
       const requirementsFileName = inputFileName.replace(
         /input\.yaml$/u,
-        "requirements.json"
+        "requirements.json",
       );
 
       const input = fs.readFileSync(inputFileName, "utf8");

@@ -11,9 +11,9 @@ import { parseAllDocuments as parseAllDocumentsOld } from "../node_modules/yaml-
 const contents = `${fs.readFileSync(
   path.resolve(
     __dirname,
-    "../tests/fixtures/parser/ast/astexplorer-input.yaml"
+    "../tests/fixtures/parser/ast/astexplorer-input.yaml",
   ),
-  "utf-8"
+  "utf-8",
 )}
 `.repeat(10);
 
@@ -41,8 +41,8 @@ function onComplete(): void {
   for (const name of Object.keys(map)) {
     console.log(
       `${name.padEnd(15)} ${format(
-        map[name].reduce((p, a) => p + a, 0) / map[name].length
-      )} ops/sec`
+        map[name].reduce((p, a) => p + a, 0) / map[name].length,
+      )} ops/sec`,
     );
   }
   for (let i = 0; i < results.length; ++i) {

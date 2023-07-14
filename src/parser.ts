@@ -9,7 +9,7 @@ import { parseAllDocsToCST } from "./yaml-cst-parse";
  */
 export function parseForESLint(
   code: string,
-  options?: any
+  options?: any,
 ): {
   ast: YAMLProgram;
   visitorKeys: SourceCode.VisitorKeys;

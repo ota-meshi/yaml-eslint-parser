@@ -79,7 +79,7 @@ function isNode(x: any): x is YAMLNode {
 function traverse(
   node: YAMLNode,
   parent: YAMLNode | null,
-  visitor: Visitor<YAMLNode>
+  visitor: Visitor<YAMLNode>,
 ): void {
   visitor.enterNode(node, parent);
 
@@ -111,7 +111,7 @@ export function traverseNodes(node: YAMLNode, visitor: Visitor<YAMLNode>): void;
  */
 export function traverseNodes(
   node: YAMLNode,
-  visitor: Visitor<YAMLNode>
+  visitor: Visitor<YAMLNode>,
 ): void {
   traverse(node, null, visitor);
 }

@@ -19,7 +19,7 @@ export class ParseError extends SyntaxError {
     message: string,
     offset: number,
     line: number,
-    column: number
+    column: number,
   ) {
     super(message);
     this.index = offset;
