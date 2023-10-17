@@ -79,7 +79,7 @@ export const FLOAT: TagResolver<number> = {
   tag: "tag:yaml.org,2002:float",
   testString(str) {
     // see https://yaml.org/spec/1.2/spec.html#id2805071
-    return /^[+-]?(?:\.\d+|\d+(?:\.\d*)?)(?:[Ee][+-]?\d+)?$/u.test(str);
+    return /^[+-]?(?:\.\d+|\d+(?:\.\d*)?)(?:e[+-]?\d+)?$/iu.test(str);
   },
   resolveString(str) {
     return parseFloat(str);

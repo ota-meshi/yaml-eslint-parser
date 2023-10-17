@@ -90,9 +90,9 @@ export const FLOAT: TagResolver<number> = {
   testString(str) {
     // see https://yaml.org/type/float.html
     return (
-      /^[+-]?(?:\d[\d_]*)?\.[\d_]*(?:[Ee][+-]?\d+)?$/u.test(str) ||
+      /^[+-]?(?:\d[\d_]*)?\.[\d_]*(?:e[+-]?\d+)?$/iu.test(str) ||
       // The previous regexp cannot handle "e" without dot. spec bug?
-      /^[+-]?(?:\d[\d_]*)?(?:[Ee][+-]?\d+)?$/u.test(str)
+      /^[+-]?(?:\d[\d_]*)?(?:e[+-]?\d+)?$/iu.test(str)
     );
   },
   resolveString(str) {
