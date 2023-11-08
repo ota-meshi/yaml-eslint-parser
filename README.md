@@ -63,7 +63,7 @@ module.exports = {
 #### `parserOptions.defaultYAMLVersion`
 
 Set to `"1.2"` or `"1.1"`. Select the YAML version used by documents without a `%YAML` directive.  
-If not specified, If not specified, the [yaml](https://eemeli.org/yaml/)'s default `version` option (`"1.2"`) is used.  
+If not specified, the [yaml](https://eemeli.org/yaml/)'s default `version` option (`"1.2"`) is used.  
 See <https://eemeli.org/yaml/#document-options> for details.
 
 ## Usage for Custom Rules / Plugins
