@@ -99,7 +99,7 @@ interface YAMLDoubleQuotedScalar extends YAMLScalar {
 
 This is [double-quoted style scalars].
 
-#### YAMLDoubleQuotedScalar
+#### YAMLSingleQuotedScalar
 
 ```ts
 interface YAMLSingleQuotedScalar extends YAMLScalar {
