@@ -149,16 +149,16 @@ function getNodeType(node: any) {
   return isMap(node)
     ? "MAP"
     : isSeq(node)
-    ? "SEQ"
-    : isScalar(node)
-    ? "SCALAR"
-    : isAlias(node)
-    ? "ALIAS"
-    : isPair(node)
-    ? "PAIR"
-    : isDocument(node)
-    ? "DOCUMENT"
-    : "unknown";
+      ? "SEQ"
+      : isScalar(node)
+        ? "SCALAR"
+        : isAlias(node)
+          ? "ALIAS"
+          : isPair(node)
+            ? "PAIR"
+            : isDocument(node)
+              ? "DOCUMENT"
+              : "unknown";
 }
 
 type CSTDoc = {

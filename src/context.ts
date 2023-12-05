@@ -93,8 +93,8 @@ export class Context {
       typeof cst === "number"
         ? cst
         : "offset" in cst
-        ? cst.offset
-        : cst.range[0];
+          ? cst.offset
+          : cst.range[0];
     const loc = this.getLocFromIndex(offset);
     throw new ParseError(message, offset, loc.line, loc.column);
   }

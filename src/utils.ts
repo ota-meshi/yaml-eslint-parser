@@ -71,10 +71,10 @@ const resolver = {
     return node.body.length === 0
       ? null
       : node.body.length === 1
-      ? // eslint-disable-next-line new-cap -- traverse key
-        resolver.YAMLDocument(node.body[0])
-      : // eslint-disable-next-line new-cap -- traverse key
-        node.body.map((n) => resolver.YAMLDocument(n));
+        ? // eslint-disable-next-line new-cap -- traverse key
+          resolver.YAMLDocument(node.body[0])
+        : // eslint-disable-next-line new-cap -- traverse key
+          node.body.map((n) => resolver.YAMLDocument(n));
   },
   YAMLDocument(node: YAMLDocument) {
     return node.content ? getValue(node.content, node.version) : null;
