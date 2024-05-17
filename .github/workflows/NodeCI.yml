@@ -44,3 +44,12 @@ jobs:
       uses: coverallsapp/github-action@3dfc5567390f6fa9267c0ee9c251e4c8c3f18949 # v2.2.3
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
+  strict-type-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+    - name: Install Packages
+      run: npm install -f
+    - name: Strict type-check
+      run: npm run strict-type-check
