@@ -1,5 +1,4 @@
-import { parseDocument } from "yaml";
-import type { Directives } from "yaml/dist/doc/directives";
+import { parseDocument, type DocumentOptions } from "yaml";
 import type {
   YAMLProgram,
   YAMLContent,
@@ -15,7 +14,7 @@ import type {
 } from "./ast";
 import { tagNodeResolvers, tagResolvers } from "./tags";
 
-export type YAMLVersion = Directives["yaml"]["version"];
+export type YAMLVersion = NonNullable<DocumentOptions["version"]>;
 
 export type YAMLContentValue =
   | string
