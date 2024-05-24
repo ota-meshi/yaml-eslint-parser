@@ -65,7 +65,7 @@ module.exports = {
         "@typescript-eslint/no-use-before-define": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "no-invalid-this": "off",
-        "@typescript-eslint/no-invalid-this": ["error"],
+        "@typescript-eslint/no-invalid-this": "error",
       },
     },
     {
