@@ -1,5 +1,11 @@
 # yaml-eslint-parser
 
+## 1.2.3
+
+### Patch Changes
+
+- [#187](https://github.com/ota-meshi/yaml-eslint-parser/pull/187) [`4dc647e`](https://github.com/ota-meshi/yaml-eslint-parser/commit/4dc647ee2afe561f090ebb52b759e4e611ccfb42) Thanks [@alecmev](https://github.com/alecmev)! - Fix `yaml` import in ESM
+
 ## 1.2.2
 
 ### Patch Changes
