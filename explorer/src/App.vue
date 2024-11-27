@@ -1,30 +1,24 @@
-<template>
-    <header class="header">
-        <label class="title">yaml-eslint-parser</label>
-        <SnsBar />
-        <a
-            href="https://github.com/ota-meshi/yaml-eslint-parser"
-            class="github-link"
-            >View on GitHub</a
-        >
-    </header>
-    <main class="main">
-        <AstExplorer />
-    </main>
-</template>
-
-<script>
+<script setup lang="ts">
+// @ts-expect-error
 import AstExplorer from "./components/AstExplorer.vue"
 import SnsBar from "./components/SnsBar.vue"
-
-export default {
-    name: "App",
-    components: {
-        AstExplorer,
-        SnsBar,
-    },
-}
 </script>
+
+<template>
+  <header class="header">
+      <label class="title">yaml-eslint-parser</label>
+      <SnsBar />
+      <a
+          href="https://github.com/ota-meshi/yaml-eslint-parser"
+          class="github-link"
+          >View on GitHub</a
+      >
+  </header>
+  <main class="main">
+      <AstExplorer />
+  </main>
+</template>
+
 <style scoped>
 .header {
     height: 32px;

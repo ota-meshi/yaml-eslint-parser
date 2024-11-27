@@ -15,5 +15,13 @@
 
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "tests/**/*.ts", "tools/**/*.ts", "benchmark/**/*"]
+  "include": [
+    "src/**/*.ts",
+    "tests/**/*.ts",
+    "tools/**/*.ts",
+    "benchmark/**/*",
+    "explorer/src/**/*",
+    "explorer/vite.config.ts",
+    "explorer/env.d.ts"
+  ]
 }

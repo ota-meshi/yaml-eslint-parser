@@ -7,6 +7,8 @@ export default [
       "coverage",
       "lib",
       "node_modules",
+      "explorer/dist",
+      "explorer/node_modules",
       "tests/fixtures/**/*.json",
       "!tests/fixtures/**/*options.json",
     ],
@@ -28,6 +30,12 @@ export default [
       "no-warning-comments": "warn",
       "no-lonely-if": "off",
       "one-var": "off",
+    },
+  },
+  {
+    files: ["**/*.d.ts"],
+    rules: {
+      "spaced-comment": "off",
     },
   },
   {
