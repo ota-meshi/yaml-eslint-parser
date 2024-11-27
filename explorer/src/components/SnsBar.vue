@@ -1,3 +1,36 @@
+
+<script lang="ts" setup>
+import { onMounted } from 'vue';
+
+let timeoutId: any = null
+
+onMounted(() => {
+    setup()
+})
+
+/**
+ * setup
+ */
+function setup() {
+    if (timeoutId) {
+        clearTimeout(timeoutId)
+    }
+    timeoutId = setTimeout(() => {
+        ;(function (d, s, id) {
+            const [fjs] = d.getElementsByTagName(s)
+            if (d.getElementById(id)) {
+                return
+            }
+            const js = d.createElement('script')
+            js.id = id
+            js.src = "https://buttons.github.io/buttons.js"
+            fjs!.parentNode!.insertBefore(js, fjs)
+        })(document, "script", "gh-buttons")
+    }, 500)
+}
+
+</script>
+
 <template>
     <div class="sns-bar">
         <div class="sns">
@@ -18,39 +51,8 @@
     </div>
 </template>
 
-<script>
-let timeoutId = null
 
-/**
- * setup
- */
-function setup() {
-    if (timeoutId) {
-        clearTimeout(timeoutId)
-    }
-    timeoutId = setTimeout(() => {
-        ;(function (d, s, id) {
-            const [fjs] = d.getElementsByTagName(s)
-            if (d.getElementById(id)) {
-                return
-            }
-            const js = d.createElement(s)
-            js.id = id
-            js.src = "https://buttons.github.io/buttons.js"
-            fjs.parentNode.insertBefore(js, fjs)
-        })(document, "script", "gh-buttons")
-    }, 500)
-}
-
-export default {
-    name: "SnsBar",
-    mounted() {
-        setup()
-    },
-}
-</script>
-
-<style scoped lang="postcss">
+<style scoped>
 .sns-bar {
     display: flex;
     align-items: flex-end;

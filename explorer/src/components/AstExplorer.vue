@@ -1,30 +1,9 @@
-<template>
-    <div class="ast-explorer-root">
-        <div class="ast-tools">{{ time }}<AstOptions v-model="options" /></div>
-        <div class="ast-explorer">
-            <MonacoEditor
-                ref="sourceEditor"
-                v-model="yamlValue"
-                language="yaml"
-                @focus-editor-text="handleFocus('source')"
-                @change-cursor-position="handleCursor($event, 'source')"
-            />
-            <MonacoEditor
-                ref="jsonEditor"
-                :model-value="astJson.json"
-                language="json"
-                read-only
-                @focus-editor-text="handleFocus('json')"
-                @change-cursor-position="handleCursor($event, 'json')"
-            />
-        </div>
-    </div>
-</template>
+
 
 <script>
 import MonacoEditor from "./MonacoEditor.vue"
 import AstOptions from "./AstOptions.vue"
-import * as yamlEslintParser from "../../.."
+import * as yamlEslintParser from "../../../src/index.ts"
 import { LineCounter, Parser, Composer } from "yaml"
 
 /* eslint-disable no-unused-vars -- ignore */
@@ -329,6 +308,29 @@ function isNode(value) {
     )
 }
 </script>
+
+<template>
+    <div class="ast-explorer-root">
+        <div class="ast-tools">{{ time }}<AstOptions v-model="options" /></div>
+        <div class="ast-explorer">
+            <MonacoEditor
+                ref="sourceEditor"
+                v-model="yamlValue"
+                language="yaml"
+                @focus-editor-text="handleFocus('source')"
+                @change-cursor-position="handleCursor($event, 'source')"
+            />
+            <MonacoEditor
+                ref="jsonEditor"
+                :model-value="astJson.json"
+                language="json"
+                read-only
+                @focus-editor-text="handleFocus('json')"
+                @change-cursor-position="handleCursor($event, 'json')"
+            />
+        </div>
+    </div>
+</template>
 
 <style scoped>
 .ast-explorer-root {
