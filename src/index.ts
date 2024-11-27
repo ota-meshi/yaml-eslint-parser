@@ -7,7 +7,8 @@ import { ParseError } from "./errors";
 export * as meta from "./meta";
 export { name } from "./meta";
 
-export { AST, ParseError };
+export type { AST };
+export { ParseError };
 
 // parser
 export { parseForESLint };
