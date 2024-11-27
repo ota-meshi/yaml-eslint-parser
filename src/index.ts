@@ -1,5 +1,5 @@
 import { parseForESLint } from "./parser";
-import type * as AST from "./ast";
+export type * as AST from "./ast";
 import { traverseNodes } from "./traverse";
 import { getStaticYAMLValue } from "./utils";
 import { KEYS } from "./visitor-keys";
@@ -7,7 +7,7 @@ import { ParseError } from "./errors";
 export * as meta from "./meta";
 export { name } from "./meta";
 
-export { AST, ParseError };
+export { ParseError };
 
 // parser
 export { parseForESLint };
