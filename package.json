@@ -46,7 +46,6 @@
   "homepage": "https://github.com/ota-meshi/yaml-eslint-parser#readme",
   "dependencies": {
     "eslint-visitor-keys": "^3.0.0",
-    "lodash": "^4.17.21",
     "yaml": "^2.0.0"
   },
   "devDependencies": {
