@@ -55,7 +55,6 @@
     "@types/benchmark": "^2.1.1",
     "@types/eslint": "^9.0.0",
     "@types/eslint-visitor-keys": "^3.0.0",
-    "@types/lodash": "^4.14.167",
     "@types/mocha": "^10.0.0",
     "@types/node": "^22.0.0",
     "@types/semver": "^7.3.10",

@@ -2,6 +2,7 @@ import type { Comment, Locations, Position, Range, Token } from "./ast";
 import type { CST, DocumentOptions } from "yaml";
 import { ParseError } from ".";
 import { parserOptionsToYAMLOption } from "./options";
+import { sortedLastIndex } from "./utils";
 
 export class Context {
   public readonly code: string;
@@ -120,16 +121,7 @@ class LinesAndColumns {
   }
 
   public getLocFromIndex(index: number) {
-    // The implementation is mostly inspired by ESLint's context.sourceCode.getLocFromIndex
-    // See https://github.com/eslint/eslint/blob/f67d5e875324a9d899598b11807a9c7624021432/lib/languages/js/source-code/source-code.js#L657
-
-    // To figure out which line index is on, determine the last place at which index could
-    // be inserted into lineStartIndices to keep the list sorted.
-    const lastIndice = this.lineStartIndices.at(-1);
-    const lineNumber =
-      lastIndice != null && index >= lastIndice
-        ? this.lineStartIndices.length
-        : this.lineStartIndices.findIndex((el) => index < el);
+    const lineNumber = sortedLastIndex(this.lineStartIndices, index);
 
     return {
       line: lineNumber,
