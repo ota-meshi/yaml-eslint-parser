@@ -11,9 +11,6 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
-      lodash: fileURLToPath(
-        new URL("./node_modules/lodash-es", import.meta.url),
-      ),
     },
   },
 });

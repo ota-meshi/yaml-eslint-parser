@@ -1,8 +1,8 @@
 import type { Comment, Locations, Position, Range, Token } from "./ast";
-import lodash from "lodash";
 import type { CST, DocumentOptions } from "yaml";
 import { ParseError } from ".";
 import { parserOptionsToYAMLOption } from "./options";
+import { sortedLastIndex } from "./utils";
 
 export class Context {
   public readonly code: string;
@@ -121,7 +121,8 @@ class LinesAndColumns {
   }
 
   public getLocFromIndex(index: number) {
-    const lineNumber = lodash.sortedLastIndex(this.lineStartIndices, index);
+    const lineNumber = sortedLastIndex(this.lineStartIndices, index);
+
     return {
       line: lineNumber,
       column: index - this.lineStartIndices[lineNumber - 1],
