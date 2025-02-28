@@ -1,5 +1,11 @@
 # yaml-eslint-parser
 
+## 1.3.0
+
+### Minor Changes
+
+- [#210](https://github.com/ota-meshi/yaml-eslint-parser/pull/210) [`96b72da`](https://github.com/ota-meshi/yaml-eslint-parser/commit/96b72dab96818eb1cd51fd248b882263cd3b8ad0) Thanks [@SukkaW](https://github.com/SukkaW)! - Replace `lodash` to reduce the package installation size
+
 ## 1.2.3
 
 ### Patch Changes
