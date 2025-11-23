@@ -1,0 +1,17 @@
+[
+  null,
+  "a",
+  {
+    "null": "a",
+    "b": null
+  },
+  {
+    "null": null
+  },
+  {
+    "null": null
+  },
+  {
+    "null": null
+  }
+]

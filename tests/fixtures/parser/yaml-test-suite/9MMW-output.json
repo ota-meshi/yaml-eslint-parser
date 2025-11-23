@@ -117,31 +117,51 @@
                 "pairs": [
                   {
                     "type": "YAMLPair",
-                    "key": null,
-                    "value": {
+                    "key": {
                       "type": "YAMLScalar",
-                      "style": "plain",
-                      "strValue": "empty key entry",
-                      "value": "empty key entry",
-                      "raw": "empty key entry",
+                      "style": "double-quoted",
+                      "strValue": "JSON like",
+                      "value": "JSON like",
+                      "raw": "\"JSON like\"",
                       "range": [
-                        28,
-                        43
+                        26,
+                        37
                       ],
                       "loc": {
                         "start": {
                           "line": 2,
-                          "column": 6
+                          "column": 4
                         },
                         "end": {
                           "line": 2,
-                          "column": 21
+                          "column": 15
+                        }
+                      }
+                    },
+                    "value": {
+                      "type": "YAMLScalar",
+                      "style": "plain",
+                      "strValue": "adjacent",
+                      "value": "adjacent",
+                      "raw": "adjacent",
+                      "range": [
+                        38,
+                        46
+                      ],
+                      "loc": {
+                        "start": {
+                          "line": 2,
+                          "column": 16
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 24
                         }
                       }
                     },
                     "range": [
                       26,
-                      43
+                      46
                     ],
                     "loc": {
                       "start": {
@@ -150,14 +170,14 @@
                       },
                       "end": {
                         "line": 2,
-                        "column": 21
+                        "column": 24
                       }
                     }
                   }
                 ],
                 "range": [
                   26,
-                  43
+                  46
                 ],
                 "loc": {
                   "start": {
@@ -166,14 +186,14 @@
                   },
                   "end": {
                     "line": 2,
-                    "column": 21
+                    "column": 24
                   }
                 }
               }
             ],
             "range": [
               24,
-              45
+              48
             ],
             "loc": {
               "start": {
@@ -182,7 +202,7 @@
               },
               "end": {
                 "line": 2,
-                "column": 23
+                "column": 26
               }
             }
           },
@@ -197,14 +217,72 @@
                   {
                     "type": "YAMLPair",
                     "key": {
-                      "type": "YAMLScalar",
-                      "style": "double-quoted",
-                      "strValue": "JSON like",
-                      "value": "JSON like",
-                      "raw": "\"JSON like\"",
+                      "type": "YAMLMapping",
+                      "style": "flow",
+                      "pairs": [
+                        {
+                          "type": "YAMLPair",
+                          "key": {
+                            "type": "YAMLScalar",
+                            "style": "plain",
+                            "strValue": "JSON",
+                            "value": "JSON",
+                            "raw": "JSON",
+                            "range": [
+                              54,
+                              58
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 3,
+                                "column": 5
+                              },
+                              "end": {
+                                "line": 3,
+                                "column": 9
+                              }
+                            }
+                          },
+                          "value": {
+                            "type": "YAMLScalar",
+                            "style": "plain",
+                            "strValue": "like",
+                            "value": "like",
+                            "raw": "like",
+                            "range": [
+                              60,
+                              64
+                            ],
+                            "loc": {
+                              "start": {
+                                "line": 3,
+                                "column": 11
+                              },
+                              "end": {
+                                "line": 3,
+                                "column": 15
+                              }
+                            }
+                          },
+                          "range": [
+                            54,
+                            64
+                          ],
+                          "loc": {
+                            "start": {
+                              "line": 3,
+                              "column": 5
+                            },
+                            "end": {
+                              "line": 3,
+                              "column": 15
+                            }
+                          }
+                        }
+                      ],
                       "range": [
-                        50,
-                        61
+                        53,
+                        65
                       ],
                       "loc": {
                         "start": {
@@ -213,7 +291,7 @@
                         },
                         "end": {
                           "line": 3,
-                          "column": 15
+                          "column": 16
                         }
                       }
                     },
@@ -224,23 +302,23 @@
                       "value": "adjacent",
                       "raw": "adjacent",
                       "range": [
-                        62,
-                        70
+                        66,
+                        74
                       ],
                       "loc": {
                         "start": {
                           "line": 3,
-                          "column": 16
+                          "column": 17
                         },
                         "end": {
                           "line": 3,
-                          "column": 24
+                          "column": 25
                         }
                       }
                     },
                     "range": [
-                      50,
-                      70
+                      53,
+                      74
                     ],
                     "loc": {
                       "start": {
@@ -249,14 +327,14 @@
                       },
                       "end": {
                         "line": 3,
-                        "column": 24
+                        "column": 25
                       }
                     }
                   }
                 ],
                 "range": [
-                  50,
-                  70
+                  53,
+                  74
                 ],
                 "loc": {
                   "start": {
@@ -265,14 +343,14 @@
                   },
                   "end": {
                     "line": 3,
-                    "column": 24
+                    "column": 25
                   }
                 }
               }
             ],
             "range": [
-              48,
-              72
+              51,
+              76
             ],
             "loc": {
               "start": {
@@ -281,14 +359,14 @@
               },
               "end": {
                 "line": 3,
-                "column": 26
+                "column": 27
               }
             }
           }
         ],
         "range": [
           0,
-          72
+          76
         ],
         "loc": {
           "start": {
@@ -297,14 +375,14 @@
           },
           "end": {
             "line": 3,
-            "column": 26
+            "column": 27
           }
         }
       },
       "version": "1.2",
       "range": [
         0,
-        73
+        77
       ],
       "loc": {
         "start": {
@@ -466,11 +544,11 @@
       }
     },
     {
-      "type": "Punctuator",
-      "value": ":",
+      "type": "String",
+      "value": "\"JSON like\"",
       "range": [
         26,
-        27
+        37
       ],
       "loc": {
         "start": {
@@ -479,25 +557,43 @@
         },
         "end": {
           "line": 2,
-          "column": 5
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": ":",
+      "range": [
+        37,
+        38
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 15
+        },
+        "end": {
+          "line": 2,
+          "column": 16
         }
       }
     },
     {
       "type": "Identifier",
-      "value": "empty key entry",
+      "value": "adjacent",
       "range": [
-        28,
-        43
+        38,
+        46
       ],
       "loc": {
         "start": {
           "line": 2,
-          "column": 6
+          "column": 16
         },
         "end": {
           "line": 2,
-          "column": 21
+          "column": 24
         }
       }
     },
@@ -505,17 +601,17 @@
       "type": "Punctuator",
       "value": "]",
       "range": [
-        44,
-        45
+        47,
+        48
       ],
       "loc": {
         "start": {
           "line": 2,
-          "column": 22
+          "column": 25
         },
         "end": {
           "line": 2,
-          "column": 23
+          "column": 26
         }
       }
     },
@@ -523,8 +619,8 @@
       "type": "Punctuator",
       "value": "-",
       "range": [
-        46,
-        47
+        49,
+        50
       ],
       "loc": {
         "start": {
@@ -541,8 +637,8 @@
       "type": "Punctuator",
       "value": "[",
       "range": [
-        48,
-        49
+        51,
+        52
       ],
       "loc": {
         "start": {
@@ -556,11 +652,11 @@
       }
     },
     {
-      "type": "String",
-      "value": "\"JSON like\"",
+      "type": "Punctuator",
+      "value": "{",
       "range": [
-        50,
-        61
+        53,
+        54
       ],
       "loc": {
         "start": {
@@ -569,7 +665,25 @@
         },
         "end": {
           "line": 3,
-          "column": 15
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "JSON",
+      "range": [
+        54,
+        58
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 5
+        },
+        "end": {
+          "line": 3,
+          "column": 9
         }
       }
     },
@@ -577,8 +691,44 @@
       "type": "Punctuator",
       "value": ":",
       "range": [
-        61,
-        62
+        58,
+        59
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 9
+        },
+        "end": {
+          "line": 3,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "like",
+      "range": [
+        60,
+        64
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 11
+        },
+        "end": {
+          "line": 3,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "Punctuator",
+      "value": "}",
+      "range": [
+        64,
+        65
       ],
       "loc": {
         "start": {
@@ -592,11 +742,11 @@
       }
     },
     {
-      "type": "Identifier",
-      "value": "adjacent",
+      "type": "Punctuator",
+      "value": ":",
       "range": [
-        62,
-        70
+        65,
+        66
       ],
       "loc": {
         "start": {
@@ -605,7 +755,25 @@
         },
         "end": {
           "line": 3,
-          "column": 24
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "Identifier",
+      "value": "adjacent",
+      "range": [
+        66,
+        74
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 17
+        },
+        "end": {
+          "line": 3,
+          "column": 25
         }
       }
     },
@@ -613,24 +781,24 @@
       "type": "Punctuator",
       "value": "]",
       "range": [
-        71,
-        72
+        75,
+        76
       ],
       "loc": {
         "start": {
           "line": 3,
-          "column": 25
+          "column": 26
         },
         "end": {
           "line": 3,
-          "column": 26
+          "column": 27
         }
       }
     }
   ],
   "range": [
     0,
-    73
+    77
   ],
   "loc": {
     "start": {

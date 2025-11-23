@@ -67,11 +67,12 @@
       "directives": [
         {
           "type": "YAMLDirective",
-          "value": "%YAML1.2",
-          "kind": null,
+          "value": "%YAML 1.2",
+          "kind": "YAML",
+          "version": "1.2",
           "range": [
             35,
-            43
+            44
           ],
           "loc": {
             "start": {
@@ -80,7 +81,7 @@
             },
             "end": {
               "line": 5,
-              "column": 8
+              "column": 9
             }
           }
         }
@@ -89,7 +90,7 @@
       "version": "1.2",
       "range": [
         35,
-        59
+        60
       ],
       "loc": {
         "start": {
@@ -108,8 +109,8 @@
       "type": "Block",
       "value": " Empty",
       "range": [
-        48,
-        55
+        49,
+        56
       ],
       "loc": {
         "start": {
@@ -217,10 +218,10 @@
     },
     {
       "type": "Directive",
-      "value": "%YAML1.2",
+      "value": "%YAML 1.2",
       "range": [
         35,
-        43
+        44
       ],
       "loc": {
         "start": {
@@ -229,7 +230,7 @@
         },
         "end": {
           "line": 5,
-          "column": 8
+          "column": 9
         }
       }
     },
@@ -237,8 +238,8 @@
       "type": "Marker",
       "value": "---",
       "range": [
-        44,
-        47
+        45,
+        48
       ],
       "loc": {
         "start": {
@@ -255,8 +256,8 @@
       "type": "Marker",
       "value": "...",
       "range": [
-        56,
-        59
+        57,
+        60
       ],
       "loc": {
         "start": {
@@ -272,7 +273,7 @@
   ],
   "range": [
     0,
-    60
+    61
   ],
   "loc": {
     "start": {

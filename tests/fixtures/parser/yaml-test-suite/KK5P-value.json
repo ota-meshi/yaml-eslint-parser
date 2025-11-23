@@ -1,0 +1,19 @@
+{
+  "complex1": {
+    "a": null
+  },
+  "complex2": {
+    "a": "b"
+  },
+  "complex3": {
+    "a": "b\n"
+  },
+  "complex4": {
+    "a\n": null
+  },
+  "complex5": {
+    "a": [
+      "b"
+    ]
+  }
+}

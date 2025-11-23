@@ -362,8 +362,8 @@
               "anchor": null,
               "tag": {
                 "type": "YAMLTag",
-                "tag": "tag:yaml.org,2002:int",
-                "raw": "!!int",
+                "tag": "tag:yaml.org,2002:str",
+                "raw": "!!str",
                 "range": [
                   39,
                   44
@@ -868,7 +868,7 @@
     },
     {
       "type": "Identifier",
-      "value": "int",
+      "value": "str",
       "range": [
         41,
         44
