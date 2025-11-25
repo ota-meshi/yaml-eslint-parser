@@ -15,7 +15,7 @@ concurrency:
 jobs:
   release:
     # prevents this action from running on forks
-    if: github.repository == 'ota-meshi/eslint-plugin-markdown-preferences'
+    if: github.repository == 'ota-meshi/yaml-eslint-parser'
     permissions:
       contents: write # to create release (changesets/action)
       id-token: write # OpenID Connect token needed for provenance
