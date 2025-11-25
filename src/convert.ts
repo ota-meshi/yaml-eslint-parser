@@ -1287,7 +1287,7 @@ function convertBlockScalar(
     }
     if (token.type === "block-scalar-header") {
       headerToken = ctx.addToken("Punctuator", toRange(token));
-      blockStart = headerToken.range[0];
+      blockStart = headerToken.range[1];
       continue;
     }
     /* istanbul ignore next */
@@ -1296,7 +1296,7 @@ function convertBlockScalar(
   const headerValue = headerToken!.value;
   const end = node.source
     ? getBlockEnd(blockStart + cst.source.length, ctx)
-    : ctx.lastSkipSpaces(cst.offset, blockStart + cst.source.length);
+    : ctx.lastSkipSpaces(cst.offset, headerToken!.range[1]);
   const loc = ctx.getConvertLocation(headerToken!.range[0], end);
 
   if (headerValue.startsWith(">")) {

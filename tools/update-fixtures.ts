@@ -20,6 +20,8 @@ const SUITE_FIXTURE_ROOT = path.resolve(
   "../tests/fixtures/parser/yaml-test-suite",
 );
 
+const ONLY = ""; // e.g., "2G84-3-input"
+
 /**
  * Parse
  */
@@ -30,6 +32,8 @@ function parse(code: string, parserOptions: any) {
 for (const fixture of listupFixtures(AST_FIXTURE_ROOT)) {
   const { input, inputFileName, parserOptions, outputFileName, valueFileName } =
     fixture;
+  if (ONLY && !inputFileName.includes(ONLY)) continue;
+  // eslint-disable-next-line no-console -- update log
   console.log(inputFileName);
   try {
     const ast = parse(input, parserOptions).ast;
@@ -68,6 +72,7 @@ for (const { filename, cases } of yamlTestSuite) {
 for (const fixture of listupFixtures(SUITE_FIXTURE_ROOT)) {
   const { input, inputFileName, parserOptions, outputFileName, valueFileName } =
     fixture;
+  if (ONLY && !inputFileName.includes(ONLY)) continue;
   // eslint-disable-next-line no-console -- update log
   console.log(inputFileName);
   try {
