@@ -6,12 +6,12 @@
   ],
   [
     {
-      "null": "empty key entry"
+      "JSON like": "adjacent"
     }
   ],
   [
     {
-      "JSON like": "adjacent"
+      "[object Object]": "adjacent"
     }
   ]
 ]

@@ -143,7 +143,7 @@
             "type": "YAMLPair",
             "key": {
               "type": "YAMLAlias",
-              "name": "a",
+              "name": "b",
               "range": [
                 11,
                 13
@@ -161,7 +161,7 @@
             },
             "value": {
               "type": "YAMLAlias",
-              "name": "b",
+              "name": "a",
               "range": [
                 16,
                 18
@@ -374,7 +374,7 @@
     },
     {
       "type": "Identifier",
-      "value": "a",
+      "value": "b",
       "range": [
         12,
         13
@@ -428,7 +428,7 @@
     },
     {
       "type": "Identifier",
-      "value": "b",
+      "value": "a",
       "range": [
         17,
         18
