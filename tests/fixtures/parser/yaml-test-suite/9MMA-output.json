@@ -3,12 +3,33 @@
   "body": [
     {
       "type": "YAMLDocument",
-      "directives": [],
+      "directives": [
+        {
+          "type": "YAMLDirective",
+          "value": "%YAML 1.2",
+          "kind": "YAML",
+          "version": "1.2",
+          "range": [
+            0,
+            9
+          ],
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 9
+            }
+          }
+        }
+      ],
       "content": null,
       "version": "1.2",
       "range": [
         0,
-        0
+        9
       ],
       "loc": {
         "start": {
@@ -17,14 +38,33 @@
         },
         "end": {
           "line": 1,
-          "column": 0
+          "column": 9
         }
       }
     }
   ],
   "comments": [],
   "sourceType": "module",
-  "tokens": [],
+  "tokens": [
+    {
+      "type": "Directive",
+      "value": "%YAML 1.2",
+      "range": [
+        0,
+        9
+      ],
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 9
+        }
+      }
+    }
+  ],
   "range": [
     0,
     10

@@ -6,29 +6,29 @@
       "directives": [],
       "content": {
         "type": "YAMLScalar",
-        "style": "literal",
-        "chomping": "strip",
-        "indent": 1,
-        "value": "",
+        "style": "plain",
+        "strValue": "k:#foo &a !t s",
+        "value": "k:#foo &a !t s",
+        "raw": "k:#foo\n &a !t s",
         "range": [
           4,
-          7
+          19
         ],
         "loc": {
           "start": {
-            "line": 1,
-            "column": 4
+            "line": 2,
+            "column": 0
           },
           "end": {
-            "line": 1,
-            "column": 7
+            "line": 3,
+            "column": 8
           }
         }
       },
       "version": "1.2",
       "range": [
         0,
-        7
+        20
       ],
       "loc": {
         "start": {
@@ -36,8 +36,8 @@
           "column": 0
         },
         "end": {
-          "line": 1,
-          "column": 7
+          "line": 4,
+          "column": 0
         }
       }
     }
@@ -64,27 +64,27 @@
       }
     },
     {
-      "type": "Punctuator",
-      "value": "|1-",
+      "type": "Identifier",
+      "value": "k:#foo\n &a !t s",
       "range": [
         4,
-        7
+        19
       ],
       "loc": {
         "start": {
-          "line": 1,
-          "column": 4
+          "line": 2,
+          "column": 0
         },
         "end": {
-          "line": 1,
-          "column": 7
+          "line": 3,
+          "column": 8
         }
       }
     }
   ],
   "range": [
     0,
-    7
+    20
   ],
   "loc": {
     "start": {
@@ -92,8 +92,8 @@
       "column": 0
     },
     "end": {
-      "line": 1,
-      "column": 7
+      "line": 4,
+      "column": 0
     }
   }
 }

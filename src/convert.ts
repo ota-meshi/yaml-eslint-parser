@@ -162,7 +162,8 @@ function getNodeType(node: any) {
 }
 
 type CSTDoc = {
-  doc: CST.Document;
+  doc: CST.Document | null;
+  node: Document.Parsed | null;
   directives: CST.Directive[];
   docEnd?: CST.DocumentEnd;
 };
@@ -170,7 +171,7 @@ type CSTDoc = {
  * Convert yaml root to YAMLProgram
  */
 export function convertRoot(docs: ParsedCSTDocs, ctx: Context): YAMLProgram {
-  const { cstNodes, nodes } = docs;
+  const { cstNodes } = docs;
   const ast: YAMLProgram = {
     type: "Program",
     body: [],
@@ -209,6 +210,7 @@ export function convertRoot(docs: ParsedCSTDocs, ctx: Context): YAMLProgram {
     if (n.type === "document") {
       bufferDoc = {
         doc: n,
+        node: docs.nodes[cstDocs.length],
         directives,
       };
       directives = [];
@@ -221,10 +223,17 @@ export function convertRoot(docs: ParsedCSTDocs, ctx: Context): YAMLProgram {
     cstDocs.push(bufferDoc);
     bufferDoc = null;
   }
+  if (directives.length > 0) {
+    cstDocs.push({
+      doc: null,
+      node: null,
+      directives,
+    });
+  }
   if (cstDocs.length > 0) {
     let startIndex = 0;
-    ast.body = cstDocs.map((doc, index) => {
-      const result = convertDocument(doc, nodes[index], ctx, ast, startIndex);
+    ast.body = cstDocs.map((doc) => {
+      const result = convertDocument(docs, doc, ctx, ast, startIndex);
       startIndex = result.range[1];
       return result;
     });
@@ -254,12 +263,34 @@ export function convertRoot(docs: ParsedCSTDocs, ctx: Context): YAMLProgram {
  * Convert YAML.Document to YAMLDocument
  */
 function convertDocument(
-  { directives, doc, docEnd }: CSTDoc,
-  node: Document.Parsed,
+  docs: ParsedCSTDocs,
+  { directives, doc, node, docEnd }: CSTDoc,
   ctx: Context,
   parent: YAMLProgram,
   startIndex: number,
 ): YAMLDocument {
+  if (!doc || !node) {
+    // Empty document
+    const docStartIndex = skipSpaces(ctx.code, startIndex);
+    const loc = ctx.getConvertLocation(docStartIndex, docStartIndex);
+    const ast: YAMLDocument = {
+      type: "YAMLDocument",
+      directives: [],
+      content: null,
+      parent,
+      anchors: {},
+      version: docs.streamInfo.directives.yaml.version,
+      ...loc,
+    };
+    ast.directives.push(...convertDocumentHead(null, directives, ctx, ast));
+    let last: Locations | undefined = ast.directives[ast.directives.length - 1];
+    // Marker
+    if (docEnd) {
+      last = ctx.addToken("Marker", toRange(docEnd));
+    }
+    adjustEndLoc(ast, last);
+    return ast;
+  }
   const loc = ctx.getConvertLocation(
     skipSpaces(ctx.code, startIndex),
     node.range[1],
@@ -316,7 +347,7 @@ function convertDocument(
  * Convert YAML.Document.Parsed to YAMLDirective[]
  */
 function* convertDocumentHead(
-  node: Directives,
+  node: Directives | null,
   directives: CST.Directive[],
   ctx: Context,
   parent: YAMLDocument,
@@ -330,7 +361,7 @@ function* convertDocumentHead(
  * Convert CSTDirective to YAMLDirective
  */
 function convertDirective(
-  node: Directives,
+  node: Directives | null,
   cst: CST.Directive,
   ctx: Context,
   parent: YAMLDocument,
@@ -348,7 +379,7 @@ function convertDirective(
       type: "YAMLDirective",
       value,
       kind: "YAML",
-      version: node.yaml.version,
+      version: node ? node.yaml.version : cst.source.slice(6).trim(),
       parent,
       ...loc,
     };
@@ -1287,7 +1318,7 @@ function convertBlockScalar(
     }
     if (token.type === "block-scalar-header") {
       headerToken = ctx.addToken("Punctuator", toRange(token));
-      blockStart = headerToken.range[0];
+      blockStart = headerToken.range[1];
       continue;
     }
     /* istanbul ignore next */
@@ -1296,7 +1327,7 @@ function convertBlockScalar(
   const headerValue = headerToken!.value;
   const end = node.source
     ? getBlockEnd(blockStart + cst.source.length, ctx)
-    : ctx.lastSkipSpaces(cst.offset, blockStart + cst.source.length);
+    : ctx.lastSkipSpaces(cst.offset, headerToken!.range[1]);
   const loc = ctx.getConvertLocation(headerToken!.range[0], end);
 
   if (headerValue.startsWith(">")) {
