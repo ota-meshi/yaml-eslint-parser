@@ -1,5 +1,13 @@
 # yaml-eslint-parser
 
+## 1.3.1
+
+### Patch Changes
+
+- [#229](https://github.com/ota-meshi/yaml-eslint-parser/pull/229) [`8be7384`](https://github.com/ota-meshi/yaml-eslint-parser/commit/8be7384037c60bb42beb4cee4206fc2b3d0883e8) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix wrong ast for directive only documents
+
+- [#229](https://github.com/ota-meshi/yaml-eslint-parser/pull/229) [`8be7384`](https://github.com/ota-meshi/yaml-eslint-parser/commit/8be7384037c60bb42beb4cee4206fc2b3d0883e8) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix wrong ast for an empty block literal with no line breaks
+
 ## 1.3.0
 
 ### Minor Changes
