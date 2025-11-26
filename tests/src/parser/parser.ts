@@ -70,23 +70,27 @@ describe("Check for AST.", () => {
       });
 
       if (
-        // multiple documents
-        !/[/\\]docs01-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]flow01-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]quoted01-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]test01-input\.yaml$/.test(inputFileName) &&
-        // null key
-        !/[/\\]comment-and-flow-map01-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]comment-and-flow-map02-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]empty-pair01-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]empty-pair03-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]pair-in-block-map01-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]pair-in-block-map02-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]pair-in-flow-seq01-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]pair-in-flow-seq02-input\.yaml$/.test(inputFileName) &&
-        !/[/\\]pair-in-flow-seq03-input\.yaml$/.test(inputFileName) &&
-        // There are some differences in spec
-        !/[/\\]astexplorer-input\.yaml$/.test(inputFileName)
+        ![
+          // multiple documents
+          "docs01-input.yaml",
+          "flow01-input.yaml",
+          "quoted01-input.yaml",
+          "test01-input.yaml",
+          // null key
+          "comment-and-flow-map01-input.yaml",
+          "comment-and-flow-map02-input.yaml",
+          "empty-pair01-input.yaml",
+          "empty-pair03-input.yaml",
+          "pair-in-block-map01-input.yaml",
+          "pair-in-block-map02-input.yaml",
+          "pair-in-flow-seq01-input.yaml",
+          "pair-in-flow-seq02-input.yaml",
+          "pair-in-flow-seq03-input.yaml",
+          // There are some differences in spec
+          "astexplorer-input.yaml",
+        ]
+          .map((file) => path.join(AST_FIXTURE_ROOT, file))
+          .includes(inputFileName)
       ) {
         it("The result of getStaticYAMLValue() and the result of parsing with the yaml package should be the same.", () => {
           assert.deepStrictEqual(
