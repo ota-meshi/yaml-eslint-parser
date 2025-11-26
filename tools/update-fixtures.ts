@@ -1,6 +1,5 @@
 import path from "path";
 import fs from "fs";
-import assert from "assert";
 import yamlTestSuite from "yaml-test-suite";
 
 import { parseForESLint } from "../src/parser";
@@ -53,12 +52,11 @@ for (const fixture of listupFixtures(AST_FIXTURE_ROOT)) {
   }
 }
 
-// fs.rmSync(SUITE_FIXTURE_ROOT, { force: true, recursive: true });
-// fs.mkdirSync(SUITE_FIXTURE_ROOT, { recursive: true });
-const FIXTURE_EXTENSION = ".yaml";
-for (const { filename, cases } of yamlTestSuite) {
-  assert(path.extname(filename) === FIXTURE_EXTENSION);
-  const id = path.basename(filename, FIXTURE_EXTENSION);
+if (!ONLY) {
+  fs.rmSync(SUITE_FIXTURE_ROOT, { force: true, recursive: true });
+  fs.mkdirSync(SUITE_FIXTURE_ROOT, { recursive: true });
+}
+for (const { id, cases } of yamlTestSuite) {
   for (const [index, testCase] of cases.entries()) {
     const basename = `${id}${index === 0 ? "" : `-${index + 1}`}`;
     const inputFileName = `${basename}-input.yaml`;
