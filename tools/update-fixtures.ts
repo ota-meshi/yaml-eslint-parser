@@ -52,10 +52,10 @@ for (const fixture of listupFixtures(AST_FIXTURE_ROOT)) {
   }
 }
 
-// if (!ONLY) {
-//   fs.rmSync(SUITE_FIXTURE_ROOT, { force: true, recursive: true });
-//   fs.mkdirSync(SUITE_FIXTURE_ROOT, { recursive: true });
-// }
+if (!ONLY) {
+  fs.rmSync(SUITE_FIXTURE_ROOT, { force: true, recursive: true });
+  fs.mkdirSync(SUITE_FIXTURE_ROOT, { recursive: true });
+}
 for (const { id, cases } of yamlTestSuite) {
   for (const [index, testCase] of cases.entries()) {
     const basename = `${id}${index === 0 ? "" : `-${index + 1}`}`;
