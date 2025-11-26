@@ -71,22 +71,22 @@ describe("Check for AST.", () => {
 
       if (
         // multiple documents
-        !inputFileName.endsWith("/docs01-input.yaml") &&
-        !inputFileName.endsWith("/flow01-input.yaml") &&
-        !inputFileName.endsWith("/quoted01-input.yaml") &&
-        !inputFileName.endsWith("/test01-input.yaml") &&
+        !/[/\\]docs01-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]flow01-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]quoted01-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]test01-input\.yaml$/.test(inputFileName) &&
         // null key
-        !inputFileName.endsWith("/comment-and-flow-map01-input.yaml") &&
-        !inputFileName.endsWith("/comment-and-flow-map02-input.yaml") &&
-        !inputFileName.endsWith("/empty-pair01-input.yaml") &&
-        !inputFileName.endsWith("/empty-pair03-input.yaml") &&
-        !inputFileName.endsWith("/pair-in-block-map01-input.yaml") &&
-        !inputFileName.endsWith("/pair-in-block-map02-input.yaml") &&
-        !inputFileName.endsWith("/pair-in-flow-seq01-input.yaml") &&
-        !inputFileName.endsWith("/pair-in-flow-seq02-input.yaml") &&
-        !inputFileName.endsWith("/pair-in-flow-seq03-input.yaml") &&
+        !/[/\\]comment-and-flow-map01-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]comment-and-flow-map02-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]empty-pair01-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]empty-pair03-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]pair-in-block-map01-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]pair-in-block-map02-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]pair-in-flow-seq01-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]pair-in-flow-seq02-input\.yaml$/.test(inputFileName) &&
+        !/[/\\]pair-in-flow-seq03-input\.yaml$/.test(inputFileName) &&
         // There are some differences in spec
-        !inputFileName.endsWith("/astexplorer-input.yaml")
+        !/[/\\]astexplorer-input\.yaml$/.test(inputFileName)
       ) {
         it("The result of getStaticYAMLValue() and the result of parsing with the yaml package should be the same.", () => {
           assert.deepStrictEqual(
