@@ -10,10 +10,12 @@ export type ParsedCSTDocs = {
 
 /** Parse yaml to CST */
 export function parseAllDocsToCST(ctx: Context): ParsedCSTDocs {
-  const parser = new Parser();
+  const { lineCounter } = ctx;
+  const parser = new Parser(lineCounter.addNewLine);
   const composer = new Composer({
     ...ctx.options,
     keepSourceTokens: true,
+    lineCounter,
   });
   const cstNodes: CST.Token[] = [];
   const nodes: Document.Parsed[] = [];
