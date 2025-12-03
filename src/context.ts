@@ -1,8 +1,7 @@
 import type { Comment, Locations, Position, Range, Token } from "./ast";
-import type { CST, DocumentOptions } from "yaml";
+import { type CST, type DocumentOptions, LineCounter } from "yaml";
 import { ParseError } from ".";
 import { parserOptionsToYAMLOption } from "./options";
-import { sortedLastIndex } from "./utils";
 
 export class Context {
   public readonly code: string;
@@ -13,34 +12,21 @@ export class Context {
 
   public readonly comments: Comment[] = [];
 
-  private readonly locs: LinesAndColumns;
+  public readonly lineCounter: LineCounter;
 
   private readonly locsMap = new Map<number, Position>();
 
   public constructor(origCode: string, parserOptions: any) {
     this.options = parserOptionsToYAMLOption(parserOptions);
-    const len = origCode.length;
-    const lineStartIndices = [0];
-    for (let index = 0; index < len; ) {
-      const c = origCode[index++];
-      if (c === "\r") {
-        const next = origCode[index];
-        if (next === "\n") {
-          index++;
-        }
-        lineStartIndices.push(index);
-      } else if (c === "\n") {
-        lineStartIndices.push(index);
-      }
-    }
     this.code = origCode;
-    this.locs = new LinesAndColumns(lineStartIndices);
+    this.lineCounter = new LineCounter();
   }
 
   public getLocFromIndex(index: number): { line: number; column: number } {
     let loc = this.locsMap.get(index);
     if (!loc) {
-      loc = this.locs.getLocFromIndex(index);
+      const { line, col } = this.lineCounter.linePos(index);
+      loc = { line, column: col - 1 };
       this.locsMap.set(index, loc);
     }
     return {
@@ -110,22 +96,5 @@ export class Context {
       }
     }
     return startIndex;
-  }
-}
-
-class LinesAndColumns {
-  private readonly lineStartIndices: number[];
-
-  public constructor(lineStartIndices: number[]) {
-    this.lineStartIndices = lineStartIndices;
-  }
-
-  public getLocFromIndex(index: number) {
-    const lineNumber = sortedLastIndex(this.lineStartIndices, index);
-
-    return {
-      line: lineNumber,
-      column: index - this.lineStartIndices[lineNumber - 1],
-    };
   }
 }
