@@ -420,9 +420,22 @@ function convertDocumentBody(
   if (cst) {
     return convertContentNode(preTokens, cst, node, ctx, parent, parent);
   }
+
   const token = preTokens.first();
-  /* istanbul ignore if */
   if (token) {
+    if (isScalar(node) && node.source === "") {
+      const loc = ctx.getConvertLocation(node.range[0], node.range[1]);
+      return convertAnchorAndTag<YAMLPlainScalar>(
+        preTokens,
+        node,
+        ctx,
+        parent,
+        null,
+        parent,
+        loc,
+      );
+    }
+    /* istanbul ignore next */
     throw ctx.throwUnexpectedTokenError(token);
   }
   return null;
