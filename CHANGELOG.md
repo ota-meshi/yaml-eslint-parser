@@ -1,5 +1,11 @@
 # yaml-eslint-parser
 
+## 1.3.2
+
+### Patch Changes
+
+- [#250](https://github.com/ota-meshi/yaml-eslint-parser/pull/250) [`6a4f069`](https://github.com/ota-meshi/yaml-eslint-parser/commit/6a4f069240a7ec89454b85c7d6388b437d8ba7ee) Thanks [@ota-meshi](https://github.com/ota-meshi)! - fix: false parsing error when tag-only doc
+
 ## 1.3.1
 
 ### Patch Changes
