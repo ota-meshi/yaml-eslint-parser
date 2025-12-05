@@ -17,10 +17,7 @@ export function parseAllDocsToCST(ctx: Context): ParsedCSTDocs {
     keepSourceTokens: true,
     lineCounter,
   });
-  const cstNodes: CST.Token[] = [];
-  for (const cst of parser.parse(ctx.code)) {
-    cstNodes.push(cst);
-  }
+  const cstNodes: CST.Token[] = [...parser.parse(ctx.code)];
   const nodes: Document.Parsed[] = [];
   for (const doc of composer.compose(cstNodes)) {
     for (const error of doc.errors) {
