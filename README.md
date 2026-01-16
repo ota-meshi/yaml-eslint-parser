@@ -71,7 +71,7 @@ export default [
     files: ["*.yaml", "*.yml"],
     languageOptions: {
       parser: yamlParser,
-      // Additional parser options
+      // Additional configuration options
       parserOptions: {
         defaultYAMLVersion: "1.2",
       },
