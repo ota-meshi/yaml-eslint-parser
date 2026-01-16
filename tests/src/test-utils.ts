@@ -1,9 +1,12 @@
-/* global require -- node */
+/* global -- node */
 import path from "path";
 import fs from "fs";
+import { createRequire } from "module";
 import semver from "semver";
 import type { YAMLContentValue } from "../../src/utils";
 import type { YAMLProgram } from "../../src/ast";
+
+const require = createRequire(import.meta.url);
 
 export function* listupFixtures(dir: string): IterableIterator<{
   input: string;
@@ -64,7 +67,6 @@ function* listupFixturesImpl(dir: string): IterableIterator<{
         Object.entries(requirements).some(([pkgName, pkgVersion]) => {
           const pkg: {
             version: string;
-            // eslint-disable-next-line @typescript-eslint/no-require-imports, @typescript-eslint/no-var-requires -- ignore
           } = require(`${pkgName}/package.json`);
           return !semver.satisfies(pkg.version, pkgVersion as string);
         })

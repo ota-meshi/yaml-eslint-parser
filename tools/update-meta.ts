@@ -1,9 +1,14 @@
 import fs from "fs";
 import path from "path";
+import { fileURLToPath } from "url";
 import { ESLint } from "eslint";
-import { name, version } from "../package.json";
+import { name, version } from "../package.json" with { type: "json" };
 import { getNewVersion } from "./lib/changesets-util";
 
+// eslint-disable-next-line @typescript-eslint/naming-convention -- standard Node.js convention
+const __filename = fileURLToPath(import.meta.url);
+// eslint-disable-next-line @typescript-eslint/naming-convention -- standard Node.js convention
+const __dirname = path.dirname(__filename);
 const META_PATH = path.join(__dirname, "../src/meta.ts");
 
 void main();

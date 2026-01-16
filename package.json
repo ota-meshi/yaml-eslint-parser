@@ -2,7 +2,12 @@
   "name": "yaml-eslint-parser",
   "version": "1.3.2",
   "description": "A YAML parser that produces output compatible with ESLint",
+  "type": "module",
   "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
   "files": [
     "lib"
   ],
@@ -17,9 +22,9 @@
     "clean": "rimraf .nyc_output lib coverage",
     "lint": "eslint .",
     "eslint-fix": "npm run lint -- --fix",
-    "test": "mocha --require tsx/cjs \"tests/src/**/*.ts\" --reporter dot --timeout 60000",
+    "test": "NODE_OPTIONS='--import tsx' mocha \"tests/src/**/*.ts\" --reporter dot --timeout 60000",
     "cover": "nyc --reporter=lcov npm run test",
-    "debug": "mocha --require tsx/cjs \"tests/src/**/*.ts\" --reporter dot",
+    "debug": "NODE_OPTIONS='--import tsx' mocha \"tests/src/**/*.ts\" --reporter dot",
     "preversion": "npm run lint && npm test",
     "update-fixtures": "tsx ./tools/update-fixtures.ts",
     "benchmark": "tsx benchmark/index.ts",

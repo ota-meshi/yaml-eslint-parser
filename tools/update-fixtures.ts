@@ -1,4 +1,5 @@
 import path from "path";
+import { fileURLToPath } from "url";
 import fs from "fs";
 import yamlTestSuite from "yaml-test-suite";
 
@@ -10,6 +11,10 @@ import {
   valueToJson,
 } from "../tests/src/test-utils";
 
+// eslint-disable-next-line @typescript-eslint/naming-convention -- standard Node.js convention
+const __filename = fileURLToPath(import.meta.url);
+// eslint-disable-next-line @typescript-eslint/naming-convention -- standard Node.js convention
+const __dirname = path.dirname(__filename);
 const AST_FIXTURE_ROOT = path.resolve(
   __dirname,
   "../tests/fixtures/parser/ast",
