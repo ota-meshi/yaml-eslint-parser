@@ -1,6 +1,7 @@
 /* eslint complexity:0 -- ignore */
 import assert from "assert";
 import path from "path";
+import { fileURLToPath } from "url";
 import fs from "fs";
 
 import YAML from "yaml";
@@ -12,6 +13,10 @@ import { parseYAML } from "../../../src";
 import { astToJson, listupFixtures, valueToJson } from "../test-utils";
 import { parserOptionsToYAMLOption } from "../../../src/options";
 
+// eslint-disable-next-line @typescript-eslint/naming-convention -- standard Node.js convention
+const __filename = fileURLToPath(import.meta.url);
+// eslint-disable-next-line @typescript-eslint/naming-convention -- standard Node.js convention
+const __dirname = path.dirname(__filename);
 const AST_FIXTURE_ROOT = path.resolve(__dirname, "../../fixtures/parser/ast");
 const SUITE_FIXTURE_ROOT = path.resolve(
   __dirname,
