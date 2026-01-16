@@ -24,7 +24,7 @@ npm install --save-dev yaml-eslint-parser
 
 ### Configuration
 
-Use `eslint.config.js` file to configure parser. See also: [https://eslint.org/docs/latest/use/configure/](https://eslint.org/docs/latest/use/configure/).
+Use `eslint.config.js` file to configure parser (ESLint v9+). See also: [https://eslint.org/docs/latest/use/configure/](https://eslint.org/docs/latest/use/configure/).
 
 Example **eslint.config.js**:
 
@@ -33,7 +33,7 @@ import yamlParser from "yaml-eslint-parser";
 
 export default [
   {
-    files: ["**/*.yaml", "**/*.yml"],
+    files: ["*.yaml", "*.yml"],
     languageOptions: {
       parser: yamlParser,
     },
@@ -68,7 +68,7 @@ import yamlParser from "yaml-eslint-parser";
 
 export default [
   {
-    files: ["**/*.yaml", "**/*.yml"],
+    files: ["*.yaml", "*.yml"],
     languageOptions: {
       parser: yamlParser,
       // Additional parser options
