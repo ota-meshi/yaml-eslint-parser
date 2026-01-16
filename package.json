@@ -5,10 +5,7 @@
   "type": "module",
   "main": "lib/index.js",
   "exports": {
-    ".": {
-      "import": "./lib/index.js",
-      "default": "./lib/index.js"
-    },
+    ".": "./lib/index.js",
     "./package.json": "./package.json"
   },
   "files": [
