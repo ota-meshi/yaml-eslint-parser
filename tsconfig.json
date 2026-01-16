@@ -23,6 +23,7 @@
     "benchmark/**/*",
     "explorer/src/**/*",
     "explorer/vite.config.ts",
-    "explorer/env.d.ts"
+    "explorer/env.d.ts",
+    "tsdown.config.ts"
   ]
 }
