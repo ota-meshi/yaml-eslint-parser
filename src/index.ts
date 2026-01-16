@@ -25,13 +25,3 @@ export { traverseNodes, getStaticYAMLValue };
 export function parseYAML(code: string, options?: any): AST.YAMLProgram {
   return parseForESLint(code, options).ast;
 }
-
-// Default export for compatibility
-export default {
-  parseForESLint,
-  parseYAML,
-  VisitorKeys,
-  traverseNodes,
-  getStaticYAMLValue,
-  ParseError,
-};

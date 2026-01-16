@@ -29,7 +29,7 @@ Use `eslint.config.js` file to configure parser (ESLint v9+). See also: [https:/
 Example **eslint.config.js**:
 
 ```js
-import yamlParser from "yaml-eslint-parser";
+import * as yamlParser from "yaml-eslint-parser";
 
 export default [
   {
@@ -64,7 +64,7 @@ The following additional configuration options are available by specifying them 
 Example **eslint.config.js**:
 
 ```js
-import yamlParser from "yaml-eslint-parser";
+import * as yamlParser from "yaml-eslint-parser";
 
 export default [
   {
