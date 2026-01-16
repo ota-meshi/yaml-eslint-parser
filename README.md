@@ -24,9 +24,25 @@ npm install --save-dev yaml-eslint-parser
 
 ### Configuration
 
-Use `.eslintrc.*` file to configure parser. See also: [https://eslint.org/docs/user-guide/configuring](https://eslint.org/docs/user-guide/configuring).
+Use `eslint.config.js` file to configure parser (ESLint v9+). See also: [https://eslint.org/docs/latest/use/configure/](https://eslint.org/docs/latest/use/configure/).
 
-Example **.eslintrc.js**:
+Example **eslint.config.js**:
+
+```js
+import yamlParser from "yaml-eslint-parser";
+
+export default [
+  {
+    files: ["*.yaml", "*.yml"],
+    languageOptions: {
+      parser: yamlParser,
+    },
+  },
+];
+```
+
+<details>
+<summary>For ESLint v8 and earlier (.eslintrc.js)</summary>
 
 ```js
 module.exports = {
@@ -39,11 +55,33 @@ module.exports = {
 };
 ```
 
+</details>
+
 ### Advanced Configuration
 
-The following additional configuration options are available by specifying them in [parserOptions](https://eslint.org/docs/latest/user-guide/configuring/language-options#specifying-parser-options) in your ESLint configuration file.
+The following additional configuration options are available by specifying them in [parserOptions](https://eslint.org/docs/latest/use/configure/language-options#specifying-parser-options) in your ESLint configuration file.
 
-Example **.eslintrc.js**:
+Example **eslint.config.js**:
+
+```js
+import yamlParser from "yaml-eslint-parser";
+
+export default [
+  {
+    files: ["*.yaml", "*.yml"],
+    languageOptions: {
+      parser: yamlParser,
+      // Additional configuration options
+      parserOptions: {
+        defaultYAMLVersion: "1.2",
+      },
+    },
+  },
+];
+```
+
+<details>
+<summary>For ESLint v8 and earlier (.eslintrc.js)</summary>
 
 ```js
 module.exports = {
@@ -59,6 +97,8 @@ module.exports = {
   ],
 };
 ```
+
+</details>
 
 #### `parserOptions.defaultYAMLVersion`
 
