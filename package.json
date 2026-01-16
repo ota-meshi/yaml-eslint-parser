@@ -5,7 +5,10 @@
   "type": "module",
   "main": "lib/index.js",
   "exports": {
-    ".": "./lib/index.js",
+    ".": {
+      "import": "./lib/index.js",
+      "default": "./lib/index.js"
+    },
     "./package.json": "./package.json"
   },
   "files": [
@@ -22,9 +25,9 @@
     "clean": "rimraf .nyc_output lib coverage",
     "lint": "eslint .",
     "eslint-fix": "npm run lint -- --fix",
-    "test": "NODE_OPTIONS='--import tsx' mocha \"tests/src/**/*.ts\" --reporter dot --timeout 60000",
+    "test": "mocha \"tests/src/**/*.ts\" --reporter dot --timeout 60000",
     "cover": "nyc --reporter=lcov npm run test",
-    "debug": "NODE_OPTIONS='--import tsx' mocha \"tests/src/**/*.ts\" --reporter dot",
+    "debug": "mocha \"tests/src/**/*.ts\" --reporter dot",
     "preversion": "npm run lint && npm test",
     "update-fixtures": "tsx ./tools/update-fixtures.ts",
     "benchmark": "tsx benchmark/index.ts",
