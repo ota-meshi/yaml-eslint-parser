@@ -1,5 +1,13 @@
 # yaml-eslint-parser
 
+## 2.0.0
+
+### Major Changes
+
+- [#257](https://github.com/ota-meshi/yaml-eslint-parser/pull/257) [`4992127`](https://github.com/ota-meshi/yaml-eslint-parser/commit/49921271341e38cb82f6097f9de456b58a9a4297) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Drop support for Node.js <20. The new supported versions are "^20.19.0 || ^22.13.0 || >=24".
+
+- [#263](https://github.com/ota-meshi/yaml-eslint-parser/pull/263) [`3c0c8bf`](https://github.com/ota-meshi/yaml-eslint-parser/commit/3c0c8bf5869c53ff1de398982e66683152901565) Thanks [@copilot-swe-agent](https://github.com/apps/copilot-swe-agent)! - Change to ESM-only package. The package no longer provides CommonJS exports and requires ES modules.
+
 ## 1.3.2
 
 ### Patch Changes
