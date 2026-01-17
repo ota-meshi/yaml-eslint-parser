@@ -61,7 +61,7 @@ export default {
       let ast;
       const start = Date.now();
       try {
-        ast = yamlEslintParser.parseForESLint(this.yamlValue).ast;
+        ast = yamlEslintParser.parseYAML(this.yamlValue);
         // for test
         // ast = parseAllDocsToCST(this.yamlValue)
       } catch (e) {
