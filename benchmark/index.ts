@@ -4,9 +4,9 @@ import * as Benchmark from "benchmark";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { parseForESLint } from "..";
+import { parseYAML } from "..";
 import { parseAllDocuments } from "yaml";
-import { parseForESLint as parseOld } from "../node_modules/yaml-eslint-parser";
+import { parseYAML as parseOld } from "../node_modules/yaml-eslint-parser";
 import { parseAllDocuments as parseAllDocumentsOld } from "../node_modules/yaml-eslint-parser/node_modules/yaml";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention -- standard Node.js convention
@@ -61,7 +61,7 @@ const suite = new Benchmark.Suite("benchmark", { onCycle, onComplete });
 
 for (const no of [1, 2, 3]) {
   suite.add(`${no} new   yaml-eslint-parser`, function () {
-    parseForESLint(contents, {
+    parseYAML(contents, {
       loc: true,
       range: true,
       raw: true,

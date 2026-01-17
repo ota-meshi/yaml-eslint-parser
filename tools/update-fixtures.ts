@@ -3,7 +3,7 @@ import { fileURLToPath } from "url";
 import fs from "fs";
 import yamlTestSuite from "yaml-test-suite";
 
-import { parseForESLint } from "../src/parser";
+import { parseYAML } from "../src/parser";
 import { getStaticYAMLValue } from "../src/utils";
 import {
   astToJson,
@@ -30,7 +30,7 @@ const ONLY = ""; // e.g., "2G84-3-input"
  * Parse
  */
 function parse(code: string, parserOptions: any) {
-  return parseForESLint(code, parserOptions);
+  return parseYAML(code, parserOptions);
 }
 
 for (const fixture of listupFixtures(AST_FIXTURE_ROOT)) {
@@ -40,7 +40,7 @@ for (const fixture of listupFixtures(AST_FIXTURE_ROOT)) {
   // eslint-disable-next-line no-console -- update log
   console.log(inputFileName);
   try {
-    const ast = parse(input, parserOptions).ast;
+    const ast = parse(input, parserOptions);
     const astJson = astToJson(ast);
     fs.writeFileSync(outputFileName, astJson, "utf8");
     fs.writeFileSync(
@@ -79,7 +79,7 @@ for (const fixture of listupFixtures(SUITE_FIXTURE_ROOT)) {
   // eslint-disable-next-line no-console -- update log
   console.log(inputFileName);
   try {
-    const ast = parse(input, parserOptions).ast;
+    const ast = parse(input, parserOptions);
     const astJson = astToJson(ast);
     fs.writeFileSync(outputFileName, astJson, "utf8");
     fs.writeFileSync(

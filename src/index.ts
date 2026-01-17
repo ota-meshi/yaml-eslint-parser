@@ -1,4 +1,5 @@
-import { parseForESLint } from "./parser";
+import type { SourceCode } from "eslint";
+import { parseYAML } from "./parser";
 import type * as AST from "./ast";
 import { traverseNodes } from "./traverse";
 import { getStaticYAMLValue } from "./utils";
@@ -11,7 +12,7 @@ export type { AST };
 export { ParseError };
 
 // parser
-export { parseForESLint };
+export { parseYAML };
 // Keys
 // eslint-disable-next-line @typescript-eslint/naming-convention -- ignore
 export const VisitorKeys = KEYS;
@@ -20,8 +21,23 @@ export const VisitorKeys = KEYS;
 export { traverseNodes, getStaticYAMLValue };
 
 /**
- * Parse YAML source code
+ * Parse source code
  */
-export function parseYAML(code: string, options?: any): AST.YAMLProgram {
-  return parseForESLint(code, options).ast;
+export function parseForESLint(
+  code: string,
+  options?: any,
+): {
+  ast: AST.YAMLProgram;
+  visitorKeys: SourceCode.VisitorKeys;
+  services: { isYAML: boolean };
+} {
+  const ast = parseYAML(code, options);
+
+  return {
+    ast,
+    visitorKeys: KEYS,
+    services: {
+      isYAML: true,
+    },
+  };
 }
