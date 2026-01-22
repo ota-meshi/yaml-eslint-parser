@@ -17,6 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - uses: actions/setup-node@v6
+      with:
+        node-version: lts/*
     - name: Install Packages
       run: npm install -f
     - name: Lint
@@ -26,6 +28,8 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - uses: actions/setup-node@v6
+      with:
+        node-version: lts/*
     - name: Install And Build
       run: |+
         npm install
@@ -65,6 +69,8 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - uses: actions/setup-node@v6
+      with:
+        node-version: lts/*
     - name: Install Packages
       run: npm install -f
     - name: Test
@@ -78,6 +84,8 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - uses: actions/setup-node@v6
+      with:
+        node-version: lts/*
     - name: Install Packages
       run: npm install -f
     - name: Strict type-check
