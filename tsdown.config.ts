@@ -7,4 +7,5 @@ export default defineConfig({
   clean: true,
   outDir: "lib",
   platform: "node",
+  external: ["@types/estree", "@types/json-schema", "@eslint/core", "eslint"],
 });
