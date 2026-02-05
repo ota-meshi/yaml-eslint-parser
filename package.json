@@ -20,13 +20,12 @@
   },
   "scripts": {
     "prebuild": "npm run -s clean",
-    "build": "npm run build:meta && tsdown",
-    "build:meta": "tsx ./tools/update-meta.ts",
+    "build": "tsdown",
     "clean": "rimraf .nyc_output lib coverage",
     "lint": "npm run lint:js && npm run lint:ts",
     "lint:js": "eslint .",
     "lint:ts": "tsc --project ./tsconfig.build.json",
-    "eslint-fix": "npm run lint -- --fix",
+    "eslint-fix": "npm run lint:js -- --fix",
     "test": "mocha \"tests/src/**/*.ts\" --reporter dot --timeout 60000",
     "cover": "nyc --reporter=lcov npm run test",
     "debug": "mocha \"tests/src/**/*.ts\" --reporter dot",
@@ -35,7 +34,7 @@
     "benchmark": "tsx benchmark/index.ts",
     "prerelease": "npm run clean && npm run build",
     "release": "changeset publish",
-    "version:ci": "env-cmd -e version-ci -- npm run build:meta && changeset version",
+    "version:ci": "changeset version",
     "strict-type-check": "tsc --project ./tsconfig.build.json --noEmit --module esnext --moduleResolution bundler"
   },
   "repository": {
