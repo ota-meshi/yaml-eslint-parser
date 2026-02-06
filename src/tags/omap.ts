@@ -1,6 +1,6 @@
-import type { YAMLMapping, YAMLSequence } from "../ast";
-import { getStaticYAMLValue } from "../utils";
-import type { TagNodeResolver } from "./commons";
+import type { YAMLMapping, YAMLSequence } from "../ast.ts";
+import { getStaticYAMLValue } from "../utils.ts";
+import type { TagNodeResolver } from "./commons.ts";
 
 export const OMAP: TagNodeResolver<Record<any, any>> = {
   // see https://yaml.org/type/omap.html

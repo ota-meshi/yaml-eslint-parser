@@ -1,15 +1,15 @@
-import path from "path";
-import { fileURLToPath } from "url";
-import fs from "fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import fs from "node:fs";
 import yamlTestSuite from "yaml-test-suite";
 
-import { parseYAML } from "../src/parser";
-import { getStaticYAMLValue } from "../src/utils";
+import { parseYAML } from "../src/parser.ts";
+import { getStaticYAMLValue } from "../src/utils.ts";
 import {
   astToJson,
   listupFixtures,
   valueToJson,
-} from "../tests/src/test-utils";
+} from "../tests/src/test-utils.ts";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention -- standard Node.js convention
 const __filename = fileURLToPath(import.meta.url);

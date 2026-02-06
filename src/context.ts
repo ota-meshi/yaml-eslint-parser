@@ -1,7 +1,7 @@
-import type { Comment, Locations, Position, Range, Token } from "./ast";
+import type { Comment, Locations, Position, Range, Token } from "./ast.ts";
 import { type CST, type DocumentOptions, LineCounter } from "yaml";
 import { ParseError } from ".";
-import { parserOptionsToYAMLOption } from "./options";
+import { parserOptionsToYAMLOption } from "./options.ts";
 
 export class Context {
   public readonly code: string;

@@ -1,10 +1,10 @@
 /* global -- node */
-import path from "path";
-import fs from "fs";
-import { createRequire } from "module";
+import path from "node:path";
+import fs from "node:fs";
+import { createRequire } from "node:module";
 import semver from "semver";
-import type { YAMLContentValue } from "../../src/utils";
-import type { YAMLProgram } from "../../src/ast";
+import type { YAMLContentValue } from "../../src/utils.ts";
+import type { YAMLProgram } from "../../src/ast.ts";
 
 const require = createRequire(import.meta.url);
 

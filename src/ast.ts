@@ -1,4 +1,4 @@
-import type { YAMLVersion } from "./utils";
+import type { YAMLVersion } from "./utils.ts";
 
 export type Range = [number, number];
 

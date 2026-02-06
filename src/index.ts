@@ -1,12 +1,12 @@
 import type { SourceCode } from "eslint";
-import { parseYAML } from "./parser";
-import type * as AST from "./ast";
-import { traverseNodes } from "./traverse";
-import { getStaticYAMLValue } from "./utils";
-import { KEYS } from "./visitor-keys";
-import { ParseError } from "./errors";
-export * as meta from "./meta";
-export { name } from "./meta";
+import { parseYAML } from "./parser.ts";
+import type * as AST from "./ast.ts";
+import { traverseNodes } from "./traverse.ts";
+import { getStaticYAMLValue } from "./utils.ts";
+import { KEYS } from "./visitor-keys.ts";
+import { ParseError } from "./errors.ts";
+export * as meta from "./meta.ts";
+export { name } from "./meta.ts";
 
 export type { AST };
 export { ParseError };

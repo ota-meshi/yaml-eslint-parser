@@ -1,6 +1,6 @@
-import type { TagResolver } from "./commons";
-import { OMAP } from "./omap";
-import { SET } from "./set";
+import type { TagResolver } from "./commons.ts";
+import { OMAP } from "./omap.ts";
+import { SET } from "./set.ts";
 
 export const NULL: TagResolver<null> = {
   // see https://yaml.org/spec/1.2/spec.html#id2803311

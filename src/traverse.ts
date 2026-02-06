@@ -1,6 +1,6 @@
 import type { VisitorKeys } from "eslint-visitor-keys";
-import { KEYS } from "./visitor-keys";
-import type { YAMLNode } from "./ast";
+import { KEYS } from "./visitor-keys.ts";
+import type { YAMLNode } from "./ast.ts";
 
 /**
  * Check that the given key should be traversed or not.

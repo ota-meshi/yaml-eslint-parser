@@ -1,6 +1,6 @@
 import type { CST, Document } from "yaml";
 import { Composer, Parser } from "yaml";
-import type { Context } from "./context";
+import type { Context } from "./context.ts";
 
 export type ParsedCSTDocs = {
   cstNodes: CST.Token[];

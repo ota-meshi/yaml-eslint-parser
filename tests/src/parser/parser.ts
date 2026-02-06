@@ -1,17 +1,17 @@
 /* eslint complexity:0 -- ignore */
-import assert from "assert";
-import path from "path";
-import { fileURLToPath } from "url";
-import fs from "fs";
+import assert from "node:assert";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import fs from "node:fs";
 
 import YAML from "yaml";
-import { KEYS } from "../../../src/visitor-keys";
-import { traverseNodes, getKeys } from "../../../src/traverse";
-import { getStaticYAMLValue } from "../../../src/utils";
-import type { YAMLProgram } from "../../../src/ast";
+import { KEYS } from "../../../src/visitor-keys.ts";
+import { traverseNodes, getKeys } from "../../../src/traverse.ts";
+import { getStaticYAMLValue } from "../../../src/utils.ts";
+import type { YAMLProgram } from "../../../src/ast.ts";
 import { parseYAML } from "../../../src";
-import { astToJson, listupFixtures, valueToJson } from "../test-utils";
-import { parserOptionsToYAMLOption } from "../../../src/options";
+import { astToJson, listupFixtures, valueToJson } from "../test-utils.ts";
+import { parserOptionsToYAMLOption } from "../../../src/options.ts";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention -- standard Node.js convention
 const __filename = fileURLToPath(import.meta.url);

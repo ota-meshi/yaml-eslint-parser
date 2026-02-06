@@ -1,4 +1,4 @@
-import type { YAMLAlias, YAMLContent } from "../ast";
+import type { YAMLAlias, YAMLContent } from "../ast.ts";
 
 export type TagResolver<T> = {
   tag: string;
