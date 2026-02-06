@@ -1,7 +1,7 @@
-import type { TagResolver } from "./commons";
-import { OMAP } from "./omap";
-import { SET } from "./set";
-import * as Tags1_2 from "./tags1.2";
+import type { TagResolver } from "./commons.ts";
+import { OMAP } from "./omap.ts";
+import { SET } from "./set.ts";
+import * as Tags1_2 from "./tags1.2.ts";
 
 // https://yaml.org/type/
 

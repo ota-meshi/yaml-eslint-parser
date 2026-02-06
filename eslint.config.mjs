@@ -1,4 +1,5 @@
 import myPlugin from "@ota-meshi/eslint-plugin";
+import n from "eslint-plugin-n";
 
 export default [
   {
@@ -30,6 +31,19 @@ export default [
       "no-warning-comments": "warn",
       "no-lonely-if": "off",
       "one-var": "off",
+    },
+  },
+  {
+    files: ["**/*.{js,ts,mjc,mts,cjs,cts}"],
+    plugins: { n },
+    rules: {
+      "n/prefer-node-protocol": "error",
+      "n/file-extension-in-import": ["error", "always"],
+    },
+    settings: {
+      n: {
+        typescriptExtensionMap: [],
+      },
     },
   },
   {

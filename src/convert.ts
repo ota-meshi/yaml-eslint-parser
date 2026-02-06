@@ -25,10 +25,10 @@ import type {
   YAMLNode,
   Position,
   SourceLocation,
-} from "./ast";
-import type { Context } from "./context";
+} from "./ast.ts";
+import type { Context } from "./context.ts";
 import { tagResolvers } from "./tags";
-import type { YAMLVersion } from "./utils";
+import type { YAMLVersion } from "./utils.ts";
 import type {
   Alias,
   CST,
@@ -47,7 +47,7 @@ import {
   isSeq,
   isMap,
 } from "yaml";
-import type { ParsedCSTDocs } from "./yaml-cst-parse";
+import type { ParsedCSTDocs } from "./yaml-cst-parse.ts";
 
 type PairParsed = BasePair<ParsedNode, ParsedNode | null>;
 type Directives = Document.Parsed["directives"];

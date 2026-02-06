@@ -11,7 +11,7 @@ import type {
   YAMLPair,
   YAMLWithMeta,
   YAMLTag,
-} from "./ast";
+} from "./ast.ts";
 import { tagNodeResolvers, tagResolvers } from "./tags";
 
 export type YAMLVersion = NonNullable<DocumentOptions["version"]>;

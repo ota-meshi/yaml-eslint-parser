@@ -1,7 +1,7 @@
-import { convertRoot } from "./convert";
-import type { YAMLProgram } from "./ast";
-import { Context } from "./context";
-import { parseAllDocsToCST } from "./yaml-cst-parse";
+import { convertRoot } from "./convert.ts";
+import type { YAMLProgram } from "./ast.ts";
+import { Context } from "./context.ts";
+import { parseAllDocsToCST } from "./yaml-cst-parse.ts";
 
 /**
  * Parse YAML source code

@@ -1,13 +1,12 @@
 // eslint-disable-next-line @eslint-community/eslint-comments/disable-enable-pair -- ignore
 /* eslint-disable jsdoc/require-jsdoc, no-console -- ignore */
 import * as Benchmark from "benchmark";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { parseYAML } from "..";
 import { parseAllDocuments } from "yaml";
 import { parseYAML as parseOld } from "../node_modules/yaml-eslint-parser";
-import { parseAllDocuments as parseAllDocumentsOld } from "../node_modules/yaml-eslint-parser/node_modules/yaml";
 
 // eslint-disable-next-line @typescript-eslint/naming-convention -- standard Node.js convention
 const __filename = fileURLToPath(import.meta.url);
@@ -85,11 +84,6 @@ for (const no of [1, 2, 3]) {
       comment: true,
       eslintVisitorKeys: true,
       eslintScopeManager: true,
-    });
-  });
-  suite.add(`${no} old   yaml`, function () {
-    parseAllDocumentsOld(contents, {
-      keepCstNodes: true,
     });
   });
 }
