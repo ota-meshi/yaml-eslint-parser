@@ -29,6 +29,10 @@ export type YAMLMappingValue = {
   [key: number]: YAMLContentValue;
 };
 
+// The YAML merge key. In YAML 1.1 a plain `<<` key merges the referenced
+// mapping(s) into the enclosing mapping. See https://yaml.org/type/merge.html
+const MERGE_KEY = "<<";
+
 export function getStaticYAMLValue(
   node: YAMLMapping | YAMLPair,
 ): YAMLMappingValue;
@@ -81,7 +85,24 @@ const resolver = {
   YAMLMapping(node: YAMLMapping, version: YAMLVersion | null) {
     const result: YAMLMappingValue = {};
     for (const pair of node.pairs) {
-      Object.assign(result, getValue(pair, version));
+      const mergeSources =
+        version === "1.1" && isMergeKeyPair(pair)
+          ? toMergeSources(getValue(pair.value, version))
+          : null;
+      if (mergeSources) {
+        // A merge key (`<<`) only fills in keys that are not already present,
+        // so keys defined directly on this mapping (and keys from earlier
+        // merge sources) take precedence over the merged ones.
+        for (const source of mergeSources) {
+          for (const key of Object.keys(source)) {
+            if (!Object.prototype.hasOwnProperty.call(result, key)) {
+              result[key] = source[key];
+            }
+          }
+        }
+      } else {
+        Object.assign(result, getValue(pair, version));
+      }
     }
     return result;
   },
@@ -143,6 +164,53 @@ const resolver = {
     return getValue(node.value, version);
   },
 };
+
+/**
+ * Checks whether the given pair is a YAML merge key pair (a plain `<<` key).
+ * A quoted or tagged `<<` is a normal key, so only a plain scalar counts.
+ */
+function isMergeKeyPair(
+  pair: YAMLPair,
+): pair is YAMLPair & { value: YAMLContent | YAMLWithMeta } {
+  const key = pair.key;
+  return (
+    pair.value != null &&
+    key != null &&
+    key.type === "YAMLScalar" &&
+    key.style === "plain" &&
+    key.strValue === MERGE_KEY
+  );
+}
+
+/**
+ * Normalizes the static value of a merge key (`<<`) into the mappings to merge
+ * in. A single mapping yields one source; a sequence yields one source per
+ * item, applied in order. Returns `null` when the value cannot be merged, in
+ * which case `<<` is treated as a normal key.
+ */
+function toMergeSources(value: YAMLContentValue): YAMLMappingValue[] | null {
+  if (Array.isArray(value)) {
+    const sources: YAMLMappingValue[] = [];
+    for (const item of value) {
+      if (!isMapValue(item)) {
+        return null;
+      }
+      sources.push(item);
+    }
+    return sources;
+  }
+  if (isMapValue(value)) {
+    return [value];
+  }
+  return null;
+}
+
+/**
+ * Checks whether the given static value is a mapping value (a plain object).
+ */
+function isMapValue(value: YAMLContentValue): value is YAMLMappingValue {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
 
 /**
  * Find Anchor
