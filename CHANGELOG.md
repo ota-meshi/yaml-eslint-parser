@@ -1,5 +1,11 @@
 # yaml-eslint-parser
 
+## 2.1.0
+
+### Minor Changes
+
+- [#307](https://github.com/ota-meshi/yaml-eslint-parser/pull/307) [`60a58c9`](https://github.com/ota-meshi/yaml-eslint-parser/commit/60a58c99c4bb94ba3e2e42eeffbf93b1d3f145b4) Thanks [@Kenneth-Sills](https://github.com/Kenneth-Sills)! - feat: resolve YAML merge keys (`<<`) in `getStaticYAMLValue` for YAML 1.1
+
 ## 2.0.0
 
 ### Major Changes
