@@ -27,7 +27,7 @@ import type {
   SourceLocation,
 } from "./ast.ts";
 import type { Context } from "./context.ts";
-import { tagResolvers } from "./tags";
+import { tagResolvers } from "./tags/index.ts";
 import type { YAMLVersion } from "./utils.ts";
 import type {
   Alias,

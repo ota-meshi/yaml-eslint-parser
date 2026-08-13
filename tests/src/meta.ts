@@ -1,5 +1,5 @@
 import assert from "node:assert";
-import * as parser from "../../src";
+import * as parser from "../../src/index.ts";
 import { version } from "../../package.json";
 const expectedMeta = {
   name: "yaml-eslint-parser",
