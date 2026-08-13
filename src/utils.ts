@@ -12,7 +12,7 @@ import type {
   YAMLWithMeta,
   YAMLTag,
 } from "./ast.ts";
-import { tagNodeResolvers, tagResolvers } from "./tags";
+import { tagNodeResolvers, tagResolvers } from "./tags/index.ts";
 
 export type YAMLVersion = NonNullable<DocumentOptions["version"]>;
 

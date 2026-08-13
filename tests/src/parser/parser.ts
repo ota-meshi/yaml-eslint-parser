@@ -9,7 +9,7 @@ import { KEYS } from "../../../src/visitor-keys.ts";
 import { traverseNodes, getKeys } from "../../../src/traverse.ts";
 import { getStaticYAMLValue } from "../../../src/utils.ts";
 import type { YAMLProgram } from "../../../src/ast.ts";
-import { parseYAML } from "../../../src";
+import { parseYAML } from "../../../src/index.ts";
 import { astToJson, listupFixtures, valueToJson } from "../test-utils.ts";
 import { parserOptionsToYAMLOption } from "../../../src/options.ts";
 
