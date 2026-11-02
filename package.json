@@ -61,7 +61,7 @@
     "@changesets/changelog-github": "^1.0.0",
     "@changesets/cli": "^3.0.0",
     "@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
-    "@ota-meshi/eslint-plugin": "^0.20.0",
+    "@ota-meshi/eslint-plugin": "^0.21.0",
     "@types/benchmark": "^2.1.1",
     "@types/eslint": "^9.0.0",
     "@types/eslint-visitor-keys": "^3.0.0",
